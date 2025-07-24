@@ -1,0 +1,298 @@
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR,HTGS,ATGS,HTGC,ATGC,HHGS,AHGS,HHGC,AHGC,HTP,ATP,HM1,AM1,HM2,AM2,HM3,AM3,HM4,AM4,HM5,AM5,MW
+0,2024-08-23,Borussia Mönchengladbach,Bayer Leverkusen,2,3,0,2,A,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+1,2024-08-24,SC Freiburg,VfB Stuttgart,3,1,1,2,H,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+2,2024-08-24,FSV Mainz 05,Union Berlin,1,1,0,1,D,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+3,2024-08-24,1899 Hoffenheim,Holstein Kiel,3,2,2,1,H,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+4,2024-08-24,FC Augsburg,Werder Bremen,2,2,2,0,D,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+5,2024-08-24,RB Leipzig,VfL Bochum,1,0,0,1,H,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+6,2024-08-24,Borussia Dortmund,Eintracht Frankfurt,2,0,0,2,H,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+7,2024-08-25,VfL Wolfsburg,Bayern München,2,3,0,2,A,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+8,2024-08-25,FC St. Pauli,1. FC Heidenheim,0,2,0,0,A,0,0,0,0,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+9,2024-08-30,Union Berlin,FC St. Pauli,1,0,1,0,H,1,0,1,2,1,0,0,0,1,0,M,M,M,M,M,M,M,M,M,M,2
+10,2024-08-31,Werder Bremen,Borussia Dortmund,0,0,0,0,D,2,2,2,0,0,0,2,2,1,3,D,W,M,M,M,M,M,M,M,M,2
+11,2024-08-31,Eintracht Frankfurt,1899 Hoffenheim,3,1,2,1,H,0,3,2,2,2,2,0,1,0,3,L,W,M,M,M,M,M,M,M,M,2
+12,2024-08-31,VfB Stuttgart,FSV Mainz 05,3,3,2,1,D,1,1,3,1,2,0,1,1,0,1,L,D,M,M,M,M,M,M,M,M,2
+13,2024-08-31,VfL Bochum,Borussia Mönchengladbach,0,2,0,0,A,0,2,1,3,1,0,0,2,0,0,L,L,M,M,M,M,M,M,M,M,2
+14,2024-08-31,Holstein Kiel,VfL Wolfsburg,0,2,0,0,A,2,2,3,3,1,0,2,2,0,0,L,L,M,M,M,M,M,M,M,M,2
+15,2024-08-31,Bayer Leverkusen,RB Leipzig,2,3,2,0,A,3,1,2,0,2,0,0,1,3,3,W,W,M,M,M,M,M,M,M,M,2
+16,2024-09-01,1. FC Heidenheim,FC Augsburg,4,0,2,2,H,2,2,0,2,0,2,0,0,3,1,W,D,M,M,M,M,M,M,M,M,2
+17,2024-09-01,Bayern München,SC Freiburg,2,0,1,1,H,3,3,2,1,2,1,0,2,3,3,W,W,M,M,M,M,M,M,M,M,2
+18,2024-09-13,Borussia Dortmund,1. FC Heidenheim,4,2,3,1,H,2,6,0,0,0,2,2,2,4,6,D,W,M,M,M,M,M,M,M,M,3
+19,2024-09-14,SC Freiburg,VfL Bochum,2,1,0,2,H,3,0,3,3,2,1,3,0,3,0,L,L,M,M,M,M,M,M,M,M,3
+20,2024-09-14,VfL Wolfsburg,Eintracht Frankfurt,1,2,0,1,A,4,3,3,3,0,4,2,1,3,3,W,W,L,L,M,M,M,M,M,M,3
+21,2024-09-14,Borussia Mönchengladbach,VfB Stuttgart,1,3,1,0,A,4,4,3,6,0,4,2,2,3,1,W,D,L,L,M,M,M,M,M,M,3
+22,2024-09-14,1899 Hoffenheim,Bayer Leverkusen,1,4,1,0,A,4,5,5,5,3,4,3,0,3,3,L,L,W,W,M,M,M,M,M,M,3
+23,2024-09-14,RB Leipzig,Union Berlin,0,0,0,0,D,4,2,2,1,0,2,3,0,6,4,W,W,W,D,M,M,M,M,M,M,3
+24,2024-09-14,Holstein Kiel,Bayern München,1,6,0,1,A,2,5,5,2,1,3,2,1,0,6,L,W,L,W,M,M,M,M,M,M,3
+25,2024-09-15,FC Augsburg,FC St. Pauli,3,1,0,3,H,2,0,6,3,4,0,2,1,1,0,L,L,D,L,M,M,M,M,M,M,3
+26,2024-09-15,FSV Mainz 05,Werder Bremen,1,2,1,0,A,4,2,4,2,1,0,3,2,2,2,D,D,D,D,M,M,M,M,M,M,3
+27,2024-09-20,FC Augsburg,FSV Mainz 05,2,3,1,1,A,5,5,7,6,4,2,5,3,4,2,W,L,L,D,M,M,M,M,M,M,4
+28,2024-09-21,Werder Bremen,Bayern München,0,5,0,0,A,4,11,3,3,0,4,3,1,5,9,W,W,D,W,M,M,M,M,M,M,4
+29,2024-09-21,VfL Bochum,Holstein Kiel,2,2,2,0,D,1,3,5,11,3,1,0,3,0,0,L,L,L,L,M,M,M,M,M,M,4
+30,2024-09-21,1. FC Heidenheim,SC Freiburg,0,3,0,0,A,8,5,4,4,3,2,5,5,6,6,L,W,W,L,W,W,M,M,M,M,4
+31,2024-09-21,Union Berlin,1899 Hoffenheim,2,1,2,0,H,2,5,1,9,2,4,0,3,5,3,D,L,W,L,D,W,M,M,M,M,4
+32,2024-09-21,Eintracht Frankfurt,Borussia Mönchengladbach,2,0,1,1,H,5,5,4,6,5,1,1,2,6,3,W,L,W,W,L,L,M,M,M,M,4
+33,2024-09-22,Bayer Leverkusen,VfL Wolfsburg,4,3,2,2,H,9,5,6,5,4,0,1,3,6,3,W,L,L,W,W,L,M,M,M,M,4
+34,2024-09-22,VfB Stuttgart,Borussia Dortmund,5,1,2,3,H,7,6,7,2,4,3,3,3,4,7,W,W,D,D,L,W,M,M,M,M,4
+35,2024-09-22,FC St. Pauli,RB Leipzig,0,0,0,0,D,1,4,6,2,3,0,1,3,0,7,L,D,L,W,L,W,M,M,M,M,4
+36,2024-09-27,Borussia Dortmund,VfL Bochum,4,2,1,3,H,7,3,7,7,6,5,5,0,7,1,L,D,W,L,D,L,M,M,M,M,5
+37,2024-09-28,SC Freiburg,FC St. Pauli,0,3,0,0,A,8,1,4,6,2,3,5,1,9,1,W,D,W,L,L,L,M,M,M,M,5
+38,2024-09-28,VfL Wolfsburg,VfB Stuttgart,2,2,1,1,D,8,12,9,8,2,6,5,6,3,7,L,W,L,W,W,D,M,M,M,M,5
+39,2024-09-28,Borussia Mönchengladbach,Union Berlin,1,0,0,1,H,5,4,8,2,2,4,3,0,3,8,L,W,L,D,W,W,M,M,M,M,5
+40,2024-09-28,FSV Mainz 05,1. FC Heidenheim,0,2,0,0,A,8,8,8,7,3,3,4,5,5,6,W,L,L,L,D,W,D,W,M,M,5
+41,2024-09-28,RB Leipzig,FC Augsburg,4,0,2,2,H,4,7,2,10,0,5,3,6,8,4,D,L,D,W,W,L,W,D,M,M,5
+42,2024-09-28,Bayern München,Bayer Leverkusen,1,1,1,0,D,16,13,3,9,4,6,1,3,12,9,W,W,W,W,W,L,W,W,M,M,5
+43,2024-09-29,Holstein Kiel,Eintracht Frankfurt,2,4,1,1,A,5,7,13,4,1,6,5,2,1,9,D,W,L,W,L,W,L,L,M,M,5
+44,2024-09-29,1899 Hoffenheim,Werder Bremen,3,4,3,0,A,6,4,11,8,4,0,5,3,3,5,L,L,L,W,L,D,W,D,M,M,5
+45,2024-10-04,FC Augsburg,Borussia Mönchengladbach,2,1,1,1,H,7,6,14,8,7,2,8,4,4,6,L,W,L,L,W,L,L,W,M,M,6
+46,2024-10-05,Werder Bremen,SC Freiburg,0,1,0,0,A,8,8,11,7,0,2,6,5,8,9,W,L,L,W,W,W,D,L,M,M,6
+47,2024-10-05,Bayer Leverkusen,Holstein Kiel,2,2,2,0,D,14,7,10,17,6,2,4,6,10,1,D,L,W,D,W,L,L,L,M,M,6
+48,2024-10-05,VfL Bochum,VfL Wolfsburg,1,3,0,1,A,5,10,11,11,8,3,1,6,1,4,L,D,D,L,L,L,L,W,M,M,6
+49,2024-10-05,Union Berlin,Borussia Dortmund,2,1,2,0,H,4,11,3,9,5,7,0,8,8,10,L,W,W,L,D,W,W,D,M,M,6
+50,2024-10-05,FC St. Pauli,FSV Mainz 05,0,3,0,0,A,4,8,6,10,3,3,1,4,4,5,W,L,D,W,L,L,L,D,L,D,6
+51,2024-10-06,1. FC Heidenheim,RB Leipzig,0,1,0,0,A,10,8,7,2,3,2,5,5,9,11,W,W,L,D,L,D,W,W,W,W,6
+52,2024-10-06,Eintracht Frankfurt,Bayern München,3,3,2,1,D,11,17,6,4,7,5,3,1,12,13,W,D,W,W,W,W,W,W,L,W,6
+53,2024-10-06,VfB Stuttgart,1899 Hoffenheim,1,1,0,1,D,14,9,10,15,7,7,7,5,8,3,D,L,W,L,W,L,D,L,L,W,6
+54,2024-10-18,Borussia Dortmund,FC St. Pauli,2,1,1,1,H,12,4,11,9,7,3,10,1,10,4,L,L,W,W,L,D,W,L,D,L,7
+55,2024-10-19,SC Freiburg,FC Augsburg,3,1,3,0,H,9,9,7,15,2,8,5,9,12,7,W,W,L,L,W,L,W,W,L,L,7
+56,2024-10-19,Borussia Mönchengladbach,1. FC Heidenheim,3,2,1,2,H,7,10,10,8,3,3,5,5,6,9,L,L,W,W,L,L,L,L,W,W,7
+57,2024-10-19,FSV Mainz 05,RB Leipzig,0,2,0,0,A,11,9,10,2,3,2,4,5,8,14,W,W,L,W,W,D,L,D,D,W,7
+58,2024-10-19,1899 Hoffenheim,VfL Bochum,3,1,1,2,H,10,6,16,14,8,8,5,2,4,1,D,L,L,L,L,D,L,L,L,L,7
+59,2024-10-19,Bayer Leverkusen,Eintracht Frankfurt,2,1,1,1,H,16,14,12,9,8,9,4,4,11,13,D,D,D,W,W,W,W,W,L,W,7
+60,2024-10-19,Bayern München,VfB Stuttgart,4,0,0,4,H,20,15,7,11,6,7,3,8,14,9,D,D,D,D,W,W,W,W,W,D,7
+61,2024-10-20,Holstein Kiel,Union Berlin,0,2,0,0,A,9,6,19,4,2,7,8,0,2,11,D,W,L,L,D,W,L,D,L,W,7
+62,2024-10-20,VfL Wolfsburg,Werder Bremen,2,4,1,1,A,13,8,12,12,4,0,6,6,7,8,W,L,D,W,L,L,L,W,W,D,7
+63,2024-10-25,FSV Mainz 05,Borussia Mönchengladbach,1,1,0,1,D,11,10,12,12,3,4,4,7,8,9,L,W,W,L,L,W,W,L,L,L,8
+64,2024-10-26,FC Augsburg,Borussia Dortmund,2,1,1,1,H,10,14,18,12,8,8,12,11,7,13,L,W,W,L,L,W,L,L,W,W,8
+65,2024-10-26,VfB Stuttgart,Holstein Kiel,2,1,1,1,H,15,9,15,21,11,2,8,8,9,2,L,L,D,D,D,L,W,D,W,L,8
+66,2024-10-26,RB Leipzig,SC Freiburg,3,1,0,3,H,11,12,2,8,2,5,5,5,17,15,W,W,W,W,W,L,D,W,D,W,8
+67,2024-10-26,FC St. Pauli,VfL Wolfsburg,0,0,0,0,D,5,15,11,16,4,5,2,7,4,7,L,L,L,W,W,D,D,L,L,L,8
+68,2024-10-26,Werder Bremen,Bayer Leverkusen,2,2,0,2,D,12,18,14,13,1,9,7,5,11,14,W,W,L,D,W,D,L,W,W,W,8
+69,2024-10-27,VfL Bochum,Bayern München,0,5,0,0,A,7,24,17,7,10,6,3,7,1,17,L,W,L,D,L,D,D,W,L,W,8
+70,2024-10-27,Union Berlin,Eintracht Frankfurt,1,1,0,1,D,8,15,4,11,7,10,0,5,14,13,W,L,W,D,L,W,W,W,D,W,8
+71,2024-10-27,1. FC Heidenheim,1899 Hoffenheim,0,0,0,0,D,12,13,11,17,5,9,6,7,9,7,L,W,L,D,W,L,L,L,L,L,8
+72,2024-11-01,Bayer Leverkusen,VfB Stuttgart,0,0,0,0,D,20,17,15,16,11,12,5,9,15,12,D,W,W,L,D,D,D,D,W,W,9
+73,2024-11-02,Bayern München,Union Berlin,3,0,2,1,H,29,9,7,5,6,7,7,1,20,15,W,D,W,W,D,W,D,L,W,W,9
+74,2024-11-02,VfL Wolfsburg,FC Augsburg,1,1,0,1,D,15,12,16,19,5,9,7,13,8,10,D,W,L,L,W,W,D,L,L,L,9
+75,2024-11-02,1899 Hoffenheim,FC St. Pauli,0,2,0,0,A,13,5,17,11,9,4,7,2,8,5,D,D,W,L,D,L,L,W,L,D,9
+76,2024-11-02,Eintracht Frankfurt,VfL Bochum,7,2,4,3,H,16,7,12,22,11,10,5,3,14,1,D,L,L,L,D,L,W,L,W,D,9
+77,2024-11-02,Holstein Kiel,1. FC Heidenheim,1,0,1,0,H,10,12,23,11,3,5,9,6,2,10,L,D,L,L,D,L,L,W,D,L,9
+78,2024-11-02,Borussia Dortmund,RB Leipzig,2,1,1,1,H,15,14,14,3,9,2,12,8,13,20,L,W,W,W,L,W,W,W,L,D,9
+79,2024-11-03,SC Freiburg,FSV Mainz 05,0,0,0,0,D,13,12,11,13,8,3,5,5,15,9,L,D,W,L,W,W,L,L,W,W,9
+80,2024-11-03,Borussia Mönchengladbach,Werder Bremen,4,1,3,1,H,11,14,13,16,5,1,7,9,10,12,D,D,W,W,L,L,W,W,L,L,9
+81,2024-11-08,Union Berlin,SC Freiburg,0,0,0,0,D,9,13,8,11,8,8,3,5,15,16,L,D,D,L,W,W,W,W,L,L,10
+82,2024-11-09,Werder Bremen,Holstein Kiel,2,1,1,1,H,15,11,20,23,2,4,12,9,12,5,L,W,D,L,W,L,L,D,W,L,10
+83,2024-11-09,FSV Mainz 05,Borussia Dortmund,3,1,2,1,H,12,17,13,15,3,10,5,13,10,16,D,W,D,L,L,W,W,L,L,W,10
+84,2024-11-09,VfL Bochum,Bayer Leverkusen,1,1,0,1,D,9,20,29,15,13,11,7,5,1,16,L,D,L,D,L,W,L,D,L,D,10
+85,2024-11-09,FC St. Pauli,Bayern München,0,1,0,0,A,7,32,11,7,4,8,2,8,8,23,W,W,D,W,L,W,L,D,W,D,10
+86,2024-11-09,RB Leipzig,Borussia Mönchengladbach,0,0,0,0,D,15,15,5,14,3,8,9,8,20,13,L,W,W,D,W,W,W,L,W,W,10
+87,2024-11-10,FC Augsburg,1899 Hoffenheim,0,0,0,0,D,13,13,20,19,10,9,13,7,11,8,D,L,W,D,L,W,W,D,L,L,10
+88,2024-11-10,VfB Stuttgart,Eintracht Frankfurt,2,3,0,2,A,17,23,16,14,12,15,9,8,13,17,D,W,W,D,L,L,D,D,D,W,10
+89,2024-11-10,1. FC Heidenheim,VfL Wolfsburg,1,3,0,1,A,12,16,12,17,5,5,7,8,10,9,L,D,D,D,L,L,L,W,W,D,10
+90,2024-11-22,Bayern München,FC Augsburg,3,0,0,3,H,33,13,7,20,8,10,8,13,26,12,W,D,W,D,W,W,W,L,D,W,11
+91,2024-11-23,VfL Wolfsburg,Union Berlin,1,0,0,1,H,19,9,18,8,6,8,8,3,12,16,W,D,D,L,D,D,L,W,W,W,11
+92,2024-11-23,Borussia Dortmund,SC Freiburg,4,0,2,2,H,18,13,18,11,11,8,15,5,16,17,L,D,W,D,L,L,W,W,L,W,11
+93,2024-11-23,1899 Hoffenheim,RB Leipzig,4,3,1,3,H,13,15,19,5,9,3,7,9,9,21,D,D,L,L,D,W,W,W,D,W,11
+94,2024-11-23,Bayer Leverkusen,1. FC Heidenheim,5,2,2,3,H,21,13,16,15,12,5,5,8,17,10,D,L,D,L,D,D,W,L,D,L,11
+95,2024-11-23,VfB Stuttgart,VfL Bochum,2,0,0,2,H,19,10,19,30,12,13,11,8,13,2,L,D,D,L,W,L,L,L,D,L,11
+96,2024-11-23,Eintracht Frankfurt,Werder Bremen,1,0,1,0,H,26,17,16,21,17,3,8,13,20,15,W,W,W,L,D,D,L,W,D,L,11
+97,2024-11-24,Holstein Kiel,FSV Mainz 05,0,3,0,0,A,12,15,25,14,5,5,10,6,5,13,L,W,W,D,L,D,L,L,D,W,11
+98,2024-11-24,Borussia Mönchengladbach,FC St. Pauli,2,0,2,0,H,15,7,14,12,8,4,8,2,14,8,D,L,W,W,D,D,W,L,L,L,11
+99,2024-11-29,FC St. Pauli,Holstein Kiel,3,1,1,2,H,7,12,14,28,4,5,4,10,8,5,L,L,L,L,W,W,D,L,L,L,12
+100,2024-11-30,SC Freiburg,Borussia Mönchengladbach,3,1,1,2,H,13,17,15,14,10,10,7,8,17,17,L,W,D,D,D,W,L,D,W,W,12
+101,2024-11-30,Werder Bremen,VfB Stuttgart,2,2,1,1,D,17,21,22,19,3,12,14,13,15,16,L,W,W,L,L,D,D,W,W,L,12
+102,2024-11-30,FC Augsburg,VfL Bochum,1,0,1,0,H,13,10,23,32,13,15,13,8,12,2,L,L,D,D,D,L,W,L,L,L,12
+103,2024-11-30,RB Leipzig,VfL Wolfsburg,1,5,0,1,A,18,20,9,18,6,6,10,9,21,15,L,W,D,W,L,D,W,D,W,L,12
+104,2024-11-30,Union Berlin,Bayer Leverkusen,1,2,1,0,A,9,26,9,18,9,14,3,8,16,20,L,W,D,D,L,D,D,D,W,W,12
+105,2024-11-30,Borussia Dortmund,Bayern München,1,1,1,0,D,22,36,18,7,13,8,17,11,19,29,W,W,L,W,W,W,L,W,W,W,12
+106,2024-12-01,FSV Mainz 05,1899 Hoffenheim,2,0,2,0,H,18,17,14,22,5,10,6,10,16,12,W,W,W,D,D,L,D,D,L,W,12
+107,2024-12-01,1. FC Heidenheim,Eintracht Frankfurt,0,4,0,0,A,15,27,20,16,8,18,10,8,10,23,L,W,L,W,L,W,D,D,L,L,12
+108,2024-12-06,VfB Stuttgart,Union Berlin,3,2,0,3,H,23,10,21,11,13,10,14,3,17,16,D,L,W,L,L,D,D,L,W,D,13
+109,2024-12-07,Bayern München,1. FC Heidenheim,4,2,1,3,H,37,15,8,24,8,8,12,10,30,10,D,L,W,L,W,L,W,L,W,D,13
+110,2024-12-07,Bayer Leverkusen,FC St. Pauli,2,1,2,0,H,28,10,19,15,14,5,9,6,23,11,W,W,W,L,D,L,D,W,D,D,13
+111,2024-12-07,Eintracht Frankfurt,FC Augsburg,2,2,0,2,D,31,14,16,23,18,14,8,13,26,15,W,W,W,L,W,D,W,D,D,W,13
+112,2024-12-07,VfL Bochum,Werder Bremen,0,1,0,0,A,10,19,33,24,15,4,9,15,2,16,L,D,L,L,D,W,L,L,L,D,13
+113,2024-12-07,Holstein Kiel,RB Leipzig,0,2,0,0,A,13,19,31,14,7,6,11,11,5,21,L,L,L,L,L,D,W,L,L,W,13
+114,2024-12-07,Borussia Mönchengladbach,Borussia Dortmund,1,1,0,1,D,18,23,17,19,12,14,9,17,17,20,L,D,W,W,D,L,W,W,D,L,13
+115,2024-12-08,VfL Wolfsburg,FSV Mainz 05,4,3,1,3,H,25,20,19,14,7,7,9,6,18,19,W,W,W,W,W,W,D,D,D,D,13
+116,2024-12-08,1899 Hoffenheim,SC Freiburg,1,1,0,1,D,17,16,24,16,10,11,12,9,12,20,L,W,W,L,D,D,L,D,D,L,13
+117,2024-12-13,SC Freiburg,VfL Wolfsburg,3,2,1,2,H,17,29,17,22,12,8,9,12,21,21,D,W,W,W,L,W,D,W,D,D,14
+118,2024-12-14,Borussia Mönchengladbach,Holstein Kiel,4,1,3,1,H,19,13,18,33,12,7,10,11,18,5,D,L,L,L,W,L,D,L,W,W,14
+119,2024-12-14,FSV Mainz 05,Bayern München,2,1,1,1,H,23,41,18,10,10,9,7,15,19,33,L,W,W,D,W,W,W,W,D,W,14
+120,2024-12-14,FC Augsburg,Bayer Leverkusen,0,2,0,0,A,16,30,25,20,16,16,13,9,16,26,D,W,W,W,L,W,D,D,D,D,14
+121,2024-12-14,Union Berlin,VfL Bochum,1,1,1,0,D,12,10,14,34,13,15,3,9,16,2,L,L,L,L,L,L,D,D,L,L,14
+122,2024-12-14,FC St. Pauli,Werder Bremen,0,2,0,0,A,11,20,17,24,5,4,8,15,11,19,L,W,W,D,L,L,L,W,W,L,14
+123,2024-12-15,1. FC Heidenheim,VfB Stuttgart,1,3,1,0,A,17,26,28,23,11,13,11,17,10,20,L,W,L,D,L,W,L,L,L,D,14
+124,2024-12-15,Borussia Dortmund,1899 Hoffenheim,1,1,0,1,D,24,18,20,25,15,10,17,13,21,13,D,D,D,L,W,W,L,D,W,L,14
+125,2024-12-15,RB Leipzig,Eintracht Frankfurt,2,1,1,1,H,21,33,14,18,6,18,11,10,24,27,W,D,L,W,L,W,D,W,L,W,14
+126,2024-12-20,Bayern München,RB Leipzig,5,1,3,2,H,42,23,12,15,10,7,16,12,33,27,L,W,W,W,D,L,W,L,W,D,15
+127,2024-12-21,Werder Bremen,Union Berlin,4,1,3,1,H,22,13,24,15,4,14,15,3,22,17,W,D,W,L,D,L,L,L,W,D,15
+128,2024-12-21,1899 Hoffenheim,Borussia Mönchengladbach,1,2,0,1,A,19,23,26,19,11,15,13,11,14,21,D,W,D,D,L,L,W,W,D,D,15
+129,2024-12-21,Eintracht Frankfurt,FSV Mainz 05,1,3,0,1,A,34,25,20,19,19,11,11,8,27,22,L,W,D,L,W,W,W,W,W,W,15
+130,2024-12-21,VfB Stuttgart,FC St. Pauli,0,1,0,0,A,29,11,24,19,13,5,18,8,23,11,W,L,W,L,D,W,W,L,L,L,15
+131,2024-12-21,Holstein Kiel,FC Augsburg,5,1,4,1,H,14,16,37,27,8,16,14,13,5,16,L,L,L,D,L,W,L,L,L,D,15
+132,2024-12-21,Bayer Leverkusen,SC Freiburg,5,1,1,4,H,32,20,20,19,16,13,9,11,29,24,W,W,W,D,W,W,W,L,D,D,15
+133,2024-12-22,VfL Bochum,1. FC Heidenheim,2,0,2,0,H,11,18,35,31,15,12,10,11,3,10,D,L,L,L,L,L,L,L,D,L,15
+134,2024-12-22,VfL Wolfsburg,Borussia Dortmund,1,3,0,1,A,31,25,25,21,10,15,13,18,21,22,L,D,W,D,W,D,W,W,W,L,15
+135,2025-01-10,Borussia Dortmund,Bayer Leverkusen,2,3,1,1,A,28,37,22,21,16,17,18,13,25,32,W,W,D,W,D,W,D,W,W,W,16
+136,2025-01-11,SC Freiburg,Holstein Kiel,3,2,2,1,H,21,19,24,38,17,12,12,15,24,8,L,W,W,L,D,L,W,L,L,L,16
+137,2025-01-11,FSV Mainz 05,VfL Bochum,2,0,1,1,H,28,13,20,35,12,17,8,10,25,6,W,W,W,D,L,L,W,L,W,L,16
+138,2025-01-11,1899 Hoffenheim,VfL Wolfsburg,0,1,0,0,A,20,32,28,28,11,10,14,14,14,21,L,L,D,L,D,W,L,W,W,W,16
+139,2025-01-11,1. FC Heidenheim,Union Berlin,2,0,1,1,H,18,14,33,19,12,15,13,6,10,17,L,L,L,D,L,L,L,L,L,L,16
+140,2025-01-11,FC St. Pauli,Eintracht Frankfurt,0,1,0,0,A,12,35,19,23,5,19,8,12,14,27,W,L,L,L,L,D,W,W,L,W,16
+141,2025-01-11,Borussia Mönchengladbach,Bayern München,0,1,0,0,A,25,47,20,13,16,13,11,18,24,36,W,W,W,L,D,W,L,D,W,W,16
+142,2025-01-12,RB Leipzig,Werder Bremen,4,2,2,2,H,24,26,20,25,9,7,15,16,27,25,L,W,W,W,W,W,L,D,L,L,16
+143,2025-01-12,FC Augsburg,VfB Stuttgart,0,1,0,0,A,17,29,32,25,17,13,17,18,16,23,L,L,L,W,D,W,W,D,L,W,16
+144,2025-01-14,Holstein Kiel,Borussia Dortmund,4,2,3,1,H,21,30,41,25,13,17,17,19,8,25,L,L,W,W,L,D,L,D,L,D,17
+145,2025-01-14,VfL Wolfsburg,Borussia Mönchengladbach,5,1,1,4,H,33,25,28,21,10,16,14,11,24,24,W,L,L,W,L,W,W,D,W,L,17
+146,2025-01-14,Bayer Leverkusen,FSV Mainz 05,1,0,0,1,H,40,30,23,20,18,13,14,9,35,28,W,W,W,W,W,W,W,L,W,W,17
+147,2025-01-14,Eintracht Frankfurt,SC Freiburg,4,1,1,3,H,36,24,23,26,19,19,12,13,30,27,W,W,L,L,L,W,D,D,W,W,17
+148,2025-01-15,VfL Bochum,FC St. Pauli,1,0,0,1,H,13,12,37,20,18,5,11,8,6,14,L,L,W,W,D,L,L,L,L,W,17
+149,2025-01-15,Bayern München,1899 Hoffenheim,5,0,3,2,H,48,20,13,29,13,11,18,14,39,14,W,L,W,L,L,D,W,D,D,L,17
+150,2025-01-15,Werder Bremen,1. FC Heidenheim,3,3,1,2,D,28,20,29,33,9,13,18,14,25,13,L,W,W,L,W,L,W,L,D,L,17
+151,2025-01-15,VfB Stuttgart,RB Leipzig,2,1,0,2,H,30,28,25,22,13,11,18,17,26,30,W,W,L,L,W,W,W,W,D,L,17
+152,2025-01-15,Union Berlin,FC Augsburg,0,2,0,0,A,14,17,21,33,16,17,7,17,17,16,L,L,L,L,D,L,L,D,L,W,17
+153,2025-01-17,Eintracht Frankfurt,Borussia Dortmund,2,0,1,1,H,40,32,24,29,20,18,15,22,33,25,W,L,W,L,L,W,L,D,D,D,18
+154,2025-01-18,Bayern München,VfL Wolfsburg,3,2,2,1,H,53,38,13,29,16,11,20,18,42,27,W,W,W,W,W,L,L,L,W,W,18
+155,2025-01-18,VfB Stuttgart,SC Freiburg,4,0,3,1,H,32,25,26,30,13,22,20,14,29,27,W,L,W,W,L,L,W,W,W,D,18
+156,2025-01-18,VfL Bochum,RB Leipzig,3,3,0,3,D,14,29,37,24,18,13,12,17,9,30,W,L,L,W,W,L,D,W,L,W,18
+157,2025-01-18,1. FC Heidenheim,FC St. Pauli,0,2,0,0,A,23,12,36,21,15,6,15,8,14,14,D,L,W,L,L,W,L,L,L,L,18
+158,2025-01-18,Holstein Kiel,1899 Hoffenheim,1,3,0,1,A,25,20,43,34,16,13,18,17,11,14,W,L,L,L,W,L,L,D,L,D,18
+159,2025-01-18,Bayer Leverkusen,Borussia Mönchengladbach,3,1,1,2,H,41,26,23,26,18,20,15,12,38,24,W,L,W,L,W,W,W,W,W,D,18
+160,2025-01-19,Union Berlin,FSV Mainz 05,2,1,2,0,H,14,30,23,21,16,14,7,9,17,28,L,L,L,W,L,W,D,W,L,L,18
+161,2025-01-19,Werder Bremen,FC Augsburg,0,2,0,0,A,31,19,32,33,10,17,20,17,26,19,D,W,L,L,W,L,W,L,W,D,18
+162,2025-01-24,VfL Wolfsburg,Holstein Kiel,2,2,0,2,D,40,26,32,46,12,16,20,19,27,11,L,L,W,W,W,L,L,W,L,L,19
+163,2025-01-25,SC Freiburg,Bayern München,1,2,0,1,A,25,56,34,15,23,18,17,21,27,45,L,W,L,W,W,W,L,W,W,L,19
+164,2025-01-25,FSV Mainz 05,VfB Stuttgart,2,0,1,1,H,31,36,23,26,14,16,11,21,28,32,L,W,L,W,W,W,W,L,W,W,19
+165,2025-01-25,Borussia Dortmund,Werder Bremen,2,2,1,1,D,32,31,31,34,19,10,23,20,25,26,L,L,L,D,L,L,W,W,D,W,19
+166,2025-01-25,FC Augsburg,1. FC Heidenheim,2,1,1,1,H,21,23,33,38,17,15,17,15,22,14,W,L,W,D,L,W,L,L,L,L,19
+167,2025-01-25,RB Leipzig,Bayer Leverkusen,2,2,1,1,D,32,44,27,24,16,19,17,17,31,41,D,W,L,W,W,W,L,W,W,W,19
+168,2025-01-25,Borussia Mönchengladbach,VfL Bochum,3,0,1,2,H,27,17,29,40,22,18,13,15,24,10,L,D,L,W,L,L,W,W,W,D,19
+169,2025-01-26,1899 Hoffenheim,Eintracht Frankfurt,2,2,0,2,D,23,42,35,24,14,21,17,16,17,36,W,W,L,W,L,W,L,L,D,L,19
+170,2025-01-26,FC St. Pauli,Union Berlin,3,0,1,2,H,14,16,21,24,6,18,8,7,17,20,W,W,L,L,L,L,W,L,L,D,19
+171,2025-01-31,Werder Bremen,FSV Mainz 05,1,0,1,0,H,33,33,36,23,11,15,21,12,27,31,D,W,L,L,D,L,L,W,W,W,20
+172,2025-02-01,Bayern München,Holstein Kiel,4,3,2,2,H,58,28,16,48,19,18,21,19,48,12,W,D,W,L,W,W,W,L,W,W,20
+173,2025-02-01,VfB Stuttgart,Borussia Mönchengladbach,1,2,0,1,A,36,30,28,29,17,23,22,15,32,27,L,W,W,L,W,L,W,L,L,W,20
+174,2025-02-01,VfL Bochum,SC Freiburg,0,1,0,0,A,17,26,43,36,20,23,16,18,10,27,L,L,D,L,W,L,L,W,W,L,20
+175,2025-02-01,1. FC Heidenheim,Borussia Dortmund,1,2,0,1,A,24,34,40,33,16,20,16,24,14,26,L,D,L,L,D,L,W,L,L,W,20
+176,2025-02-01,FC St. Pauli,FC Augsburg,1,1,1,0,D,17,23,21,34,7,18,10,18,20,25,W,W,W,W,L,W,L,L,W,L,20
+177,2025-02-01,Union Berlin,RB Leipzig,0,0,0,0,D,16,34,27,29,20,17,8,18,20,32,L,D,W,D,L,L,L,W,L,L,20
+178,2025-02-02,Eintracht Frankfurt,VfL Wolfsburg,1,1,0,1,D,44,42,26,34,23,12,16,22,37,28,D,D,W,L,W,W,W,W,L,L,20
+179,2025-02-02,Bayer Leverkusen,1899 Hoffenheim,3,1,2,1,H,46,25,26,37,20,14,18,19,42,18,D,D,W,W,W,L,W,L,W,L,20
+180,2025-02-07,Bayern München,Werder Bremen,3,0,0,3,H,62,34,19,36,21,12,23,21,51,30,W,W,W,D,W,L,W,D,W,L,21
+181,2025-02-08,SC Freiburg,1. FC Heidenheim,1,0,1,0,H,27,25,36,42,23,16,18,17,30,14,W,L,L,L,L,L,L,D,W,W,21
+182,2025-02-08,VfL Wolfsburg,Bayer Leverkusen,0,0,0,0,D,43,49,35,27,13,22,22,19,29,45,D,W,D,D,L,W,W,W,W,W,21
+183,2025-02-08,FSV Mainz 05,FC Augsburg,0,0,0,0,D,33,24,24,35,15,18,13,19,31,26,L,D,W,W,L,W,L,W,W,L,21
+184,2025-02-08,Borussia Dortmund,VfB Stuttgart,1,2,0,1,A,36,37,34,30,21,17,24,23,29,32,W,L,D,L,L,W,L,W,L,W,21
+185,2025-02-08,1899 Hoffenheim,Union Berlin,0,4,0,0,A,26,16,40,27,15,20,21,8,18,21,L,D,D,L,W,W,L,L,L,L,21
+186,2025-02-08,Borussia Mönchengladbach,Eintracht Frankfurt,1,1,1,0,D,32,45,30,27,24,23,15,17,30,38,W,D,W,D,L,W,L,W,L,W,21
+187,2025-02-09,Holstein Kiel,VfL Bochum,2,2,1,1,D,31,17,52,44,20,20,21,16,12,10,L,L,D,L,L,D,W,W,L,L,21
+188,2025-02-09,RB Leipzig,FC St. Pauli,2,0,2,0,H,34,18,29,22,17,8,18,10,33,21,D,D,D,W,D,W,L,L,W,L,21
+189,2025-02-14,FC Augsburg,RB Leipzig,0,0,0,0,D,24,36,35,29,18,19,19,18,27,36,D,W,D,D,W,D,W,D,W,L,22
+190,2025-02-15,VfB Stuttgart,VfL Wolfsburg,1,2,0,1,A,39,43,31,35,18,13,23,22,35,30,W,D,L,D,L,D,W,L,W,W,22
+191,2025-02-15,VfL Bochum,Borussia Dortmund,2,0,2,0,H,19,37,46,36,21,21,17,25,11,29,D,L,L,W,L,D,D,L,W,L,22
+192,2025-02-15,Union Berlin,Borussia Mönchengladbach,1,2,0,1,A,20,33,27,31,20,25,8,15,24,31,W,D,D,W,L,W,W,L,L,L,22
+193,2025-02-15,FC St. Pauli,SC Freiburg,0,1,0,0,A,18,28,24,36,8,24,12,18,21,33,L,W,D,W,W,L,W,L,L,L,22
+194,2025-02-15,Bayer Leverkusen,Bayern München,0,0,0,0,D,49,65,27,19,22,21,19,26,46,54,D,W,W,W,D,W,W,W,W,W,22
+195,2025-02-16,Werder Bremen,1899 Hoffenheim,1,3,1,0,A,34,26,39,44,15,15,21,21,30,18,L,L,W,L,D,D,L,W,D,L,22
+196,2025-02-16,Eintracht Frankfurt,Holstein Kiel,3,1,2,1,H,46,33,28,54,23,21,18,22,39,13,D,D,D,L,D,D,W,L,W,W,22
+197,2025-02-16,1. FC Heidenheim,FSV Mainz 05,0,2,0,0,A,25,33,43,24,16,15,18,13,14,32,L,D,L,L,L,W,L,L,D,L,22
+198,2025-02-21,SC Freiburg,Werder Bremen,5,0,2,3,H,29,35,36,42,24,16,18,21,36,30,W,L,W,L,W,W,L,D,L,L,23
+199,2025-02-22,VfL Wolfsburg,VfL Bochum,1,1,0,1,D,45,21,36,46,14,23,22,17,33,14,W,W,D,D,D,L,D,L,L,D,23
+200,2025-02-22,Borussia Mönchengladbach,FC Augsburg,0,3,0,0,A,35,24,32,35,26,18,15,19,34,28,W,D,D,D,W,D,W,W,L,W,23
+201,2025-02-22,FSV Mainz 05,FC St. Pauli,2,0,0,2,H,35,18,24,25,15,8,13,12,35,21,W,L,D,L,L,D,W,W,L,W,23
+202,2025-02-22,Holstein Kiel,Bayer Leverkusen,0,2,0,0,A,34,49,57,27,22,22,24,19,13,47,L,D,D,D,L,W,D,D,L,W,23
+203,2025-02-22,Borussia Dortmund,Union Berlin,6,0,2,4,H,37,21,38,29,21,20,27,9,29,24,L,L,L,W,W,D,D,L,L,W,23
+204,2025-02-23,RB Leipzig,1. FC Heidenheim,2,2,1,1,D,36,25,29,45,19,16,18,18,37,14,D,L,W,L,D,L,D,L,D,L,23
+205,2025-02-23,Bayern München,Eintracht Frankfurt,4,0,1,3,H,65,49,19,29,21,25,26,19,55,42,D,W,W,D,W,D,W,D,W,W,23
+206,2025-02-23,1899 Hoffenheim,VfB Stuttgart,1,1,0,1,D,29,40,45,33,15,18,22,24,21,35,W,L,L,W,L,L,D,L,W,W,23
+207,2025-02-28,VfB Stuttgart,Bayern München,1,3,1,0,A,41,69,34,19,19,22,24,29,36,58,D,W,L,D,W,W,L,W,L,W,24
+208,2025-03-01,Werder Bremen,VfL Wolfsburg,1,2,0,1,A,35,46,47,37,19,14,23,23,30,34,L,D,L,W,L,D,W,D,D,D,24
+209,2025-03-01,RB Leipzig,FSV Mainz 05,1,2,1,0,A,38,37,31,24,20,15,19,15,38,38,D,W,D,W,W,D,D,L,D,W,24
+210,2025-03-01,VfL Bochum,1899 Hoffenheim,0,1,0,0,A,22,30,47,46,24,15,17,23,15,22,D,D,W,W,D,L,L,L,L,D,24
+211,2025-03-01,1. FC Heidenheim,Borussia Mönchengladbach,0,3,0,0,A,27,35,47,35,17,26,19,15,15,34,D,L,L,W,L,D,L,W,L,W,24
+212,2025-03-01,FC St. Pauli,Borussia Dortmund,0,2,0,0,A,18,43,27,38,10,23,12,31,21,32,L,W,L,L,L,L,D,W,W,D,24
+213,2025-03-01,Eintracht Frankfurt,Bayer Leverkusen,1,4,1,0,A,49,51,33,27,28,22,20,19,42,50,L,W,W,D,D,D,D,W,D,D,24
+214,2025-03-02,Union Berlin,Holstein Kiel,0,1,0,0,A,21,34,35,59,24,22,11,24,24,13,L,L,L,L,W,D,D,L,L,D,24
+215,2025-03-02,FC Augsburg,SC Freiburg,0,0,0,0,D,27,34,35,36,18,26,19,21,31,39,W,W,D,W,D,W,D,W,W,L,24
+216,2025-03-07,Borussia Mönchengladbach,FSV Mainz 05,1,3,0,1,A,38,39,35,25,26,15,15,16,37,41,W,W,L,W,W,W,D,D,W,L,25
+217,2025-03-08,Bayern München,VfL Bochum,2,3,2,0,A,72,22,20,48,22,24,30,17,61,15,W,L,W,D,D,W,W,D,W,L,25
+218,2025-03-08,VfL Wolfsburg,FC St. Pauli,1,1,0,1,D,48,18,38,29,15,10,23,12,37,21,W,L,D,L,W,L,D,L,D,D,25
+219,2025-03-08,Borussia Dortmund,FC Augsburg,0,1,0,0,A,45,27,38,35,23,18,31,19,35,32,W,D,W,W,L,D,L,D,W,D,25
+220,2025-03-08,Bayer Leverkusen,Werder Bremen,0,2,0,0,A,55,36,28,49,22,19,20,24,53,30,W,L,W,L,D,L,D,L,W,W,25
+221,2025-03-08,Holstein Kiel,VfB Stuttgart,2,2,1,1,D,35,42,59,37,22,20,24,24,16,36,W,L,L,D,L,L,D,W,L,L,25
+222,2025-03-08,SC Freiburg,RB Leipzig,0,0,0,0,D,34,39,36,33,26,21,21,19,40,38,D,L,W,D,W,D,W,W,W,D,25
+223,2025-03-09,Eintracht Frankfurt,Union Berlin,1,2,1,0,A,50,21,37,36,29,24,20,11,42,24,L,L,L,L,W,L,D,W,D,D,25
+224,2025-03-09,1899 Hoffenheim,1. FC Heidenheim,1,1,1,0,D,31,27,46,50,15,17,23,19,25,15,W,L,D,D,W,L,L,L,L,L,25
+225,2025-03-14,FC St. Pauli,1899 Hoffenheim,1,0,0,1,H,19,32,30,47,11,16,12,23,22,26,D,D,L,W,L,D,L,W,L,L,26
+226,2025-03-15,Werder Bremen,Borussia Mönchengladbach,2,4,2,0,A,38,39,49,38,19,26,24,16,33,37,W,L,L,W,L,L,L,W,L,D,26
+227,2025-03-15,FSV Mainz 05,SC Freiburg,2,2,1,1,D,42,34,26,36,16,26,16,21,44,41,W,D,W,D,W,W,W,W,D,W,26
+228,2025-03-15,FC Augsburg,VfL Wolfsburg,1,0,0,1,H,28,49,35,39,18,15,19,24,35,38,W,D,D,W,W,D,D,W,D,D,26
+229,2025-03-15,Union Berlin,Bayern München,1,1,0,1,D,23,74,37,23,24,24,12,30,27,61,W,L,L,W,L,W,L,D,W,W,26
+230,2025-03-15,RB Leipzig,Borussia Dortmund,2,0,1,1,H,39,45,33,39,21,23,19,31,39,35,D,L,L,W,D,W,D,L,W,L,26
+231,2025-03-16,VfL Bochum,Eintracht Frankfurt,1,3,0,1,A,25,51,50,39,24,30,19,20,18,42,W,L,L,L,D,L,W,W,D,D,26
+232,2025-03-16,1. FC Heidenheim,Holstein Kiel,3,1,1,2,H,28,37,51,61,17,23,20,25,16,17,D,D,L,W,D,L,L,L,L,D,26
+233,2025-03-16,VfB Stuttgart,Bayer Leverkusen,3,4,1,2,A,44,55,39,30,21,22,25,20,37,53,D,L,L,W,D,W,L,D,W,D,26
+234,2025-03-28,Bayer Leverkusen,VfL Bochum,3,1,1,2,H,59,26,33,53,24,24,21,20,56,18,W,L,L,W,W,L,W,D,D,W,27
+235,2025-03-29,Bayern München,FC St. Pauli,3,2,1,2,H,75,20,24,30,25,11,30,13,62,25,D,W,L,D,W,L,W,L,D,L,27
+236,2025-03-29,VfL Wolfsburg,1. FC Heidenheim,0,1,0,0,A,49,31,40,52,16,18,24,22,38,19,L,W,D,D,W,L,D,D,W,L,27
+237,2025-03-29,Borussia Mönchengladbach,RB Leipzig,1,0,0,1,H,43,41,40,33,26,22,18,20,40,42,W,W,L,D,W,L,L,D,W,D,27
+238,2025-03-29,1899 Hoffenheim,FC Augsburg,1,1,0,1,D,32,29,48,35,17,18,23,20,26,38,L,W,D,W,W,D,D,W,W,D,27
+239,2025-03-29,Holstein Kiel,Werder Bremen,0,3,0,0,A,38,40,64,53,25,21,26,24,17,33,L,L,D,W,W,L,L,L,L,L,27
+240,2025-03-29,Eintracht Frankfurt,VfB Stuttgart,1,0,0,1,H,54,47,40,43,31,22,20,27,45,37,W,L,L,D,L,L,L,D,W,L,27
+241,2025-03-30,SC Freiburg,Union Berlin,1,2,1,0,A,36,24,38,38,27,24,22,13,42,28,D,D,D,W,D,L,W,L,W,L,27
+242,2025-03-30,Borussia Dortmund,FSV Mainz 05,3,1,2,1,H,45,44,41,28,24,17,32,17,35,45,L,D,L,W,W,W,W,W,L,W,27
+243,2025-04-04,FC Augsburg,Bayern München,1,3,1,0,A,30,78,36,26,19,26,20,32,39,65,D,W,W,D,W,L,D,W,W,W,28
+244,2025-04-05,SC Freiburg,Borussia Dortmund,1,4,0,1,A,37,48,40,42,28,26,22,33,42,38,L,W,D,L,D,L,D,W,W,W,28
+245,2025-04-05,FSV Mainz 05,Holstein Kiel,1,1,0,1,D,45,38,31,67,18,25,19,26,45,17,L,L,D,L,W,D,W,W,W,L,28
+246,2025-04-05,RB Leipzig,1899 Hoffenheim,3,1,2,1,H,41,33,34,49,23,17,20,24,42,27,L,D,W,L,D,D,L,W,D,D,28
+247,2025-04-05,VfL Bochum,VfB Stuttgart,0,4,0,0,A,27,47,56,44,26,23,21,27,18,37,L,L,L,L,W,D,L,L,D,D,28
+248,2025-04-05,1. FC Heidenheim,Bayer Leverkusen,0,1,0,0,A,32,62,52,34,18,25,22,23,22,59,W,W,W,W,D,L,L,W,D,W,28
+249,2025-04-05,Werder Bremen,Eintracht Frankfurt,2,0,1,1,H,43,55,53,40,21,31,24,21,36,48,W,W,L,W,W,L,L,L,L,L,28
+250,2025-04-06,FC St. Pauli,Borussia Mönchengladbach,1,1,0,1,D,22,44,33,40,13,26,14,19,25,43,L,W,W,W,D,L,L,W,L,L,28
+251,2025-04-06,Union Berlin,VfL Wolfsburg,1,0,0,1,H,26,49,39,41,24,16,14,24,31,38,W,L,D,L,W,D,L,W,L,D,28
+252,2025-04-11,VfL Wolfsburg,RB Leipzig,2,3,0,2,A,49,44,42,35,17,25,24,21,38,45,L,W,L,L,L,W,D,D,W,L,29
+253,2025-04-12,Borussia Mönchengladbach,SC Freiburg,1,2,1,0,A,45,38,41,44,27,28,19,23,44,42,D,L,W,L,W,D,L,D,W,D,29
+254,2025-04-12,1899 Hoffenheim,FSV Mainz 05,2,0,2,0,H,34,46,52,32,18,18,26,20,27,46,L,D,D,L,L,D,D,W,W,W,29
+255,2025-04-12,Bayer Leverkusen,Union Berlin,0,0,0,0,D,63,27,34,39,25,24,23,15,62,34,W,W,W,W,W,D,L,W,W,L,29
+256,2025-04-12,VfL Bochum,FC Augsburg,1,2,0,1,A,27,31,60,39,26,20,21,20,18,39,L,L,L,D,L,W,W,W,L,D,29
+257,2025-04-12,Holstein Kiel,FC St. Pauli,1,2,1,0,A,39,23,68,34,26,13,26,15,18,26,D,D,L,L,L,W,D,D,W,L,29
+258,2025-04-12,Bayern München,Borussia Dortmund,2,2,0,2,D,81,52,27,43,26,27,33,33,68,41,W,W,W,W,D,L,L,L,W,W,29
+259,2025-04-13,VfB Stuttgart,Werder Bremen,1,2,1,0,A,51,45,44,53,23,22,27,25,40,39,W,W,L,W,L,L,D,W,L,L,29
+260,2025-04-13,Eintracht Frankfurt,1. FC Heidenheim,3,0,2,1,H,55,32,42,53,32,18,22,22,48,22,L,L,W,W,W,W,L,D,L,L,29
+261,2025-04-19,SC Freiburg,1899 Hoffenheim,3,2,2,1,H,40,36,45,52,28,20,24,26,45,30,W,W,L,L,L,D,D,L,D,D,30
+262,2025-04-19,Werder Bremen,VfL Bochum,1,0,0,1,H,47,28,54,62,22,26,26,22,42,18,W,L,W,L,W,L,L,L,W,W,30
+263,2025-04-19,FSV Mainz 05,VfL Wolfsburg,2,2,2,0,D,46,51,34,45,18,17,22,26,46,38,L,L,D,L,L,L,D,L,W,D,30
+264,2025-04-19,RB Leipzig,Holstein Kiel,1,1,0,1,D,47,40,37,70,27,27,21,26,48,18,W,L,W,D,L,L,W,L,D,D,30
+265,2025-04-19,1. FC Heidenheim,Bayern München,0,4,0,0,A,32,83,56,29,19,26,24,35,22,69,L,D,L,W,W,W,W,D,D,L,30
+266,2025-04-19,Union Berlin,VfB Stuttgart,4,4,4,0,D,27,52,39,46,24,24,15,27,35,40,D,L,W,W,W,L,D,L,W,D,30
+267,2025-04-20,FC Augsburg,Eintracht Frankfurt,0,0,0,0,D,33,58,40,42,21,34,20,23,42,51,W,W,L,L,D,W,W,W,W,L,30
+268,2025-04-20,Borussia Dortmund,Borussia Mönchengladbach,3,2,3,0,H,54,46,45,43,29,28,33,19,42,44,D,L,W,D,W,W,L,W,L,L,30
+269,2025-04-20,FC St. Pauli,Bayer Leverkusen,1,1,0,1,D,25,63,35,34,13,25,16,23,29,63,W,D,D,W,L,W,W,W,D,L,30
+270,2025-04-25,VfB Stuttgart,1. FC Heidenheim,0,1,0,0,A,56,32,50,60,24,19,31,24,41,22,D,L,L,L,W,L,L,W,L,W,31
+271,2025-04-26,Bayern München,FSV Mainz 05,3,0,2,1,H,87,48,29,36,26,20,35,22,72,47,W,D,D,L,W,D,W,L,D,D,31
+272,2025-04-26,VfL Wolfsburg,SC Freiburg,0,1,0,0,A,53,43,47,47,17,30,28,25,39,48,D,W,L,W,L,L,L,L,L,D,31
+273,2025-04-26,1899 Hoffenheim,Borussia Dortmund,2,3,0,2,A,38,57,55,47,21,32,28,33,30,45,L,W,W,D,L,W,D,W,L,L,31
+274,2025-04-26,Bayer Leverkusen,FC Augsburg,2,0,2,0,H,64,33,35,40,26,21,23,20,64,43,D,D,D,W,W,L,W,D,W,W,31
+275,2025-04-26,Holstein Kiel,Borussia Mönchengladbach,4,3,2,2,H,41,48,71,46,28,28,26,22,19,44,D,L,L,L,D,D,L,W,L,W,31
+276,2025-04-26,Eintracht Frankfurt,RB Leipzig,4,0,1,3,H,58,48,42,38,34,27,23,22,52,49,D,D,W,W,L,W,W,L,W,W,31
+277,2025-04-27,VfL Bochum,Union Berlin,1,1,0,1,D,28,31,63,43,27,28,22,15,18,36,L,D,L,D,L,W,L,W,L,D,31
+278,2025-04-27,Werder Bremen,FC St. Pauli,0,0,0,0,D,48,26,54,36,22,13,27,17,45,30,W,D,W,W,W,D,W,L,L,W,31
+279,2025-05-02,1. FC Heidenheim,VfL Bochum,0,0,0,0,D,33,29,60,64,19,27,24,23,25,19,W,D,L,L,L,L,L,L,W,L,32
+280,2025-05-03,Borussia Mönchengladbach,1899 Hoffenheim,4,4,2,2,D,51,40,50,58,30,21,24,30,44,30,L,L,L,L,L,W,D,L,W,D,32
+281,2025-05-03,RB Leipzig,Bayern München,3,3,2,1,D,48,90,42,29,30,28,23,36,49,75,L,W,D,W,W,D,W,W,L,W,32
+282,2025-05-03,Union Berlin,Werder Bremen,2,2,1,1,D,32,48,44,54,29,22,15,27,37,46,D,D,D,W,D,W,W,W,W,W,32
+283,2025-05-03,FC St. Pauli,VfB Stuttgart,0,1,0,0,A,26,56,36,51,13,24,17,31,31,41,D,L,D,D,W,L,D,W,L,L,32
+284,2025-05-03,Borussia Dortmund,VfL Wolfsburg,4,0,1,3,H,60,53,49,48,34,17,33,28,48,39,W,L,W,D,D,L,W,L,W,L,32
+285,2025-05-04,FC Augsburg,Holstein Kiel,1,3,0,1,A,33,45,42,74,21,30,22,28,43,22,L,W,D,D,W,L,L,D,D,L,32
+286,2025-05-04,SC Freiburg,Bayer Leverkusen,2,2,1,1,D,44,66,47,35,30,28,25,23,51,67,W,W,W,D,W,D,L,W,L,W,32
+287,2025-05-04,FSV Mainz 05,Eintracht Frankfurt,1,1,0,1,D,48,62,39,42,21,35,24,26,47,55,L,W,D,D,L,W,D,L,L,W,32
+288,2025-05-09,VfL Wolfsburg,1899 Hoffenheim,2,2,1,1,D,53,44,52,62,20,23,29,32,39,31,L,D,L,L,D,L,L,W,L,L,33
+289,2025-05-10,Werder Bremen,RB Leipzig,0,0,0,0,D,50,51,56,45,23,32,28,24,47,50,D,D,D,L,W,D,W,W,W,W,33
+290,2025-05-10,VfL Bochum,FSV Mainz 05,1,4,0,1,A,29,49,64,40,27,21,23,25,20,48,D,D,D,L,L,D,L,L,L,D,33
+291,2025-05-10,Union Berlin,1. FC Heidenheim,0,3,0,0,A,34,33,46,60,30,19,16,24,38,26,D,D,D,W,D,L,D,L,W,L,33
+292,2025-05-10,Holstein Kiel,SC Freiburg,1,2,1,0,A,48,46,75,49,31,31,28,26,25,52,W,D,W,W,D,W,L,W,D,L,33
+293,2025-05-10,Bayern München,Borussia Mönchengladbach,2,0,1,1,H,93,55,32,54,29,32,38,26,76,45,D,D,W,L,W,L,D,L,W,D,33
+294,2025-05-11,Bayer Leverkusen,Borussia Dortmund,2,4,1,1,A,68,64,37,49,29,35,24,36,68,51,D,W,W,W,D,W,D,D,W,W,33
+295,2025-05-11,Eintracht Frankfurt,FC St. Pauli,2,2,1,1,D,63,26,43,37,36,13,26,17,56,31,D,L,W,D,D,D,W,W,L,D,33
+296,2025-05-11,VfB Stuttgart,FC Augsburg,4,0,1,3,H,57,34,51,45,24,21,31,23,44,43,W,L,L,L,D,D,L,W,W,L,33
