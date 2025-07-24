@@ -18,7 +18,7 @@ import os
 import pathlib
 import sys
 import logging
-from fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur
+from fichier_py.fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur
 thread=0
 app = Flask(__name__)
 
