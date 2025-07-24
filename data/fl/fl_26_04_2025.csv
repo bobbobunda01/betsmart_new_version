@@ -1,0 +1,289 @@
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,HTGS,ATGS,HTGC,ATGC,HTP,ATP,HM1,AM1,HM2,AM2,HM3,AM3,HM4,AM4,HM5,AM5,MW
+0,2024-08-16,Le Havre,Paris Saint Germain,1,4,A,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+1,2024-08-17,Stade Brestois 29,Marseille,1,5,A,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+2,2024-08-17,Reims,Lille,0,2,A,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+3,2024-08-17,Monaco,Saint Etienne,1,0,H,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+4,2024-08-18,Auxerre,Nice,2,1,H,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+5,2024-08-18,Angers,Lens,0,1,A,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+6,2024-08-18,Montpellier,Strasbourg,1,1,D,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+7,2024-08-18,Toulouse,Nantes,0,0,D,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+8,2024-08-18,Rennes,Lyon,3,0,H,0,0,0,0,0,0,M,M,M,M,M,M,M,M,M,M,1
+9,2024-08-23,Paris Saint Germain,Montpellier,6,0,H,4,1,1,1,3,1,M,M,M,M,M,M,M,M,M,M,2
+10,2024-08-24,Lyon,Monaco,0,2,A,0,1,3,0,0,3,L,W,M,M,M,M,M,M,M,M,2
+11,2024-08-24,Lille,Angers,2,0,H,2,0,0,1,3,0,W,L,M,M,M,M,M,M,M,M,2
+12,2024-08-24,Saint Etienne,Le Havre,0,2,A,0,1,1,4,0,0,L,L,M,M,M,M,M,M,M,M,2
+13,2024-08-25,Lens,Stade Brestois 29,2,0,H,1,1,0,5,3,0,W,L,M,M,M,M,M,M,M,M,2
+14,2024-08-25,Nantes,Auxerre,2,0,H,0,2,0,1,1,3,D,W,M,M,M,M,M,M,M,M,2
+15,2024-08-25,Nice,Toulouse,1,1,D,1,0,2,0,0,1,L,D,M,M,M,M,M,M,M,M,2
+16,2024-08-25,Strasbourg,Rennes,3,1,H,1,3,1,0,1,3,D,W,M,M,M,M,M,M,M,M,2
+17,2024-08-25,Marseille,Reims,2,2,D,5,0,1,2,3,0,W,L,M,M,M,M,M,M,M,M,2
+18,2024-08-30,Lyon,Strasbourg,4,3,H,0,4,5,2,0,4,L,W,M,M,M,M,M,M,M,M,3
+19,2024-08-31,Stade Brestois 29,Saint Etienne,4,0,H,1,0,7,3,0,0,L,L,M,M,M,M,M,M,M,M,3
+20,2024-08-31,Montpellier,Nantes,1,3,A,1,2,7,0,1,4,L,W,D,D,M,M,M,M,M,M,3
+21,2024-08-31,Toulouse,Marseille,1,3,A,1,7,1,3,2,4,D,D,D,W,M,M,M,M,M,M,3
+22,2024-09-01,Monaco,Lens,1,1,D,3,3,0,0,6,6,W,W,W,W,M,M,M,M,M,M,3
+23,2024-09-01,Angers,Nice,1,4,A,0,2,3,3,0,1,L,D,L,L,M,M,M,M,M,M,3
+24,2024-09-01,Reims,Rennes,2,1,H,2,4,4,3,1,3,D,L,L,W,M,M,M,M,M,M,3
+25,2024-09-01,Le Havre,Auxerre,3,1,H,3,2,4,3,3,3,W,L,L,W,M,M,M,M,M,M,3
+26,2024-09-01,Lille,Paris Saint Germain,1,3,A,4,10,0,1,6,6,W,W,W,W,M,M,M,M,M,M,3
+27,2024-09-13,Saint Etienne,Lille,1,0,H,0,5,7,3,0,6,L,L,L,W,M,M,M,M,M,M,4
+28,2024-09-14,Marseille,Nice,2,0,H,10,6,4,4,7,4,W,W,D,D,M,M,M,M,M,M,4
+29,2024-09-14,Auxerre,Monaco,0,3,A,3,4,6,1,3,7,L,D,L,W,M,M,M,M,M,M,4
+30,2024-09-14,Paris Saint Germain,Stade Brestois 29,3,1,H,13,5,2,7,9,3,W,W,W,L,W,L,M,M,M,M,4
+31,2024-09-15,Rennes,Montpellier,3,0,H,5,2,5,10,3,1,L,L,L,L,W,D,M,M,M,M,4
+32,2024-09-15,Nantes,Reims,1,2,A,5,4,1,5,7,4,W,W,W,D,D,L,M,M,M,M,4
+33,2024-09-15,Strasbourg,Angers,1,1,D,7,1,6,7,4,0,L,L,W,L,D,L,M,M,M,M,4
+34,2024-09-15,Toulouse,Le Havre,2,0,H,2,6,4,5,2,6,L,W,D,W,D,L,M,M,M,M,4
+35,2024-09-15,Lens,Lyon,0,0,D,4,4,1,8,7,3,D,W,W,L,W,L,M,M,M,M,4
+36,2024-09-20,Nice,Saint Etienne,8,0,H,6,1,6,7,4,3,L,W,W,L,D,L,M,M,M,M,5
+37,2024-09-21,Lille,Strasbourg,3,3,D,5,8,4,7,6,5,L,D,L,L,W,W,M,M,M,M,5
+38,2024-09-21,Rennes,Lens,1,1,D,8,4,5,1,6,8,W,D,L,D,L,W,M,M,M,M,5
+39,2024-09-21,Reims,Paris Saint Germain,1,1,D,6,16,6,3,7,12,W,W,W,W,D,W,M,M,M,M,5
+40,2024-09-22,Monaco,Le Havre,3,1,H,7,6,1,7,10,6,W,L,D,W,W,W,W,L,M,M,5
+41,2024-09-22,Angers,Nantes,1,1,D,2,6,8,3,1,7,D,L,L,W,L,W,L,D,M,M,5
+42,2024-09-22,Montpellier,Auxerre,3,2,H,2,3,13,9,1,3,L,L,L,L,L,L,D,W,M,M,5
+43,2024-09-22,Stade Brestois 29,Toulouse,2,0,H,6,4,10,4,3,5,L,W,W,L,L,D,L,D,M,M,5
+44,2024-09-22,Lyon,Marseille,2,3,A,4,12,8,4,4,10,D,W,W,W,L,D,L,W,M,M,5
+45,2024-09-27,Auxerre,Stade Brestois 29,3,0,H,5,8,12,10,3,6,L,W,L,L,L,W,L,L,M,M,6
+46,2024-09-27,Paris Saint Germain,Rennes,3,1,H,17,9,4,6,13,7,D,D,W,W,W,L,W,L,M,M,6
+47,2024-09-28,Lens,Nice,0,0,D,5,14,2,6,9,7,D,W,D,L,D,W,W,D,M,M,6
+48,2024-09-28,Le Havre,Lille,0,3,A,7,8,10,7,6,7,L,D,L,L,W,L,W,W,M,M,6
+49,2024-09-28,Monaco,Montpellier,2,1,H,10,5,2,15,13,4,W,W,W,L,D,L,W,L,M,M,6
+50,2024-09-29,Toulouse,Lyon,1,2,A,4,6,6,11,5,4,L,L,W,D,L,W,D,L,D,L,6
+51,2024-09-29,Angers,Reims,1,3,A,3,7,9,7,2,8,D,D,D,W,L,W,L,D,L,L,6
+52,2024-09-29,Nantes,Saint Etienne,2,2,D,7,1,4,15,8,3,D,L,L,W,W,L,W,L,D,L,6
+53,2024-09-29,Strasbourg,Marseille,1,0,H,11,15,10,6,6,13,D,W,D,W,L,W,W,D,D,W,6
+54,2024-10-04,Marseille,Angers,1,1,D,15,4,7,12,13,2,L,L,W,D,W,D,W,L,D,L,7
+55,2024-10-05,Saint Etienne,Auxerre,3,1,H,3,8,17,12,4,6,D,W,L,L,W,L,L,L,L,L,7
+56,2024-10-05,Lille,Toulouse,2,1,H,11,5,7,8,10,5,W,L,D,L,L,W,L,L,W,D,7
+57,2024-10-05,Rennes,Monaco,1,2,A,10,12,9,3,7,16,L,W,D,W,W,W,L,D,L,W,7
+58,2024-10-06,Lyon,Nantes,2,0,H,8,9,12,6,7,9,W,D,L,D,D,L,W,W,L,W,7
+59,2024-10-06,Reims,Montpellier,4,2,H,10,6,8,17,11,4,W,L,D,W,W,L,W,L,D,L,7
+60,2024-10-06,Strasbourg,Lens,2,2,D,12,5,10,2,9,10,W,D,D,D,D,D,L,D,W,W,7
+61,2024-10-06,Stade Brestois 29,Le Havre,2,0,H,8,7,13,13,6,6,L,L,W,L,L,L,W,W,L,W,7
+62,2024-10-06,Nice,Paris Saint Germain,1,1,D,14,20,6,5,8,16,D,W,W,D,L,W,W,W,D,W,7
+63,2024-10-18,Monaco,Lille,0,0,D,14,13,4,8,19,13,W,W,W,W,W,D,W,L,D,L,8
+64,2024-10-19,Stade Brestois 29,Rennes,1,1,D,10,11,13,11,9,7,W,L,L,L,W,D,L,W,W,L,8
+65,2024-10-19,Saint Etienne,Lens,0,2,A,6,7,18,4,7,11,W,D,D,D,L,D,W,D,L,D,8
+66,2024-10-19,Paris Saint Germain,Strasbourg,4,2,H,21,14,6,12,17,10,D,D,W,W,D,D,W,D,W,L,8
+67,2024-10-20,Le Havre,Lyon,0,4,A,7,10,15,12,6,10,L,W,L,W,L,L,L,D,W,W,8
+68,2024-10-20,Nantes,Nice,1,1,D,9,15,8,7,9,9,L,D,D,D,D,W,L,L,W,W,8
+69,2024-10-20,Toulouse,Angers,1,1,D,6,5,10,13,5,3,L,D,L,L,L,D,W,D,L,L,8
+70,2024-10-20,Auxerre,Reims,2,1,H,9,14,15,10,6,14,L,W,W,W,L,D,L,W,L,W,8
+71,2024-10-20,Montpellier,Marseille,0,5,A,8,16,21,8,4,14,L,D,L,L,W,W,L,W,L,W,8
+72,2024-10-25,Rennes,Le Havre,1,0,H,12,7,12,19,8,6,D,L,L,L,L,L,D,L,W,L,9
+73,2024-10-26,Angers,Saint Etienne,4,2,H,6,6,14,20,4,7,D,L,D,W,L,D,D,L,D,W,9
+74,2024-10-26,Reims,Stade Brestois 29,1,2,A,15,11,12,14,14,10,L,D,W,W,W,L,D,W,W,L,9
+75,2024-10-26,Lens,Lille,0,2,A,9,13,4,8,14,14,W,D,D,W,D,W,D,D,D,L,9
+76,2024-10-27,Lyon,Auxerre,2,2,D,14,11,12,16,13,9,W,W,W,L,W,W,L,L,D,L,9
+77,2024-10-27,Montpellier,Toulouse,0,3,A,8,7,26,11,4,6,L,D,L,L,L,L,W,L,L,W,9
+78,2024-10-27,Nice,Monaco,2,1,H,16,14,8,4,10,20,D,D,D,W,D,W,W,W,L,W,9
+79,2024-10-27,Strasbourg,Nantes,3,1,H,16,10,16,9,10,10,L,D,D,L,W,D,D,D,D,L,9
+80,2024-10-27,Marseille,Paris Saint Germain,0,3,A,21,25,8,8,17,20,W,W,D,D,L,W,W,D,W,W,9
+81,2024-11-01,Monaco,Angers,0,1,A,15,10,6,16,20,7,L,W,D,D,W,D,W,L,W,D,10
+82,2024-11-01,Lille,Lyon,1,1,D,15,16,8,14,17,14,W,D,D,W,W,W,W,W,D,L,10
+83,2024-11-02,Paris Saint Germain,Lens,1,0,H,28,9,8,6,23,14,W,L,W,W,D,D,W,D,D,D,10
+84,2024-11-02,Stade Brestois 29,Nice,0,1,A,13,18,15,9,13,13,W,W,D,D,W,D,L,D,W,W,10
+85,2024-11-02,Saint Etienne,Strasbourg,2,0,H,8,19,24,17,7,13,L,W,L,L,W,D,D,W,L,D,10
+86,2024-11-03,Toulouse,Reims,1,0,H,10,16,11,14,9,14,W,L,D,L,L,W,L,W,L,D,10
+87,2024-11-03,Auxerre,Rennes,4,0,H,13,13,18,12,10,11,D,W,W,D,L,L,W,L,L,D,10
+88,2024-11-03,Le Havre,Montpellier,1,0,H,7,8,20,29,6,4,L,L,L,L,L,L,L,L,L,W,10
+89,2024-11-03,Nantes,Marseille,1,2,A,11,21,12,11,10,17,L,L,D,W,L,D,D,L,D,W,10
+90,2024-11-08,Marseille,Auxerre,1,3,A,23,17,12,18,20,13,W,W,L,D,W,W,D,L,L,W,11
+91,2024-11-09,Strasbourg,Monaco,1,3,A,19,15,19,7,13,20,L,L,W,L,L,D,D,W,W,W,11
+92,2024-11-09,Lens,Nantes,3,2,H,9,12,7,14,14,10,L,L,L,L,W,D,D,L,D,D,11
+93,2024-11-09,Angers,Paris Saint Germain,2,4,A,11,29,16,8,10,26,W,W,W,W,D,W,D,D,L,W,11
+94,2024-11-10,Nice,Lille,2,2,D,19,16,9,9,16,18,W,D,W,W,D,D,D,W,D,W,11
+95,2024-11-10,Montpellier,Stade Brestois 29,3,1,H,8,13,30,16,4,13,L,L,L,W,L,D,L,W,L,L,11
+96,2024-11-10,Rennes,Toulouse,0,2,A,13,11,16,11,11,12,L,W,W,W,D,D,L,L,L,L,11
+97,2024-11-10,Le Havre,Reims,0,3,A,8,16,20,15,9,14,W,L,L,L,L,L,L,W,L,W,11
+98,2024-11-10,Lyon,Saint Etienne,1,0,H,17,10,15,24,15,10,D,W,D,L,W,L,W,W,W,D,11
+99,2024-11-22,Monaco,Stade Brestois 29,3,2,H,18,14,8,19,23,13,W,L,L,L,L,W,D,D,W,W,12
+100,2024-11-22,Paris Saint Germain,Toulouse,3,0,H,33,13,10,11,29,15,W,W,W,W,W,W,W,D,D,L,12
+101,2024-11-23,Lens,Marseille,1,3,A,12,24,9,15,17,20,W,L,L,W,L,L,W,W,D,D,12
+102,2024-11-23,Saint Etienne,Montpellier,1,0,H,10,11,25,31,10,7,L,W,W,L,L,L,L,L,W,L,12
+103,2024-11-23,Reims,Lyon,1,1,D,19,18,15,15,17,18,W,W,L,D,L,D,L,W,W,W,12
+104,2024-11-24,Lille,Rennes,1,0,H,18,13,11,18,19,11,D,L,D,L,W,W,D,D,W,L,12
+105,2024-11-24,Nantes,Le Havre,0,2,A,14,8,17,23,10,9,L,L,L,W,L,L,D,L,L,L,12
+106,2024-11-24,Auxerre,Angers,1,0,H,20,13,19,20,16,10,W,L,W,W,D,W,W,D,L,D,12
+107,2024-11-24,Nice,Strasbourg,2,1,H,21,20,11,22,17,13,D,L,W,L,W,W,D,L,D,D,12
+108,2024-11-29,Reims,Lens,0,2,A,20,13,16,12,18,17,D,L,W,W,L,L,L,L,L,W,13
+109,2024-11-30,Rennes,Saint Etienne,5,0,H,13,11,19,25,11,13,L,W,L,L,L,W,W,L,D,L,13
+110,2024-11-30,Stade Brestois 29,Strasbourg,3,1,H,16,21,22,24,13,13,L,L,L,L,L,L,W,W,D,L,13
+111,2024-11-30,Paris Saint Germain,Nantes,1,1,D,36,14,10,19,32,10,W,L,W,L,W,L,W,L,W,D,13
+112,2024-12-01,Montpellier,Lille,2,2,D,11,19,32,11,7,22,L,W,W,D,L,D,L,W,L,D,13
+113,2024-12-01,Lyon,Nice,4,1,H,19,23,16,12,19,20,D,W,W,D,D,W,D,W,W,D,13
+114,2024-12-01,Toulouse,Auxerre,2,0,H,13,21,14,19,15,19,L,W,W,W,W,W,W,D,D,W,13
+115,2024-12-01,Le Havre,Angers,0,1,A,10,13,23,21,12,10,W,L,L,L,W,W,L,W,L,D,13
+116,2024-12-01,Marseille,Monaco,2,1,H,27,21,16,10,23,26,W,W,L,W,W,L,L,L,W,D,13
+117,2024-12-06,Lille,Stade Brestois 29,3,1,H,21,19,13,23,23,16,D,W,W,L,D,L,D,L,W,W,14
+118,2024-12-06,Auxerre,Paris Saint Germain,0,0,D,21,37,21,11,19,33,L,D,W,W,W,W,W,W,D,W,14
+119,2024-12-07,Monaco,Toulouse,2,0,H,22,15,12,14,26,18,L,W,W,L,W,W,L,W,L,W,14
+120,2024-12-07,Nice,Le Havre,2,1,H,24,10,16,24,20,12,L,L,W,W,D,L,W,W,W,L,14
+121,2024-12-07,Angers,Lyon,0,3,A,14,23,21,17,13,22,W,W,L,D,L,W,W,D,W,D,14
+122,2024-12-08,Lens,Montpellier,2,0,H,15,13,12,34,20,8,W,D,L,L,W,W,L,L,L,L,14
+123,2024-12-08,Nantes,Rennes,1,0,H,15,18,20,19,11,14,D,W,L,L,L,L,L,L,L,W,14
+124,2024-12-08,Strasbourg,Reims,0,0,D,22,20,27,18,13,18,L,L,L,D,L,W,L,L,W,L,14
+125,2024-12-08,Saint Etienne,Marseille,0,2,A,11,29,30,17,13,26,L,W,W,W,L,L,W,W,L,L,14
+126,2024-12-13,Toulouse,Saint Etienne,2,1,H,15,11,16,32,18,13,L,L,W,L,L,W,W,L,W,W,15
+127,2024-12-14,Marseille,Lille,1,1,D,31,24,17,14,29,26,W,W,W,D,W,W,L,D,W,D,15
+128,2024-12-14,Auxerre,Lens,2,2,D,21,17,21,12,20,23,D,W,L,W,W,L,W,W,W,L,15
+129,2024-12-14,Reims,Monaco,0,0,D,20,24,18,12,19,29,D,W,L,L,D,W,W,W,L,L,15
+130,2024-12-15,Montpellier,Nice,2,2,D,13,26,36,17,8,23,L,W,D,L,L,W,W,D,L,W,15
+131,2024-12-15,Rennes,Angers,2,0,H,18,14,20,24,14,13,L,L,W,W,L,L,L,L,L,W,15
+132,2024-12-15,Stade Brestois 29,Nantes,4,1,H,20,16,26,20,16,14,L,W,W,D,L,L,L,L,L,L,15
+133,2024-12-15,Le Havre,Strasbourg,0,3,A,11,22,26,27,12,14,L,D,L,L,W,L,L,L,W,L,15
+134,2024-12-15,Paris Saint Germain,Lyon,3,1,H,37,26,11,17,34,25,D,W,D,W,W,D,W,W,W,D,15
+135,2024-12-18,Monaco,Paris Saint Germain,2,4,A,24,40,12,12,30,37,D,W,W,D,L,D,W,W,W,W,16
+136,2025-01-03,Nice,Rennes,3,2,H,28,20,19,20,24,17,D,W,W,L,L,W,W,L,D,L,16
+137,2025-01-04,Saint Etienne,Reims,3,1,H,12,20,34,18,13,20,L,D,L,D,L,L,W,D,L,W,16
+138,2025-01-04,Lille,Nantes,1,1,D,25,17,15,24,27,14,D,L,W,W,D,D,W,L,D,L,16
+139,2025-01-04,Lyon,Montpellier,1,0,H,27,15,20,38,25,9,L,D,W,L,W,D,D,L,W,W,16
+140,2025-01-05,Angers,Stade Brestois 29,2,0,H,14,24,26,27,13,19,L,W,L,L,W,W,L,L,L,L,16
+141,2025-01-05,Strasbourg,Auxerre,3,1,H,25,23,27,23,17,21,W,D,D,D,L,L,L,W,L,W,16
+142,2025-01-05,Lens,Toulouse,0,1,A,19,17,14,17,24,21,D,W,W,L,W,W,L,L,W,W,16
+143,2025-01-05,Marseille,Le Havre,5,1,H,32,11,18,29,30,12,D,L,W,L,W,L,W,W,L,L,16
+144,2025-01-10,Nantes,Monaco,2,2,D,18,26,25,16,15,30,D,L,L,D,W,W,D,L,L,W,17
+145,2025-01-10,Auxerre,Lille,0,0,D,24,26,26,16,21,28,L,D,D,D,D,W,L,D,W,W,17
+146,2025-01-11,Stade Brestois 29,Lyon,2,1,H,24,28,29,20,19,28,L,W,W,L,L,W,W,W,L,D,17
+147,2025-01-11,Reims,Nice,2,4,A,21,31,21,21,20,27,L,W,D,D,D,W,L,L,D,W,17
+148,2025-01-11,Rennes,Marseille,1,2,A,22,37,23,19,17,33,L,W,W,D,L,W,W,W,L,W,17
+149,2025-01-12,Le Havre,Lens,1,2,A,12,19,34,15,12,24,L,L,L,D,L,W,L,W,W,L,17
+150,2025-01-12,Montpellier,Angers,1,3,A,15,16,39,26,9,16,L,W,D,L,L,L,D,W,L,L,17
+151,2025-01-12,Toulouse,Strasbourg,1,2,A,18,28,17,28,24,20,W,W,W,W,L,D,W,L,L,L,17
+152,2025-01-12,Paris Saint Germain,Saint Etienne,2,1,H,44,15,14,35,40,16,W,W,W,L,D,L,D,L,W,W,17
+153,2025-01-17,Montpellier,Monaco,2,1,H,16,28,42,18,9,31,L,D,L,L,D,D,L,W,D,L,18
+154,2025-01-17,Lille,Nice,2,1,H,26,35,16,23,29,30,D,W,D,W,D,D,W,W,D,L,18
+155,2025-01-18,Lens,Paris Saint Germain,1,2,A,21,46,16,15,27,43,W,W,L,W,D,W,W,D,W,D,18
+156,2025-01-18,Rennes,Stade Brestois 29,1,2,A,23,26,25,30,17,22,L,W,L,L,W,W,L,L,W,W,18
+157,2025-01-18,Lyon,Toulouse,0,0,D,29,19,22,19,28,24,L,L,W,W,L,W,W,L,W,W,18
+158,2025-01-19,Saint Etienne,Nantes,1,1,D,16,20,37,27,16,16,L,D,W,D,L,L,L,W,L,D,18
+159,2025-01-19,Angers,Auxerre,2,0,H,19,24,27,26,19,22,W,D,W,L,L,D,L,D,W,L,18
+160,2025-01-19,Reims,Le Havre,1,1,D,23,13,25,36,20,12,L,L,L,L,D,L,D,L,L,L,18
+161,2025-01-19,Marseille,Strasbourg,1,1,D,39,30,20,29,36,23,W,W,W,W,D,W,W,D,W,L,18
+162,2025-01-24,Auxerre,Saint Etienne,1,1,D,24,17,28,38,22,17,L,D,D,L,L,W,D,L,D,L,19
+163,2025-01-25,Monaco,Rennes,3,2,H,29,24,20,27,31,17,L,L,D,L,L,L,D,W,W,L,19
+164,2025-01-25,Strasbourg,Lille,2,1,H,31,28,30,17,24,32,D,W,W,D,W,D,W,D,D,W,19
+165,2025-01-25,Paris Saint Germain,Reims,1,1,D,48,24,16,26,46,21,W,D,W,L,W,L,W,D,D,D,19
+166,2025-01-26,Le Havre,Stade Brestois 29,0,1,A,14,28,37,31,13,25,D,W,L,W,L,L,L,W,L,L,19
+167,2025-01-26,Nantes,Lyon,1,1,D,21,29,28,22,17,29,D,D,D,L,D,W,L,L,W,W,19
+168,2025-01-26,Toulouse,Montpellier,1,2,A,19,18,19,43,25,12,D,W,L,L,W,L,W,D,L,L,19
+169,2025-01-26,Lens,Angers,1,0,H,22,21,18,27,27,22,L,W,W,W,L,W,D,L,W,L,19
+170,2025-01-26,Nice,Marseille,2,0,H,36,40,25,21,30,37,L,D,W,W,W,W,D,D,W,W,19
+171,2025-01-31,Montpellier,Lens,0,2,A,20,23,44,18,15,30,W,W,W,L,L,W,L,L,D,D,20
+172,2025-02-01,Stade Brestois 29,Paris Saint Germain,2,5,A,29,49,31,17,28,47,W,D,W,W,W,W,L,W,W,W,20
+173,2025-02-01,Monaco,Auxerre,4,2,H,32,25,22,29,34,23,W,D,L,L,D,D,L,L,D,D,20
+174,2025-02-01,Lille,Saint Etienne,4,1,H,29,18,19,39,32,18,L,D,W,D,D,L,D,W,D,L,20
+175,2025-02-02,Toulouse,Nice,1,1,D,20,38,21,25,25,33,L,W,D,L,L,W,W,W,W,D,20
+176,2025-02-02,Angers,Le Havre,1,1,D,21,14,28,38,22,13,L,L,W,D,W,L,W,L,L,L,20
+177,2025-02-02,Reims,Nantes,1,2,A,25,22,27,29,22,18,D,D,D,D,L,D,L,D,D,L,20
+178,2025-02-02,Rennes,Strasbourg,1,0,H,26,33,30,31,17,27,L,W,L,D,L,W,L,W,W,W,20
+179,2025-02-02,Marseille,Lyon,3,2,H,40,30,23,23,37,30,L,D,D,D,W,L,W,W,D,L,20
+180,2025-02-07,Nantes,Stade Brestois 29,0,2,A,24,31,30,36,21,28,W,L,D,W,D,W,D,W,D,L,21
+181,2025-02-07,Paris Saint Germain,Monaco,4,1,H,54,36,19,24,50,37,W,W,D,W,W,L,W,D,W,L,21
+182,2025-02-08,Nice,Lens,2,0,H,39,25,26,18,34,33,D,W,W,W,L,L,W,W,W,L,21
+183,2025-02-08,Lille,Le Havre,1,2,A,33,15,20,39,35,14,W,D,L,L,W,D,D,L,D,L,21
+184,2025-02-08,Saint Etienne,Rennes,0,2,A,19,27,43,30,18,20,L,W,D,L,D,L,L,L,W,L,21
+185,2025-02-09,Lyon,Reims,4,0,H,32,26,26,29,30,22,L,L,D,D,D,D,L,L,W,L,21
+186,2025-02-09,Strasbourg,Montpellier,2,0,H,33,20,32,46,27,15,L,L,W,W,D,W,W,L,W,L,21
+187,2025-02-09,Auxerre,Toulouse,2,2,D,27,21,33,22,23,26,L,D,D,L,L,D,D,L,L,W,21
+188,2025-02-09,Angers,Marseille,0,2,A,22,43,29,25,23,40,D,W,L,L,W,D,W,W,W,W,21
+189,2025-02-14,Stade Brestois 29,Auxerre,2,2,D,33,29,36,35,31,24,W,D,L,L,W,D,W,L,W,D,22
+190,2025-02-15,Marseille,Saint Etienne,5,1,H,45,19,25,45,43,18,W,L,W,L,L,D,D,D,W,L,22
+191,2025-02-15,Monaco,Nantes,7,1,H,37,24,28,32,37,21,L,L,W,W,W,D,L,D,D,D,22
+192,2025-02-15,Toulouse,Paris Saint Germain,0,1,A,23,58,24,20,27,53,D,W,D,W,L,D,D,W,L,W,22
+193,2025-02-16,Montpellier,Lyon,1,4,A,20,36,48,26,15,33,L,W,L,L,W,D,W,D,L,L,22
+194,2025-02-16,Reims,Angers,0,1,A,26,22,33,31,22,23,L,L,L,D,D,L,D,W,L,W,22
+195,2025-02-16,Le Havre,Nice,1,3,A,17,41,40,26,17,37,W,W,D,D,L,W,D,L,L,W,22
+196,2025-02-16,Lens,Strasbourg,0,2,A,25,35,20,32,33,30,L,W,W,L,W,W,L,D,W,W,22
+197,2025-02-16,Rennes,Lille,0,2,A,29,34,30,22,23,35,W,L,W,W,L,L,L,W,L,D,22
+198,2025-02-21,Rennes,Reims,1,0,H,29,26,32,34,23,22,L,L,W,L,W,L,L,D,L,D,23
+199,2025-02-22,Lille,Monaco,2,1,H,36,44,22,29,38,40,W,W,L,L,W,W,L,W,W,L,23
+200,2025-02-22,Saint Etienne,Angers,3,3,D,20,23,50,31,18,26,L,W,L,L,L,D,D,L,D,W,23
+201,2025-02-22,Auxerre,Marseille,3,0,H,31,50,37,26,25,46,D,W,D,W,L,W,D,L,L,D,23
+202,2025-02-23,Nantes,Lens,3,1,H,25,25,39,22,21,33,L,L,L,L,W,W,D,W,D,L,23
+203,2025-02-23,Nice,Montpellier,2,0,H,44,21,27,52,40,15,W,L,W,L,D,L,W,W,L,W,23
+204,2025-02-23,Strasbourg,Stade Brestois 29,0,0,D,37,35,32,38,33,32,W,D,W,W,L,L,W,W,D,W,23
+205,2025-02-23,Le Havre,Toulouse,1,4,A,18,23,43,25,17,27,L,L,W,D,D,D,L,L,D,D,23
+206,2025-02-23,Lyon,Paris Saint Germain,2,3,A,40,59,27,20,36,56,W,W,W,W,L,W,D,D,D,W,23
+207,2025-02-28,Monaco,Reims,3,0,H,45,26,31,35,40,22,L,L,W,L,L,L,W,L,W,D,24
+208,2025-03-01,Saint Etienne,Nice,1,3,A,23,46,53,27,19,43,D,W,L,W,L,W,L,D,D,W,24
+209,2025-03-01,Lens,Le Havre,3,4,A,26,19,25,47,33,17,L,L,L,L,L,W,W,D,W,L,24
+210,2025-03-01,Paris Saint Germain,Lille,4,1,H,62,38,22,23,59,41,W,W,W,W,W,L,W,W,D,L,24
+211,2025-03-02,Lyon,Stade Brestois 29,2,1,H,42,35,30,38,36,33,L,D,W,D,W,W,L,L,D,W,24
+212,2025-03-02,Angers,Toulouse,0,4,A,26,27,34,26,27,30,D,W,W,L,L,D,D,D,L,L,24
+213,2025-03-02,Montpellier,Rennes,0,4,A,21,30,54,32,15,26,L,W,L,L,L,W,L,W,W,L,24
+214,2025-03-02,Auxerre,Strasbourg,0,1,A,34,37,37,32,28,34,W,D,D,W,D,W,L,L,D,W,24
+215,2025-03-02,Marseille,Nantes,2,0,H,50,28,29,40,46,24,L,W,W,L,W,L,W,W,L,D,24
+216,2025-03-07,Toulouse,Monaco,1,1,D,31,48,26,31,33,43,W,W,W,L,L,W,D,L,D,W,25
+217,2025-03-08,Rennes,Paris Saint Germain,1,4,A,34,66,32,23,29,62,W,W,W,W,L,W,W,W,W,W,25
+218,2025-03-08,Lille,Montpellier,1,0,H,39,21,27,58,41,15,L,L,W,L,W,L,L,L,W,L,25
+219,2025-03-08,Marseille,Lens,0,1,A,52,29,29,29,49,33,W,L,L,L,W,L,W,L,W,W,25
+220,2025-03-09,Stade Brestois 29,Angers,2,0,H,36,26,40,38,33,27,L,L,D,D,D,W,W,L,L,D,25
+221,2025-03-09,Nantes,Strasbourg,0,1,A,28,38,42,32,24,37,L,W,W,D,L,W,L,W,W,L,25
+222,2025-03-09,Reims,Auxerre,0,2,A,26,34,38,38,22,28,L,L,L,W,L,D,L,D,L,L,25
+223,2025-03-09,Le Havre,Saint Etienne,1,1,D,23,24,50,56,20,19,W,L,L,D,L,L,W,L,D,L,25
+224,2025-03-09,Nice,Lyon,0,2,A,49,44,28,31,46,39,W,W,W,L,W,W,W,W,D,L,25
+225,2025-03-14,Nice,Auxerre,1,1,D,49,36,30,38,46,31,L,W,W,L,W,W,W,D,W,D,26
+226,2025-03-15,Nantes,Lille,1,0,H,28,40,43,27,24,44,L,W,L,L,W,W,L,W,L,L,26
+227,2025-03-15,Angers,Monaco,0,2,A,26,49,40,32,27,44,L,D,L,W,D,L,W,W,L,L,26
+228,2025-03-15,Lens,Rennes,1,0,H,30,35,29,36,36,29,W,L,L,W,L,W,L,L,L,W,26
+229,2025-03-16,Lyon,Le Havre,4,2,H,46,24,31,51,42,21,W,D,W,W,L,L,W,L,W,W,26
+230,2025-03-16,Montpellier,Saint Etienne,0,2,A,21,25,59,57,15,20,L,D,L,L,L,D,L,L,L,L,26
+231,2025-03-16,Strasbourg,Toulouse,2,1,H,39,32,32,27,40,34,W,D,W,W,D,W,W,L,W,D,26
+232,2025-03-16,Stade Brestois 29,Reims,0,0,D,38,26,40,40,36,22,W,L,L,L,D,L,D,L,W,L,26
+233,2025-03-16,Paris Saint Germain,Marseille,3,1,H,70,52,24,30,65,49,W,L,W,W,W,L,W,W,W,W,26
+234,2025-03-28,Strasbourg,Lyon,4,2,H,41,50,33,33,43,45,W,W,W,W,W,W,D,L,W,W,27
+235,2025-03-29,Reims,Marseille,3,1,H,26,53,40,33,23,49,D,L,L,L,L,W,L,L,L,W,27
+236,2025-03-29,Saint Etienne,Paris Saint Germain,1,6,A,27,73,57,25,23,68,W,W,D,W,L,W,D,W,L,W,27
+237,2025-03-29,Monaco,Nice,2,1,H,51,50,32,31,47,47,W,D,D,L,W,W,L,W,W,W,27
+238,2025-03-30,Toulouse,Stade Brestois 29,2,4,A,33,38,29,40,34,37,L,D,D,W,W,L,W,D,L,D,27
+239,2025-03-30,Angers,Rennes,0,3,A,26,35,42,37,27,29,L,L,L,L,L,W,D,W,W,L,27
+240,2025-03-30,Auxerre,Montpellier,1,0,H,37,21,39,61,32,15,D,L,W,L,L,L,W,L,D,L,27
+241,2025-03-30,Le Havre,Nantes,3,2,H,26,29,55,43,21,27,L,W,D,L,W,L,L,W,L,L,27
+242,2025-03-30,Lille,Lens,1,0,H,40,31,28,29,44,39,L,W,W,W,L,L,W,L,W,L,27
+243,2025-04-04,Nice,Nantes,1,2,A,51,31,33,46,47,27,L,L,D,W,L,L,W,L,W,W,28
+244,2025-04-05,Paris Saint Germain,Angers,1,0,H,79,26,26,45,71,27,W,L,W,L,W,L,W,L,W,D,28
+245,2025-04-05,Stade Brestois 29,Monaco,2,1,H,42,53,42,33,40,50,W,W,D,W,W,D,L,W,D,L,28
+246,2025-04-05,Lyon,Lille,2,1,H,52,41,37,28,45,47,L,W,W,L,W,W,W,L,L,W,28
+247,2025-04-06,Lens,Saint Etienne,1,0,H,31,28,30,63,39,23,L,L,W,W,W,D,L,L,L,D,28
+248,2025-04-06,Montpellier,Le Havre,0,2,A,21,29,62,57,15,24,L,W,L,L,L,D,L,W,L,L,28
+249,2025-04-06,Reims,Strasbourg,0,1,A,29,45,41,35,26,46,W,W,D,W,L,W,L,W,L,D,28
+250,2025-04-06,Rennes,Auxerre,0,1,A,38,38,37,39,32,35,W,W,L,D,L,W,W,L,W,W,28
+251,2025-04-06,Marseille,Toulouse,3,2,H,54,35,36,33,49,34,L,L,L,L,L,D,W,W,L,W,28
+252,2025-04-11,Lens,Reims,0,2,A,32,29,30,42,42,26,W,L,L,W,W,D,W,L,L,L,29
+253,2025-04-12,Monaco,Marseille,3,0,H,54,57,35,38,50,52,L,W,W,L,W,L,D,L,W,W,29
+254,2025-04-12,Toulouse,Lille,1,2,A,37,42,36,30,34,47,L,L,L,W,L,L,D,W,W,L,29
+255,2025-04-12,Strasbourg,Nice,2,2,D,46,52,35,35,49,47,W,L,W,L,W,D,W,L,W,W,29
+256,2025-04-13,Saint Etienne,Stade Brestois 29,3,3,D,28,44,64,43,23,43,L,W,L,W,W,D,D,W,L,L,29
+257,2025-04-13,Angers,Montpellier,2,0,H,26,21,46,64,27,15,L,L,L,L,L,L,L,L,L,L,29
+258,2025-04-13,Le Havre,Rennes,1,5,A,31,38,57,38,27,32,W,L,W,W,L,L,D,L,W,W,29
+259,2025-04-13,Auxerre,Lyon,1,3,A,39,54,39,38,38,48,W,W,W,L,D,W,W,W,L,W,29
+260,2025-04-18,Rennes,Nantes,2,1,H,38,33,38,47,32,30,L,W,W,L,L,W,L,L,W,L,29
+261,2025-04-19,Paris Saint Germain,Le Havre,2,1,H,82,32,27,62,77,27,W,L,W,W,W,W,W,L,W,D,30
+262,2025-04-19,Monaco,Strasbourg,0,0,D,57,48,35,37,53,50,W,D,L,W,W,W,W,W,D,W,30
+263,2025-04-19,Marseille,Montpellier,5,1,H,57,21,41,66,52,15,L,L,W,L,L,L,L,L,L,L,30
+264,2025-04-20,Lille,Auxerre,3,1,H,44,40,31,42,50,38,W,L,L,W,W,W,L,D,W,W,30
+265,2025-04-20,Nice,Angers,2,1,H,54,28,37,46,48,30,D,W,L,L,L,L,D,L,L,L,30
+266,2025-04-20,Reims,Toulouse,1,0,H,31,38,42,38,29,34,W,L,L,L,W,L,D,L,L,D,30
+267,2025-04-20,Stade Brestois 29,Lens,1,3,A,47,32,46,32,44,42,D,L,W,W,W,L,D,W,W,W,30
+268,2025-04-20,Saint Etienne,Lyon,2,1,H,31,57,67,39,24,51,D,W,L,W,L,L,W,W,D,W,30
+269,2025-04-22,Nantes,Paris Saint Germain,1,1,D,34,82,49,27,30,77,L,W,W,W,L,W,W,W,L,W,30
+270,2025-04-25,Paris Saint Germain,Nice,1,3,A,83,56,28,38,78,51,D,W,W,D,W,L,W,L,W,D,31
+271,2025-04-26,Strasbourg,Saint Etienne,3,1,H,48,33,37,68,51,27,D,W,D,D,W,L,W,L,W,W,31
+272,2025-04-26,Le Havre,Monaco,1,1,D,33,57,64,35,27,54,L,D,L,W,W,L,W,W,L,W,31
+273,2025-04-26,Lyon,Rennes,4,1,H,58,45,41,40,51,38,L,W,W,W,W,L,L,W,W,L,31
+274,2025-04-27,Angers,Lille,0,2,A,29,47,48,32,30,53,L,W,W,W,L,L,L,W,L,L,31
+275,2025-04-27,Montpellier,Reims,0,0,D,22,32,71,42,15,32,L,W,L,W,L,L,L,W,L,D,31
+276,2025-04-27,Nantes,Toulouse,0,0,D,35,38,50,39,31,34,D,L,L,L,W,L,L,L,W,L,31
+277,2025-04-27,Lens,Auxerre,0,4,A,35,41,33,45,45,38,W,L,L,L,W,W,L,W,W,D,31
+278,2025-04-27,Marseille,Stade Brestois 29,4,1,H,62,48,42,49,55,44,W,L,L,D,W,W,L,W,L,D,31
+279,2025-05-02,Nice,Reims,1,0,H,59,32,39,42,54,33,W,D,W,W,D,W,L,L,L,W,32
+280,2025-05-03,Strasbourg,Paris Saint Germain,2,1,H,51,84,38,31,54,78,W,L,D,D,D,W,W,W,W,W,32
+281,2025-05-03,Toulouse,Rennes,2,1,H,38,46,39,44,35,38,D,L,L,W,L,W,L,L,L,W,32
+282,2025-05-03,Saint Etienne,Monaco,1,3,A,34,58,71,36,27,55,L,D,W,D,D,W,L,L,L,W,32
+283,2025-05-04,Nantes,Angers,0,1,A,35,29,50,50,32,30,D,L,D,L,L,W,W,L,L,L,32
+284,2025-05-04,Lyon,Lens,1,2,A,62,35,42,37,54,45,W,L,L,W,W,L,W,W,L,L,32
+285,2025-05-04,Stade Brestois 29,Montpellier,1,0,H,49,22,53,71,44,16,L,D,L,L,D,L,W,L,W,L,32
+286,2025-05-04,Auxerre,Le Havre,1,2,A,45,34,45,65,41,28,W,D,L,L,L,L,W,W,W,W,32
+287,2025-05-04,Lille,Marseille,1,1,D,49,66,32,43,56,58,W,W,W,W,W,L,L,W,W,L,32
