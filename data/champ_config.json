@@ -48,5 +48,10 @@
         "bookmaker_margin": 0.0870097156577691,
         "importance": 4,
         "uncertainty_threshold": 0.107
+    },
+    "98": {
+        "bookmaker_margin": 0.05,
+        "importance": 3,
+        "uncertainty_threshold": 0.11
     }
 }

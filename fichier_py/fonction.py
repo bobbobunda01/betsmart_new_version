@@ -18,7 +18,7 @@ import os
 from numpy import floating, integer, ndarray
 import datetime
 import pathlib
-
+from dateutil import parser
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
 # forme des équipes
 def form(d_plf):
@@ -595,13 +595,16 @@ def generate_explanation(rule_applied, features, user_profile):
 # conversion de la date
 
 def get_valid_date(user_input):
-    while True:
-        user_input = user_input.strip()
-        try:
-            date_obj = datetime.datetime.strptime(user_input, "%Y-%m-%d")
-            return date_obj.strftime("%Y-%m-%d")
-        except ValueError:
-            print("Format invalide. Réessayez.")
+    """
+    Convertit différentes représentations de date en format 'YYYY-MM-DD'.
+    """
+    try:
+        # Parse intelligent (fonctionne avec des formats très variés)
+        date_obj = parser.parse(user_input)
+        return date_obj.strftime("%Y-%m-%d")
+    except Exception:
+        raise ValueError("⛔ Format de date non reconnu. Essayez par exemple : '2025-02-14' ou '14/02/2025'")
+
 
 
 ##---------------------- NOMBRE DE BUTS MARQUES PAR EQUIPE ------------------------------------------
