@@ -18,7 +18,7 @@ import os
 import pathlib
 import sys
 import logging
-from fichier_py.fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
+from fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
 thread=0
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ app = Flask(__name__)
 class MatchInput(BaseModel):
     HomeTeam: str
     AwayTeam: str
-    comp: str
+    comp: int
     odds_home:float
     odds_draw:float
     odds_away:float
@@ -65,13 +65,14 @@ def prediction():
             
             home=np.array(donnees_df.HomeTeam.values).item()
             away=np.array(donnees_df.AwayTeam.values).item()
-            comp=np.array(donnees_df.comp.values).item()
+            #comp=np.array(donnees_df.comp.values).item()
+            comp=donnees_df["comp"].values[0]
             odds_h = donnees_df["odds_home"].values[0]
             odds_d = donnees_df["odds_draw"].values[0]
             odds_a = donnees_df["odds_away"].values[0]
             match_date=np.array(donnees_df.match_Date.values).item()
             # Premiere league ANGLETERRE
-            if comp=='39':
+            if comp==39:
                 
                 # Chargement des données de la Première league
                 
@@ -88,7 +89,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ## SERIE A
-            elif comp=='135':
+            elif comp==135:
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "sa1" / "sa_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "sa1" / "saison_encours.csv"
@@ -102,7 +103,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### LIGA
-            elif comp=='140':
+            elif comp==140:
                 chemin_csv = RACINE_PROJET / "data" / "lg1" / "lg_24_25.csv"
                 # Chargement des données historiques
                 s_encours=RACINE_PROJET / "data" / "lg1" / "saison_encours.csv"
@@ -116,7 +117,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ## BUNDESLIGA
-            elif comp=='78':
+            elif comp==78:
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "bl1" / "bl_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "bl1" / "saison_encours.csv"
@@ -131,7 +132,7 @@ def prediction():
                 df=hi
                 
             ## PREMIERE LEAGUE FRANCAISE
-            elif comp=='61':
+            elif comp==61:
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "fl" / "fl_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "fl" / "saison_encours.csv"
@@ -146,7 +147,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### NEEDERLANDE
-            elif comp=='88':
+            elif comp==88:
                 chemin_csv = RACINE_PROJET / "data" / "N1" / "N_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "N1" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
@@ -158,7 +159,7 @@ def prediction():
                 df=hi
             
             ## SUISSE
-            elif comp=='510':
+            elif comp==510:
                 chemin_csv = RACINE_PROJET / "data" / "sui" / "suisse_2024_2025.csv"
                 s_encours=RACINE_PROJET / "data" / "sui" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
@@ -169,7 +170,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### Portugal
-            elif comp=='94':
+            elif comp==94:
                 chemin_csv = RACINE_PROJET / "data" / "port" / "port_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "port" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
@@ -181,9 +182,20 @@ def prediction():
                 df=hi
             
                 ### Turquie
-            elif comp=='203':
+            elif comp==203:
                 chemin_csv = RACINE_PROJET / "data" / "turk" / "turk_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "turk" / "saison_encours.csv"
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            # Japon
+            elif comp==98:
+                chemin_csv = RACINE_PROJET / "data" / "japon" / "japon_2024.csv"
+                s_encours=RACINE_PROJET / "data" / "japon" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
@@ -206,7 +218,7 @@ def prediction():
 
            
             #bon modèle ANGLETERRE
-            if comp=='39':
+            if comp==39:
                 chemin_model1 = RACINE_PROJET / "modele" / "pl" / "rf_pl_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "pl" / "rf_pl_stage2.joblib"
                 modele1=load(chemin_model1)
@@ -216,7 +228,7 @@ def prediction():
                 thread=0.63
             
             #bon modèle   SERIE A 
-            elif comp=='135':
+            elif comp==135:
                 chemin_model1 = RACINE_PROJET / "modele" / "sa1" / "rf_sa1_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "sa1" / "rf_sa1_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "sa1" / "xgboost_nbre_but_marque_sa1.joblib"
@@ -225,7 +237,7 @@ def prediction():
                 modele2=load(chemin_model2)
                 thread=0.63
             ##bon modele LIGA
-            elif comp=='140':
+            elif comp==140:
                 chemin_model1 = RACINE_PROJET / "modele" / "lg1" / "lg_bl1_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "lg1" / "rf_bl1_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "lg1" / "xgboost_nbre_but_marque_lg.joblib"
@@ -234,7 +246,7 @@ def prediction():
                 modele2=load(chemin_model2)
                 thread=0.4
             ##Bundesliga
-            elif comp=='78':
+            elif comp==78:
                 chemin_model1 = RACINE_PROJET / "modele" / "bl1" / "rf_bl1_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "bl1" / "rf_bl1_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "bl1" / "xgboost_nbre_but_marque_bl1.joblib"
@@ -243,7 +255,7 @@ def prediction():
                 model_but=load(chemin_but)
                 thread=0.65
             ## Bon modèle France
-            elif comp=='61':
+            elif comp==61:
                 chemin_model1 = RACINE_PROJET / "modele" / "fl" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "fl" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "fl" / "xgboost_nbre_but_marque_fl.joblib"
@@ -253,7 +265,7 @@ def prediction():
                 thread=0.6
             
             ## Bon modèle NEERDERLAND, PAYS BAS
-            elif comp=='88':
+            elif comp==88:
                 chemin_model1 = RACINE_PROJET / "modele" / "N1" / "xg_boost_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "N1" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "N1" / "rf_nbre_but_marque_autre.joblib"
@@ -263,16 +275,16 @@ def prediction():
                 thread=0.6
             
             ## SUISSE
-            elif comp=='510':
+            elif comp==510:
                 chemin_model1 = RACINE_PROJET / "modele" / "sui" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "sui" / "rf_stage2.joblib"
-                chemin_but = RACINE_PROJET / "modele" / "N1" / "rf_nbre_but_marque_autre.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "sui" / "xgboost_nbre_but_marque_sui.joblib"
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
                 thread=0.6
             # Portugal
-            elif comp=='94':
+            elif comp==94:
                 chemin_model1 = RACINE_PROJET / "modele" / "port" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "port" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "port" / "xgboost_nbre_but_marque_port.joblib"
@@ -282,10 +294,20 @@ def prediction():
                 thread=0.6
             
              # Turquie
-            elif comp=='203':
+            elif comp==203:
                 chemin_model1 = RACINE_PROJET / "modele" / "turk" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "turk" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "turk" / "xgboost_nbre_but_marque_turk.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.6
+            
+            # japon
+            elif comp==98:
+                chemin_model1 = RACINE_PROJET / "modele" / "japon" / "rf_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "japon" / "rf_stage2.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "japon" / "xgboost_nbre_but_marque_japon.joblib"
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
@@ -305,7 +327,7 @@ def prediction():
             pred['plus_but']=int(pred_but)
             pred['mess_but']=str(mess_but)
             all_results.append(pred)
-            # Log l'entrée + les prédictions
+            # Log l'entrée + les prédictionsÒ
             #log_prediction(all_results)
         
         logging.basicConfig(level=logging.INFO)
