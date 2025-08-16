@@ -18,7 +18,7 @@ import os
 import pathlib
 import sys
 import logging
-from fichier_py.fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
+from fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
 thread=0
 app = Flask(__name__)
 
@@ -159,7 +159,7 @@ def prediction():
                 df=hi
             
             ## SUISSE
-            elif comp==510:
+            elif comp==207:
                 chemin_csv = RACINE_PROJET / "data" / "sui" / "suisse_2024_2025.csv"
                 s_encours=RACINE_PROJET / "data" / "sui" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
@@ -195,7 +195,7 @@ def prediction():
             # Japon
             elif comp==98:
                 chemin_csv = RACINE_PROJET / "data" / "japon" / "japon_2024.csv"
-                s_encours=RACINE_PROJET / "data" / "japon" / "saison_encours.csv"
+                s_encours=RACINE_PROJET / "data" / "jaclpon" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
@@ -275,7 +275,7 @@ def prediction():
                 thread=0.6
             
             ## SUISSE
-            elif comp==510:
+            elif comp==207:
                 chemin_model1 = RACINE_PROJET / "modele" / "sui" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "sui" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "sui" / "xgboost_nbre_but_marque_sui.joblib"
