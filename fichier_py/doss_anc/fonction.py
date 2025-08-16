@@ -404,7 +404,6 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
 ## lecture des variables dynamiques 
 RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
 chemin_csv = RACINE_PROJET / "data" /"champ_config.json"
-
 def parametres(league_code):
     # Seuil dynamique par championnat (paramétrable)
     #seuil_base = 0.12
@@ -418,46 +417,31 @@ def parametres(league_code):
     bookmaker_margin = params.get("bookmaker_margin", 0.0711)
     uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
     importance = params.get("importance", 3)
-    season_stage = params.get("season_stage", "mid")  # par défaut à "mid"
-    return bookmaker_margin, uncertainty_threshold, importance,season_stage
+    return bookmaker_margin, uncertainty_threshold, importance
 
 ## Double change
 def detect_double_chance(proba_0, proba_1, proba_2, final_prediction, league_code):
-    bookmaker_margin, uncertainty_threshold, importance, season_stage = parametres(league_code)
+    """
+    Détecte une opportunité de double chance (1X ou X2) sans modifier la prédiction.
+    Retourne "1X", "X2" ou None.
+    """
+    # Seuil dynamique par championnat (paramétrable)
+    #seuil_base = 0.12
+    bookmaker_margin, uncertainty_threshold, importance=parametres(league_code)
     seuil_incertitude = uncertainty_threshold - 0.02 * (importance / 5)
 
+    # Ecart entre les deux meilleures probabilités
     probs = np.array([proba_0, proba_1, proba_2])
     sorted_probs = np.sort(probs)
     ecart = sorted_probs[-1] - sorted_probs[-2]
 
     if ecart <= seuil_incertitude:
+        # Proposition de double chance uniquement si la proba gagnante n'est pas écrasante
         if final_prediction == 0 and proba_0 < 0.60:
             return "1X"
         elif final_prediction == 2 and proba_2 < 0.60:
             return "X2"
     return None
-## cotes avec biais
-def detect_bias(features_df):
-    odds = features_df[['B365H', 'B365A', 'B365D']].values[0]
-    max_odds = np.max(odds)
-    min_odds = np.min(odds)
-    bias_score = abs(max_odds - min_odds) / np.mean(odds)
-    return bias_score > 0.6  # Seuil configurable
-## confiance
-def is_confidence_low(proba_0, proba_1, proba_2):
-    ecart_principal = np.max([proba_0, proba_1, proba_2]) - np.median([proba_0, proba_1, proba_2])
-    return ecart_principal < 0.07
-
-## ajustement des cotes par rapport à la saison
-
-def adjust_odds_weight_by_season(odds_gap, season_stage):
-    if season_stage == "early":
-        return odds_gap * 1.3  # Cotes moins fiables en début de saison
-    elif season_stage == "mid":
-        return odds_gap
-    else:
-        return odds_gap * 0.9  # Confiance plus forte sur fin de saison
-##
 
 # Prédiction
 
@@ -465,38 +449,44 @@ def predict_match_with_proba(
     features_df: pd.DataFrame,
     model_stage1,
     model_stage2,
-    threshold_draw=0.6,
+    threshold_draw,
     user_profile="standard",
     league_code="default"
 ) -> dict:
+    """
+    Prédiction en deux étapes :
+    1. Étape 1 (model_stage1) : prédire "nul" ou "non-nul" (Logistic Regression).
+    2. Étape 2 (model_stage2) : si non-nul, prédire "domicile" (0) ou "extérieur" (2) (Random Forest).
 
-    # Récupération des paramètres du championnat
-    bookmaker_margin, _, _, season_stage = parametres(league_code)
+    La fonction applique ensuite une logique pour garder la cohérence entre
+    la prédiction finale et les probabilités affichées pour l'utilisateur.
+    """
+    
+    bookmaker_margin, uncertainty_threshold, importance=parametres(league_code)
 
-    # Étape 1 : préparation des features pour le modèle de match nul
+    # --- Étape 1 : préparation des features ---
     features_df_stage1 = features_df.copy()
     for feature in model_stage1.feature_names_in_:
         if feature not in features_df_stage1.columns:
             features_df_stage1[feature] = 0
     features_df_stage1 = features_df_stage1[model_stage1.feature_names_in_]
 
-    # Prédiction proba nul
+    # Probabilité d'un match nul issue du premier modèle
     proba_draw = model_stage1.predict_proba(features_df_stage1)[0][1]
 
-    # Calcul brut et ajusté de l'écart de cotes
-    odds_gap_raw = (
+    # Calcul de l'écart de cotes
+    odds_gap = (
         features_df_stage1[['B365H', 'B365A', 'B365D']].max(axis=1).values[0]
         - features_df_stage1[['B365H', 'B365A', 'B365D']].min(axis=1).values[0]
     )
-    odds_gap = adjust_odds_weight_by_season(odds_gap_raw, season_stage)
 
-    # Cas particulier : cotes proches et proba nul ≈ seuil
+    # --- Règle spéciale : cas de cotes très équilibrées (margin_adjusted) ---
     draw_margin_band = 0.02
     if threshold_draw - draw_margin_band <= proba_draw <= threshold_draw + draw_margin_band:
         if odds_gap <= bookmaker_margin:
             proba_1 = proba_draw
             proba_0 = proba_2 = (1 - proba_1) / 2
-            double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
+            double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1)
             return {
                 "prediction": 1,
                 "proba_0": f"{round(proba_0*100,0)}%",
@@ -507,7 +497,7 @@ def predict_match_with_proba(
                 "double_chance": double_chance
             }
 
-    # Cas simple : proba nul dépasse le seuil
+    # --- Règle simple : prédire directement un nul si proba_draw >= threshold_draw ---
     if proba_draw >= threshold_draw:
         proba_1 = proba_draw
         proba_0 = proba_2 = (1 - proba_1) / 2
@@ -522,55 +512,35 @@ def predict_match_with_proba(
             "double_chance": double_chance
         }
 
-    # Étape 2 : prédiction domicile/extérieur
+    # --- Étape 2 : cas non-nuls, on passe au modèle Random Forest ---
     features_df_stage2 = features_df.copy()
     for feature in model_stage2.feature_names_in_:
         if feature not in features_df_stage2.columns:
             features_df_stage2[feature] = 0
     features_df_stage2 = features_df_stage2[model_stage2.feature_names_in_]
 
+    # Prédiction et probabilités du modèle 2 (0=domicile, 2=extérieur)
     proba_rf = model_stage2.predict_proba(features_df_stage2)[0]
     prediction_rf = int(model_stage2.predict(features_df_stage2)[0])
 
+    # Combinaison des probabilités
     total = proba_rf[0] + proba_draw + proba_rf[1]
     proba_0 = proba_rf[0] / total
     proba_1 = proba_draw / total
     proba_2 = proba_rf[1] / total
 
-    # Ajustement UX si contradiction
-    if prediction_rf == 0 and proba_draw >= proba_rf[0]:
-        proba_0, proba_1 = proba_1, proba_0
-    elif prediction_rf == 2 and proba_draw >= proba_rf[1]:
-        proba_2, proba_1 = proba_1, proba_2
+    # --- Ajustement UX pour éviter la contradiction visible ---
+    if prediction_rf == 0:
+        if proba_draw >= proba_rf[0]:
+            proba_0, proba_1 = proba_1, proba_0
+    else:
+        if proba_draw >= proba_rf[1]:
+            proba_2, proba_1 = proba_1, proba_2
 
-    # Calcul double chance
+    # Détection double chance (après tout calcul)
     double_chance = detect_double_chance(proba_0, proba_1, proba_2, prediction_rf, league_code)
 
-    # Détection de biais ou faible confiance
-    bias_detected = detect_bias(features_df)
-    low_confidence = is_confidence_low(proba_0, proba_1, proba_2)
-
-    if low_confidence or bias_detected:
-        # Forcer une double chance si absente
-        if double_chance is None:
-            if prediction_rf == 0:
-                double_chance = "1X"
-            elif prediction_rf == 2:
-                double_chance = "X2"
-            else:
-                double_chance = "1X"  # arbitrage conservateur par défaut
-
-        return {
-            "prediction": prediction_rf,
-            "proba_0": f"{round(proba_0*100,0)}%",
-            "proba_1": f"{round(proba_1*100,0)}%",
-            "proba_2": f"{round(proba_2*100,0)}%",
-            "rule_applied": "filtered_out",
-            "explanation": "⚠️ Attention : prédiction peu recommandée en raison d’un biais ou d’une incertitude élevée. Appuyez-vous sur la double chance suggérée.",
-            "double_chance": double_chance
-        }
-
-    # Résultat final
+    # --- Résultat final ---
     return {
         "prediction": prediction_rf,
         "proba_0": f"{round(proba_0*100,0)}%",
