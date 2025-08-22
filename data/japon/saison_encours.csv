@@ -1,251 +1,263 @@
-,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-0,2025-02-14,Gamba Osaka,Cerezo Osaka,2,5,1,1,A
-1,2025-02-15,Vissel Kobe,Urawa,0,0,0,0,D
-2,2025-02-15,Yokohama F. Marinos,Albirex Niigata,1,1,0,1,D
-3,2025-02-15,Yokohama FC,FC Tokyo,0,1,0,0,A
-4,2025-02-15,Fagiano Okayama,Kyoto Sanga,2,0,2,0,H
-5,2025-02-15,Avispa Fukuoka,Kashiwa Reysol,0,1,0,0,A
-6,2025-02-15,Shonan Bellmare,Kashima,1,0,0,1,H
-7,2025-02-15,Kawasaki Frontale,Nagoya Grampus,4,0,0,4,H
-8,2025-02-16,Machida Zelvia,Sanfrecce Hiroshima,1,2,1,0,A
-9,2025-02-16,Tokyo Verdy,Shimizu S-pulse,0,1,0,0,A
-10,2025-02-22,Kashiwa Reysol,Kawasaki Frontale,1,1,0,1,D
-11,2025-02-22,Shimizu S-pulse,Albirex Niigata,2,0,1,1,H
-12,2025-02-22,Nagoya Grampus,Vissel Kobe,2,2,0,2,D
-13,2025-02-22,Kyoto Sanga,Urawa,1,1,0,1,D
-14,2025-02-22,Yokohama FC,Fagiano Okayama,1,0,0,1,H
-15,2025-02-22,Kashima,Tokyo Verdy,4,0,3,1,H
-16,2025-02-22,Cerezo Osaka,Shonan Bellmare,1,2,0,1,A
-17,2025-02-22,FC Tokyo,Machida Zelvia,0,1,0,0,A
-18,2025-02-22,Gamba Osaka,Avispa Fukuoka,2,1,1,1,H
-19,2025-02-23,Sanfrecce Hiroshima,Yokohama F. Marinos,1,0,0,1,H
-20,2025-02-26,Kashiwa Reysol,Cerezo Osaka,2,1,0,2,H
-21,2025-02-26,Shimizu S-pulse,Sanfrecce Hiroshima,1,1,1,0,D
-22,2025-02-26,Shonan Bellmare,Urawa,2,1,1,1,H
-23,2025-02-26,Vissel Kobe,Kyoto Sanga,1,1,0,1,D
-24,2025-02-26,Kashima,Albirex Niigata,2,1,1,1,H
-25,2025-02-26,FC Tokyo,Nagoya Grampus,3,1,1,2,H
-26,2025-02-26,Yokohama F. Marinos,Yokohama FC,0,0,0,0,D
-27,2025-02-26,Machida Zelvia,Tokyo Verdy,0,1,0,0,A
-28,2025-02-26,Fagiano Okayama,Gamba Osaka,2,0,1,1,H
-29,2025-02-26,Avispa Fukuoka,Kawasaki Frontale,1,2,1,0,A
-30,2025-03-01,Yokohama F. Marinos,Shonan Bellmare,1,1,1,0,D
-31,2025-03-01,Kashima,FC Tokyo,2,0,0,2,H
-32,2025-03-01,Vissel Kobe,Avispa Fukuoka,0,1,0,0,A
-33,2025-03-01,Kawasaki Frontale,Kyoto Sanga,0,1,0,0,A
-34,2025-03-02,Nagoya Grampus,Machida Zelvia,1,2,1,0,A
-35,2025-03-02,Tokyo Verdy,Gamba Osaka,0,1,0,0,A
-36,2025-03-02,Fagiano Okayama,Shimizu S-pulse,1,1,0,1,D
-37,2025-03-02,Albirex Niigata,Cerezo Osaka,2,2,1,1,D
-38,2025-03-02,Sanfrecce Hiroshima,Yokohama FC,1,0,0,1,H
-39,2025-03-02,Urawa,Kashiwa Reysol,0,2,0,0,A
-40,2025-03-08,Urawa,Fagiano Okayama,1,0,0,1,H
-41,2025-03-08,Albirex Niigata,Tokyo Verdy,2,2,1,1,D
-42,2025-03-08,Gamba Osaka,Shimizu S-pulse,1,0,1,0,H
-43,2025-03-08,Kashiwa Reysol,Kashima,1,3,0,1,A
-44,2025-03-08,Cerezo Osaka,Nagoya Grampus,1,1,1,0,D
-45,2025-03-08,FC Tokyo,Shonan Bellmare,0,0,0,0,D
-46,2025-03-08,Yokohama FC,Machida Zelvia,0,2,0,0,A
-47,2025-03-09,Kyoto Sanga,Avispa Fukuoka,0,1,0,0,A
-48,2025-03-15,Machida Zelvia,Albirex Niigata,1,0,1,0,H
-49,2025-03-15,Tokyo Verdy,Nagoya Grampus,2,1,0,2,H
-50,2025-03-15,Yokohama FC,Cerezo Osaka,2,0,1,1,H
-51,2025-03-15,Avispa Fukuoka,FC Tokyo,1,0,0,1,H
-52,2025-03-16,Shimizu S-pulse,Kyoto Sanga,1,2,0,1,A
-53,2025-03-16,Sanfrecce Hiroshima,Kashiwa Reysol,1,1,0,1,D
-54,2025-03-16,Kashima,Urawa,1,1,0,1,D
-55,2025-03-16,Yokohama F. Marinos,Gamba Osaka,2,0,1,1,H
-56,2025-03-16,Fagiano Okayama,Kawasaki Frontale,0,0,0,0,D
-57,2025-03-16,Shonan Bellmare,Vissel Kobe,1,2,0,1,A
-58,2025-03-28,Cerezo Osaka,Urawa,1,1,1,0,D
-59,2025-03-29,Fagiano Okayama,Yokohama F. Marinos,1,0,0,1,H
-60,2025-03-29,Shimizu S-pulse,Shonan Bellmare,3,0,2,1,H
-61,2025-03-29,Kashiwa Reysol,Tokyo Verdy,0,0,0,0,D
-62,2025-03-29,Nagoya Grampus,Yokohama FC,2,1,1,1,H
-63,2025-03-29,Kyoto Sanga,Sanfrecce Hiroshima,1,0,0,1,H
-64,2025-03-29,Albirex Niigata,Gamba Osaka,3,3,1,2,D
-65,2025-03-29,Kashima,Vissel Kobe,1,0,1,0,H
-66,2025-03-29,Avispa Fukuoka,Machida Zelvia,2,2,1,1,D
-67,2025-03-29,FC Tokyo,Kawasaki Frontale,0,3,0,0,A
-68,2025-04-02,Sanfrecce Hiroshima,Kashima,1,0,1,0,H
-69,2025-04-02,Nagoya Grampus,Yokohama F. Marinos,2,0,0,2,H
-70,2025-04-02,Cerezo Osaka,Fagiano Okayama,2,1,2,0,H
-71,2025-04-02,Gamba Osaka,Machida Zelvia,0,1,0,0,A
-72,2025-04-02,Kawasaki Frontale,Shonan Bellmare,2,0,0,2,H
-73,2025-04-02,Kyoto Sanga,Kashiwa Reysol,1,1,0,1,D
-74,2025-04-02,Tokyo Verdy,FC Tokyo,2,2,1,1,D
-75,2025-04-02,Yokohama FC,Vissel Kobe,0,1,0,0,A
-76,2025-04-02,Albirex Niigata,Avispa Fukuoka,0,1,0,0,A
-77,2025-04-02,Urawa,Shimizu S-pulse,2,1,1,1,H
-78,2025-04-05,Yokohama F. Marinos,Tokyo Verdy,0,0,0,0,D
-79,2025-04-06,Fagiano Okayama,FC Tokyo,1,0,0,1,H
-80,2025-04-06,Vissel Kobe,Albirex Niigata,0,1,0,0,A
-81,2025-04-06,Machida Zelvia,Kawasaki Frontale,2,2,1,1,D
-82,2025-04-06,Yokohama FC,Shimizu S-pulse,2,0,0,2,H
-83,2025-04-06,Avispa Fukuoka,Urawa,1,0,0,1,H
-84,2025-04-06,Kashiwa Reysol,Gamba Osaka,1,0,0,1,H
-85,2025-04-06,Sanfrecce Hiroshima,Cerezo Osaka,2,1,1,1,H
-86,2025-04-06,Shonan Bellmare,Nagoya Grampus,2,1,2,0,H
-87,2025-04-06,Kashima,Kyoto Sanga,3,4,2,1,A
-88,2025-04-09,Kawasaki Frontale,Yokohama F. Marinos,3,3,1,2,D
-89,2025-04-11,FC Tokyo,Kashiwa Reysol,1,1,1,0,D
-90,2025-04-12,Sanfrecce Hiroshima,Fagiano Okayama,0,1,0,0,A
-91,2025-04-12,Shimizu S-pulse,Kawasaki Frontale,1,1,0,1,D
-92,2025-04-12,Gamba Osaka,Nagoya Grampus,2,0,0,2,H
-93,2025-04-12,Avispa Fukuoka,Yokohama F. Marinos,2,1,1,1,H
-94,2025-04-12,Cerezo Osaka,Kashima,1,0,0,1,H
-95,2025-04-12,Tokyo Verdy,Vissel Kobe,0,1,0,0,A
-96,2025-04-12,Kyoto Sanga,Shonan Bellmare,2,0,1,1,H
-97,2025-04-13,Machida Zelvia,Urawa,0,2,0,0,A
-98,2025-04-13,Albirex Niigata,Yokohama FC,0,0,0,0,D
-99,2025-04-16,Vissel Kobe,Kawasaki Frontale,2,1,2,0,H
-100,2025-04-16,Yokohama F. Marinos,Shimizu S-pulse,2,3,1,1,A
-101,2025-04-16,Urawa,Kyoto Sanga,2,1,1,1,H
-102,2025-04-19,Albirex Niigata,Kyoto Sanga,1,2,1,0,A
-103,2025-04-20,Shimizu S-pulse,Avispa Fukuoka,3,1,3,0,H
-104,2025-04-20,Nagoya Grampus,Sanfrecce Hiroshima,2,1,1,1,H
-105,2025-04-20,Vissel Kobe,Machida Zelvia,1,0,0,1,H
-106,2025-04-20,Yokohama FC,Gamba Osaka,1,1,1,0,D
-107,2025-04-20,Fagiano Okayama,Kashima,1,2,1,0,A
-108,2025-04-20,Shonan Bellmare,Kashiwa Reysol,0,1,0,0,A
-109,2025-04-20,Cerezo Osaka,FC Tokyo,1,1,1,0,D
-110,2025-04-20,Kawasaki Frontale,Tokyo Verdy,0,0,0,0,D
-111,2025-04-20,Urawa,Yokohama F. Marinos,3,1,1,2,H
-112,2025-04-25,Kashima,Nagoya Grampus,1,0,0,1,H
-113,2025-04-25,Kyoto Sanga,Yokohama FC,2,1,1,1,H
-114,2025-04-25,Machida Zelvia,Shonan Bellmare,0,1,0,0,A
-115,2025-04-25,Tokyo Verdy,Cerezo Osaka,1,0,1,0,H
-116,2025-04-25,Avispa Fukuoka,Fagiano Okayama,1,1,1,0,D
-117,2025-04-25,Urawa,Sanfrecce Hiroshima,1,0,0,1,H
-118,2025-04-25,FC Tokyo,Gamba Osaka,3,0,0,3,H
-119,2025-04-26,Kashiwa Reysol,Albirex Niigata,1,1,1,0,D
-120,2025-04-29,FC Tokyo,Shimizu S-pulse,0,2,0,0,A
-121,2025-04-29,Sanfrecce Hiroshima,Albirex Niigata,0,1,0,0,A
-122,2025-04-29,Nagoya Grampus,Kashiwa Reysol,1,2,1,0,A
-123,2025-04-29,Yokohama FC,Kashima,0,3,0,0,A
-124,2025-04-29,Fagiano Okayama,Tokyo Verdy,0,1,0,0,A
-125,2025-04-29,Shonan Bellmare,Avispa Fukuoka,0,0,0,0,D
-126,2025-04-29,Cerezo Osaka,Machida Zelvia,1,2,0,1,A
-127,2025-04-29,Gamba Osaka,Kyoto Sanga,2,1,2,0,H
-128,2025-05-03,Sanfrecce Hiroshima,Avispa Fukuoka,2,1,0,2,H
-129,2025-05-03,Shimizu S-pulse,Nagoya Grampus,0,3,0,0,A
-130,2025-05-03,Albirex Niigata,FC Tokyo,2,3,0,2,A
-131,2025-05-03,Urawa,Tokyo Verdy,2,0,2,0,H
-132,2025-05-03,Vissel Kobe,Fagiano Okayama,2,0,0,2,H
-133,2025-05-03,Kashima,Machida Zelvia,1,0,1,0,H
-134,2025-05-03,Gamba Osaka,Shonan Bellmare,4,0,4,0,H
-135,2025-05-03,Kyoto Sanga,Cerezo Osaka,2,3,2,0,A
-136,2025-05-06,Urawa,Gamba Osaka,0,1,0,0,A
-137,2025-05-06,Vissel Kobe,Cerezo Osaka,1,3,1,0,A
-138,2025-05-06,Avispa Fukuoka,Kashima,0,1,0,0,A
-139,2025-05-06,Nagoya Grampus,Fagiano Okayama,0,0,0,0,D
-140,2025-05-06,Kashiwa Reysol,Shimizu S-pulse,1,0,0,1,H
-141,2025-05-06,Tokyo Verdy,Yokohama FC,2,0,1,1,H
-142,2025-05-07,Shonan Bellmare,Sanfrecce Hiroshima,0,1,0,0,A
-143,2025-05-07,Machida Zelvia,Kyoto Sanga,1,2,1,0,A
-144,2025-05-10,Yokohama FC,Avispa Fukuoka,1,0,0,1,H
-145,2025-05-10,FC Tokyo,Vissel Kobe,1,0,0,1,H
-146,2025-05-10,Kashiwa Reysol,Fagiano Okayama,2,0,0,2,H
-147,2025-05-11,Shimizu S-pulse,Machida Zelvia,2,2,0,2,D
-148,2025-05-11,Kashima,Kawasaki Frontale,2,1,1,1,H
-149,2025-05-11,Kyoto Sanga,Nagoya Grampus,1,1,0,1,D
-150,2025-05-11,Albirex Niigata,Urawa,1,1,0,1,D
-151,2025-05-11,Cerezo Osaka,Yokohama F. Marinos,1,0,1,0,H
-152,2025-05-11,Gamba Osaka,Sanfrecce Hiroshima,0,1,0,0,A
-153,2025-05-11,Tokyo Verdy,Shonan Bellmare,0,2,0,0,A
-154,2025-05-14,Kawasaki Frontale,Yokohama FC,2,1,1,1,H
-155,2025-05-14,Yokohama F. Marinos,Kashiwa Reysol,0,2,0,0,A
-156,2025-05-17,Sanfrecce Hiroshima,Tokyo Verdy,2,1,0,2,H
-157,2025-05-17,Vissel Kobe,Gamba Osaka,3,2,0,3,H
-158,2025-05-17,Yokohama F. Marinos,Kyoto Sanga,0,3,0,0,A
-159,2025-05-17,Machida Zelvia,Kashiwa Reysol,3,0,3,0,H
-160,2025-05-17,Avispa Fukuoka,Nagoya Grampus,1,1,0,1,D
-161,2025-05-17,Shonan Bellmare,Yokohama FC,0,1,0,0,A
-162,2025-05-17,Kashima,Shimizu S-pulse,1,0,1,0,H
-163,2025-05-17,Urawa,FC Tokyo,3,2,1,2,H
-164,2025-05-18,Kawasaki Frontale,Cerezo Osaka,2,0,0,2,H
-165,2025-05-18,Fagiano Okayama,Albirex Niigata,2,1,1,1,H
-166,2025-05-21,Kawasaki Frontale,Urawa,2,2,1,1,D
-167,2025-05-21,Yokohama F. Marinos,Vissel Kobe,1,2,1,0,A
-168,2025-05-24,Cerezo Osaka,Avispa Fukuoka,2,0,0,2,H
-169,2025-05-24,Nagoya Grampus,Urawa,2,1,0,2,H
-170,2025-05-25,Fagiano Okayama,Machida Zelvia,2,2,1,1,D
-171,2025-05-25,Shimizu S-pulse,Vissel Kobe,3,2,2,1,H
-172,2025-05-25,Yokohama F. Marinos,Kashima,3,1,3,0,H
-173,2025-05-25,Yokohama FC,Kashiwa Reysol,1,1,1,0,D
-174,2025-05-25,Albirex Niigata,Shonan Bellmare,2,1,1,1,H
-175,2025-05-25,FC Tokyo,Sanfrecce Hiroshima,0,3,0,0,A
-176,2025-05-25,Tokyo Verdy,Kyoto Sanga,1,0,0,1,H
-177,2025-05-25,Kawasaki Frontale,Gamba Osaka,2,2,1,1,D
-178,2025-05-28,Urawa,Cerezo Osaka,0,0,0,0,D
-179,2025-05-31,Nagoya Grampus,Albirex Niigata,3,0,0,3,H
-180,2025-05-31,Machida Zelvia,Yokohama F. Marinos,0,3,0,0,A
-181,2025-05-31,Avispa Fukuoka,Tokyo Verdy,0,0,0,0,D
-182,2025-05-31,Kashiwa Reysol,Vissel Kobe,1,3,1,0,A
-183,2025-05-31,Sanfrecce Hiroshima,Kawasaki Frontale,1,2,0,1,A
-184,2025-05-31,Gamba Osaka,Kashima,0,1,0,0,A
-185,2025-05-31,Kyoto Sanga,FC Tokyo,3,0,1,2,H
-186,2025-06-01,Shonan Bellmare,Fagiano Okayama,1,1,0,1,D
-187,2025-06-01,Cerezo Osaka,Shimizu S-pulse,4,2,2,2,H
-188,2025-06-01,Urawa,Yokohama FC,2,1,0,2,H
-189,2025-06-14,Shonan Bellmare,Machida Zelvia,1,2,0,1,A
-190,2025-06-14,Kashima,Sanfrecce Hiroshima,1,1,0,1,D
-191,2025-06-14,Yokohama FC,Kawasaki Frontale,0,1,0,0,A
-192,2025-06-14,FC Tokyo,Cerezo Osaka,2,2,1,1,D
-193,2025-06-15,Albirex Niigata,Yokohama F. Marinos,1,0,0,1,H
-194,2025-06-15,Vissel Kobe,Nagoya Grampus,2,1,2,0,H
-195,2025-06-15,Tokyo Verdy,Kashiwa Reysol,0,3,0,0,A
-196,2025-06-15,Fagiano Okayama,Avispa Fukuoka,0,1,0,0,A
-197,2025-06-15,Shimizu S-pulse,Gamba Osaka,0,0,0,0,D
-198,2025-06-21,Machida Zelvia,Kashima,2,1,2,0,H
-199,2025-06-21,Avispa Fukuoka,Albirex Niigata,3,2,3,0,H
-200,2025-06-21,Cerezo Osaka,Tokyo Verdy,2,1,1,1,H
-201,2025-06-21,Kashiwa Reysol,Kyoto Sanga,3,3,2,1,D
-202,2025-06-21,Nagoya Grampus,Shimizu S-pulse,1,1,0,1,D
-203,2025-06-21,Kawasaki Frontale,Vissel Kobe,1,2,1,0,A
-204,2025-06-21,Yokohama F. Marinos,Fagiano Okayama,0,1,0,0,A
-205,2025-06-22,Yokohama FC,Sanfrecce Hiroshima,0,4,0,0,A
-206,2025-06-22,Gamba Osaka,FC Tokyo,2,0,1,1,H
-207,2025-06-25,Kawasaki Frontale,Albirex Niigata,3,1,2,1,H
-208,2025-06-25,Yokohama F. Marinos,FC Tokyo,0,3,0,0,A
-209,2025-06-28,Kashima,Fagiano Okayama,1,2,1,0,A
-210,2025-06-28,Shimizu S-pulse,Kashiwa Reysol,0,2,0,0,A
-211,2025-06-28,Sanfrecce Hiroshima,Nagoya Grampus,1,2,0,1,A
-212,2025-06-28,Shonan Bellmare,Yokohama F. Marinos,1,1,1,0,D
-213,2025-06-28,FC Tokyo,Yokohama FC,2,1,0,2,H
-214,2025-06-28,Kyoto Sanga,Gamba Osaka,3,1,2,1,H
-215,2025-06-28,Avispa Fukuoka,Vissel Kobe,0,0,0,0,D
-216,2025-06-29,Tokyo Verdy,Kawasaki Frontale,1,0,1,0,H
-217,2025-06-29,Albirex Niigata,Machida Zelvia,0,4,0,0,A
-218,2025-07-02,Vissel Kobe,Sanfrecce Hiroshima,1,0,0,1,H
-219,2025-07-05,Machida Zelvia,Shimizu S-pulse,3,0,1,2,H
-220,2025-07-05,Fagiano Okayama,Sanfrecce Hiroshima,0,1,0,0,A
-221,2025-07-05,Kashiwa Reysol,FC Tokyo,1,0,0,1,H
-222,2025-07-05,Nagoya Grampus,Tokyo Verdy,0,0,0,0,D
-223,2025-07-05,Vissel Kobe,Shonan Bellmare,4,0,1,3,H
-224,2025-07-05,Cerezo Osaka,Gamba Osaka,0,1,0,0,A
-225,2025-07-05,Kawasaki Frontale,Kashima,2,1,1,1,H
-226,2025-07-05,Kyoto Sanga,Albirex Niigata,2,1,2,0,H
-227,2025-07-05,Yokohama FC,Yokohama F. Marinos,0,1,0,0,A
-228,2025-07-19,Shonan Bellmare,Cerezo Osaka,3,3,2,1,D
-229,2025-07-19,FC Tokyo,Urawa,3,2,1,2,H
-230,2025-07-20,Kashima,Kashiwa Reysol,3,2,2,1,H
-231,2025-07-20,Tokyo Verdy,Machida Zelvia,0,1,0,0,A
-232,2025-07-20,Shimizu S-pulse,Yokohama FC,2,0,0,2,H
-233,2025-07-20,Gamba Osaka,Kawasaki Frontale,2,1,1,1,H
-234,2025-07-20,Yokohama F. Marinos,Nagoya Grampus,3,0,2,1,H
-235,2025-07-20,Fagiano Okayama,Vissel Kobe,1,2,0,1,A
-236,2025-07-20,Albirex Niigata,Sanfrecce Hiroshima,0,2,0,0,A
-237,2025-07-21,Avispa Fukuoka,Kyoto Sanga,2,2,0,2,D
-238,2025-07-23,Urawa,Shonan Bellmare,4,1,2,2,H
-239,2025-07-27,Urawa,Avispa Fukuoka,0,0,0,0,D
-240,2025-08-09,Tokyo Verdy,Yokohama F. Marinos,1,0,0,1,H
-241,2025-08-09,Yokohama FC,Urawa,1,2,0,1,A
-242,2025-08-09,Kawasaki Frontale,Avispa Fukuoka,2,5,2,0,A
-243,2025-08-10,Sanfrecce Hiroshima,Shimizu S-pulse,0,0,0,0,D
-244,2025-08-10,Kashiwa Reysol,Shonan Bellmare,2,0,1,1,H
-245,2025-08-10,Nagoya Grampus,Kyoto Sanga,1,2,0,1,A
-246,2025-08-10,FC Tokyo,Kashima,0,1,0,0,A
-247,2025-08-10,Gamba Osaka,Fagiano Okayama,0,3,0,0,A
-248,2025-08-10,Machida Zelvia,Vissel Kobe,2,0,2,0,H
-249,2025-08-11,Cerezo Osaka,Albirex Niigata,3,1,1,2,H
+,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+130,JAPO,2025-02-14,Gamba Osaka,Cerezo Osaka,2,5,1,1,A
+131,JAPO,2025-02-15,Vissel Kobe,Urawa,0,0,0,0,D
+132,JAPO,2025-02-15,Yokohama F. Marinos,Albirex Niigata,1,1,0,1,D
+133,JAPO,2025-02-15,Yokohama FC,FC Tokyo,0,1,0,0,A
+134,JAPO,2025-02-15,Fagiano Okayama,Kyoto Sanga,2,0,2,0,H
+135,JAPO,2025-02-15,Avispa Fukuoka,Kashiwa Reysol,0,1,0,0,A
+136,JAPO,2025-02-15,Shonan Bellmare,Kashima,1,0,0,1,H
+137,JAPO,2025-02-15,Kawasaki Frontale,Nagoya Grampus,4,0,0,4,H
+138,JAPO,2025-02-16,Machida Zelvia,Sanfrecce Hiroshima,1,2,1,0,A
+139,JAPO,2025-02-16,Tokyo Verdy,Shimizu S-pulse,0,1,0,0,A
+140,JAPO,2025-02-22,Kashiwa Reysol,Kawasaki Frontale,1,1,0,1,D
+141,JAPO,2025-02-22,Shimizu S-pulse,Albirex Niigata,2,0,1,1,H
+142,JAPO,2025-02-22,Nagoya Grampus,Vissel Kobe,2,2,0,2,D
+143,JAPO,2025-02-22,Kyoto Sanga,Urawa,1,1,0,1,D
+144,JAPO,2025-02-22,Yokohama FC,Fagiano Okayama,1,0,0,1,H
+145,JAPO,2025-02-22,Kashima,Tokyo Verdy,4,0,3,1,H
+146,JAPO,2025-02-22,Cerezo Osaka,Shonan Bellmare,1,2,0,1,A
+147,JAPO,2025-02-22,FC Tokyo,Machida Zelvia,0,1,0,0,A
+148,JAPO,2025-02-22,Gamba Osaka,Avispa Fukuoka,2,1,1,1,H
+149,JAPO,2025-02-23,Sanfrecce Hiroshima,Yokohama F. Marinos,1,0,0,1,H
+150,JAPO,2025-02-26,Kashiwa Reysol,Cerezo Osaka,2,1,0,2,H
+151,JAPO,2025-02-26,Shimizu S-pulse,Sanfrecce Hiroshima,1,1,1,0,D
+152,JAPO,2025-02-26,Shonan Bellmare,Urawa,2,1,1,1,H
+153,JAPO,2025-02-26,Vissel Kobe,Kyoto Sanga,1,1,0,1,D
+154,JAPO,2025-02-26,Kashima,Albirex Niigata,2,1,1,1,H
+155,JAPO,2025-02-26,FC Tokyo,Nagoya Grampus,3,1,1,2,H
+156,JAPO,2025-02-26,Yokohama F. Marinos,Yokohama FC,0,0,0,0,D
+157,JAPO,2025-02-26,Machida Zelvia,Tokyo Verdy,0,1,0,0,A
+158,JAPO,2025-02-26,Fagiano Okayama,Gamba Osaka,2,0,1,1,H
+159,JAPO,2025-02-26,Avispa Fukuoka,Kawasaki Frontale,1,2,1,0,A
+160,JAPO,2025-03-01,Yokohama F. Marinos,Shonan Bellmare,1,1,1,0,D
+161,JAPO,2025-03-01,Kashima,FC Tokyo,2,0,0,2,H
+162,JAPO,2025-03-01,Vissel Kobe,Avispa Fukuoka,0,1,0,0,A
+163,JAPO,2025-03-01,Kawasaki Frontale,Kyoto Sanga,0,1,0,0,A
+164,JAPO,2025-03-02,Nagoya Grampus,Machida Zelvia,1,2,1,0,A
+165,JAPO,2025-03-02,Tokyo Verdy,Gamba Osaka,0,1,0,0,A
+166,JAPO,2025-03-02,Fagiano Okayama,Shimizu S-pulse,1,1,0,1,D
+167,JAPO,2025-03-02,Albirex Niigata,Cerezo Osaka,2,2,1,1,D
+168,JAPO,2025-03-02,Sanfrecce Hiroshima,Yokohama FC,1,0,0,1,H
+169,JAPO,2025-03-02,Urawa,Kashiwa Reysol,0,2,0,0,A
+170,JAPO,2025-03-08,Urawa,Fagiano Okayama,1,0,0,1,H
+171,JAPO,2025-03-08,Albirex Niigata,Tokyo Verdy,2,2,1,1,D
+172,JAPO,2025-03-08,Gamba Osaka,Shimizu S-pulse,1,0,1,0,H
+173,JAPO,2025-03-08,Kashiwa Reysol,Kashima,1,3,0,1,A
+174,JAPO,2025-03-08,Cerezo Osaka,Nagoya Grampus,1,1,1,0,D
+175,JAPO,2025-03-08,FC Tokyo,Shonan Bellmare,0,0,0,0,D
+176,JAPO,2025-03-08,Yokohama FC,Machida Zelvia,0,2,0,0,A
+177,JAPO,2025-03-09,Kyoto Sanga,Avispa Fukuoka,0,1,0,0,A
+178,JAPO,2025-03-15,Machida Zelvia,Albirex Niigata,1,0,1,0,H
+179,JAPO,2025-03-15,Tokyo Verdy,Nagoya Grampus,2,1,0,2,H
+180,JAPO,2025-03-15,Yokohama FC,Cerezo Osaka,2,0,1,1,H
+181,JAPO,2025-03-15,Avispa Fukuoka,FC Tokyo,1,0,0,1,H
+182,JAPO,2025-03-16,Shimizu S-pulse,Kyoto Sanga,1,2,0,1,A
+183,JAPO,2025-03-16,Sanfrecce Hiroshima,Kashiwa Reysol,1,1,0,1,D
+184,JAPO,2025-03-16,Kashima,Urawa,1,1,0,1,D
+185,JAPO,2025-03-16,Yokohama F. Marinos,Gamba Osaka,2,0,1,1,H
+186,JAPO,2025-03-16,Fagiano Okayama,Kawasaki Frontale,0,0,0,0,D
+187,JAPO,2025-03-16,Shonan Bellmare,Vissel Kobe,1,2,0,1,A
+188,JAPO,2025-03-28,Cerezo Osaka,Urawa,1,1,1,0,D
+189,JAPO,2025-03-29,Fagiano Okayama,Yokohama F. Marinos,1,0,0,1,H
+190,JAPO,2025-03-29,Shimizu S-pulse,Shonan Bellmare,3,0,2,1,H
+191,JAPO,2025-03-29,Kashiwa Reysol,Tokyo Verdy,0,0,0,0,D
+192,JAPO,2025-03-29,Nagoya Grampus,Yokohama FC,2,1,1,1,H
+193,JAPO,2025-03-29,Kyoto Sanga,Sanfrecce Hiroshima,1,0,0,1,H
+194,JAPO,2025-03-29,Albirex Niigata,Gamba Osaka,3,3,1,2,D
+195,JAPO,2025-03-29,Kashima,Vissel Kobe,1,0,1,0,H
+196,JAPO,2025-03-29,Avispa Fukuoka,Machida Zelvia,2,2,1,1,D
+197,JAPO,2025-03-29,FC Tokyo,Kawasaki Frontale,0,3,0,0,A
+198,JAPO,2025-04-02,Sanfrecce Hiroshima,Kashima,1,0,1,0,H
+199,JAPO,2025-04-02,Nagoya Grampus,Yokohama F. Marinos,2,0,0,2,H
+200,JAPO,2025-04-02,Cerezo Osaka,Fagiano Okayama,2,1,2,0,H
+201,JAPO,2025-04-02,Gamba Osaka,Machida Zelvia,0,1,0,0,A
+202,JAPO,2025-04-02,Kawasaki Frontale,Shonan Bellmare,2,0,0,2,H
+203,JAPO,2025-04-02,Kyoto Sanga,Kashiwa Reysol,1,1,0,1,D
+204,JAPO,2025-04-02,Tokyo Verdy,FC Tokyo,2,2,1,1,D
+205,JAPO,2025-04-02,Yokohama FC,Vissel Kobe,0,1,0,0,A
+206,JAPO,2025-04-02,Albirex Niigata,Avispa Fukuoka,0,1,0,0,A
+207,JAPO,2025-04-02,Urawa,Shimizu S-pulse,2,1,1,1,H
+208,JAPO,2025-04-05,Yokohama F. Marinos,Tokyo Verdy,0,0,0,0,D
+209,JAPO,2025-04-06,Fagiano Okayama,FC Tokyo,1,0,0,1,H
+210,JAPO,2025-04-06,Vissel Kobe,Albirex Niigata,0,1,0,0,A
+211,JAPO,2025-04-06,Machida Zelvia,Kawasaki Frontale,2,2,1,1,D
+212,JAPO,2025-04-06,Yokohama FC,Shimizu S-pulse,2,0,0,2,H
+213,JAPO,2025-04-06,Avispa Fukuoka,Urawa,1,0,0,1,H
+214,JAPO,2025-04-06,Kashiwa Reysol,Gamba Osaka,1,0,0,1,H
+215,JAPO,2025-04-06,Sanfrecce Hiroshima,Cerezo Osaka,2,1,1,1,H
+216,JAPO,2025-04-06,Shonan Bellmare,Nagoya Grampus,2,1,2,0,H
+217,JAPO,2025-04-06,Kashima,Kyoto Sanga,3,4,2,1,A
+218,JAPO,2025-04-09,Kawasaki Frontale,Yokohama F. Marinos,3,3,1,2,D
+219,JAPO,2025-04-11,FC Tokyo,Kashiwa Reysol,1,1,1,0,D
+220,JAPO,2025-04-12,Sanfrecce Hiroshima,Fagiano Okayama,0,1,0,0,A
+221,JAPO,2025-04-12,Shimizu S-pulse,Kawasaki Frontale,1,1,0,1,D
+222,JAPO,2025-04-12,Gamba Osaka,Nagoya Grampus,2,0,0,2,H
+223,JAPO,2025-04-12,Avispa Fukuoka,Yokohama F. Marinos,2,1,1,1,H
+224,JAPO,2025-04-12,Cerezo Osaka,Kashima,1,0,0,1,H
+225,JAPO,2025-04-12,Tokyo Verdy,Vissel Kobe,0,1,0,0,A
+226,JAPO,2025-04-12,Kyoto Sanga,Shonan Bellmare,2,0,1,1,H
+227,JAPO,2025-04-13,Machida Zelvia,Urawa,0,2,0,0,A
+228,JAPO,2025-04-13,Albirex Niigata,Yokohama FC,0,0,0,0,D
+229,JAPO,2025-04-16,Vissel Kobe,Kawasaki Frontale,2,1,2,0,H
+230,JAPO,2025-04-16,Yokohama F. Marinos,Shimizu S-pulse,2,3,1,1,A
+231,JAPO,2025-04-16,Urawa,Kyoto Sanga,2,1,1,1,H
+232,JAPO,2025-04-19,Albirex Niigata,Kyoto Sanga,1,2,1,0,A
+233,JAPO,2025-04-20,Shimizu S-pulse,Avispa Fukuoka,3,1,3,0,H
+234,JAPO,2025-04-20,Nagoya Grampus,Sanfrecce Hiroshima,2,1,1,1,H
+235,JAPO,2025-04-20,Vissel Kobe,Machida Zelvia,1,0,0,1,H
+236,JAPO,2025-04-20,Yokohama FC,Gamba Osaka,1,1,1,0,D
+237,JAPO,2025-04-20,Fagiano Okayama,Kashima,1,2,1,0,A
+238,JAPO,2025-04-20,Shonan Bellmare,Kashiwa Reysol,0,1,0,0,A
+239,JAPO,2025-04-20,Cerezo Osaka,FC Tokyo,1,1,1,0,D
+240,JAPO,2025-04-20,Kawasaki Frontale,Tokyo Verdy,0,0,0,0,D
+241,JAPO,2025-04-20,Urawa,Yokohama F. Marinos,3,1,1,2,H
+242,JAPO,2025-04-25,Kashima,Nagoya Grampus,1,0,0,1,H
+243,JAPO,2025-04-25,Kyoto Sanga,Yokohama FC,2,1,1,1,H
+244,JAPO,2025-04-25,Machida Zelvia,Shonan Bellmare,0,1,0,0,A
+245,JAPO,2025-04-25,Tokyo Verdy,Cerezo Osaka,1,0,1,0,H
+246,JAPO,2025-04-25,Avispa Fukuoka,Fagiano Okayama,1,1,1,0,D
+247,JAPO,2025-04-25,Urawa,Sanfrecce Hiroshima,1,0,0,1,H
+248,JAPO,2025-04-25,FC Tokyo,Gamba Osaka,3,0,0,3,H
+249,JAPO,2025-04-26,Kashiwa Reysol,Albirex Niigata,1,1,1,0,D
+250,JAPO,2025-04-29,FC Tokyo,Shimizu S-pulse,0,2,0,0,A
+251,JAPO,2025-04-29,Sanfrecce Hiroshima,Albirex Niigata,0,1,0,0,A
+252,JAPO,2025-04-29,Nagoya Grampus,Kashiwa Reysol,1,2,1,0,A
+253,JAPO,2025-04-29,Yokohama FC,Kashima,0,3,0,0,A
+254,JAPO,2025-04-29,Fagiano Okayama,Tokyo Verdy,0,1,0,0,A
+255,JAPO,2025-04-29,Shonan Bellmare,Avispa Fukuoka,0,0,0,0,D
+256,JAPO,2025-04-29,Cerezo Osaka,Machida Zelvia,1,2,0,1,A
+257,JAPO,2025-04-29,Gamba Osaka,Kyoto Sanga,2,1,2,0,H
+258,JAPO,2025-05-03,Sanfrecce Hiroshima,Avispa Fukuoka,2,1,0,2,H
+259,JAPO,2025-05-03,Shimizu S-pulse,Nagoya Grampus,0,3,0,0,A
+260,JAPO,2025-05-03,Albirex Niigata,FC Tokyo,2,3,0,2,A
+261,JAPO,2025-05-03,Urawa,Tokyo Verdy,2,0,2,0,H
+262,JAPO,2025-05-03,Vissel Kobe,Fagiano Okayama,2,0,0,2,H
+263,JAPO,2025-05-03,Kashima,Machida Zelvia,1,0,1,0,H
+264,JAPO,2025-05-03,Gamba Osaka,Shonan Bellmare,4,0,4,0,H
+265,JAPO,2025-05-03,Kyoto Sanga,Cerezo Osaka,2,3,2,0,A
+266,JAPO,2025-05-06,Urawa,Gamba Osaka,0,1,0,0,A
+267,JAPO,2025-05-06,Vissel Kobe,Cerezo Osaka,1,3,1,0,A
+268,JAPO,2025-05-06,Avispa Fukuoka,Kashima,0,1,0,0,A
+269,JAPO,2025-05-06,Nagoya Grampus,Fagiano Okayama,0,0,0,0,D
+270,JAPO,2025-05-06,Kashiwa Reysol,Shimizu S-pulse,1,0,0,1,H
+271,JAPO,2025-05-06,Tokyo Verdy,Yokohama FC,2,0,1,1,H
+272,JAPO,2025-05-07,Shonan Bellmare,Sanfrecce Hiroshima,0,1,0,0,A
+273,JAPO,2025-05-07,Machida Zelvia,Kyoto Sanga,1,2,1,0,A
+274,JAPO,2025-05-10,Yokohama FC,Avispa Fukuoka,1,0,0,1,H
+275,JAPO,2025-05-10,FC Tokyo,Vissel Kobe,1,0,0,1,H
+276,JAPO,2025-05-10,Kashiwa Reysol,Fagiano Okayama,2,0,0,2,H
+277,JAPO,2025-05-11,Shimizu S-pulse,Machida Zelvia,2,2,0,2,D
+278,JAPO,2025-05-11,Kashima,Kawasaki Frontale,2,1,1,1,H
+279,JAPO,2025-05-11,Kyoto Sanga,Nagoya Grampus,1,1,0,1,D
+280,JAPO,2025-05-11,Albirex Niigata,Urawa,1,1,0,1,D
+281,JAPO,2025-05-11,Cerezo Osaka,Yokohama F. Marinos,1,0,1,0,H
+282,JAPO,2025-05-11,Gamba Osaka,Sanfrecce Hiroshima,0,1,0,0,A
+283,JAPO,2025-05-11,Tokyo Verdy,Shonan Bellmare,0,2,0,0,A
+284,JAPO,2025-05-14,Kawasaki Frontale,Yokohama FC,2,1,1,1,H
+285,JAPO,2025-05-14,Yokohama F. Marinos,Kashiwa Reysol,0,2,0,0,A
+286,JAPO,2025-05-17,Sanfrecce Hiroshima,Tokyo Verdy,2,1,0,2,H
+287,JAPO,2025-05-17,Vissel Kobe,Gamba Osaka,3,2,0,3,H
+288,JAPO,2025-05-17,Yokohama F. Marinos,Kyoto Sanga,0,3,0,0,A
+289,JAPO,2025-05-17,Machida Zelvia,Kashiwa Reysol,3,0,3,0,H
+290,JAPO,2025-05-17,Avispa Fukuoka,Nagoya Grampus,1,1,0,1,D
+291,JAPO,2025-05-17,Shonan Bellmare,Yokohama FC,0,1,0,0,A
+292,JAPO,2025-05-17,Kashima,Shimizu S-pulse,1,0,1,0,H
+293,JAPO,2025-05-17,Urawa,FC Tokyo,3,2,1,2,H
+294,JAPO,2025-05-18,Kawasaki Frontale,Cerezo Osaka,2,0,0,2,H
+295,JAPO,2025-05-18,Fagiano Okayama,Albirex Niigata,2,1,1,1,H
+296,JAPO,2025-05-21,Kawasaki Frontale,Urawa,2,2,1,1,D
+297,JAPO,2025-05-21,Yokohama F. Marinos,Vissel Kobe,1,2,1,0,A
+298,JAPO,2025-05-24,Cerezo Osaka,Avispa Fukuoka,2,0,0,2,H
+299,JAPO,2025-05-24,Nagoya Grampus,Urawa,2,1,0,2,H
+300,JAPO,2025-05-25,Fagiano Okayama,Machida Zelvia,2,2,1,1,D
+301,JAPO,2025-05-25,Shimizu S-pulse,Vissel Kobe,3,2,2,1,H
+302,JAPO,2025-05-25,Yokohama F. Marinos,Kashima,3,1,3,0,H
+303,JAPO,2025-05-25,Yokohama FC,Kashiwa Reysol,1,1,1,0,D
+304,JAPO,2025-05-25,Albirex Niigata,Shonan Bellmare,2,1,1,1,H
+305,JAPO,2025-05-25,FC Tokyo,Sanfrecce Hiroshima,0,3,0,0,A
+306,JAPO,2025-05-25,Tokyo Verdy,Kyoto Sanga,1,0,0,1,H
+307,JAPO,2025-05-25,Kawasaki Frontale,Gamba Osaka,2,2,1,1,D
+308,JAPO,2025-05-28,Urawa,Cerezo Osaka,0,0,0,0,D
+309,JAPO,2025-05-31,Nagoya Grampus,Albirex Niigata,3,0,0,3,H
+310,JAPO,2025-05-31,Machida Zelvia,Yokohama F. Marinos,0,3,0,0,A
+311,JAPO,2025-05-31,Avispa Fukuoka,Tokyo Verdy,0,0,0,0,D
+312,JAPO,2025-05-31,Kashiwa Reysol,Vissel Kobe,1,3,1,0,A
+313,JAPO,2025-05-31,Sanfrecce Hiroshima,Kawasaki Frontale,1,2,0,1,A
+314,JAPO,2025-05-31,Gamba Osaka,Kashima,0,1,0,0,A
+315,JAPO,2025-05-31,Kyoto Sanga,FC Tokyo,3,0,1,2,H
+316,JAPO,2025-06-01,Shonan Bellmare,Fagiano Okayama,1,1,0,1,D
+317,JAPO,2025-06-01,Cerezo Osaka,Shimizu S-pulse,4,2,2,2,H
+318,JAPO,2025-06-01,Urawa,Yokohama FC,2,1,0,2,H
+319,JAPO,2025-06-14,Shonan Bellmare,Machida Zelvia,1,2,0,1,A
+320,JAPO,2025-06-14,Kashima,Sanfrecce Hiroshima,1,1,0,1,D
+321,JAPO,2025-06-14,Yokohama FC,Kawasaki Frontale,0,1,0,0,A
+322,JAPO,2025-06-14,FC Tokyo,Cerezo Osaka,2,2,1,1,D
+323,JAPO,2025-06-15,Albirex Niigata,Yokohama F. Marinos,1,0,0,1,H
+324,JAPO,2025-06-15,Vissel Kobe,Nagoya Grampus,2,1,2,0,H
+325,JAPO,2025-06-15,Tokyo Verdy,Kashiwa Reysol,0,3,0,0,A
+326,JAPO,2025-06-15,Fagiano Okayama,Avispa Fukuoka,0,1,0,0,A
+327,JAPO,2025-06-15,Shimizu S-pulse,Gamba Osaka,0,0,0,0,D
+328,JAPO,2025-06-21,Machida Zelvia,Kashima,2,1,2,0,H
+329,JAPO,2025-06-21,Avispa Fukuoka,Albirex Niigata,3,2,3,0,H
+330,JAPO,2025-06-21,Cerezo Osaka,Tokyo Verdy,2,1,1,1,H
+331,JAPO,2025-06-21,Kashiwa Reysol,Kyoto Sanga,3,3,2,1,D
+332,JAPO,2025-06-21,Nagoya Grampus,Shimizu S-pulse,1,1,0,1,D
+333,JAPO,2025-06-21,Kawasaki Frontale,Vissel Kobe,1,2,1,0,A
+334,JAPO,2025-06-21,Yokohama F. Marinos,Fagiano Okayama,0,1,0,0,A
+335,JAPO,2025-06-22,Yokohama FC,Sanfrecce Hiroshima,0,4,0,0,A
+336,JAPO,2025-06-22,Gamba Osaka,FC Tokyo,2,0,1,1,H
+337,JAPO,2025-06-25,Kawasaki Frontale,Albirex Niigata,3,1,2,1,H
+338,JAPO,2025-06-25,Yokohama F. Marinos,FC Tokyo,0,3,0,0,A
+339,JAPO,2025-06-28,Kashima,Fagiano Okayama,1,2,1,0,A
+340,JAPO,2025-06-28,Shimizu S-pulse,Kashiwa Reysol,0,2,0,0,A
+341,JAPO,2025-06-28,Sanfrecce Hiroshima,Nagoya Grampus,1,2,0,1,A
+342,JAPO,2025-06-28,Shonan Bellmare,Yokohama F. Marinos,1,1,1,0,D
+343,JAPO,2025-06-28,FC Tokyo,Yokohama FC,2,1,0,2,H
+344,JAPO,2025-06-28,Kyoto Sanga,Gamba Osaka,3,1,2,1,H
+345,JAPO,2025-06-28,Avispa Fukuoka,Vissel Kobe,0,0,0,0,D
+346,JAPO,2025-06-29,Tokyo Verdy,Kawasaki Frontale,1,0,1,0,H
+347,JAPO,2025-06-29,Albirex Niigata,Machida Zelvia,0,4,0,0,A
+348,JAPO,2025-07-02,Vissel Kobe,Sanfrecce Hiroshima,1,0,0,1,H
+349,JAPO,2025-07-05,Machida Zelvia,Shimizu S-pulse,3,0,1,2,H
+350,JAPO,2025-07-05,Fagiano Okayama,Sanfrecce Hiroshima,0,1,0,0,A
+351,JAPO,2025-07-05,Kashiwa Reysol,FC Tokyo,1,0,0,1,H
+352,JAPO,2025-07-05,Nagoya Grampus,Tokyo Verdy,0,0,0,0,D
+353,JAPO,2025-07-05,Vissel Kobe,Shonan Bellmare,4,0,1,3,H
+354,JAPO,2025-07-05,Cerezo Osaka,Gamba Osaka,0,1,0,0,A
+355,JAPO,2025-07-05,Kawasaki Frontale,Kashima,2,1,1,1,H
+356,JAPO,2025-07-05,Kyoto Sanga,Albirex Niigata,2,1,2,0,H
+357,JAPO,2025-07-05,Yokohama FC,Yokohama F. Marinos,0,1,0,0,A
+358,JAPO,2025-07-19,Shonan Bellmare,Cerezo Osaka,3,3,2,1,D
+359,JAPO,2025-07-19,FC Tokyo,Urawa,3,2,1,2,H
+360,JAPO,2025-07-20,Kashima,Kashiwa Reysol,3,2,2,1,H
+361,JAPO,2025-07-20,Tokyo Verdy,Machida Zelvia,0,1,0,0,A
+362,JAPO,2025-07-20,Shimizu S-pulse,Yokohama FC,2,0,0,2,H
+363,JAPO,2025-07-20,Gamba Osaka,Kawasaki Frontale,2,1,1,1,H
+364,JAPO,2025-07-20,Yokohama F. Marinos,Nagoya Grampus,3,0,2,1,H
+365,JAPO,2025-07-20,Fagiano Okayama,Vissel Kobe,1,2,0,1,A
+366,JAPO,2025-07-20,Albirex Niigata,Sanfrecce Hiroshima,0,2,0,0,A
+367,JAPO,2025-07-21,Avispa Fukuoka,Kyoto Sanga,2,2,0,2,D
+368,JAPO,2025-07-23,Urawa,Shonan Bellmare,4,1,2,2,H
+369,JAPO,2025-07-27,Urawa,Avispa Fukuoka,0,0,0,0,D
+370,JAPO,2025-08-09,Tokyo Verdy,Yokohama F. Marinos,1,0,0,1,H
+371,JAPO,2025-08-09,Yokohama FC,Urawa,1,2,0,1,A
+372,JAPO,2025-08-09,Kawasaki Frontale,Avispa Fukuoka,2,5,2,0,A
+373,JAPO,2025-08-10,Sanfrecce Hiroshima,Shimizu S-pulse,0,0,0,0,D
+374,JAPO,2025-08-10,Kashiwa Reysol,Shonan Bellmare,2,0,1,1,H
+375,JAPO,2025-08-10,Nagoya Grampus,Kyoto Sanga,1,2,0,1,A
+376,JAPO,2025-08-10,FC Tokyo,Kashima,0,1,0,0,A
+377,JAPO,2025-08-10,Gamba Osaka,Fagiano Okayama,0,3,0,0,A
+378,JAPO,2025-08-10,Machida Zelvia,Vissel Kobe,2,0,2,0,H
+379,JAPO,2025-08-11,Cerezo Osaka,Albirex Niigata,3,1,1,2,H
+380,JAPO,2025-08-16,Kashima,Avispa Fukuoka,1,1,0,1,D
+381,JAPO,2025-08-16,Shimizu S-pulse,Yokohama F. Marinos,1,3,0,1,A
+382,JAPO,2025-08-16,Sanfrecce Hiroshima,Gamba Osaka,1,0,1,0,H
+383,JAPO,2025-08-16,Shonan Bellmare,FC Tokyo,2,2,0,2,D
+384,JAPO,2025-08-16,Urawa,Nagoya Grampus,2,1,2,0,H
+385,JAPO,2025-08-16,Vissel Kobe,Yokohama FC,0,1,0,0,A
+386,JAPO,2025-08-16,Kyoto Sanga,Tokyo Verdy,1,0,0,1,H
+387,JAPO,2025-08-16,Machida Zelvia,Cerezo Osaka,3,0,2,1,H
+388,JAPO,2025-08-16,Albirex Niigata,Kawasaki Frontale,1,1,1,0,D
+389,JAPO,2025-08-17,Fagiano Okayama,Kashiwa Reysol,2,1,1,1,H
+390,JAPO,2025-08-20,Sanfrecce Hiroshima,Vissel Kobe,0,1,0,0,A
+391,JAPO,2025-08-20,Machida Zelvia,Gamba Osaka,3,1,1,2,H
