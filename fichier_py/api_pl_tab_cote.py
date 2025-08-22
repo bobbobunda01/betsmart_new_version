@@ -18,9 +18,43 @@ import os
 import pathlib
 import sys
 import logging
-from fichier_py.fonction import df_data, prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
+from datetime import datetime
+from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
 thread=0
 app = Flask(__name__)
+
+
+def log_dataframe_features_to_file(features_df, home_team, away_team, match_date, log_dir="logs"):
+    """
+    Enregistre les features dans un fichier log JSON avec horodatage.
+    
+    Args:
+        features_df (pd.DataFrame): Données features en DataFrame (une seule ligne).
+        home_team (str): Nom de l'équipe à domicile.
+        away_team (str): Nom de l'équipe à l'extérieur.
+        match_date (str): Date du match (format: "YYYY-MM-DD").
+        log_dir (str): Dossier de destination des fichiers log.
+    """
+    # Crée le dossier s'il n'existe pas
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # Formatage du nom de fichier (par date de log)
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = f"log_features_{home_team}_vs_{away_team}_{timestamp}.json"
+    filepath = os.path.join(log_dir, filename)
+    
+    # Ajout d’un contexte au log
+    log_data = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "match_date": match_date,
+        "home_team": home_team,
+        "away_team": away_team,
+        "features": features_df.to_dict(orient="records")[0]  # on prend la première ligne (unique)
+    }
+
+    # Écriture dans le fichier log
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, ensure_ascii=False, indent=4)
 
 
 # Modèle Pydantic pour une entrée
@@ -211,10 +245,16 @@ def prediction():
             #df_home_away = df_home_away.loc[:, ~df_home_away.columns.duplicated(keep='first')]
             
             date_match=get_valid_date(match_date)
-            features_input=prepare_input_features_enriched(home, away,date_match, odds_h, odds_d, odds_a,df)
+           
+            features_input=prepare_input_features_enriched(home, away,date_match, odds_h,odds_a,odds_d,df)
+            #log_dataframe_features_to_file(features_input,home="West Ham",away="Chelsea",match_date="2025-08-22",)
+            #log_prediction(features_input.to_json())
+            
+            #log_dataframe_features_to_file(features_input,home, away, match_date)
             
             X_inputs=entree_utilisateur(home, away, odds_h,odds_d,odds_a, df, season_preced)
             log_prediction(X_inputs.to_json())
+            
 
            
             #bon modèle ANGLETERRE
@@ -317,7 +357,7 @@ def prediction():
             perf_away=get_last5_results_pattern(df, away, date_match)
             
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
-            log_prediction(pred)
+          
             pred_but = model_but.predict(X_inputs)[0]
             mess_but="✅ Prédiction :", "Plus de buts en 2ᵉ mi-temps" if pred_but == 1 else "Plus de buts en 1ʳᵉ mi-temps"
             pred['home']=home
