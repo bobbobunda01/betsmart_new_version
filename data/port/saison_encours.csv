@@ -1,10 +1,18 @@
-,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-0,2025-08-08,Casa Pia,Sporting CP,0,2,0,0,A
-1,2025-08-09,Nacional,GIL Vicente,0,2,0,0,A
-2,2025-08-09,Arouca,AVS,3,1,1,2,H
-3,2025-08-10,Famalicao,Santa Clara,3,0,2,1,H
-4,2025-08-10,Moreirense,Alverca,2,1,1,1,H
-5,2025-08-10,SC Braga,Tondela,3,0,2,1,H
-6,2025-08-11,Estoril,Estrela,1,1,1,0,D
-7,2025-08-11,FC Porto,Guimaraes,3,0,2,1,H
-8,2025-08-15,AVS,Casa Pia,0,2,0,0,A
+,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+66,PORT,2025-08-08,Casa Pia,Sporting CP,0,2,0,0,A
+67,PORT,2025-08-09,Nacional,GIL Vicente,0,2,0,0,A
+68,PORT,2025-08-09,Arouca,AVS,3,1,1,2,H
+69,PORT,2025-08-10,Famalicao,Santa Clara,3,0,2,1,H
+70,PORT,2025-08-10,Moreirense,Alverca,2,1,1,1,H
+71,PORT,2025-08-10,SC Braga,Tondela,3,0,2,1,H
+72,PORT,2025-08-11,Estoril,Estrela,1,1,1,0,D
+73,PORT,2025-08-11,FC Porto,Guimaraes,3,0,2,1,H
+74,PORT,2025-08-15,AVS,Casa Pia,0,2,0,0,A
+75,PORT,2025-08-16,Tondela,Famalicao,0,1,0,0,A
+76,PORT,2025-08-16,Guimaraes,Estoril,3,2,1,2,H
+77,PORT,2025-08-16,Estrela,Benfica,0,1,0,0,A
+78,PORT,2025-08-17,Rio Ave,Nacional,1,1,1,0,D
+79,PORT,2025-08-17,Santa Clara,Moreirense,0,1,0,0,A
+80,PORT,2025-08-17,Alverca,SC Braga,0,3,0,0,A
+81,PORT,2025-08-17,Sporting CP,Arouca,6,0,3,3,H
+82,PORT,2025-08-18,GIL Vicente,FC Porto,0,2,0,0,A
