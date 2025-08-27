@@ -1,10 +1,19 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-10,FL,2025-08-15,Rennes,Marseille,1,0,0,1,H
-11,FL,2025-08-16,Lens,Lyon,0,1,0,0,A
-12,FL,2025-08-16,Monaco,Le Havre,3,1,1,2,H
-13,FL,2025-08-16,Nice,Toulouse,0,1,0,0,A
-14,FL,2025-08-17,Stade Brestois 29,Lille,3,3,1,2,D
-15,FL,2025-08-17,Angers,Paris FC,1,0,1,0,H
-16,FL,2025-08-17,Auxerre,Lorient,1,0,0,1,H
-17,FL,2025-08-17,Metz,Strasbourg,0,1,0,0,A
-18,FL,2025-08-17,Nantes,Paris Saint Germain,0,1,0,0,A
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+20,2025-08-15,Rennes,Marseille,1,0,0,1,H
+21,2025-08-16,Lens,Lyon,0,1,0,0,A
+22,2025-08-16,Monaco,Le Havre,3,1,1,2,H
+23,2025-08-16,Nice,Toulouse,0,1,0,0,A
+24,2025-08-17,Stade Brestois 29,Lille,3,3,1,2,D
+25,2025-08-17,Angers,Paris FC,1,0,1,0,H
+26,2025-08-17,Auxerre,Lorient,1,0,0,1,H
+27,2025-08-17,Metz,Strasbourg,0,1,0,0,A
+28,2025-08-17,Nantes,Paris Saint Germain,0,1,0,0,A
+29,2025-08-22,Paris Saint Germain,Angers,1,0,0,1,H
+30,2025-08-23,Marseille,Paris FC,5,2,2,3,H
+31,2025-08-23,Nice,Auxerre,3,1,2,1,H
+32,2025-08-23,Lyon,Metz,3,0,2,1,H
+33,2025-08-24,Lorient,Rennes,4,0,1,3,H
+34,2025-08-24,Strasbourg,Nantes,1,0,0,1,H
+35,2025-08-24,Toulouse,Stade Brestois 29,2,0,0,2,H
+36,2025-08-24,Le Havre,Lens,1,2,1,0,A
+37,2025-08-24,Lille,Monaco,1,0,0,1,H

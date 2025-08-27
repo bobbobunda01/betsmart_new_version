@@ -1,16 +1,22 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-83,TURK,2025-08-08,Gazişehir Gaziantep,Galatasaray,0,3,0,0,A
-84,TURK,2025-08-09,Samsunspor,Genclerbirligi,2,1,1,1,H
-85,TURK,2025-08-09,Antalyaspor,Kasimpasa,2,1,2,0,H
-86,TURK,2025-08-10,Rizespor,Goztepe,0,3,0,0,A
-87,TURK,2025-08-10,Eyüpspor,Konyaspor,1,4,0,1,A
-88,TURK,2025-08-11,Trabzonspor,Kocaelispor,1,0,0,1,H
-89,TURK,2025-08-15,Galatasaray,Fatih Karagümrük,3,0,1,2,H
-90,TURK,2025-08-16,Kocaelispor,Samsunspor,0,1,0,0,A
-91,TURK,2025-08-16,Goztepe,Fenerbahce,0,0,0,0,D
-92,TURK,2025-08-16,Alanyaspor,Rizespor,0,0,0,0,D
-93,TURK,2025-08-17,Konyaspor,Gazişehir Gaziantep,3,0,1,2,H
-94,TURK,2025-08-17,Genclerbirligi,Antalyaspor,0,1,0,0,A
-95,TURK,2025-08-17,Besiktas,Eyüpspor,2,1,1,1,H
-96,TURK,2025-08-17,Istanbul Basaksehir,Kayserispor,1,1,1,0,D
-97,TURK,2025-08-18,Kasimpasa,Trabzonspor,0,1,0,0,A
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+149,2025-08-08,Gazişehir Gaziantep,Galatasaray,0,3,0,0,A
+150,2025-08-09,Samsunspor,Genclerbirligi,2,1,1,1,H
+151,2025-08-09,Antalyaspor,Kasimpasa,2,1,2,0,H
+152,2025-08-10,Rizespor,Goztepe,0,3,0,0,A
+153,2025-08-10,Eyüpspor,Konyaspor,1,4,0,1,A
+154,2025-08-11,Trabzonspor,Kocaelispor,1,0,0,1,H
+155,2025-08-15,Galatasaray,Fatih Karagümrük,3,0,1,2,H
+156,2025-08-16,Kocaelispor,Samsunspor,0,1,0,0,A
+157,2025-08-16,Goztepe,Fenerbahce,0,0,0,0,D
+158,2025-08-16,Alanyaspor,Rizespor,0,0,0,0,D
+159,2025-08-17,Konyaspor,Gazişehir Gaziantep,3,0,1,2,H
+160,2025-08-17,Genclerbirligi,Antalyaspor,0,1,0,0,A
+161,2025-08-17,Besiktas,Eyüpspor,2,1,1,1,H
+162,2025-08-17,Istanbul Basaksehir,Kayserispor,1,1,1,0,D
+163,2025-08-18,Kasimpasa,Trabzonspor,0,1,0,0,A
+164,2025-08-22,Fatih Karagümrük,Goztepe,0,2,0,0,A
+165,2025-08-23,Fenerbahce,Kocaelispor,3,1,1,2,H
+166,2025-08-23,Gazişehir Gaziantep,Genclerbirligi,2,1,1,1,H
+167,2025-08-24,Trabzonspor,Antalyaspor,1,0,1,0,H
+168,2025-08-24,Kayserispor,Galatasaray,0,4,0,0,A
+169,2025-08-25,Eyüpspor,Alanyaspor,2,1,1,1,H
