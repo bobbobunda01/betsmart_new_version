@@ -1,11 +1,21 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-0,PL,2025-08-15,Liverpool,Bournemouth,4,2,1,3,H
-1,PL,2025-08-16,Aston Villa,Newcastle,0,0,0,0,D
-2,PL,2025-08-16,Tottenham,Burnley,3,0,1,2,H
-3,PL,2025-08-16,Brighton,Fulham,1,1,0,1,D
-4,PL,2025-08-16,Sunderland,West Ham,3,0,0,3,H
-5,PL,2025-08-16,Wolves,Manchester City,0,4,0,0,A
-6,PL,2025-08-17,Chelsea,Crystal Palace,0,0,0,0,D
-7,PL,2025-08-17,Nottingham Forest,Brentford,3,1,3,0,H
-8,PL,2025-08-17,Manchester United,Arsenal,0,1,0,0,A
-9,PL,2025-08-18,Leeds,Everton,1,0,0,1,H
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+0,2025-08-15,Liverpool,Bournemouth,4,2,1,3,H
+1,2025-08-16,Aston Villa,Newcastle,0,0,0,0,D
+2,2025-08-16,Tottenham,Burnley,3,0,1,2,H
+3,2025-08-16,Brighton,Fulham,1,1,0,1,D
+4,2025-08-16,Sunderland,West Ham,3,0,0,3,H
+5,2025-08-16,Wolves,Manchester City,0,4,0,0,A
+6,2025-08-17,Chelsea,Crystal Palace,0,0,0,0,D
+7,2025-08-17,Nottingham Forest,Brentford,3,1,3,0,H
+8,2025-08-17,Manchester United,Arsenal,0,1,0,0,A
+9,2025-08-18,Leeds,Everton,1,0,0,1,H
+10,2025-08-22,West Ham,Chelsea,1,5,1,0,A
+11,2025-08-23,Manchester City,Tottenham,0,2,0,0,A
+12,2025-08-23,Bournemouth,Wolves,1,0,1,0,H
+13,2025-08-23,Burnley,Sunderland,2,0,0,2,H
+14,2025-08-23,Brentford,Aston Villa,1,0,1,0,H
+15,2025-08-23,Arsenal,Leeds,5,0,2,3,H
+16,2025-08-24,Everton,Brighton,2,0,1,1,H
+17,2025-08-24,Crystal Palace,Nottingham Forest,1,1,1,0,D
+18,2025-08-24,Fulham,Manchester United,1,1,0,1,D
+19,2025-08-25,Newcastle,Liverpool,2,3,0,2,A
