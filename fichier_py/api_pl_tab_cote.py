@@ -271,6 +271,17 @@ def prediction():
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
+             # ecosse premiere league
+            elif comp==179:
+                chemin_csv = RACINE_PROJET / "data" / "ecosse" / "ecosse_2024_25.csv"
+                s_encours=RACINE_PROJET / "data" / "ecosse" / "saison_encours.csv"
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
 
 
             #df=df[['Date','HomeTeam','AwayTeam','FTHG','FTAG','FTR','HTGS', 'HTGC','ATGS', 'ATGC', 
@@ -415,7 +426,17 @@ def prediction():
                 modele2=load(chemin_model2)
                 thread=0.6
             
-            perf_home=get_last5_results_pattern(df, home, date_match)
+             # ecosse
+            elif comp==179:
+                chemin_model1 = RACINE_PROJET / "modele" / "ecosse" / "rf_stage1_ecosse.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "ecosse" / "rf_stage2_ecosse.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "ecosse" / "xgboost_nbre_but_marque_ecosse.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.6
+            
+            perf_home=get_last5_results_pattern(df, "ST Mirren", date_match)
             perf_away=get_last5_results_pattern(df, away, date_match)
             
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
