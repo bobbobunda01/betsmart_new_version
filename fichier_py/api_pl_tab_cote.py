@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
+from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
 thread=0
 app = Flask(__name__)
 
@@ -271,10 +271,46 @@ def prediction():
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
-             # ecosse premiere league
+            # ecosse premiere league
             elif comp==179:
                 chemin_csv = RACINE_PROJET / "data" / "ecosse" / "ecosse_2024_25.csv"
                 s_encours=RACINE_PROJET / "data" / "ecosse" / "saison_encours.csv"
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+            # Danemark superleague
+            elif comp==119:
+                chemin_csv = RACINE_PROJET / "data" / "danemark" / "Danemark_2024_25.csv"
+                s_encours=RACINE_PROJET / "data" / "danemark" / "saison_encours.csv"
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+            # Ecosse division 1
+            elif comp==180:
+                chemin_csv = RACINE_PROJET / "data" / "ecosse_div_1" / "ecosse_div_1_2024_2025.csv"
+                s_encours=RACINE_PROJET / "data" / "ecosse_div_1" / "saison_encours.csv"
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+            # Russie
+            elif comp==253:
+                chemin_csv = RACINE_PROJET / "data" / "russie" / "russie_2024_25.csv"
+                s_encours=RACINE_PROJET / "data" / "russie" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
@@ -426,7 +462,7 @@ def prediction():
                 modele2=load(chemin_model2)
                 thread=0.6
             
-             # ecosse
+            # ecosse
             elif comp==179:
                 chemin_model1 = RACINE_PROJET / "modele" / "ecosse" / "rf_stage1_ecosse.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "ecosse" / "rf_stage2_ecosse.joblib"
@@ -435,8 +471,36 @@ def prediction():
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
                 thread=0.6
+            # Danemark superleague
+            elif comp==119:
+                chemin_model1 = RACINE_PROJET / "modele" / "danemark" / "rf_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "danemark" / "rf_stage2.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "danemark" / "xgboost_nbre_but_marque_danemark.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.63
+            # Ecosse division 1
+            elif comp==180:
+                chemin_model1 = RACINE_PROJET / "modele" / "ecosse_div_1" / "rf_stage1_ecosse_div_1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "ecosse_div_1" / "rf_stage2_ecosse_div_1.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "ecosse_div_1" / "xgboost_nbre_but_marque_ecosse_div_1.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.64
             
-            perf_home=get_last5_results_pattern(df, "ST Mirren", date_match)
+             # Russie
+            elif comp==253:
+                chemin_model1 = RACINE_PROJET / "modele" / "russie" / "rf_stage1_rus.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "russie" / "rf_stage2_rus.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "russie" / "xgboost_nbre_but_marque_russie.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.6
+            
+            perf_home=get_last5_results_pattern(df,home , date_match)
             perf_away=get_last5_results_pattern(df, away, date_match)
             
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
