@@ -1,0 +1,57 @@
+,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR,HTR
+0,2025-07-18,Dynamo,Baltika,1,1,0,1,D,2
+1,2025-07-19,Akron,Krylia Sovetov,1,1,1,0,D,1
+2,2025-07-19,Lokomotiv,FC Sochi,3,0,0,3,H,2
+3,2025-07-19,Spartak Moscow,Makhachkala,1,0,1,0,H,1
+4,2025-07-20,Nizhny Novgorod,FC Krasnodar,0,3,0,0,A,0
+5,2025-07-20,Zenit,FC Rostov,2,1,0,2,H,2
+6,2025-07-20,Akhmat,Rubin,0,2,0,0,A,0
+7,2025-07-21,FC Orenburg,CSKA Moscow,0,0,0,0,D,0
+8,2025-07-25,Krylia Sovetov,Nizhny Novgorod,2,0,0,2,H,2
+9,2025-07-26,Spartak Moscow,Baltika,0,3,0,0,A,0
+10,2025-07-26,Dynamo,FC Rostov,1,0,1,0,H,1
+11,2025-07-26,FC Krasnodar,Lokomotiv,1,2,0,1,A,2
+12,2025-07-26,FC Sochi,Akron,0,4,0,0,A,0
+13,2025-07-27,CSKA Moscow,Akhmat,2,1,2,0,H,1
+14,2025-07-27,FC Orenburg,Makhachkala,1,1,0,1,D,2
+15,2025-07-27,Rubin,Zenit,2,2,0,2,D,2
+16,2025-08-02,FC Rostov,Krylia Sovetov,1,4,0,1,A,2
+17,2025-08-02,FC Krasnodar,Dynamo,1,0,0,1,H,2
+18,2025-08-02,Nizhny Novgorod,Lokomotiv,2,3,0,2,A,2
+19,2025-08-03,Akron,Spartak Moscow,1,1,0,1,D,2
+20,2025-08-03,Baltika,FC Orenburg,3,2,1,2,H,2
+21,2025-08-03,Zenit,CSKA Moscow,1,1,0,1,D,2
+22,2025-08-03,Makhachkala,Akhmat,1,0,1,0,H,1
+23,2025-08-04,Rubin,FC Sochi,2,1,1,1,H,0
+24,2025-08-08,Makhachkala,Akron,1,1,1,0,D,1
+25,2025-08-09,Krylia Sovetov,Baltika,1,1,1,0,D,1
+26,2025-08-09,CSKA Moscow,Rubin,5,1,4,1,H,1
+27,2025-08-09,Lokomotiv,Spartak Moscow,4,2,1,3,H,2
+28,2025-08-09,Akhmat,Zenit,1,0,1,0,H,1
+29,2025-08-10,FC Orenburg,FC Krasnodar,0,1,0,0,A,0
+30,2025-08-10,FC Sochi,Dynamo,1,1,0,1,D,2
+31,2025-08-10,FC Rostov,Nizhny Novgorod,1,0,0,1,H,2
+32,2025-08-16,Baltika,Lokomotiv,1,1,1,0,D,1
+33,2025-08-16,Spartak Moscow,Zenit,2,2,2,0,D,1
+34,2025-08-16,Akhmat,Krylia Sovetov,3,1,1,2,H,2
+35,2025-08-17,Akron,FC Orenburg,1,2,1,0,A,1
+36,2025-08-17,Rubin,FC Rostov,1,0,0,1,H,2
+37,2025-08-17,Dynamo,CSKA Moscow,1,3,0,1,A,2
+38,2025-08-17,FC Krasnodar,FC Sochi,5,1,0,5,H,2
+39,2025-08-18,Nizhny Novgorod,Makhachkala,2,0,2,0,H,1
+40,2025-08-22,FC Orenburg,Akhmat,2,2,2,0,D,1
+41,2025-08-23,Rubin,Spartak Moscow,0,2,0,0,A,0
+42,2025-08-23,Zenit,Makhachkala,4,0,2,2,H,0
+43,2025-08-23,Lokomotiv,FC Rostov,3,3,2,1,D,1
+44,2025-08-23,Dynamo,Nizhny Novgorod,3,0,1,2,H,2
+45,2025-08-24,Krylia Sovetov,FC Krasnodar,0,6,0,0,A,0
+46,2025-08-24,CSKA Moscow,Akron,3,1,2,1,H,1
+47,2025-08-24,FC Sochi,Baltika,0,2,0,0,A,0
+48,2025-08-30,FC Orenburg,Rubin,2,2,0,2,D,2
+49,2025-08-30,Zenit,Nizhny Novgorod,2,0,0,2,H,2
+50,2025-08-30,Spartak Moscow,FC Sochi,2,1,1,1,H,0
+51,2025-08-30,FC Rostov,Akhmat,1,1,0,1,D,2
+52,2025-08-31,Akron,Baltika,0,2,0,0,A,0
+53,2025-08-31,Lokomotiv,Krylia Sovetov,2,2,2,0,D,1
+54,2025-08-31,CSKA Moscow,FC Krasnodar,1,1,1,0,D,1
+55,2025-08-31,Makhachkala,Dynamo,1,0,0,1,H,2

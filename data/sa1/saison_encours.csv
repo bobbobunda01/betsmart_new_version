@@ -1,11 +1,21 @@
 ,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-67,2025-08-23,Sassuolo,Napoli,0,2,0,0,A
-68,2025-08-23,Genoa,Lecce,0,0,0,0,D
-69,2025-08-23,AC Milan,Cremonese,1,2,1,0,A
-70,2025-08-23,AS Roma,Bologna,1,0,0,1,H
-71,2025-08-24,Cagliari,Fiorentina,1,1,0,1,D
-72,2025-08-24,Como,Lazio,2,0,0,2,H
-73,2025-08-24,Juventus,Parma,2,0,0,2,H
-74,2025-08-24,Atalanta,Pisa,1,1,0,1,D
-75,2025-08-25,Udinese,Verona,1,1,0,1,D
-76,2025-08-25,Inter,Torino,5,0,2,3,H
+106,2025-08-23,Sassuolo,Napoli,0,2,0,0,A
+107,2025-08-23,Genoa,Lecce,0,0,0,0,D
+108,2025-08-23,AC Milan,Cremonese,1,2,1,0,A
+109,2025-08-23,AS Roma,Bologna,1,0,0,1,H
+110,2025-08-24,Cagliari,Fiorentina,1,1,0,1,D
+111,2025-08-24,Como,Lazio,2,0,0,2,H
+112,2025-08-24,Juventus,Parma,2,0,0,2,H
+113,2025-08-24,Atalanta,Pisa,1,1,0,1,D
+114,2025-08-25,Udinese,Verona,1,1,0,1,D
+115,2025-08-25,Inter,Torino,5,0,2,3,H
+116,2025-08-29,Cremonese,Sassuolo,3,2,2,1,H
+117,2025-08-29,Lecce,AC Milan,0,2,0,0,A
+118,2025-08-30,Bologna,Como,1,0,0,1,H
+119,2025-08-30,Parma,Atalanta,1,1,0,1,D
+120,2025-08-30,Napoli,Cagliari,1,0,0,1,H
+121,2025-08-30,Pisa,AS Roma,0,1,0,0,A
+122,2025-08-31,Genoa,Juventus,0,1,0,0,A
+123,2025-08-31,Torino,Fiorentina,0,0,0,0,D
+124,2025-08-31,Lazio,Verona,4,0,3,1,H
+125,2025-08-31,Inter,Udinese,1,2,1,0,A
