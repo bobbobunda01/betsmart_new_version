@@ -88,5 +88,17 @@
         "importance": 4,
         "uncertainty_threshold": 0.108,
         "season_stage": "late"
+    },
+    "180": {
+        "bookmaker_margin": 0.15,
+        "importance": 4,
+        "uncertainty_threshold": 0.111,
+        "season_stage": "late"
+    },
+    "253": {
+        "bookmaker_margin": 0.05,
+        "importance": 3,
+        "uncertainty_threshold": 0.106,
+        "season_stage": "late"
     }
 }
