@@ -3,102 +3,170 @@
         "bookmaker_margin": 0.05532682048449087,
         "importance": 4,
         "uncertainty_threshold": 0.107,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "61": {
         "bookmaker_margin": 0.055123036643900766,
         "importance": 4,
         "uncertainty_threshold": 0.104,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "78": {
         "bookmaker_margin": 0.05556250265505974,
         "importance": 4,
         "uncertainty_threshold": 0.107,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "140": {
         "bookmaker_margin": 0.05654027712098233,
         "importance": 4,
         "uncertainty_threshold": 0.106,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "135": {
         "bookmaker_margin": 0.05516440628622236,
         "importance": 4,
         "uncertainty_threshold": 0.105,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "88": {
         "bookmaker_margin": 0.05606717818989093,
         "importance": 4,
         "uncertainty_threshold": 0.109,
-        "season_stage": "mid"
+        "season_stage": "mid",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.5,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "207": {
         "bookmaker_margin": 0.05,
         "importance": 3,
         "uncertainty_threshold": 0.108,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     },
     "94": {
         "bookmaker_margin": 0.06572268837179474,
         "importance": 4,
         "uncertainty_threshold": 0.107,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "203": {
         "bookmaker_margin": 0.07667743150663026,
         "importance": 4,
         "uncertainty_threshold": 0.107,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "144": {
         "bookmaker_margin": 0.0870097156577691,
         "importance": 4,
         "uncertainty_threshold": 0.107,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "98": {
         "bookmaker_margin": 0.05,
         "importance": 3,
         "uncertainty_threshold": 0.11,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     },
     "197": {
         "bookmaker_margin": 0.0826313159031407,
         "importance": 3,
         "uncertainty_threshold": 0.105,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     },
     "71": {
         "bookmaker_margin": 0.05,
         "importance": 3,
         "uncertainty_threshold": 0.106,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     },
     "119": {
         "bookmaker_margin": 0.05,
         "importance": 3,
         "uncertainty_threshold": 0.108,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     },
     "179": {
         "bookmaker_margin": 0.07822747544525085,
         "importance": 4,
         "uncertainty_threshold": 0.108,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "180": {
         "bookmaker_margin": 0.15,
         "importance": 4,
         "uncertainty_threshold": 0.111,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65
     },
     "253": {
         "bookmaker_margin": 0.05,
         "importance": 3,
         "uncertainty_threshold": 0.106,
-        "season_stage": "late"
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6
     }
 }

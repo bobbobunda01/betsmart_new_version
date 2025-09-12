@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern
+from  fichier_py.fonction  import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -113,9 +113,17 @@ def prediction():
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "pl" / "pl_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "pl" / "saison_encours.csv"
-                #season_encours=pd.read_csv(s_encours)
-                #season_encours['Date']=pd.to_datetime(season_encours['Date'])
-                #s_preced=RACINE_PROJET / "data" / "pl" / "pl.csv"
+                
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "pl" / "premier_league_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "pl" / "premier_league_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "pl" / "premier_league_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "pl" / "premier_league_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 season_preced=pd.read_csv(chemin_csv)
                 #season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
@@ -127,9 +135,16 @@ def prediction():
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "sa1" / "sa_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "sa1" / "saison_encours.csv"
-                #season_encours=pd.read_csv(s_encours)
-                #season_encours['Date']=pd.to_datetime(season_encours['Date'])
-                #s_preced=RACINE_PROJET / "data" / "sa1" / "sa.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "sa1" / "serie_a_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "sa1" / "serie_a_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "sa1" / "serie_a_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "sa1" / "serie_a_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
@@ -141,9 +156,16 @@ def prediction():
                 chemin_csv = RACINE_PROJET / "data" / "lg1" / "lg_24_25.csv"
                 # Chargement des données historiques
                 s_encours=RACINE_PROJET / "data" / "lg1" / "saison_encours.csv"
-                #season_encours=pd.read_csv(s_encours)
-                #season_encours['Date']=pd.to_datetime(season_encours['Date'])
-                #s_preced=RACINE_PROJET / "data" / "lg1" / "lg.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "lg1" / "la_liga_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "lg1" / "la_liga_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "lg1" / "la_liga_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "lg1" / "la_liga_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
@@ -155,9 +177,16 @@ def prediction():
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "bl1" / "bl_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "bl1" / "saison_encours.csv"
-                #season_encours=pd.read_csv(s_encours)
-                #season_encours['Date']=pd.to_datetime(season_encours['Date'])
-                #s_preced=RACINE_PROJET / "data" / "bl1" / "bl.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "bl1" / "bundesliga_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "bl1" / "bundesliga_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "bl1" / "bundesliga_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "bl1" / "bundesliga_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
@@ -170,9 +199,17 @@ def prediction():
                 # Chargement des données historiques
                 chemin_csv = RACINE_PROJET / "data" / "fl" / "fl_24_25.csv"
                 s_encours=RACINE_PROJET / "data" / "fl" / "saison_encours.csv"
-                #season_encours=pd.read_csv(s_encours)
-                #season_encours['Date']=pd.to_datetime(season_encours['Date'])
-                #s_preced=RACINE_PROJET / "data" / "fl" / "fl.csv"
+                
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "fl" / "ligue_1_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "fl" / "ligue_1_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "fl" / "ligue_1_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "fl" / "ligue_1_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
@@ -187,6 +224,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "N1" / "neerdeland_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "N1" / "neerdeland_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "N1" / "neerdeland_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "N1" / "neerdeland_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -199,6 +245,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "sui" / "suisse_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "sui" / "suisse_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "sui" / "suisse_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "sui" / "suisse_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -209,6 +264,16 @@ def prediction():
                 s_encours=RACINE_PROJET / "data" / "port" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "port" / "portugais_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "port" / "portugais_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "port" / "portugais_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "port" / "portugais_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
@@ -222,6 +287,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "turk" / "turquie_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "turk" / "turquie_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "turk" / "turquie_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "turk" / "turquie_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -232,6 +306,15 @@ def prediction():
                 s_encours=RACINE_PROJET / "data" / "japon" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "japon" / "japon_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "japon" / "japon_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "japon" / "japon_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "japon" / "japon_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
@@ -244,6 +327,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "grece" / "grece_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "grece" / "grece_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "grece" / "grece_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "grece" / "grece_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -254,6 +346,15 @@ def prediction():
                 s_encours=RACINE_PROJET / "data" / "belg" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "belg" / "belgique_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "belg" / "belgique_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "belg" / "belgique_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "belg" / "belgique_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
@@ -267,6 +368,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "bresil" / "bresil_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "bresil" / "bresil_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "bresil" / "bresil_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "bresil" / "bresil_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -277,6 +387,15 @@ def prediction():
                 s_encours=RACINE_PROJET / "data" / "ecosse" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "ecosse" / "ecosse_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "ecosse" / "ecosse_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "ecosse" / "ecosse_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "ecosse" / "ecosse_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
@@ -290,6 +409,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "danemark" / "danemark_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "danemark" / "danemark_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "danemark" / "danemark_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "danemark" / "danemark_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -302,6 +430,15 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "ecosse_div_1" / "ecosse_div_1_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "ecosse_div_1" / "ecosse_div_1_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "ecosse_div_1" / "ecosse_div_1_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "ecosse_div_1" / "ecosse_div_1_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
@@ -313,6 +450,15 @@ def prediction():
                 s_encours=RACINE_PROJET / "data" / "russie" / "saison_encours.csv"
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "russie" / "russie_season_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "russie" / "russie_season_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "russie" / "russie_season_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "russie" / "russie_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
                 hi.drop('Unnamed: 0', axis=1, inplace=True)
@@ -327,7 +473,7 @@ def prediction():
             
             date_match=get_valid_date(match_date)
            
-            features_input=prepare_input_features_enriched(home, away,date_match, odds_h,odds_a,odds_d,df)
+            features_input=prepare_input_features_enriched(home, away,date_match, odds_h,odds_a,odds_d,df,league_code=comp)
             #log_dataframe_features_to_file(features_input,home="West Ham",away="Chelsea",match_date="2025-08-22",)
             #log_prediction(features_input.to_json())
             
@@ -365,7 +511,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.4
+                thread=0.5
             ##Bundesliga
             elif comp==78:
                 chemin_model1 = RACINE_PROJET / "modele" / "bl1" / "rf_bl1_stage1.joblib"
@@ -452,7 +598,7 @@ def prediction():
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
                 thread=0.63
-             # belgique
+             # BRESIL
             elif comp==71:
                 chemin_model1 = RACINE_PROJET / "modele" / "bresil" / "rf_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "bresil" / "rf_stage2.joblib"
@@ -460,7 +606,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.62
             
             # ecosse
             elif comp==179:
@@ -470,7 +616,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.63
             # Danemark superleague
             elif comp==119:
                 chemin_model1 = RACINE_PROJET / "modele" / "danemark" / "rf_stage1.joblib"
@@ -501,19 +647,29 @@ def prediction():
                 thread=0.6
             
             perf_home=get_last5_results_pattern(df,home , date_match)
-            perf_away=get_last5_results_pattern(df, away, date_match)
+            perf_away=get_last5_results_pattern(df,away, date_match)
             
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
+            pred_final = apply_unexpected_layer(
+                base_pred=pred,
+                season_current_df=df,                                       # saison en cours
+                season_past_list=[df_2022,df_2023,df_2024,df_2025],         # saisons passées (optionnel, liste)
+                home=home, away=away,
+                match_date=date_match,
+                feats_df=features_input,                     # tes features calculées
+                league_code=comp,
+                X_ref_features=None     # optionnel (ref num. pour OOD)
+                )
           
             pred_but = model_but.predict(X_inputs)[0]
             mess_but="✅ Prédiction :", "Plus de buts en 2ᵉ mi-temps" if pred_but == 1 else "Plus de buts en 1ʳᵉ mi-temps"
-            pred['home']=home
-            pred['away']=away
-            pred['5_dern_perf_home']=np.array(perf_home).item()
-            pred['5_dern_perf_away']=np.array(perf_away).item()
-            pred['plus_but']=int(pred_but)
-            pred['mess_but']=str(mess_but)
-            all_results.append(pred)
+            pred_final['home']=home
+            pred_final['away']=away
+            pred_final['5_dern_perf_home']=np.array(perf_home).item()
+            pred_final['5_dern_perf_away']=np.array(perf_away).item()
+            pred_final['plus_but']=int(pred_but)
+            pred_final['mess_but']=str(mess_but)
+            all_results.append(pred_final)
             # Log l'entrée + les prédictionsÒ
             #log_prediction(all_results)
         
