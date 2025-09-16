@@ -1,43 +1,49 @@
-,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-3802,2025-07-18,Viborg,FC Copenhagen,2.0,3.0,1.0,1.0,A
-3803,2025-07-20,Vejle,Randers FC,1.0,1.0,0.0,0.0,D
-3804,2025-07-20,FC Fredericia,FC Nordsjaelland,2.0,3.0,1.0,3.0,A
-3805,2025-07-20,Sonderjyske,Aarhus,1.0,1.0,0.0,1.0,D
-3806,2025-07-20,FC Midtjylland,Odense,3.0,3.0,2.0,2.0,D
-3807,2025-07-20,Brondby,Silkeborg,3.0,0.0,1.0,0.0,H
-3808,2025-07-25,Aarhus,Randers FC,1.0,2.0,1.0,0.0,A
-3809,2025-07-26,FC Copenhagen,Vejle,2.0,0.0,2.0,0.0,H
-3810,2025-07-27,Odense,Viborg,3.0,1.0,1.0,0.0,H
-3811,2025-07-27,Silkeborg,FC Fredericia,0.0,2.0,0.0,2.0,A
-3812,2025-07-27,FC Nordsjaelland,Brondby,0.0,1.0,0.0,1.0,A
-3813,2025-07-28,FC Midtjylland,Sonderjyske,6.0,2.0,3.0,1.0,H
-3814,2025-08-01,FC Fredericia,FC Copenhagen,0.0,2.0,0.0,1.0,A
-3815,2025-08-01,Vejle,Odense,4.0,0.0,2.0,0.0,H
-3816,2025-08-03,Randers FC,Silkeborg,1.0,0.0,1.0,0.0,H
-3817,2025-08-03,Sonderjyske,FC Nordsjaelland,3.0,2.0,1.0,1.0,H
-3818,2025-08-03,Aarhus,FC Midtjylland,0.0,0.0,0.0,0.0,D
-3819,2025-08-03,Brondby,Viborg,0.0,2.0,0.0,1.0,A
-3820,2025-08-08,FC Copenhagen,Aarhus,2.0,3.0,0.0,1.0,A
-3821,2025-08-08,Viborg,Sonderjyske,1.0,0.0,1.0,0.0,H
-3822,2025-08-10,FC Midtjylland,FC Fredericia,3.0,3.0,2.0,1.0,D
-3823,2025-08-10,Silkeborg,FC Nordsjaelland,4.0,2.0,2.0,1.0,H
-3824,2025-08-10,Brondby,Vejle,2.0,1.0,2.0,1.0,H
-3825,2025-08-11,Odense,Randers FC,3.0,2.0,3.0,2.0,H
-3826,2025-08-15,FC Nordsjaelland,FC Copenhagen,1.0,3.0,0.0,0.0,A
-3827,2025-08-15,FC Fredericia,Sonderjyske,3.0,2.0,0.0,0.0,H
-3828,2025-08-17,Vejle,FC Midtjylland,0.0,2.0,0.0,0.0,A
-3829,2025-08-17,Viborg,Silkeborg,2.0,3.0,2.0,2.0,A
-3830,2025-08-17,Randers FC,Brondby,0.0,2.0,0.0,2.0,A
-3831,2025-08-18,Odense,Aarhus,1.0,5.0,1.0,2.0,A
-3832,2025-08-23,FC Copenhagen,Odense,1.0,1.0,0.0,1.0,D
-3833,2025-08-24,FC Fredericia,Randers FC,1.0,0.0,1.0,0.0,H
-3834,2025-08-24,FC Midtjylland,Silkeborg,4.0,2.0,1.0,1.0,H
-3835,2025-08-24,Sonderjyske,Brondby,2.0,0.0,0.0,0.0,H
-3836,2025-08-24,Aarhus,Vejle,1.0,0.0,1.0,0.0,H
-3837,2025-08-25,FC Nordsjaelland,Viborg,1.0,0.0,1.0,0.0,H
-3838,2025-08-29,Vejle,Viborg,1.0,2.0,1.0,1.0,A
-3839,2025-08-31,Aarhus,FC Fredericia,4.0,1.0,2.0,0.0,H
-3840,2025-08-31,Silkeborg,Sonderjyske,0.0,2.0,0.0,0.0,A
-3841,2025-08-31,Odense,FC Nordsjaelland,1.0,2.0,1.0,0.0,A
-3842,2025-08-31,Randers FC,FC Copenhagen,1.0,5.0,0.0,4.0,A
-3843,2025-08-31,Brondby,FC Midtjylland,1.0,3.0,0.0,0.0,A
+country,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+Denmark,2025-07-18,Viborg,FC Copenhagen,2.0,3.0,1.0,1.0,A
+Denmark,2025-07-20,Vejle,Randers FC,1.0,1.0,0.0,0.0,D
+Denmark,2025-07-20,FC Fredericia,FC Nordsjaelland,2.0,3.0,1.0,3.0,A
+Denmark,2025-07-20,Sonderjyske,Aarhus,1.0,1.0,0.0,1.0,D
+Denmark,2025-07-20,FC Midtjylland,Odense,3.0,3.0,2.0,2.0,D
+Denmark,2025-07-20,Brondby,Silkeborg,3.0,0.0,1.0,0.0,H
+Denmark,2025-07-25,Aarhus,Randers FC,1.0,2.0,1.0,0.0,A
+Denmark,2025-07-26,FC Copenhagen,Vejle,2.0,0.0,2.0,0.0,H
+Denmark,2025-07-27,Odense,Viborg,3.0,1.0,1.0,0.0,H
+Denmark,2025-07-27,Silkeborg,FC Fredericia,0.0,2.0,0.0,2.0,A
+Denmark,2025-07-27,FC Nordsjaelland,Brondby,0.0,1.0,0.0,1.0,A
+Denmark,2025-07-28,FC Midtjylland,Sonderjyske,6.0,2.0,3.0,1.0,H
+Denmark,2025-08-01,FC Fredericia,FC Copenhagen,0.0,2.0,0.0,1.0,A
+Denmark,2025-08-01,Vejle,Odense,4.0,0.0,2.0,0.0,H
+Denmark,2025-08-03,Randers FC,Silkeborg,1.0,0.0,1.0,0.0,H
+Denmark,2025-08-03,Sonderjyske,FC Nordsjaelland,3.0,2.0,1.0,1.0,H
+Denmark,2025-08-03,Aarhus,FC Midtjylland,0.0,0.0,0.0,0.0,D
+Denmark,2025-08-03,Brondby,Viborg,0.0,2.0,0.0,1.0,A
+Denmark,2025-08-08,FC Copenhagen,Aarhus,2.0,3.0,0.0,1.0,A
+Denmark,2025-08-08,Viborg,Sonderjyske,1.0,0.0,1.0,0.0,H
+Denmark,2025-08-10,FC Midtjylland,FC Fredericia,3.0,3.0,2.0,1.0,D
+Denmark,2025-08-10,Silkeborg,FC Nordsjaelland,4.0,2.0,2.0,1.0,H
+Denmark,2025-08-10,Brondby,Vejle,2.0,1.0,2.0,1.0,H
+Denmark,2025-08-11,Odense,Randers FC,3.0,2.0,3.0,2.0,H
+Denmark,2025-08-15,FC Nordsjaelland,FC Copenhagen,1.0,3.0,0.0,0.0,A
+Denmark,2025-08-15,FC Fredericia,Sonderjyske,3.0,2.0,0.0,0.0,H
+Denmark,2025-08-17,Vejle,FC Midtjylland,0.0,2.0,0.0,0.0,A
+Denmark,2025-08-17,Viborg,Silkeborg,2.0,3.0,2.0,2.0,A
+Denmark,2025-08-17,Randers FC,Brondby,0.0,2.0,0.0,2.0,A
+Denmark,2025-08-18,Odense,Aarhus,1.0,5.0,1.0,2.0,A
+Denmark,2025-08-23,FC Copenhagen,Odense,1.0,1.0,0.0,1.0,D
+Denmark,2025-08-24,FC Fredericia,Randers FC,1.0,0.0,1.0,0.0,H
+Denmark,2025-08-24,FC Midtjylland,Silkeborg,4.0,2.0,1.0,1.0,H
+Denmark,2025-08-24,Sonderjyske,Brondby,2.0,0.0,0.0,0.0,H
+Denmark,2025-08-24,Aarhus,Vejle,1.0,0.0,1.0,0.0,H
+Denmark,2025-08-25,FC Nordsjaelland,Viborg,1.0,0.0,1.0,0.0,H
+Denmark,2025-08-29,Vejle,Viborg,1.0,2.0,1.0,1.0,A
+Denmark,2025-08-31,Aarhus,FC Fredericia,4.0,1.0,2.0,0.0,H
+Denmark,2025-08-31,Silkeborg,Sonderjyske,0.0,2.0,0.0,0.0,A
+Denmark,2025-08-31,Odense,FC Nordsjaelland,1.0,2.0,1.0,0.0,A
+Denmark,2025-08-31,Randers FC,FC Copenhagen,1.0,5.0,0.0,4.0,A
+Denmark,2025-08-31,Brondby,FC Midtjylland,1.0,3.0,0.0,0.0,A
+Denmark,2025-09-12,Sonderjyske,Randers FC,0.0,1.0,0.0,0.0,A
+Denmark,2025-09-13,Brondby,FC Copenhagen,2.0,1.0,1.0,0.0,H
+Denmark,2025-09-14,Viborg,Aarhus,1.0,2.0,1.0,2.0,A
+Denmark,2025-09-14,FC Nordsjaelland,FC Midtjylland,1.0,0.0,1.0,0.0,H
+Denmark,2025-09-14,Silkeborg,Odense,2.0,1.0,1.0,1.0,H
+Denmark,2025-09-15,FC Fredericia,Vejle,1.0,1.0,0.0,0.0,D

@@ -1,23 +1,29 @@
-,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-808,2025-08-02,Kilmarnock,Livingston,2,2,2,0,D
-809,2025-08-02,Motherwell,Rangers,1,1,0,1,D
-810,2025-08-03,Falkirk,Dundee Utd,2,2,0,2,D
-811,2025-08-03,Dundee,Hibernian,1,2,1,0,A
-812,2025-08-03,Celtic,ST Mirren,1,0,0,1,H
-813,2025-08-04,Heart Of Midlothian,Aberdeen,2,0,1,1,H
-814,2025-08-09,ST Mirren,Motherwell,0,0,0,0,D
-815,2025-08-09,Livingston,Falkirk,3,1,2,1,H
-816,2025-08-09,Rangers,Dundee,1,1,0,1,D
-817,2025-08-10,Aberdeen,Celtic,0,2,0,0,A
-818,2025-08-10,Hibernian,Kilmarnock,2,2,2,0,D
-819,2025-08-10,Dundee Utd,Heart Of Midlothian,2,3,2,0,A
-820,2025-08-23,Celtic,Livingston,3,0,0,3,H
-821,2025-08-23,Kilmarnock,Dundee,0,0,0,0,D
-822,2025-08-23,Heart Of Midlothian,Motherwell,3,3,0,3,D
-823,2025-08-24,ST Mirren,Rangers,1,1,1,0,D
-824,2025-08-30,Livingston,Heart Of Midlothian,1,2,1,0,A
-825,2025-08-30,Motherwell,Kilmarnock,2,2,1,1,D
-826,2025-08-31,Rangers,Celtic,0,0,0,0,D
-827,2025-08-31,Dundee,Dundee Utd,0,2,0,0,A
-828,2025-08-31,Hibernian,ST Mirren,1,1,0,1,D
-829,2025-08-31,Aberdeen,Falkirk,0,1,0,0,A
+country,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+Scotland,2025-08-02,Kilmarnock,Livingston,2.0,2.0,2.0,0.0,D
+Scotland,2025-08-02,Motherwell,Rangers,1.0,1.0,0.0,1.0,D
+Scotland,2025-08-03,Falkirk,Dundee Utd,2.0,2.0,0.0,1.0,D
+Scotland,2025-08-03,Dundee,Hibernian,1.0,2.0,1.0,2.0,A
+Scotland,2025-08-03,Celtic,ST Mirren,1.0,0.0,0.0,0.0,H
+Scotland,2025-08-04,Heart Of Midlothian,Aberdeen,2.0,0.0,1.0,0.0,H
+Scotland,2025-08-09,ST Mirren,Motherwell,0.0,0.0,0.0,0.0,D
+Scotland,2025-08-09,Livingston,Falkirk,3.0,1.0,2.0,0.0,H
+Scotland,2025-08-09,Rangers,Dundee,1.0,1.0,0.0,0.0,D
+Scotland,2025-08-10,Aberdeen,Celtic,0.0,2.0,0.0,1.0,A
+Scotland,2025-08-10,Dundee Utd,Heart Of Midlothian,2.0,3.0,2.0,1.0,A
+Scotland,2025-08-10,Hibernian,Kilmarnock,2.0,2.0,2.0,1.0,D
+Scotland,2025-08-23,Celtic,Livingston,3.0,0.0,0.0,0.0,H
+Scotland,2025-08-23,Kilmarnock,Dundee,0.0,0.0,0.0,0.0,D
+Scotland,2025-08-23,Heart Of Midlothian,Motherwell,3.0,3.0,0.0,1.0,D
+Scotland,2025-08-24,ST Mirren,Rangers,1.0,1.0,1.0,0.0,D
+Scotland,2025-08-30,Livingston,Heart Of Midlothian,1.0,2.0,1.0,0.0,A
+Scotland,2025-08-30,Motherwell,Kilmarnock,2.0,2.0,1.0,1.0,D
+Scotland,2025-08-31,Rangers,Celtic,0.0,0.0,0.0,0.0,D
+Scotland,2025-08-31,Dundee,Dundee Utd,0.0,2.0,0.0,1.0,A
+Scotland,2025-08-31,Hibernian,ST Mirren,1.0,1.0,0.0,0.0,D
+Scotland,2025-08-31,Aberdeen,Falkirk,0.0,1.0,0.0,0.0,A
+Scotland,2025-09-13,Falkirk,ST Mirren,1.0,2.0,0.0,0.0,A
+Scotland,2025-09-13,Dundee,Motherwell,1.0,1.0,0.0,1.0,D
+Scotland,2025-09-13,Aberdeen,Livingston,0.0,0.0,0.0,0.0,D
+Scotland,2025-09-13,Rangers,Heart Of Midlothian,0.0,2.0,0.0,1.0,A
+Scotland,2025-09-13,Hibernian,Dundee Utd,3.0,3.0,1.0,2.0,D
+Scotland,2025-09-14,Kilmarnock,Celtic,1.0,2.0,0.0,0.0,A
