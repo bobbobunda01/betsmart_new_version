@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from  fichier_py.fonction  import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
+from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -127,7 +127,7 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 #season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ## SERIE A
@@ -148,7 +148,7 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### LIGA
@@ -169,7 +169,7 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ## BUNDESLIGA
@@ -190,7 +190,7 @@ def prediction():
                 season_preced=pd.read_csv(chemin_csv)
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
                 
@@ -214,7 +214,7 @@ def prediction():
                 season_preced['Date']=pd.to_datetime(season_preced['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### NEEDERLANDE
@@ -234,7 +234,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -255,7 +255,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             ### Portugal
@@ -276,7 +276,7 @@ def prediction():
                 
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -297,7 +297,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             # Japon
@@ -317,7 +317,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             # Grece
@@ -337,7 +337,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             # belgique
@@ -357,7 +357,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -378,7 +378,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             # ecosse premiere league
@@ -398,7 +398,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -419,7 +419,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -440,7 +440,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
@@ -461,7 +461,7 @@ def prediction():
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 hi=pd.read_csv(s_encours)
-                hi.drop('Unnamed: 0', axis=1, inplace=True)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
 
