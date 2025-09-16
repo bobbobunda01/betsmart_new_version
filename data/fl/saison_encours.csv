@@ -1,28 +1,37 @@
-,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-30,2025-08-15,Rennes,Marseille,1,0,0,1,H
-31,2025-08-16,Lens,Lyon,0,1,0,0,A
-32,2025-08-16,Monaco,Le Havre,3,1,1,2,H
-33,2025-08-16,Nice,Toulouse,0,1,0,0,A
-34,2025-08-17,Stade Brestois 29,Lille,3,3,1,2,D
-35,2025-08-17,Angers,Paris FC,1,0,1,0,H
-36,2025-08-17,Auxerre,Lorient,1,0,0,1,H
-37,2025-08-17,Metz,Strasbourg,0,1,0,0,A
-38,2025-08-17,Nantes,Paris Saint Germain,0,1,0,0,A
-39,2025-08-22,Paris Saint Germain,Angers,1,0,0,1,H
-40,2025-08-23,Marseille,Paris FC,5,2,2,3,H
-41,2025-08-23,Nice,Auxerre,3,1,2,1,H
-42,2025-08-23,Lyon,Metz,3,0,2,1,H
-43,2025-08-24,Lorient,Rennes,4,0,1,3,H
-44,2025-08-24,Strasbourg,Nantes,1,0,0,1,H
-45,2025-08-24,Toulouse,Stade Brestois 29,2,0,0,2,H
-46,2025-08-24,Le Havre,Lens,1,2,1,0,A
-47,2025-08-24,Lille,Monaco,1,0,0,1,H
-48,2025-08-29,Lens,Stade Brestois 29,3,1,0,3,H
-49,2025-08-30,Lorient,Lille,1,7,0,1,A
-50,2025-08-30,Nantes,Auxerre,1,0,1,0,H
-51,2025-08-30,Toulouse,Paris Saint Germain,3,6,1,2,A
-52,2025-08-31,Angers,Rennes,1,1,0,1,D
-53,2025-08-31,Monaco,Strasbourg,3,2,1,2,H
-54,2025-08-31,Le Havre,Nice,3,1,1,2,H
-55,2025-08-31,Paris FC,Metz,3,2,1,2,H
-56,2025-08-31,Lyon,Marseille,1,0,0,1,H
+country,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+France,2025-08-15,Rennes,Marseille,1.0,0.0,0.0,0.0,H
+France,2025-08-16,Lens,Lyon,0.0,1.0,0.0,1.0,A
+France,2025-08-16,Monaco,Le Havre,3.0,1.0,1.0,0.0,H
+France,2025-08-16,Nice,Toulouse,0.0,1.0,0.0,0.0,A
+France,2025-08-17,Stade Brestois 29,Lille,3.0,3.0,1.0,2.0,D
+France,2025-08-17,Angers,Paris FC,1.0,0.0,1.0,0.0,H
+France,2025-08-17,Auxerre,Lorient,1.0,0.0,0.0,0.0,H
+France,2025-08-17,Metz,Strasbourg,0.0,1.0,0.0,0.0,A
+France,2025-08-17,Nantes,Paris Saint Germain,0.0,1.0,0.0,0.0,A
+France,2025-08-22,Paris Saint Germain,Angers,1.0,0.0,0.0,0.0,H
+France,2025-08-23,Marseille,Paris FC,5.0,2.0,2.0,1.0,H
+France,2025-08-23,Nice,Auxerre,3.0,1.0,2.0,1.0,H
+France,2025-08-23,Lyon,Metz,3.0,0.0,2.0,0.0,H
+France,2025-08-24,Lorient,Rennes,4.0,0.0,1.0,0.0,H
+France,2025-08-24,Strasbourg,Nantes,1.0,0.0,0.0,0.0,H
+France,2025-08-24,Toulouse,Stade Brestois 29,2.0,0.0,0.0,0.0,H
+France,2025-08-24,Le Havre,Lens,1.0,2.0,1.0,2.0,A
+France,2025-08-24,Lille,Monaco,1.0,0.0,0.0,0.0,H
+France,2025-08-29,Lens,Stade Brestois 29,3.0,1.0,0.0,1.0,H
+France,2025-08-30,Lorient,Lille,1.0,7.0,0.0,0.0,A
+France,2025-08-30,Nantes,Auxerre,1.0,0.0,1.0,0.0,H
+France,2025-08-30,Toulouse,Paris Saint Germain,3.0,6.0,1.0,4.0,A
+France,2025-08-31,Angers,Rennes,1.0,1.0,0.0,1.0,D
+France,2025-08-31,Monaco,Strasbourg,3.0,2.0,1.0,0.0,H
+France,2025-08-31,Le Havre,Nice,3.0,1.0,1.0,0.0,H
+France,2025-08-31,Paris FC,Metz,3.0,2.0,1.0,1.0,H
+France,2025-08-31,Lyon,Marseille,1.0,0.0,0.0,0.0,H
+France,2025-09-12,Marseille,Lorient,4.0,0.0,3.0,0.0,H
+France,2025-09-13,Nice,Nantes,1.0,0.0,0.0,0.0,H
+France,2025-09-13,Auxerre,Monaco,1.0,2.0,0.0,1.0,A
+France,2025-09-14,Lille,Toulouse,2.0,1.0,0.0,0.0,H
+France,2025-09-14,Paris Saint Germain,Lens,2.0,0.0,1.0,0.0,H
+France,2025-09-14,Strasbourg,Le Havre,1.0,0.0,0.0,0.0,H
+France,2025-09-14,Stade Brestois 29,Paris FC,1.0,2.0,0.0,2.0,A
+France,2025-09-14,Metz,Angers,1.0,1.0,1.0,0.0,D
+France,2025-09-14,Rennes,Lyon,3.0,1.0,0.0,1.0,H
