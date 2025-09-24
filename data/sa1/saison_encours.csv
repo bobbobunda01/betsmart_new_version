@@ -1,31 +1,41 @@
-country,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-Italy,2025-08-23,Sassuolo,Napoli,0.0,2.0,0.0,1.0,A
-Italy,2025-08-23,Genoa,Lecce,0.0,0.0,0.0,0.0,D
-Italy,2025-08-23,AC Milan,Cremonese,1.0,2.0,1.0,1.0,A
-Italy,2025-08-23,AS Roma,Bologna,1.0,0.0,0.0,0.0,H
-Italy,2025-08-24,Cagliari,Fiorentina,1.0,1.0,0.0,0.0,D
-Italy,2025-08-24,Como,Lazio,2.0,0.0,0.0,0.0,H
-Italy,2025-08-24,Juventus,Parma,2.0,0.0,0.0,0.0,H
-Italy,2025-08-24,Atalanta,Pisa,1.0,1.0,0.0,1.0,D
-Italy,2025-08-25,Udinese,Verona,1.0,1.0,0.0,0.0,D
-Italy,2025-08-25,Inter,Torino,5.0,0.0,2.0,0.0,H
-Italy,2025-08-29,Cremonese,Sassuolo,3.0,2.0,2.0,0.0,H
-Italy,2025-08-29,Lecce,AC Milan,0.0,2.0,0.0,0.0,A
-Italy,2025-08-30,Bologna,Como,1.0,0.0,0.0,0.0,H
-Italy,2025-08-30,Parma,Atalanta,1.0,1.0,0.0,0.0,D
-Italy,2025-08-30,Napoli,Cagliari,1.0,0.0,0.0,0.0,H
-Italy,2025-08-30,Pisa,AS Roma,0.0,1.0,0.0,0.0,A
-Italy,2025-08-31,Genoa,Juventus,0.0,1.0,0.0,0.0,A
-Italy,2025-08-31,Torino,Fiorentina,0.0,0.0,0.0,0.0,D
-Italy,2025-08-31,Lazio,Verona,4.0,0.0,3.0,0.0,H
-Italy,2025-08-31,Inter,Udinese,1.0,2.0,1.0,2.0,A
-Italy,2025-09-13,Cagliari,Parma,2.0,0.0,1.0,0.0,H
-Italy,2025-09-13,Juventus,Inter,4.0,3.0,2.0,1.0,H
-Italy,2025-09-13,Fiorentina,Napoli,1.0,3.0,0.0,2.0,A
-Italy,2025-09-14,AS Roma,Torino,0.0,1.0,0.0,0.0,A
-Italy,2025-09-14,Atalanta,Lecce,4.0,1.0,1.0,0.0,H
-Italy,2025-09-14,Pisa,Udinese,0.0,1.0,0.0,1.0,A
-Italy,2025-09-14,Sassuolo,Lazio,1.0,0.0,0.0,0.0,H
-Italy,2025-09-14,AC Milan,Bologna,1.0,0.0,0.0,0.0,H
-Italy,2025-09-15,Verona,Cremonese,0.0,0.0,0.0,0.0,D
-Italy,2025-09-15,Como,Genoa,1.0,1.0,1.0,0.0,D
+,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+308,Serie A,2025-08-23,Sassuolo,Napoli,0,2,0,0,A
+309,Serie A,2025-08-23,Genoa,Lecce,0,0,0,0,D
+310,Serie A,2025-08-23,AC Milan,Cremonese,1,2,1,0,A
+311,Serie A,2025-08-23,AS Roma,Bologna,1,0,0,1,H
+312,Serie A,2025-08-24,Cagliari,Fiorentina,1,1,0,1,D
+313,Serie A,2025-08-24,Como,Lazio,2,0,0,2,H
+314,Serie A,2025-08-24,Juventus,Parma,2,0,0,2,H
+315,Serie A,2025-08-24,Atalanta,Pisa,1,1,0,1,D
+316,Serie A,2025-08-25,Udinese,Verona,1,1,0,1,D
+317,Serie A,2025-08-25,Inter,Torino,5,0,2,3,H
+318,Serie A,2025-08-29,Cremonese,Sassuolo,3,2,2,1,H
+319,Serie A,2025-08-29,Lecce,AC Milan,0,2,0,0,A
+320,Serie A,2025-08-30,Bologna,Como,1,0,0,1,H
+321,Serie A,2025-08-30,Parma,Atalanta,1,1,0,1,D
+322,Serie A,2025-08-30,Napoli,Cagliari,1,0,0,1,H
+323,Serie A,2025-08-30,Pisa,AS Roma,0,1,0,0,A
+324,Serie A,2025-08-31,Genoa,Juventus,0,1,0,0,A
+325,Serie A,2025-08-31,Torino,Fiorentina,0,0,0,0,D
+326,Serie A,2025-08-31,Lazio,Verona,4,0,3,1,H
+327,Serie A,2025-08-31,Inter,Udinese,1,2,1,0,A
+328,Serie A,2025-09-13,Cagliari,Parma,2,0,1,1,H
+329,Serie A,2025-09-13,Juventus,Inter,4,3,2,2,H
+330,Serie A,2025-09-13,Fiorentina,Napoli,1,3,0,1,A
+331,Serie A,2025-09-14,AS Roma,Torino,0,1,0,0,A
+332,Serie A,2025-09-14,Atalanta,Lecce,4,1,1,3,H
+333,Serie A,2025-09-14,Pisa,Udinese,0,1,0,0,A
+334,Serie A,2025-09-14,Sassuolo,Lazio,1,0,0,1,H
+335,Serie A,2025-09-14,AC Milan,Bologna,1,0,0,1,H
+336,Serie A,2025-09-15,Verona,Cremonese,0,0,0,0,D
+337,Serie A,2025-09-15,Como,Genoa,1,1,1,0,D
+338,Serie A,2025-09-19,Lecce,Cagliari,1,2,1,0,A
+339,Serie A,2025-09-20,Bologna,Genoa,2,1,0,2,H
+340,Serie A,2025-09-20,Verona,Juventus,1,1,1,0,D
+341,Serie A,2025-09-20,Udinese,AC Milan,0,3,0,0,A
+342,Serie A,2025-09-21,Lazio,AS Roma,0,1,0,0,A
+343,Serie A,2025-09-21,Torino,Atalanta,0,3,0,0,A
+344,Serie A,2025-09-21,Cremonese,Parma,0,0,0,0,D
+345,Serie A,2025-09-21,Fiorentina,Como,1,2,1,0,A
+346,Serie A,2025-09-21,Inter,Sassuolo,2,1,1,1,H
+347,Serie A,2025-09-22,Napoli,Pisa,3,2,1,2,H
