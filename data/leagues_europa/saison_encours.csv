@@ -1,0 +1,90 @@
+,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+0,2025,2025-07-10,Sabah FA,Celje,2,3,2,0,A
+1,2025,2025-07-10,AEK Larnaca,FK Partizan,1,0,0,1,H
+2,2025,2025-07-10,Sheriff Tiraspol,Prishtina,4,0,2,2,H
+3,2025,2025-07-10,Paks,CFR 1907 Cluj,0,0,0,0,D
+4,2025,2025-07-10,Levski Sofia,Hapoel Beer Sheva,0,0,0,0,D
+5,2025,2025-07-10,Shakhtar Donetsk,Ilves,6,0,2,4,H
+6,2025,2025-07-10,Spartak Trnava,BK Hacken,0,1,0,0,A
+7,2025,2025-07-10,Legia Warszawa,Aktobe,1,0,1,0,H
+8,2025,2025-07-17,Ilves,Shakhtar Donetsk,0,0,0,0,D
+9,2025,2025-07-17,Aktobe,Legia Warszawa,0,1,0,0,A
+10,2025,2025-07-17,BK Hacken,Spartak Trnava,2,2,1,1,D
+11,2025,2025-07-17,CFR 1907 Cluj,Paks,3,0,1,2,H
+12,2025,2025-07-17,Prishtina,Sheriff Tiraspol,2,1,0,2,H
+13,2025,2025-07-24,Sheriff Tiraspol,Utrecht,1,3,1,0,A
+14,2025,2025-07-24,Baník Ostrava,Legia Warszawa,2,2,1,1,D
+15,2025,2025-07-24,FC Midtjylland,Hibernian,1,1,0,1,D
+16,2025,2025-07-24,Levski Sofia,SC Braga,0,0,0,0,D
+17,2025,2025-07-24,Besiktas,Shakhtar Donetsk,2,4,1,1,A
+18,2025,2025-07-24,Anderlecht,BK Hacken,1,0,1,0,H
+19,2025,2025-07-24,Celje,AEK Larnaca,1,1,1,0,D
+20,2025,2025-07-24,FC Lugano,CFR 1907 Cluj,0,0,0,0,D
+21,2025,2025-07-31,AEK Larnaca,Celje,2,1,1,1,H
+22,2025,2025-07-31,Utrecht,Sheriff Tiraspol,4,1,1,3,H
+23,2025,2025-07-31,Shakhtar Donetsk,Besiktas,2,0,2,0,H
+24,2025,2025-07-31,Legia Warszawa,Baník Ostrava,2,1,0,2,H
+25,2025,2025-08-05,Hamrun Spartans,Maccabi Tel Aviv,1,2,0,1,A
+26,2025,2025-08-06,Rīgas FS,KuPS,1,2,0,1,A
+27,2025,2025-08-06,HNK Rijeka,Shelbourne,1,2,0,1,A
+28,2025,2025-08-07,Lincoln Red Imps FC,FC Noah,1,1,1,0,D
+29,2025,2025-08-07,Fredrikstad,FC Midtjylland,1,3,0,1,A
+30,2025,2025-08-07,AEK Larnaca,Legia Warszawa,4,1,1,3,H
+31,2025,2025-08-07,CFR 1907 Cluj,SC Braga,1,2,1,0,A
+32,2025,2025-08-07,BK Hacken,Brann,0,2,0,0,A
+33,2025,2025-08-07,PAOK,Wolfsberger AC,0,0,0,0,D
+34,2025,2025-08-07,Zrinjski,Breidablik,1,1,0,1,D
+35,2025,2025-08-07,Panathinaikos,Shakhtar Donetsk,0,0,0,0,D
+36,2025,2025-08-07,FCSB,Drita,3,2,0,3,H
+37,2025,2025-08-07,Servette FC,Utrecht,1,3,1,0,A
+38,2025,2025-08-12,Shelbourne,HNK Rijeka,1,3,0,1,A
+39,2025,2025-08-14,KuPS,Rīgas FS,1,0,0,1,H
+40,2025,2025-08-14,FC Midtjylland,Fredrikstad,2,0,2,0,H
+41,2025,2025-08-14,Brann,BK Hacken,0,1,0,0,A
+42,2025,2025-08-14,Breidablik,Zrinjski,1,2,0,1,A
+43,2025,2025-08-14,Utrecht,Servette FC,2,1,0,2,H
+44,2025,2025-08-14,Maccabi Tel Aviv,Hamrun Spartans,3,1,2,1,H
+45,2025,2025-08-14,Drita,FCSB,1,3,0,1,A
+46,2025,2025-08-14,SC Braga,CFR 1907 Cluj,2,0,2,0,H
+47,2025,2025-08-14,Legia Warszawa,AEK Larnaca,2,1,2,0,H
+48,2025,2025-08-21,FC Midtjylland,KuPS,4,0,2,2,H
+49,2025,2025-08-21,Brann,AEK Larnaca,2,1,1,1,H
+50,2025,2025-08-21,Malmo FF,Sigma Olomouc,3,0,2,1,H
+51,2025,2025-08-21,Zrinjski,Utrecht,0,2,0,0,A
+52,2025,2025-08-21,Shkendija,Ludogorets,2,1,1,1,H
+53,2025,2025-08-21,Panathinaikos,Samsunspor,2,1,0,2,H
+54,2025,2025-08-21,Maccabi Tel Aviv,Dynamo Kyiv,3,1,1,2,H
+55,2025,2025-08-21,Slovan Bratislava,BSC Young Boys,0,1,0,0,A
+56,2025,2025-08-21,Lech Poznan,Genk,1,5,1,0,A
+57,2025,2025-08-21,Aberdeen,FCSB,2,2,0,2,D
+58,2025,2025-08-21,HNK Rijeka,PAOK,1,0,1,0,H
+59,2025,2025-08-21,Lincoln Red Imps FC,SC Braga,0,4,0,0,A
+60,2025,2025-08-27,AEK Larnaca,Brann,0,4,0,0,A
+61,2025,2025-08-28,KuPS,FC Midtjylland,0,2,0,0,A
+62,2025,2025-08-28,Sigma Olomouc,Malmo FF,0,2,0,0,A
+63,2025,2025-08-28,Samsunspor,Panathinaikos,0,0,0,0,D
+64,2025,2025-08-28,PAOK,HNK Rijeka,5,0,2,3,H
+65,2025,2025-08-28,Utrecht,Zrinjski,0,0,0,0,D
+66,2025,2025-08-28,BSC Young Boys,Slovan Bratislava,3,2,2,1,H
+67,2025,2025-08-28,Dynamo Kyiv,Maccabi Tel Aviv,1,0,1,0,H
+68,2025,2025-08-28,Genk,Lech Poznan,1,2,1,0,A
+69,2025,2025-08-28,FCSB,Aberdeen,3,0,1,2,H
+70,2025,2025-08-28,SC Braga,Lincoln Red Imps FC,5,1,3,2,H
+71,2025,2025-09-24,FC Midtjylland,Sturm Graz,2,0,1,1,H
+72,2025,2025-09-24,PAOK,Maccabi Tel Aviv,0,0,0,0,D
+73,2025,2025-09-24,Nice,AS Roma,1,2,0,1,A
+74,2025,2025-09-24,SC Freiburg,FC Basel 1893,2,1,1,1,H
+75,2025,2025-09-24,SC Braga,Feyenoord,1,0,0,1,H
+76,2025,2025-09-24,Malmo FF,Ludogorets,1,2,0,1,A
+77,2025,2025-09-24,Real Betis,Nottingham Forest,2,2,1,1,D
+78,2025,2025-09-24,FK Crvena Zvezda,Celtic,1,1,0,1,D
+79,2025,2025-09-24,Dinamo Zagreb,Fenerbahce,3,1,1,2,H
+80,2025,2025-09-25,Lille,Brann,2,1,0,2,H
+81,2025,2025-09-25,GO Ahead Eagles,FCSB,0,1,0,0,A
+82,2025,2025-09-25,Aston Villa,Bologna,1,0,1,0,H
+83,2025,2025-09-25,VfB Stuttgart,Celta Vigo,2,1,0,2,H
+84,2025,2025-09-25,Utrecht,Lyon,0,1,0,0,A
+85,2025,2025-09-25,Rangers,Genk,0,1,0,0,A
+86,2025,2025-09-25,BSC Young Boys,Panathinaikos,1,4,1,0,A
+87,2025,2025-09-25,Red Bull Salzburg,FC Porto,0,1,0,0,A
+88,2025,2025-09-25,Ferencvarosi TC,Plzen,1,1,0,1,D
