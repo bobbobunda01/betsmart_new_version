@@ -802,7 +802,7 @@ def prediction():
                 thread=0.63
             
              # league de champions
-            elif comp==3:
+            elif comp==2:
                 chemin_model1 = RACINE_PROJET / "modele" / "leagues_champions" / "league_champion_stage1.joblib"
                 chemin_model2 = RACINE_PROJET / "modele" / "leagues_champions" / "league_champion_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "leagues_champions" / "rf_nbre_but_marque_chamions_league.joblib"
