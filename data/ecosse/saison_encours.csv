@@ -1,30 +1,38 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-1170,ecosse,2025-08-02,Kilmarnock,Livingston,2,2,2,0,D
-1171,ecosse,2025-08-02,Motherwell,Rangers,1,1,0,1,D
-1172,ecosse,2025-08-03,Falkirk,Dundee Utd,2,2,0,2,D
-1173,ecosse,2025-08-03,Dundee,Hibernian,1,2,1,0,A
-1174,ecosse,2025-08-03,Celtic,ST Mirren,1,0,0,1,H
-1175,ecosse,2025-08-04,Heart Of Midlothian,Aberdeen,2,0,1,1,H
-1176,ecosse,2025-08-09,ST Mirren,Motherwell,0,0,0,0,D
-1177,ecosse,2025-08-09,Livingston,Falkirk,3,1,2,1,H
-1178,ecosse,2025-08-09,Rangers,Dundee,1,1,0,1,D
-1179,ecosse,2025-08-10,Aberdeen,Celtic,0,2,0,0,A
-1180,ecosse,2025-08-10,Hibernian,Kilmarnock,2,2,2,0,D
-1181,ecosse,2025-08-10,Dundee Utd,Heart Of Midlothian,2,3,2,0,A
-1182,ecosse,2025-08-23,Celtic,Livingston,3,0,0,3,H
-1183,ecosse,2025-08-23,Kilmarnock,Dundee,0,0,0,0,D
-1184,ecosse,2025-08-23,Heart Of Midlothian,Motherwell,3,3,0,3,D
-1185,ecosse,2025-08-24,ST Mirren,Rangers,1,1,1,0,D
-1186,ecosse,2025-08-30,Livingston,Heart Of Midlothian,1,2,1,0,A
-1187,ecosse,2025-08-30,Motherwell,Kilmarnock,2,2,1,1,D
-1188,ecosse,2025-08-31,Rangers,Celtic,0,0,0,0,D
-1189,ecosse,2025-08-31,Dundee,Dundee Utd,0,2,0,0,A
-1190,ecosse,2025-08-31,Hibernian,ST Mirren,1,1,0,1,D
-1191,ecosse,2025-08-31,Aberdeen,Falkirk,0,1,0,0,A
-1192,ecosse,2025-09-13,Aberdeen,Livingston,0,0,0,0,D
-1193,ecosse,2025-09-13,Dundee,Motherwell,1,1,0,1,D
-1194,ecosse,2025-09-13,Rangers,Heart Of Midlothian,0,2,0,0,A
-1195,ecosse,2025-09-13,Falkirk,ST Mirren,1,2,0,1,A
-1196,ecosse,2025-09-13,Hibernian,Dundee Utd,3,3,1,2,D
-1197,ecosse,2025-09-14,Kilmarnock,Celtic,1,2,0,1,A
-1198,ecosse,2025-09-20,Dundee,Livingston,3,2,1,2,H
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+ecosse,2025,2025-08-02,Kilmarnock,Livingston,2,2,2,0,D
+ecosse,2025,2025-08-02,Motherwell,Rangers,1,1,0,1,D
+ecosse,2025,2025-08-03,Falkirk,Dundee Utd,2,2,0,2,D
+ecosse,2025,2025-08-03,Dundee,Hibernian,1,2,1,0,A
+ecosse,2025,2025-08-03,Celtic,ST Mirren,1,0,0,1,H
+ecosse,2025,2025-08-04,Heart Of Midlothian,Aberdeen,2,0,1,1,H
+ecosse,2025,2025-08-09,ST Mirren,Motherwell,0,0,0,0,D
+ecosse,2025,2025-08-09,Livingston,Falkirk,3,1,2,1,H
+ecosse,2025,2025-08-09,Rangers,Dundee,1,1,0,1,D
+ecosse,2025,2025-08-10,Aberdeen,Celtic,0,2,0,0,A
+ecosse,2025,2025-08-10,Hibernian,Kilmarnock,2,2,2,0,D
+ecosse,2025,2025-08-10,Dundee Utd,Heart Of Midlothian,2,3,2,0,A
+ecosse,2025,2025-08-23,Celtic,Livingston,3,0,0,3,H
+ecosse,2025,2025-08-23,Kilmarnock,Dundee,0,0,0,0,D
+ecosse,2025,2025-08-23,Heart Of Midlothian,Motherwell,3,3,0,3,D
+ecosse,2025,2025-08-24,ST Mirren,Rangers,1,1,1,0,D
+ecosse,2025,2025-08-30,Livingston,Heart Of Midlothian,1,2,1,0,A
+ecosse,2025,2025-08-30,Motherwell,Kilmarnock,2,2,1,1,D
+ecosse,2025,2025-08-31,Rangers,Celtic,0,0,0,0,D
+ecosse,2025,2025-08-31,Dundee,Dundee Utd,0,2,0,0,A
+ecosse,2025,2025-08-31,Hibernian,ST Mirren,1,1,0,1,D
+ecosse,2025,2025-08-31,Aberdeen,Falkirk,0,1,0,0,A
+ecosse,2025,2025-09-13,Aberdeen,Livingston,0,0,0,0,D
+ecosse,2025,2025-09-13,Dundee,Motherwell,1,1,0,1,D
+ecosse,2025,2025-09-13,Rangers,Heart Of Midlothian,0,2,0,0,A
+ecosse,2025,2025-09-13,Falkirk,ST Mirren,1,2,0,1,A
+ecosse,2025,2025-09-13,Hibernian,Dundee Utd,3,3,1,2,D
+ecosse,2025,2025-09-14,Kilmarnock,Celtic,1,2,0,1,A
+ecosse,2025,2025-09-20,Dundee,Livingston,3,2,1,2,H
+ecosse,2025,2025-09-23,Dundee Utd,Aberdeen,2,0,1,1,H
+ecosse,2025,2025-09-23,Falkirk,Hibernian,2,2,1,1,D
+ecosse,2025,2025-09-27,Celtic,Hibernian,0,0,0,0,D
+ecosse,2025,2025-09-27,ST Mirren,Dundee,1,0,1,0,H
+ecosse,2025,2025-09-27,Heart Of Midlothian,Falkirk,3,0,2,1,H
+ecosse,2025,2025-09-27,Dundee Utd,Kilmarnock,0,2,0,0,A
+ecosse,2025,2025-09-27,Motherwell,Aberdeen,2,0,0,2,H
+ecosse,2025,2025-09-28,Livingston,Rangers,1,2,0,1,A

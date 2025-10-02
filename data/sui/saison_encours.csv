@@ -1,37 +1,43 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-401,Suisse,2025-07-25,FC Zurich,FC Sion,2,3,1,1,A
-402,Suisse,2025-07-26,FC ST. Gallen,FC Basel 1893,2,1,0,2,H
-403,Suisse,2025-07-26,Grasshoppers,FC Luzern,2,3,2,0,A
-404,Suisse,2025-07-26,BSC Young Boys,Servette FC,3,1,2,1,H
-405,Suisse,2025-07-27,FC Lugano,FC Thun,1,2,1,0,A
-406,Suisse,2025-07-27,Lausanne,FC Winterthur,3,2,0,3,H
-407,Suisse,2025-08-02,FC Winterthur,BSC Young Boys,1,1,0,1,D
-408,Suisse,2025-08-02,Servette FC,FC ST. Gallen,1,4,1,0,A
-409,Suisse,2025-08-02,FC Basel 1893,Grasshoppers,2,1,1,1,H
-410,Suisse,2025-08-03,FC Thun,Lausanne,2,1,1,1,H
-411,Suisse,2025-08-03,FC Sion,FC Lugano,4,0,2,2,H
-412,Suisse,2025-08-03,FC Luzern,FC Zurich,1,1,0,1,D
-413,Suisse,2025-08-06,FC Basel 1893,BSC Young Boys,4,1,1,3,H
-414,Suisse,2025-08-09,FC ST. Gallen,FC Winterthur,5,0,3,2,H
-415,Suisse,2025-08-09,FC Luzern,FC Thun,1,2,1,0,A
-416,Suisse,2025-08-10,BSC Young Boys,FC Sion,0,0,0,0,D
-417,Suisse,2025-08-10,FC Lugano,FC Basel 1893,3,1,2,1,H
-418,Suisse,2025-08-10,Lausanne,FC Zurich,1,2,1,0,A
-419,Suisse,2025-08-10,Servette FC,Grasshoppers,1,1,0,1,D
-420,Suisse,2025-08-23,FC Zurich,FC Thun,0,4,0,0,A
-421,Suisse,2025-08-24,Grasshoppers,FC Winterthur,2,2,1,1,D
-422,Suisse,2025-08-24,FC ST. Gallen,FC Luzern,0,1,0,0,A
-423,Suisse,2025-08-30,FC Thun,Grasshoppers,1,1,0,1,D
-424,Suisse,2025-08-30,FC Winterthur,FC Zurich,1,3,0,1,A
-425,Suisse,2025-08-30,FC Sion,FC Basel 1893,0,1,0,0,A
-426,Suisse,2025-08-31,Lausanne,FC ST. Gallen,1,2,0,1,A
-427,Suisse,2025-08-31,BSC Young Boys,FC Lugano,3,1,1,2,H
-428,Suisse,2025-08-31,Servette FC,FC Luzern,2,2,0,2,D
-429,Suisse,2025-09-13,FC Zurich,Servette FC,2,1,2,0,H
-430,Suisse,2025-09-13,FC Thun,FC Basel 1893,1,3,0,1,A
-431,Suisse,2025-09-13,FC ST. Gallen,FC Lugano,1,0,1,0,H
-432,Suisse,2025-09-14,FC Winterthur,FC Sion,2,3,1,1,A
-433,Suisse,2025-09-14,FC Luzern,BSC Young Boys,1,2,0,1,A
-434,Suisse,2025-09-14,Grasshoppers,Lausanne,3,1,1,2,H
-435,Suisse,2025-09-17,FC Lugano,Lausanne,1,1,1,0,D
-436,Suisse,2025-09-17,FC Sion,Servette FC,0,2,0,0,A
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+Suisse,2025,2025-07-25,FC Zurich,FC Sion,2,3,1,1,A
+Suisse,2025,2025-07-26,FC ST. Gallen,FC Basel 1893,2,1,0,2,H
+Suisse,2025,2025-07-26,Grasshoppers,FC Luzern,2,3,2,0,A
+Suisse,2025,2025-07-26,BSC Young Boys,Servette FC,3,1,2,1,H
+Suisse,2025,2025-07-27,FC Lugano,FC Thun,1,2,1,0,A
+Suisse,2025,2025-07-27,Lausanne,FC Winterthur,3,2,0,3,H
+Suisse,2025,2025-08-02,FC Winterthur,BSC Young Boys,1,1,0,1,D
+Suisse,2025,2025-08-02,Servette FC,FC ST. Gallen,1,4,1,0,A
+Suisse,2025,2025-08-02,FC Basel 1893,Grasshoppers,2,1,1,1,H
+Suisse,2025,2025-08-03,FC Thun,Lausanne,2,1,1,1,H
+Suisse,2025,2025-08-03,FC Sion,FC Lugano,4,0,2,2,H
+Suisse,2025,2025-08-03,FC Luzern,FC Zurich,1,1,0,1,D
+Suisse,2025,2025-08-06,FC Basel 1893,BSC Young Boys,4,1,1,3,H
+Suisse,2025,2025-08-09,FC ST. Gallen,FC Winterthur,5,0,3,2,H
+Suisse,2025,2025-08-09,FC Luzern,FC Thun,1,2,1,0,A
+Suisse,2025,2025-08-10,BSC Young Boys,FC Sion,0,0,0,0,D
+Suisse,2025,2025-08-10,FC Lugano,FC Basel 1893,3,1,2,1,H
+Suisse,2025,2025-08-10,Lausanne,FC Zurich,1,2,1,0,A
+Suisse,2025,2025-08-10,Servette FC,Grasshoppers,1,1,0,1,D
+Suisse,2025,2025-08-23,FC Zurich,FC Thun,0,4,0,0,A
+Suisse,2025,2025-08-24,Grasshoppers,FC Winterthur,2,2,1,1,D
+Suisse,2025,2025-08-24,FC ST. Gallen,FC Luzern,0,1,0,0,A
+Suisse,2025,2025-08-30,FC Thun,Grasshoppers,1,1,0,1,D
+Suisse,2025,2025-08-30,FC Winterthur,FC Zurich,1,3,0,1,A
+Suisse,2025,2025-08-30,FC Sion,FC Basel 1893,0,1,0,0,A
+Suisse,2025,2025-08-31,Lausanne,FC ST. Gallen,1,2,0,1,A
+Suisse,2025,2025-08-31,BSC Young Boys,FC Lugano,3,1,1,2,H
+Suisse,2025,2025-08-31,Servette FC,FC Luzern,2,2,0,2,D
+Suisse,2025,2025-09-13,FC Zurich,Servette FC,2,1,2,0,H
+Suisse,2025,2025-09-13,FC Thun,FC Basel 1893,1,3,0,1,A
+Suisse,2025,2025-09-13,FC ST. Gallen,FC Lugano,1,0,1,0,H
+Suisse,2025,2025-09-14,FC Winterthur,FC Sion,2,3,1,1,A
+Suisse,2025,2025-09-14,FC Luzern,BSC Young Boys,1,2,0,1,A
+Suisse,2025,2025-09-14,Grasshoppers,Lausanne,3,1,1,2,H
+Suisse,2025,2025-09-17,FC Lugano,Lausanne,1,1,1,0,D
+Suisse,2025,2025-09-17,FC Sion,Servette FC,0,2,0,0,A
+Suisse,2025,2025-09-27,FC Lugano,Grasshoppers,2,1,0,2,H
+Suisse,2025,2025-09-27,Servette FC,FC Winterthur,4,0,1,3,H
+Suisse,2025,2025-09-27,FC Zurich,FC ST. Gallen,3,1,0,3,H
+Suisse,2025,2025-09-28,BSC Young Boys,FC Thun,4,2,0,4,H
+Suisse,2025,2025-09-28,FC Basel 1893,FC Luzern,1,2,0,1,A
+Suisse,2025,2025-09-28,FC Sion,Lausanne,0,0,0,0,D

@@ -1,37 +1,46 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-221,Bundesliga,2025-08-22,Bayern München,RB Leipzig,6,0,3,3,H
-222,Bundesliga,2025-08-23,SC Freiburg,FC Augsburg,1,3,0,1,A
-223,Bundesliga,2025-08-23,Bayer Leverkusen,1899 Hoffenheim,1,2,1,0,A
-224,Bundesliga,2025-08-23,Eintracht Frankfurt,Werder Bremen,4,1,2,2,H
-225,Bundesliga,2025-08-23,1. FC Heidenheim,VfL Wolfsburg,1,3,1,0,A
-226,Bundesliga,2025-08-23,Union Berlin,VfB Stuttgart,2,1,2,0,H
-227,Bundesliga,2025-08-23,FC St. Pauli,Borussia Dortmund,3,3,0,3,D
-228,Bundesliga,2025-08-24,FSV Mainz 05,1.FC Köln,0,1,0,0,A
-229,Bundesliga,2025-08-24,Borussia Mönchengladbach,Hamburger SV,0,0,0,0,D
-230,Bundesliga,2025-08-29,Hamburger SV,FC St. Pauli,0,2,0,0,A
-231,Bundesliga,2025-08-30,Werder Bremen,Bayer Leverkusen,3,3,1,2,D
-232,Bundesliga,2025-08-30,1899 Hoffenheim,Eintracht Frankfurt,1,3,0,1,A
-233,Bundesliga,2025-08-30,VfB Stuttgart,Borussia Mönchengladbach,1,0,0,1,H
-234,Bundesliga,2025-08-30,RB Leipzig,1. FC Heidenheim,2,0,0,2,H
-235,Bundesliga,2025-08-30,FC Augsburg,Bayern München,2,3,0,2,A
-236,Bundesliga,2025-08-31,VfL Wolfsburg,FSV Mainz 05,1,1,1,0,D
-237,Bundesliga,2025-08-31,Borussia Dortmund,Union Berlin,3,0,1,2,H
-238,Bundesliga,2025-08-31,1.FC Köln,SC Freiburg,4,1,1,3,H
-239,Bundesliga,2025-09-12,Bayer Leverkusen,Eintracht Frankfurt,3,1,2,1,H
-240,Bundesliga,2025-09-13,SC Freiburg,VfB Stuttgart,3,1,0,3,H
-241,Bundesliga,2025-09-13,VfL Wolfsburg,1.FC Köln,3,3,1,2,D
-242,Bundesliga,2025-09-13,FSV Mainz 05,RB Leipzig,0,1,0,0,A
-243,Bundesliga,2025-09-13,1. FC Heidenheim,Borussia Dortmund,0,2,0,0,A
-244,Bundesliga,2025-09-13,Union Berlin,1899 Hoffenheim,2,4,0,2,A
-245,Bundesliga,2025-09-13,Bayern München,Hamburger SV,5,0,4,1,H
-246,Bundesliga,2025-09-14,FC St. Pauli,FC Augsburg,2,1,1,1,H
-247,Bundesliga,2025-09-14,Borussia Mönchengladbach,Werder Bremen,0,4,0,0,A
-248,Bundesliga,2025-09-19,VfB Stuttgart,FC St. Pauli,2,0,1,1,H
-249,Bundesliga,2025-09-20,Werder Bremen,SC Freiburg,0,3,0,0,A
-250,Bundesliga,2025-09-20,1899 Hoffenheim,Bayern München,1,4,0,1,A
-251,Bundesliga,2025-09-20,FC Augsburg,FSV Mainz 05,1,4,0,1,A
-252,Bundesliga,2025-09-20,Hamburger SV,1. FC Heidenheim,2,1,1,1,H
-253,Bundesliga,2025-09-20,RB Leipzig,1.FC Köln,3,1,3,0,H
-254,Bundesliga,2025-09-21,Eintracht Frankfurt,Union Berlin,3,4,1,2,A
-255,Bundesliga,2025-09-21,Bayer Leverkusen,Borussia Mönchengladbach,1,1,0,1,D
-256,Bundesliga,2025-09-21,Borussia Dortmund,VfL Wolfsburg,1,0,1,0,H
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+Bundesliga,2025,2025-08-22,Bayern München,RB Leipzig,6,0,3,3,H
+Bundesliga,2025,2025-08-23,SC Freiburg,FC Augsburg,1,3,0,1,A
+Bundesliga,2025,2025-08-23,Bayer Leverkusen,1899 Hoffenheim,1,2,1,0,A
+Bundesliga,2025,2025-08-23,Eintracht Frankfurt,Werder Bremen,4,1,2,2,H
+Bundesliga,2025,2025-08-23,1. FC Heidenheim,VfL Wolfsburg,1,3,1,0,A
+Bundesliga,2025,2025-08-23,Union Berlin,VfB Stuttgart,2,1,2,0,H
+Bundesliga,2025,2025-08-23,FC St. Pauli,Borussia Dortmund,3,3,0,3,D
+Bundesliga,2025,2025-08-24,FSV Mainz 05,1.FC Köln,0,1,0,0,A
+Bundesliga,2025,2025-08-24,Borussia Mönchengladbach,Hamburger SV,0,0,0,0,D
+Bundesliga,2025,2025-08-29,Hamburger SV,FC St. Pauli,0,2,0,0,A
+Bundesliga,2025,2025-08-30,Werder Bremen,Bayer Leverkusen,3,3,1,2,D
+Bundesliga,2025,2025-08-30,1899 Hoffenheim,Eintracht Frankfurt,1,3,0,1,A
+Bundesliga,2025,2025-08-30,VfB Stuttgart,Borussia Mönchengladbach,1,0,0,1,H
+Bundesliga,2025,2025-08-30,RB Leipzig,1. FC Heidenheim,2,0,0,2,H
+Bundesliga,2025,2025-08-30,FC Augsburg,Bayern München,2,3,0,2,A
+Bundesliga,2025,2025-08-31,VfL Wolfsburg,FSV Mainz 05,1,1,1,0,D
+Bundesliga,2025,2025-08-31,Borussia Dortmund,Union Berlin,3,0,1,2,H
+Bundesliga,2025,2025-08-31,1.FC Köln,SC Freiburg,4,1,1,3,H
+Bundesliga,2025,2025-09-12,Bayer Leverkusen,Eintracht Frankfurt,3,1,2,1,H
+Bundesliga,2025,2025-09-13,SC Freiburg,VfB Stuttgart,3,1,0,3,H
+Bundesliga,2025,2025-09-13,VfL Wolfsburg,1.FC Köln,3,3,1,2,D
+Bundesliga,2025,2025-09-13,FSV Mainz 05,RB Leipzig,0,1,0,0,A
+Bundesliga,2025,2025-09-13,1. FC Heidenheim,Borussia Dortmund,0,2,0,0,A
+Bundesliga,2025,2025-09-13,Union Berlin,1899 Hoffenheim,2,4,0,2,A
+Bundesliga,2025,2025-09-13,Bayern München,Hamburger SV,5,0,4,1,H
+Bundesliga,2025,2025-09-14,FC St. Pauli,FC Augsburg,2,1,1,1,H
+Bundesliga,2025,2025-09-14,Borussia Mönchengladbach,Werder Bremen,0,4,0,0,A
+Bundesliga,2025,2025-09-19,VfB Stuttgart,FC St. Pauli,2,0,1,1,H
+Bundesliga,2025,2025-09-20,Werder Bremen,SC Freiburg,0,3,0,0,A
+Bundesliga,2025,2025-09-20,1899 Hoffenheim,Bayern München,1,4,0,1,A
+Bundesliga,2025,2025-09-20,FC Augsburg,FSV Mainz 05,1,4,0,1,A
+Bundesliga,2025,2025-09-20,Hamburger SV,1. FC Heidenheim,2,1,1,1,H
+Bundesliga,2025,2025-09-20,RB Leipzig,1.FC Köln,3,1,3,0,H
+Bundesliga,2025,2025-09-21,Eintracht Frankfurt,Union Berlin,3,4,1,2,A
+Bundesliga,2025,2025-09-21,Bayer Leverkusen,Borussia Mönchengladbach,1,1,0,1,D
+Bundesliga,2025,2025-09-21,Borussia Dortmund,VfL Wolfsburg,1,0,1,0,H
+Bundesliga,2025,2025-09-26,Bayern München,Werder Bremen,4,0,2,2,H
+Bundesliga,2025,2025-09-27,VfL Wolfsburg,RB Leipzig,0,1,0,0,A
+Bundesliga,2025,2025-09-27,FSV Mainz 05,Borussia Dortmund,0,2,0,0,A
+Bundesliga,2025,2025-09-27,1. FC Heidenheim,FC Augsburg,2,1,0,2,H
+Bundesliga,2025,2025-09-27,FC St. Pauli,Bayer Leverkusen,1,2,1,0,A
+Bundesliga,2025,2025-09-27,Borussia Mönchengladbach,Eintracht Frankfurt,4,6,0,4,A
+Bundesliga,2025,2025-09-28,SC Freiburg,1899 Hoffenheim,1,1,1,0,D
+Bundesliga,2025,2025-09-28,1.FC Köln,VfB Stuttgart,1,2,1,0,A
+Bundesliga,2025,2025-09-28,Union Berlin,Hamburger SV,0,0,0,0,D

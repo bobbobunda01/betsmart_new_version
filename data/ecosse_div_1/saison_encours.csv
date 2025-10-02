@@ -1,32 +1,40 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-1199,ecosse_div_1,2025-08-01,Arbroath,Ayr Utd,1,1,0,1,D
-1200,ecosse_div_1,2025-08-02,ST Johnstone,Partick,5,1,3,2,H
-1201,ecosse_div_1,2025-08-02,Morton,Dunfermline,0,0,0,0,D
-1202,ecosse_div_1,2025-08-02,Raith Rovers,Queen's Park,1,1,0,1,D
-1203,ecosse_div_1,2025-08-02,Airdrie United,Ross County,2,2,0,2,D
-1204,ecosse_div_1,2025-08-08,Ross County,ST Johnstone,0,1,0,0,A
-1205,ecosse_div_1,2025-08-09,Partick,Morton,1,1,0,1,D
-1206,ecosse_div_1,2025-08-09,Ayr Utd,Raith Rovers,0,1,0,0,A
-1207,ecosse_div_1,2025-08-09,Dunfermline,Airdrie United,2,0,2,0,H
-1208,ecosse_div_1,2025-08-09,Queen's Park,Arbroath,1,3,0,1,A
-1209,ecosse_div_1,2025-08-22,Raith Rovers,Dunfermline,2,0,1,1,H
-1210,ecosse_div_1,2025-08-23,ST Johnstone,Arbroath,3,0,1,2,H
-1211,ecosse_div_1,2025-08-23,Ross County,Partick,1,3,0,1,A
-1212,ecosse_div_1,2025-08-23,Morton,Ayr Utd,2,2,1,1,D
-1213,ecosse_div_1,2025-08-23,Airdrie United,Queen's Park,1,1,0,1,D
-1214,ecosse_div_1,2025-08-30,ST Johnstone,Morton,1,1,0,1,D
-1215,ecosse_div_1,2025-08-30,Partick,Raith Rovers,3,2,2,1,H
-1216,ecosse_div_1,2025-08-30,Ayr Utd,Queen's Park,1,1,0,1,D
-1217,ecosse_div_1,2025-08-30,Dunfermline,Ross County,2,2,1,1,D
-1218,ecosse_div_1,2025-08-30,Arbroath,Airdrie United,1,0,0,1,H
-1219,ecosse_div_1,2025-09-06,Ross County,Arbroath,1,2,0,1,A
-1220,ecosse_div_1,2025-09-06,Morton,Raith Rovers,0,1,0,0,A
-1221,ecosse_div_1,2025-09-12,Partick,Airdrie United,2,1,0,2,H
-1222,ecosse_div_1,2025-09-13,Raith Rovers,ST Johnstone,0,2,0,0,A
-1223,ecosse_div_1,2025-09-13,Ayr Utd,Ross County,1,1,1,0,D
-1224,ecosse_div_1,2025-09-13,Arbroath,Dunfermline,0,5,0,0,A
-1225,ecosse_div_1,2025-09-13,Queen's Park,Morton,0,0,0,0,D
-1226,ecosse_div_1,2025-09-19,ST Johnstone,Dunfermline,2,1,0,2,H
-1227,ecosse_div_1,2025-09-20,Ross County,Queen's Park,1,2,1,0,A
-1228,ecosse_div_1,2025-09-20,Arbroath,Morton,1,1,0,1,D
-1229,ecosse_div_1,2025-09-20,Airdrie United,Raith Rovers,0,0,0,0,D
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+ecosse_div_1,2025,2025-08-01,Arbroath,Ayr Utd,1,1,0,1,D
+ecosse_div_1,2025,2025-08-02,ST Johnstone,Partick,5,1,3,2,H
+ecosse_div_1,2025,2025-08-02,Morton,Dunfermline,0,0,0,0,D
+ecosse_div_1,2025,2025-08-02,Raith Rovers,Queen's Park,1,1,0,1,D
+ecosse_div_1,2025,2025-08-02,Airdrie United,Ross County,2,2,0,2,D
+ecosse_div_1,2025,2025-08-08,Ross County,ST Johnstone,0,1,0,0,A
+ecosse_div_1,2025,2025-08-09,Partick,Morton,1,1,0,1,D
+ecosse_div_1,2025,2025-08-09,Ayr Utd,Raith Rovers,0,1,0,0,A
+ecosse_div_1,2025,2025-08-09,Dunfermline,Airdrie United,2,0,2,0,H
+ecosse_div_1,2025,2025-08-09,Queen's Park,Arbroath,1,3,0,1,A
+ecosse_div_1,2025,2025-08-22,Raith Rovers,Dunfermline,2,0,1,1,H
+ecosse_div_1,2025,2025-08-23,ST Johnstone,Arbroath,3,0,1,2,H
+ecosse_div_1,2025,2025-08-23,Ross County,Partick,1,3,0,1,A
+ecosse_div_1,2025,2025-08-23,Morton,Ayr Utd,2,2,1,1,D
+ecosse_div_1,2025,2025-08-23,Airdrie United,Queen's Park,1,1,0,1,D
+ecosse_div_1,2025,2025-08-30,ST Johnstone,Morton,1,1,0,1,D
+ecosse_div_1,2025,2025-08-30,Partick,Raith Rovers,3,2,2,1,H
+ecosse_div_1,2025,2025-08-30,Ayr Utd,Queen's Park,1,1,0,1,D
+ecosse_div_1,2025,2025-08-30,Dunfermline,Ross County,2,2,1,1,D
+ecosse_div_1,2025,2025-08-30,Arbroath,Airdrie United,1,0,0,1,H
+ecosse_div_1,2025,2025-09-06,Ross County,Arbroath,1,2,0,1,A
+ecosse_div_1,2025,2025-09-06,Morton,Raith Rovers,0,1,0,0,A
+ecosse_div_1,2025,2025-09-12,Partick,Airdrie United,2,1,0,2,H
+ecosse_div_1,2025,2025-09-13,Raith Rovers,ST Johnstone,0,2,0,0,A
+ecosse_div_1,2025,2025-09-13,Ayr Utd,Ross County,1,1,1,0,D
+ecosse_div_1,2025,2025-09-13,Arbroath,Dunfermline,0,5,0,0,A
+ecosse_div_1,2025,2025-09-13,Queen's Park,Morton,0,0,0,0,D
+ecosse_div_1,2025,2025-09-19,ST Johnstone,Dunfermline,2,1,0,2,H
+ecosse_div_1,2025,2025-09-20,Ross County,Queen's Park,1,2,1,0,A
+ecosse_div_1,2025,2025-09-20,Arbroath,Morton,1,1,0,1,D
+ecosse_div_1,2025,2025-09-20,Airdrie United,Raith Rovers,0,0,0,0,D
+ecosse_div_1,2025,2025-09-23,Dunfermline,Ayr Utd,0,1,0,0,A
+ecosse_div_1,2025,2025-09-23,Airdrie United,ST Johnstone,1,2,0,1,A
+ecosse_div_1,2025,2025-09-27,Morton,Ross County,1,1,0,1,D
+ecosse_div_1,2025,2025-09-27,Raith Rovers,Arbroath,3,0,0,3,H
+ecosse_div_1,2025,2025-09-27,Ayr Utd,Airdrie United,4,2,4,0,H
+ecosse_div_1,2025,2025-09-27,Dunfermline,Partick,0,2,0,0,A
+ecosse_div_1,2025,2025-09-27,Queen's Park,ST Johnstone,1,2,1,0,A
+ecosse_div_1,2025,2025-09-30,Queen's Park,Partick,0,1,0,0,A

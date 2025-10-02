@@ -1,52 +1,71 @@
-,league,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-257,La Liga,2025-08-15,Girona,Rayo Vallecano,1,3,0,1,A
-258,La Liga,2025-08-15,Villarreal,Oviedo,2,0,2,0,H
-259,La Liga,2025-08-16,Mallorca,Barcelona,0,3,0,0,A
-260,La Liga,2025-08-16,Valencia,Real Sociedad,1,1,0,1,D
-261,La Liga,2025-08-16,Alaves,Levante,2,1,1,1,H
-262,La Liga,2025-08-17,Celta Vigo,Getafe,0,2,0,0,A
-263,La Liga,2025-08-17,Athletic Club,Sevilla,3,2,2,1,H
-264,La Liga,2025-08-17,Espanyol,Atletico Madrid,2,1,0,2,H
-265,La Liga,2025-08-18,Elche,Real Betis,1,1,0,1,D
-266,La Liga,2025-08-19,Real Madrid,Osasuna,1,0,0,1,H
-267,La Liga,2025-08-22,Real Betis,Alaves,1,0,1,0,H
-268,La Liga,2025-08-23,Mallorca,Celta Vigo,1,1,0,1,D
-269,La Liga,2025-08-23,Atletico Madrid,Elche,1,1,1,0,D
-270,La Liga,2025-08-23,Levante,Barcelona,2,3,2,0,A
-271,La Liga,2025-08-24,Osasuna,Valencia,1,0,1,0,H
-272,La Liga,2025-08-24,Villarreal,Girona,5,0,4,1,H
-273,La Liga,2025-08-24,Real Sociedad,Espanyol,2,2,0,2,D
-274,La Liga,2025-08-24,Oviedo,Real Madrid,0,3,0,0,A
-275,La Liga,2025-08-25,Athletic Club,Rayo Vallecano,1,0,0,1,H
-276,La Liga,2025-08-25,Sevilla,Getafe,1,2,1,0,A
-277,La Liga,2025-08-27,Celta Vigo,Real Betis,1,1,0,1,D
-278,La Liga,2025-08-29,Elche,Levante,2,0,0,2,H
-279,La Liga,2025-08-29,Valencia,Getafe,3,0,1,2,H
-280,La Liga,2025-08-30,Alaves,Atletico Madrid,1,1,1,0,D
-281,La Liga,2025-08-30,Oviedo,Real Sociedad,1,0,1,0,H
-282,La Liga,2025-08-30,Girona,Sevilla,0,2,0,0,A
-283,La Liga,2025-08-30,Real Madrid,Mallorca,2,1,2,0,H
-284,La Liga,2025-08-31,Celta Vigo,Villarreal,1,1,0,1,D
-285,La Liga,2025-08-31,Real Betis,Athletic Club,1,2,0,1,A
-286,La Liga,2025-08-31,Espanyol,Osasuna,1,0,0,1,H
-287,La Liga,2025-08-31,Rayo Vallecano,Barcelona,1,1,0,1,D
-288,La Liga,2025-09-12,Sevilla,Elche,2,2,1,1,D
-289,La Liga,2025-09-13,Getafe,Oviedo,2,0,2,0,H
-290,La Liga,2025-09-13,Real Sociedad,Real Madrid,1,2,0,1,A
-291,La Liga,2025-09-13,Athletic Club,Alaves,0,1,0,0,A
-292,La Liga,2025-09-13,Atletico Madrid,Villarreal,2,0,1,1,H
-293,La Liga,2025-09-14,Celta Vigo,Girona,1,1,0,1,D
-294,La Liga,2025-09-14,Levante,Real Betis,2,2,2,0,D
-295,La Liga,2025-09-14,Osasuna,Rayo Vallecano,2,0,1,1,H
-296,La Liga,2025-09-14,Barcelona,Valencia,6,0,1,5,H
-297,La Liga,2025-09-15,Espanyol,Mallorca,3,2,2,1,H
-298,La Liga,2025-09-19,Real Betis,Real Sociedad,3,1,1,2,H
-299,La Liga,2025-09-20,Girona,Levante,0,4,0,0,A
-300,La Liga,2025-09-20,Real Madrid,Espanyol,2,0,1,1,H
-301,La Liga,2025-09-20,Villarreal,Osasuna,2,1,0,2,H
-302,La Liga,2025-09-20,Alaves,Sevilla,1,2,1,0,A
-303,La Liga,2025-09-20,Valencia,Athletic Club,2,0,0,2,H
-304,La Liga,2025-09-21,Rayo Vallecano,Celta Vigo,1,1,0,1,D
-305,La Liga,2025-09-21,Mallorca,Atletico Madrid,1,1,0,1,D
-306,La Liga,2025-09-21,Elche,Oviedo,1,0,1,0,H
-307,La Liga,2025-09-21,Barcelona,Getafe,3,0,2,1,H
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+La Liga,2025,2025-08-15,Girona,Rayo Vallecano,1,3,0,1,A
+La Liga,2025,2025-08-15,Villarreal,Oviedo,2,0,2,0,H
+La Liga,2025,2025-08-16,Mallorca,Barcelona,0,3,0,0,A
+La Liga,2025,2025-08-16,Valencia,Real Sociedad,1,1,0,1,D
+La Liga,2025,2025-08-16,Alaves,Levante,2,1,1,1,H
+La Liga,2025,2025-08-17,Celta Vigo,Getafe,0,2,0,0,A
+La Liga,2025,2025-08-17,Athletic Club,Sevilla,3,2,2,1,H
+La Liga,2025,2025-08-17,Espanyol,Atletico Madrid,2,1,0,2,H
+La Liga,2025,2025-08-18,Elche,Real Betis,1,1,0,1,D
+La Liga,2025,2025-08-19,Real Madrid,Osasuna,1,0,0,1,H
+La Liga,2025,2025-08-22,Real Betis,Alaves,1,0,1,0,H
+La Liga,2025,2025-08-23,Mallorca,Celta Vigo,1,1,0,1,D
+La Liga,2025,2025-08-23,Atletico Madrid,Elche,1,1,1,0,D
+La Liga,2025,2025-08-23,Levante,Barcelona,2,3,2,0,A
+La Liga,2025,2025-08-24,Osasuna,Valencia,1,0,1,0,H
+La Liga,2025,2025-08-24,Villarreal,Girona,5,0,4,1,H
+La Liga,2025,2025-08-24,Real Sociedad,Espanyol,2,2,0,2,D
+La Liga,2025,2025-08-24,Oviedo,Real Madrid,0,3,0,0,A
+La Liga,2025,2025-08-25,Athletic Club,Rayo Vallecano,1,0,0,1,H
+La Liga,2025,2025-08-25,Sevilla,Getafe,1,2,1,0,A
+La Liga,2025,2025-08-27,Celta Vigo,Real Betis,1,1,0,1,D
+La Liga,2025,2025-08-29,Elche,Levante,2,0,0,2,H
+La Liga,2025,2025-08-29,Valencia,Getafe,3,0,1,2,H
+La Liga,2025,2025-08-30,Alaves,Atletico Madrid,1,1,1,0,D
+La Liga,2025,2025-08-30,Oviedo,Real Sociedad,1,0,1,0,H
+La Liga,2025,2025-08-30,Girona,Sevilla,0,2,0,0,A
+La Liga,2025,2025-08-30,Real Madrid,Mallorca,2,1,2,0,H
+La Liga,2025,2025-08-31,Celta Vigo,Villarreal,1,1,0,1,D
+La Liga,2025,2025-08-31,Real Betis,Athletic Club,1,2,0,1,A
+La Liga,2025,2025-08-31,Espanyol,Osasuna,1,0,0,1,H
+La Liga,2025,2025-08-31,Rayo Vallecano,Barcelona,1,1,0,1,D
+La Liga,2025,2025-09-12,Sevilla,Elche,2,2,1,1,D
+La Liga,2025,2025-09-13,Getafe,Oviedo,2,0,2,0,H
+La Liga,2025,2025-09-13,Real Sociedad,Real Madrid,1,2,0,1,A
+La Liga,2025,2025-09-13,Athletic Club,Alaves,0,1,0,0,A
+La Liga,2025,2025-09-13,Atletico Madrid,Villarreal,2,0,1,1,H
+La Liga,2025,2025-09-14,Celta Vigo,Girona,1,1,0,1,D
+La Liga,2025,2025-09-14,Levante,Real Betis,2,2,2,0,D
+La Liga,2025,2025-09-14,Osasuna,Rayo Vallecano,2,0,1,1,H
+La Liga,2025,2025-09-14,Barcelona,Valencia,6,0,1,5,H
+La Liga,2025,2025-09-15,Espanyol,Mallorca,3,2,2,1,H
+La Liga,2025,2025-09-19,Real Betis,Real Sociedad,3,1,1,2,H
+La Liga,2025,2025-09-20,Girona,Levante,0,4,0,0,A
+La Liga,2025,2025-09-20,Real Madrid,Espanyol,2,0,1,1,H
+La Liga,2025,2025-09-20,Villarreal,Osasuna,2,1,0,2,H
+La Liga,2025,2025-09-20,Alaves,Sevilla,1,2,1,0,A
+La Liga,2025,2025-09-20,Valencia,Athletic Club,2,0,0,2,H
+La Liga,2025,2025-09-21,Rayo Vallecano,Celta Vigo,1,1,0,1,D
+La Liga,2025,2025-09-21,Mallorca,Atletico Madrid,1,1,0,1,D
+La Liga,2025,2025-09-21,Elche,Oviedo,1,0,1,0,H
+La Liga,2025,2025-09-21,Barcelona,Getafe,3,0,2,1,H
+La Liga,2025,2025-09-23,Athletic Club,Girona,1,1,0,1,D
+La Liga,2025,2025-09-23,Espanyol,Valencia,2,2,0,2,D
+La Liga,2025,2025-09-23,Sevilla,Villarreal,1,2,0,1,A
+La Liga,2025,2025-09-23,Levante,Real Madrid,1,4,0,1,A
+La Liga,2025,2025-09-24,Getafe,Alaves,1,1,0,1,D
+La Liga,2025,2025-09-24,Atletico Madrid,Rayo Vallecano,3,2,1,2,H
+La Liga,2025,2025-09-24,Real Sociedad,Mallorca,1,0,0,1,H
+La Liga,2025,2025-09-25,Osasuna,Elche,1,1,1,0,D
+La Liga,2025,2025-09-25,Oviedo,Barcelona,1,3,1,0,A
+La Liga,2025,2025-09-26,Girona,Espanyol,0,0,0,0,D
+La Liga,2025,2025-09-27,Getafe,Levante,1,1,0,1,D
+La Liga,2025,2025-09-27,Atletico Madrid,Real Madrid,5,2,2,3,H
+La Liga,2025,2025-09-27,Mallorca,Alaves,1,0,1,0,H
+La Liga,2025,2025-09-27,Villarreal,Athletic Club,1,0,0,1,H
+La Liga,2025,2025-09-28,Rayo Vallecano,Sevilla,0,1,0,0,A
+La Liga,2025,2025-09-28,Elche,Celta Vigo,2,1,1,1,H
+La Liga,2025,2025-09-28,Barcelona,Real Sociedad,2,1,1,1,H
+La Liga,2025,2025-09-28,Real Betis,Osasuna,2,0,2,0,H
+La Liga,2025,2025-09-30,Valencia,Oviedo,1,2,1,0,A
