@@ -589,6 +589,119 @@ def prediction():
                 #hi.drop('Unnamed: 0', axis=1, inplace=True)
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
+            
+            ## BUNDESLIGA 2
+            elif comp==79:
+                # Chargement des données historiques
+                chemin_csv = RACINE_PROJET / "data" / "bl2" / "bl2_2024.csv"
+                s_encours=RACINE_PROJET / "data" / "bl2" / "saison_encours.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bl2_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bl2_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bl2_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bundesliga_season_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            ## SERIE B
+            elif comp==136:
+                # Chargement des données historiques
+                chemin_csv = RACINE_PROJET / "data" / "sa2" / "serie_B_2024.csv"
+                s_encours=RACINE_PROJET / "data" / "sa2" / "saison_encours.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "sa2" / "serie_B_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "sa2" / "serie_B_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "sa2" / "serie_B_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "sa2" / "serie_B_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+             # Championship ANGLETERRE
+            elif comp==40:
+                # Chargement des données de la Première league
+                
+                # Chargement des données historiques
+                chemin_csv = RACINE_PROJET / "data" / "pl2" / "champioship_2024.csv"
+                s_encours=RACINE_PROJET / "data" / "pl2" / "saison_encours.csv"
+                
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "ppl2l" / "champioship_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                #season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+             ## LEAGUE 2 FRANCAISE
+            elif comp==62:
+                # Chargement des données historiques
+                chemin_csv = RACINE_PROJET / "data" / "fl2" / "fl2_2024.csv"
+                s_encours=RACINE_PROJET / "data" / "fl2" / "saison_encours.csv"
+                
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "fl2" / "fl2_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "fl2" / "fl2_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "fl2" / "fl2_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "fl2" / "fl2_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+             ### LIGA SECUNDA
+            elif comp==141:
+                chemin_csv = RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv"
+                # Chargement des données historiques
+                s_encours=RACINE_PROJET / "data" / "lg2" / "saison_encours.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2022.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2023.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
 
 
             #df=df[['Date','HomeTeam','AwayTeam','FTHG','FTAG','FTR','HTGS', 'HTGC','ATGS', 'ATGC', 
@@ -799,7 +912,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.63
+                thread=0.6
             
              # league de champions
             elif comp==2:
@@ -831,6 +944,55 @@ def prediction():
                 modele2=load(chemin_model2)
                 thread=0.63
             
+             #bon modèle championship angleterre
+            elif comp==40:
+                chemin_model1 = RACINE_PROJET / "modele" / "pl2" / "pl2_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "pl2" / "pl2_stage2.joblib"
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                chemin_but = RACINE_PROJET / "modele" / "pl2" / "rf_nbre_but_marque_championship.joblib"
+                model_but=load(chemin_but)
+                thread=0.6
+            #bon modèle   SERIE B 
+            elif comp==136:
+                chemin_model1 = RACINE_PROJET / "modele" / "sa2" / "serieB_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "sa2" / "serieB_stage1.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "sa2" / "rf_nbre_but_marque_serieB.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.63
+            
+            ##Bundesliga 2
+            elif comp==79:
+                chemin_model1 = RACINE_PROJET / "modele" / "bl2" / "bundesliga2_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "bl2" / "bundesliga2_stage2.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "bl2" / "rf_nbre_but_marque_bundesliga2.joblib"
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                model_but=load(chemin_but)
+                thread=0.63
+            
+             ## Bon modèle LIGUE 2 France
+            elif comp==62:
+                chemin_model1 = RACINE_PROJET / "modele" / "fl2" / "fl2_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "fl2" / "fl2_stage2.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "fl2" / "rf_nbre_but_marque_fl2.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.6
+            
+             ## Bon modèle LIGA SECUNDA
+            elif comp==141:
+                chemin_model1 = RACINE_PROJET / "modele" / "lg2" / "lg2_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "lg2" / "lg2_stage2.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "lg2" / "rf_nbre_but_marque_lg2.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.6
+                
             perf_home=get_last5_results_pattern(df,home , date_match)
             perf_away=get_last5_results_pattern(df,away, date_match)
             

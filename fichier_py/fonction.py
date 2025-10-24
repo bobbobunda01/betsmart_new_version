@@ -255,12 +255,23 @@ def _league_profile(league_code: str | int | None):
         179,  # Scotland
         180,  # Scotland D1
         253,  # Russia (calendrier décalé mais “style Europe”)
+         2,#"UEFA Champions League"
+        3,#"Europa League"
+        233, # egypte
+        62, #league 2 France,
+        40, #Championship
+        79, #Bundesliga2
+        136, #Serie B
+        141, #Liga Secunda
     }
     # Ligues “calendrier annuel”
     CAL_Y = {
         71,   # Brazil (Brasileirão)
         98,   # Japan (J1 League)
         # (ajoute MLS, Norvège, Suède si besoin)
+        262, #Mexique
+        292,#"Coree du Sud"
+        128, #Argentine
     }
 
     if code in EURO:
