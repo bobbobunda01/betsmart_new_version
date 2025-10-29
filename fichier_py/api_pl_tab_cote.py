@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
+from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -602,7 +602,7 @@ def prediction():
                 df_2023['Date']=pd.to_datetime(df_2023['Date'])
                 df_2024=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bl2_2024.csv")
                 df_2024['Date']=pd.to_datetime(df_2024['Date'])
-                df_2025=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bundesliga_season_2025.csv")
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "bl2" / "bl2_2025.csv")
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 season_preced=pd.read_csv(chemin_csv)
@@ -643,7 +643,7 @@ def prediction():
                 
                 df_2022=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2022.csv")
                 df_2022['Date']=pd.to_datetime(df_2022['Date'])
-                df_2023=pd.read_csv(RACINE_PROJET / "data" / "ppl2l" / "champioship_2023.csv")
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2023.csv")
                 df_2023['Date']=pd.to_datetime(df_2023['Date'])
                 df_2024=pd.read_csv(RACINE_PROJET / "data" / "pl2" / "champioship_2024.csv")
                 df_2024['Date']=pd.to_datetime(df_2024['Date'])
@@ -767,7 +767,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.62
             
             ## Bon modèle NEERDERLAND, PAYS BAS
             elif comp==88:
@@ -912,7 +912,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.65
             
              # league de champions
             elif comp==2:
