@@ -777,7 +777,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.63
             
             ## SUISSE
             elif comp==207:
@@ -961,7 +961,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.63
+                thread=0.65
             
             ##Bundesliga 2
             elif comp==79:
