@@ -1,118 +1,127 @@
 league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
 Turquie,2025,2025-08-08,Gazişehir Gaziantep,Galatasaray,0,3,0,0,A
 Turquie,2025,2025-08-09,Samsunspor,Genclerbirligi,2,1,1,1,H
-Turquie,2025,2025-08-09,Antalyaspor,Kasimpasa,2,1,2,0,H
-Turquie,2025,2025-08-10,Rizespor,Goztepe,0,3,0,0,A
+Turquie,2025,2025-08-09,Antalyaspor,Kasımpaşa,2,1,2,0,H
+Turquie,2025,2025-08-10,Rizespor,Göztepe,0,3,0,0,A
 Turquie,2025,2025-08-10,Eyüpspor,Konyaspor,1,4,0,1,A
 Turquie,2025,2025-08-11,Trabzonspor,Kocaelispor,1,0,0,1,H
 Turquie,2025,2025-08-15,Galatasaray,Fatih Karagümrük,3,0,1,2,H
 Turquie,2025,2025-08-16,Kocaelispor,Samsunspor,0,1,0,0,A
-Turquie,2025,2025-08-16,Goztepe,Fenerbahce,0,0,0,0,D
+Turquie,2025,2025-08-16,Göztepe,Fenerbahçe,0,0,0,0,D
 Turquie,2025,2025-08-16,Alanyaspor,Rizespor,0,0,0,0,D
 Turquie,2025,2025-08-17,Konyaspor,Gazişehir Gaziantep,3,0,1,2,H
 Turquie,2025,2025-08-17,Genclerbirligi,Antalyaspor,0,1,0,0,A
-Turquie,2025,2025-08-17,Besiktas,Eyüpspor,2,1,1,1,H
-Turquie,2025,2025-08-17,Istanbul Basaksehir,Kayserispor,1,1,1,0,D
-Turquie,2025,2025-08-18,Kasimpasa,Trabzonspor,0,1,0,0,A
-Turquie,2025,2025-08-22,Fatih Karagümrük,Goztepe,0,2,0,0,A
-Turquie,2025,2025-08-23,Fenerbahce,Kocaelispor,3,1,1,2,H
+Turquie,2025,2025-08-17,Beşiktaş,Eyüpspor,2,1,1,1,H
+Turquie,2025,2025-08-17,Başakşehir,Kayserispor,1,1,1,0,D
+Turquie,2025,2025-08-18,Kasımpaşa,Trabzonspor,0,1,0,0,A
+Turquie,2025,2025-08-22,Fatih Karagümrük,Göztepe,0,2,0,0,A
+Turquie,2025,2025-08-23,Fenerbahçe,Kocaelispor,3,1,1,2,H
 Turquie,2025,2025-08-23,Gazişehir Gaziantep,Genclerbirligi,2,1,1,1,H
 Turquie,2025,2025-08-24,Trabzonspor,Antalyaspor,1,0,1,0,H
 Turquie,2025,2025-08-24,Kayserispor,Galatasaray,0,4,0,0,A
 Turquie,2025,2025-08-25,Eyüpspor,Alanyaspor,2,1,1,1,H
-Turquie,2025,2025-08-29,Goztepe,Konyaspor,1,1,0,1,D
-Turquie,2025,2025-08-30,Kasimpasa,Gazişehir Gaziantep,2,3,0,2,A
+Turquie,2025,2025-08-29,Göztepe,Konyaspor,1,1,0,1,D
+Turquie,2025,2025-08-30,Kasımpaşa,Gazişehir Gaziantep,2,3,0,2,A
 Turquie,2025,2025-08-30,Kocaelispor,Kayserispor,1,1,0,1,D
 Turquie,2025,2025-08-30,Galatasaray,Rizespor,3,1,1,2,H
 Turquie,2025,2025-08-30,Antalyaspor,Fatih Karagümrük,1,2,1,0,A
-Turquie,2025,2025-08-31,Istanbul Basaksehir,Eyüpspor,0,0,0,0,D
-Turquie,2025,2025-08-31,Genclerbirligi,Fenerbahce,1,3,0,1,A
-Turquie,2025,2025-08-31,Alanyaspor,Besiktas,2,0,1,1,H
+Turquie,2025,2025-08-31,Başakşehir,Eyüpspor,0,0,0,0,D
+Turquie,2025,2025-08-31,Genclerbirligi,Fenerbahçe,1,3,0,1,A
+Turquie,2025,2025-08-31,Alanyaspor,Beşiktaş,2,0,1,1,H
 Turquie,2025,2025-08-31,Trabzonspor,Samsunspor,1,1,1,0,D
 Turquie,2025,2025-09-13,Eyüpspor,Galatasaray,0,2,0,0,A
-Turquie,2025,2025-09-13,Fatih Karagümrük,Kasimpasa,0,1,0,0,A
+Turquie,2025,2025-09-13,Fatih Karagümrük,Kasımpaşa,0,1,0,0,A
 Turquie,2025,2025-09-13,Samsunspor,Antalyaspor,1,2,0,1,A
-Turquie,2025,2025-09-13,Besiktas,Istanbul Basaksehir,2,1,0,2,H
+Turquie,2025,2025-09-13,Beşiktaş,Başakşehir,2,1,0,2,H
 Turquie,2025,2025-09-13,Konyaspor,Alanyaspor,1,2,0,1,A
-Turquie,2025,2025-09-14,Kayserispor,Goztepe,1,1,0,1,D
-Turquie,2025,2025-09-14,Fenerbahce,Trabzonspor,1,0,1,0,H
+Turquie,2025,2025-09-14,Kayserispor,Göztepe,1,1,0,1,D
+Turquie,2025,2025-09-14,Fenerbahçe,Trabzonspor,1,0,1,0,H
 Turquie,2025,2025-09-14,Gazişehir Gaziantep,Kocaelispor,2,0,0,2,H
 Turquie,2025,2025-09-15,Rizespor,Genclerbirligi,1,0,0,1,H
-Turquie,2025,2025-09-17,Fenerbahce,Alanyaspor,2,2,0,2,D
-Turquie,2025,2025-09-17,Fatih Karagümrük,Istanbul Basaksehir,0,2,0,0,A
-Turquie,2025,2025-09-17,Samsunspor,Kasimpasa,0,0,0,0,D
-Turquie,2025,2025-09-19,Goztepe,Besiktas,3,0,2,1,H
+Turquie,2025,2025-09-17,Fenerbahçe,Alanyaspor,2,2,0,2,D
+Turquie,2025,2025-09-17,Fatih Karagümrük,Başakşehir,0,2,0,0,A
+Turquie,2025,2025-09-17,Samsunspor,Kasımpaşa,0,0,0,0,D
+Turquie,2025,2025-09-19,Göztepe,Beşiktaş,3,0,2,1,H
 Turquie,2025,2025-09-20,Genclerbirligi,Eyüpspor,1,0,1,0,H
 Turquie,2025,2025-09-20,Trabzonspor,Gazişehir Gaziantep,1,1,0,1,D
 Turquie,2025,2025-09-20,Antalyaspor,Kayserispor,1,1,0,1,D
-Turquie,2025,2025-09-21,Istanbul Basaksehir,Alanyaspor,1,1,1,0,D
+Turquie,2025,2025-09-21,Başakşehir,Alanyaspor,1,1,1,0,D
 Turquie,2025,2025-09-21,Kocaelispor,Rizespor,1,1,1,0,D
-Turquie,2025,2025-09-21,Kasimpasa,Fenerbahce,1,1,0,1,D
+Turquie,2025,2025-09-21,Kasımpaşa,Fenerbahçe,1,1,0,1,D
 Turquie,2025,2025-09-21,Samsunspor,Fatih Karagümrük,3,2,0,3,H
 Turquie,2025,2025-09-22,Galatasaray,Konyaspor,3,1,2,1,H
-Turquie,2025,2025-09-24,Kayserispor,Besiktas,0,4,0,0,A
+Turquie,2025,2025-09-24,Kayserispor,Beşiktaş,0,4,0,0,A
 Turquie,2025,2025-09-26,Alanyaspor,Galatasaray,0,1,0,0,A
 Turquie,2025,2025-09-27,Gazişehir Gaziantep,Samsunspor,2,2,1,1,D
-Turquie,2025,2025-09-27,Eyüpspor,Goztepe,0,0,0,0,D
+Turquie,2025,2025-09-27,Eyüpspor,Göztepe,0,0,0,0,D
 Turquie,2025,2025-09-27,Fatih Karagümrük,Trabzonspor,3,4,1,2,A
-Turquie,2025,2025-09-28,Konyaspor,Istanbul Basaksehir,2,1,2,0,H
-Turquie,2025,2025-09-28,Rizespor,Kasimpasa,1,2,0,1,A
-Turquie,2025,2025-09-28,Fenerbahce,Antalyaspor,2,0,0,2,H
+Turquie,2025,2025-09-28,Konyaspor,Başakşehir,2,1,2,0,H
+Turquie,2025,2025-09-28,Rizespor,Kasımpaşa,1,2,0,1,A
+Turquie,2025,2025-09-28,Fenerbahçe,Antalyaspor,2,0,0,2,H
 Turquie,2025,2025-09-28,Kayserispor,Genclerbirligi,1,1,0,1,D
-Turquie,2025,2025-09-29,Besiktas,Kocaelispor,3,1,2,1,H
+Turquie,2025,2025-09-29,Beşiktaş,Kocaelispor,3,1,2,1,H
 Turquie,2025,2025-10-03,Trabzonspor,Kayserispor,4,0,1,3,H
 Turquie,2025,2025-10-03,Antalyaspor,Rizespor,2,5,1,1,A
 Turquie,2025,2025-10-04,Genclerbirligi,Alanyaspor,2,2,0,2,D
 Turquie,2025,2025-10-04,Kocaelispor,Eyüpspor,1,0,0,1,H
-Turquie,2025,2025-10-04,Galatasaray,Besiktas,1,1,0,1,D
-Turquie,2025,2025-10-05,Kasimpasa,Konyaspor,1,1,0,1,D
+Turquie,2025,2025-10-04,Galatasaray,Beşiktaş,1,1,0,1,D
+Turquie,2025,2025-10-05,Kasımpaşa,Konyaspor,1,1,0,1,D
 Turquie,2025,2025-10-05,Fatih Karagümrük,Gazişehir Gaziantep,0,2,0,0,A
-Turquie,2025,2025-10-05,Goztepe,Istanbul Basaksehir,1,0,1,0,H
-Turquie,2025,2025-10-05,Samsunspor,Fenerbahce,0,0,0,0,D
+Turquie,2025,2025-10-05,Göztepe,Başakşehir,1,0,1,0,H
+Turquie,2025,2025-10-05,Samsunspor,Fenerbahçe,0,0,0,0,D
 Turquie,2025,2025-10-18,Konyaspor,Kocaelispor,2,3,0,2,A
-Turquie,2025,2025-10-18,Besiktas,Genclerbirligi,1,2,0,1,A
+Turquie,2025,2025-10-18,Beşiktaş,Genclerbirligi,1,2,0,1,A
 Turquie,2025,2025-10-18,Rizespor,Trabzonspor,1,2,1,0,A
-Turquie,2025,2025-10-18,Istanbul Basaksehir,Galatasaray,1,2,0,1,A
+Turquie,2025,2025-10-18,Başakşehir,Galatasaray,1,2,0,1,A
 Turquie,2025,2025-10-19,Kayserispor,Samsunspor,1,3,0,1,A
-Turquie,2025,2025-10-19,Alanyaspor,Goztepe,1,0,0,1,H
+Turquie,2025,2025-10-19,Alanyaspor,Göztepe,1,0,0,1,H
 Turquie,2025,2025-10-19,Gazişehir Gaziantep,Antalyaspor,3,2,3,0,H
-Turquie,2025,2025-10-19,Fenerbahce,Fatih Karagümrük,2,1,2,0,H
-Turquie,2025,2025-10-20,Eyüpspor,Kasimpasa,2,0,1,1,H
-Turquie,2025,2025-10-22,Konyaspor,Besiktas,0,2,0,0,A
-Turquie,2025,2025-10-22,Rizespor,Istanbul Basaksehir,0,0,0,0,D
+Turquie,2025,2025-10-19,Fenerbahçe,Fatih Karagümrük,2,1,2,0,H
+Turquie,2025,2025-10-20,Eyüpspor,Kasımpaşa,2,0,1,1,H
+Turquie,2025,2025-10-22,Konyaspor,Beşiktaş,0,2,0,0,A
+Turquie,2025,2025-10-22,Rizespor,Başakşehir,0,0,0,0,D
 Turquie,2025,2025-10-24,Fatih Karagümrük,Kayserispor,2,2,1,1,D
 Turquie,2025,2025-10-25,Kocaelispor,Alanyaspor,2,0,0,2,H
 Turquie,2025,2025-10-25,Trabzonspor,Eyüpspor,2,0,1,1,H
-Turquie,2025,2025-10-26,Antalyaspor,Istanbul Basaksehir,0,4,0,0,A
-Turquie,2025,2025-10-26,Galatasaray,Goztepe,3,1,1,2,H
+Turquie,2025,2025-10-26,Antalyaspor,Başakşehir,0,4,0,0,A
+Turquie,2025,2025-10-26,Galatasaray,Göztepe,3,1,1,2,H
 Turquie,2025,2025-10-26,Genclerbirligi,Konyaspor,1,2,1,0,A
-Turquie,2025,2025-10-26,Kasimpasa,Besiktas,1,1,1,0,D
-Turquie,2025,2025-10-27,Gazişehir Gaziantep,Fenerbahce,0,4,0,0,A
+Turquie,2025,2025-10-26,Kasımpaşa,Beşiktaş,1,1,1,0,D
+Turquie,2025,2025-10-27,Gazişehir Gaziantep,Fenerbahçe,0,4,0,0,A
 Turquie,2025,2025-10-27,Samsunspor,Rizespor,1,1,1,0,D
-Turquie,2025,2025-10-31,Istanbul Basaksehir,Kocaelispor,1,0,0,1,H
-Turquie,2025,2025-11-01,Goztepe,Genclerbirligi,1,0,1,0,H
+Turquie,2025,2025-10-31,Başakşehir,Kocaelispor,1,0,0,1,H
+Turquie,2025,2025-11-01,Göztepe,Genclerbirligi,1,0,1,0,H
 Turquie,2025,2025-11-01,Galatasaray,Trabzonspor,0,0,0,0,D
 Turquie,2025,2025-11-02,Konyaspor,Samsunspor,1,3,0,1,A
-Turquie,2025,2025-11-02,Kayserispor,Kasimpasa,3,2,2,1,H
-Turquie,2025,2025-11-02,Besiktas,Fenerbahce,2,3,2,0,A
+Turquie,2025,2025-11-02,Kayserispor,Kasımpaşa,3,2,2,1,H
+Turquie,2025,2025-11-02,Beşiktaş,Fenerbahçe,2,3,2,0,A
 Turquie,2025,2025-11-03,Alanyaspor,Gazişehir Gaziantep,0,0,0,0,D
 Turquie,2025,2025-11-03,Rizespor,Fatih Karagümrük,1,0,0,1,H
 Turquie,2025,2025-11-03,Eyüpspor,Antalyaspor,0,1,0,0,A
-Turquie,2025,2025-11-07,Genclerbirligi,Istanbul Basaksehir,2,1,1,1,H
+Turquie,2025,2025-11-07,Genclerbirligi,Başakşehir,2,1,1,1,H
 Turquie,2025,2025-11-08,Gazişehir Gaziantep,Rizespor,2,2,1,1,D
 Turquie,2025,2025-11-08,Trabzonspor,Alanyaspor,1,1,1,0,D
-Turquie,2025,2025-11-08,Kasimpasa,Goztepe,0,2,0,0,A
-Turquie,2025,2025-11-08,Antalyaspor,Besiktas,1,3,0,1,A
+Turquie,2025,2025-11-08,Kasımpaşa,Göztepe,0,2,0,0,A
+Turquie,2025,2025-11-08,Antalyaspor,Beşiktaş,1,3,0,1,A
 Turquie,2025,2025-11-09,Fatih Karagümrük,Konyaspor,2,0,2,0,H
 Turquie,2025,2025-11-09,Kocaelispor,Galatasaray,1,0,1,0,H
-Turquie,2025,2025-11-09,Fenerbahce,Kayserispor,4,2,2,2,H
+Turquie,2025,2025-11-09,Fenerbahçe,Kayserispor,4,2,2,2,H
 Turquie,2025,2025-11-09,Samsunspor,Eyüpspor,1,0,0,1,H
 Turquie,2025,2025-11-22,Kayserispor,Gazişehir Gaziantep,0,3,0,0,A
 Turquie,2025,2025-11-22,Eyüpspor,Fatih Karagümrük,1,1,0,1,D
 Turquie,2025,2025-11-22,Galatasaray,Genclerbirligi,3,2,0,3,H
-Turquie,2025,2025-11-23,Goztepe,Kocaelispor,0,0,0,0,D
-Turquie,2025,2025-11-23,Besiktas,Samsunspor,1,1,0,1,D
-Turquie,2025,2025-11-23,Alanyaspor,Kasimpasa,1,2,1,0,A
-Turquie,2025,2025-11-23,Rizespor,Fenerbahce,2,5,2,0,A
-Turquie,2025,2025-11-24,Istanbul Basaksehir,Trabzonspor,3,4,2,1,A
+Turquie,2025,2025-11-23,Göztepe,Kocaelispor,0,0,0,0,D
+Turquie,2025,2025-11-23,Beşiktaş,Samsunspor,1,1,0,1,D
+Turquie,2025,2025-11-23,Alanyaspor,Kasımpaşa,1,2,1,0,A
+Turquie,2025,2025-11-23,Rizespor,Fenerbahçe,2,5,2,0,A
+Turquie,2025,2025-11-24,Başakşehir,Trabzonspor,3,4,2,1,A
 Turquie,2025,2025-11-24,Konyaspor,Antalyaspor,0,0,0,0,D
+Turquie,2025,2025-11-28,Kocaelispor,Genclerbirligi,1,0,1,0,H
+Turquie,2025,2025-11-29,Rizespor,Kayserispor,0,1,0,0,A
+Turquie,2025,2025-11-29,Gazişehir Gaziantep,Eyüpspor,1,2,0,1,A
+Turquie,2025,2025-11-29,Trabzonspor,Konyaspor,3,1,1,2,H
+Turquie,2025,2025-11-29,Kasımpaşa,Başakşehir,1,3,0,1,A
+Turquie,2025,2025-11-30,Antalyaspor,Göztepe,1,2,1,0,A
+Turquie,2025,2025-11-30,Fatih Karagümrük,Beşiktaş,0,2,0,0,A
+Turquie,2025,2025-12-01,Fenerbahçe,Galatasaray,1,1,0,1,D
+Turquie,2025,2025-12-01,Samsunspor,Alanyaspor,1,1,1,0,D
