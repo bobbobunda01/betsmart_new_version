@@ -20,6 +20,7 @@ import datetime
 import pathlib
 from dateutil import parser
 import json
+from functools import lru_cache
 
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
 
@@ -51,45 +52,79 @@ def log_dataframe_features_to_file(features_df, home, away, match_date, output_p
         f.write(json.dumps(log_data) + "\n")
 
 
+###----------- DEBUT DES FONCTIONS DE PREDICTION-----
+
+# -*- coding: utf-8 -*-
+import pathlib, json
+from functools import lru_cache
+import numpy as np
+import pandas as pd
+
 RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
-chemin_csv = RACINE_PROJET / "data" /"champ_config.json"
-""""
+chemin_csv = RACINE_PROJET / "data" / "champ_config.json"
+
+@lru_cache(maxsize=1)
+def _load_champ_config():
+    with open(chemin_csv, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+    # double index: str et int
+    cfg_by_str = {str(k): v for k, v in cfg.items()}
+    cfg_by_int = {}
+    for k, v in cfg.items():
+        try:
+            cfg_by_int[int(k)] = v
+        except Exception:
+            pass
+    return {"by_str": cfg_by_str, "by_int": cfg_by_int}
+
+def _get_params(league_code):
+    cfg = _load_champ_config()
+    if league_code in cfg["by_int"]:
+        return cfg["by_int"][league_code]
+    if league_code in cfg["by_str"]:
+        return cfg["by_str"][league_code]
+    try:
+        return cfg["by_int"].get(int(league_code), cfg["by_str"].get(str(league_code), {}))
+    except Exception:
+        return cfg["by_str"].get(str(league_code), {})
+
 def parametres(league_code):
-    # Seuil dynamique par championnat (paramétrable)
-    #seuil_base = 0.12
-    
-    with open(chemin_csv, "r") as f:
-        CHAMP_CONFIG = json.load(f)
+    """
+    Retourne 8 valeurs:
+    (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+     upset_threshold, skip_threshold, bogey_weight, gki_weight)
+    """
+    p = _get_params(league_code)
 
-    # Exemple : lecture du bookmaker_margin pour pl
-     # ou fl, bl, lg, sa
-    params = CHAMP_CONFIG.get(league_code, {})
-    bookmaker_margin = params.get("bookmaker_margin", 0.0711)
-    uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
-    importance = params.get("importance", 3)
-    season_stage = params.get("season_stage", "mid")  # par défaut à "mid"
-    return bookmaker_margin, uncertainty_threshold, importance,season_stage
-"""
+    bookmaker_margin      = float(p.get("bookmaker_margin", 0.0711))
+    uncertainty_threshold = float(p.get("uncertainty_threshold", 0.12))
+    importance            = int(p.get("importance", 3))
+    season_stage          = str(p.get("season_stage", "mid"))
 
-def parametres(league_code):
-    # Seuil dynamique par championnat (paramétrable)
-    #seuil_base = 0.12
-    
-    with open(chemin_csv, "r") as f:
-        CHAMP_CONFIG = json.load(f)
+    # ⚠️ pas de virgules finales ici (sinon -> tuples)
+    upset_threshold = float(p.get("upset_threshold", 0.55))
+    skip_threshold  = float(p.get("skip_threshold", 1.50))
+    bogey_weight    = float(p.get("bogey_weight", 0.40))
+    gki_weight      = float(p.get("gki_weight", 0.60))
 
-    # Exemple : lecture du bookmaker_margin pour pl
-     # ou fl, bl, lg, sa
-    params = CHAMP_CONFIG.get(league_code, {})
-    bookmaker_margin = params.get("bookmaker_margin", 0.0711)
-    uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
-    importance = params.get("importance", 3)
-    season_stage = params.get("season_stage", "mid")  # par défaut à "mid"
-    upset_threshold= params.get("upset_threshold", 0.55),
-    skip_threshold=params.get("skip_threshold", 1.50),
-    bogey_weight=params.get("bogey_weight", 0.40),
-    gki_weight=params.get("gki_weight", 0.60),
-    return bookmaker_margin, uncertainty_threshold, importance,season_stage,upset_threshold,skip_threshold,bogey_weight,gki_weight
+    return (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+            upset_threshold, skip_threshold, bogey_weight, gki_weight)
+
+# ---------- AJOUT: hyperparamètres de la porte de forme ----------
+def parametres_form_gate(league_code):
+    """
+    Lit (si dispo) les hyperparamètres de la 'porte forme' depuis champ_config.json :
+      - k_market_form  : intensité max de transfert H↔A (0..1)  (défaut 0.45)
+      - gate_slope     : pente de la sigmoïde (défaut 14.0)
+      - gate_tolerance : tolérance d’écart de forme avant d’agir (défaut 0.036)
+    """
+    p = _get_params(league_code)
+    k     = float(p.get("k_market_form", 0.45))
+    slope = float(p.get("gate_slope", 14.0))
+    tau   = float(p.get("gate_tolerance", 0.036))
+    return k, slope, tau
+# ---------------------------------------------------------------
+
 ##---------------------- FONCTION DE PREDICTION ------------------------------------------
 # -------------------------------------------------------------------
 # 🔒 Adaptateurs de types + lecture sûre des paramètres de ligue
@@ -222,84 +257,33 @@ def enrich_form_stats_dynamic(df, team, match_date, window=5):
         "DrawRate": draws / matches_played,
         "GoalsAvg": total_goals / matches_played
     }
+
 # -------------------------------------------------------------------
 # Classement dynamique + importance binaire (inchangé)
 # -------------------------------------------------------------------
 def _league_profile(league_code: str | int | None):
     """
     Retourne un profil (region, late_months, late_threshold) par ligue.
-    - region: "europe" ou "calendar_year"
-    - late_months: mois considérés 'fin de saison' pour importance contextuelle
-    - late_threshold: seuil (0..1) de progression de saison (par dates) pour activer le mode 'run-in'
     """
-    # cast sûr
     try:
         code = int(league_code) if league_code is not None else None
     except Exception:
         code = None
 
-    # Ligues Europe (saison ~août→mai/juin)
     EURO = {
-        39,   # Premier League
-        61,   # Ligue 1
-        78,   # Bundesliga
-        140,  # La Liga
-        135,  # Serie A
-        88,   # Netherlands
-        207,  # Switzerland
-        94,   # Portugal
-        203,  # Turkey
-        144,  # Belgium
-        197,  # Greece
-        119,  # Denmark
-        179,  # Scotland
-        180,  # Scotland D1
-        253,  # Russia (calendrier décalé mais “style Europe”)
-         2,#"UEFA Champions League"
-        3,#"Europa League"
-        233, # egypte
-        62, #league 2 France,
-        40, #Championship
-        79, #Bundesliga2
-        136, #Serie B
-        141, #Liga Secunda
+        39,61,78,140,135,88,207,94,203,144,197,119,179,180,253,
+        2,3,233,62,40,79,136,141
     }
-    # Ligues “calendrier annuel”
-    CAL_Y = {
-        71,   # Brazil (Brasileirão)
-        98,   # Japan (J1 League)
-        # (ajoute MLS, Norvège, Suède si besoin)
-        262, #Mexique
-        292,#"Coree du Sud"
-        128, #Argentine
-    }
+    CAL_Y = {71,98,262,292,128}
 
     if code in EURO:
-        return {
-            "region": "europe",
-            "late_months": {4, 5, 6},   # run-in classique
-            "late_threshold": 0.70      # 70% de saison écoulée ≈ run-in
-        }
+        return {"region":"europe","late_months":{4,5,6},"late_threshold":0.70}
     elif code in CAL_Y:
-        return {
-            "region": "calendar_year",
-            "late_months": {10, 11, 12},  # fin d'année = run-in
-            "late_threshold": 0.70
-        }
+        return {"region":"calendar_year","late_months":{10,11,12},"late_threshold":0.70}
     else:
-        # fallback conservateur
-        return {
-            "region": "unknown",
-            "late_months": set(),
-            "late_threshold": 0.70
-        }
-
+        return {"region":"unknown","late_months":set(),"late_threshold":0.70}
 
 def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
-    """
-    Approxime la progression de saison via le percentile de la date 'asof'
-    entre min(Date) et max(Date) de la saison. Renvoie [0..1].
-    """
     if df_all is None or df_all.empty:
         return 0.0
     d = df_all.copy()
@@ -307,7 +291,6 @@ def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
     d = d.dropna(subset=["Date"])
     if d.empty:
         return 0.0
-
     asof = pd.to_datetime(asof)
     dmin, dmax = d["Date"].min(), d["Date"].max()
     total = (dmax - dmin).days
@@ -317,17 +300,7 @@ def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
     return float(max(0.0, min(1.0, prog)))
 
 def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
-    """
-    Classement dynamique + importance contextuelle (dépend de la ligue).
-
-    Importance = 1 si au moins une des conditions suivantes est vraie :
-      - 'run-in' (fin de saison) ET duel de rangs proches (|Δrank| <= 4)
-      - 'run-in' ET 'six-pointer' relégation (au moins une équipe dans le bas du tableau)
-      - duel direct du haut de tableau (top_k vs top_k)
-      - lutte européenne en fin de saison (top7 impliqué et |Δrank| <= 6)
-    """
     if df is None or df.empty:
-        # par défaut neutre
         return 10, 10, 0
 
     prof = _league_profile(league_code)
@@ -339,7 +312,6 @@ def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     md = pd.to_datetime(match_date)
     d = d[d["Date"] < md].dropna(subset=["Date"])
 
-    # points dynamiques
     d["Points_H"] = d["FTR"].apply(lambda x: 3 if x == "H" else 1 if x == "D" else 0)
     d["Points_A"] = d["FTR"].apply(lambda x: 3 if x == "A" else 1 if x == "D" else 0)
 
@@ -351,7 +323,6 @@ def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     if not team_points:
         return 10, 10, 0
 
-    # ranks
     sorted_teams = sorted(team_points.items(), key=lambda x: x[1], reverse=True)
     ranks = {team: idx + 1 for idx, (team, _) in enumerate(sorted_teams)}
     n_teams = len(ranks)
@@ -360,32 +331,24 @@ def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     rank_away = ranks.get(away_team, min(10, n_teams))
     rank_diff = abs(rank_home - rank_away)
 
-    # progression saison (par dates)
     season_prog = _season_progress_by_dates(df, md)
     late_season = (season_prog >= late_th) or (md.month in late_months)
 
-    # heuristiques d’importance
     top_k = 5
     close_ranks = (rank_diff <= 4)
     top_clash = (rank_home <= top_k and rank_away <= top_k)
 
-    # zone relégation : les 3 ou 4 derniers (selon taille)
-    releg_zone = max(3, int(round(0.12 * n_teams)))  # ~12% du bas
+    releg_zone = max(3, int(round(0.12 * n_teams)))
     six_pointer_releg = late_season and ((rank_home > n_teams - releg_zone) or (rank_away > n_teams - releg_zone))
-
     euro_spot_fight = late_season and ((rank_home <= 7) or (rank_away <= 7)) and (rank_diff <= 6)
 
     importance = 1 if (top_clash or (late_season and (close_ranks or six_pointer_releg or euro_spot_fight))) else 0
-
     return rank_home, rank_away, importance
 
 # -------------------------------------------------------------------
 # Préparation des features (retour DataFrame — pas de tuple)
 # -------------------------------------------------------------------
-def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b365a, b365d, season_df,league_code):
-    """
-    Prépare les features enrichies pour la prédiction d'un match avec classement dynamique.
-    """
+def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b365a, b365d, season_df, league_code):
     df = season_df.copy()
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df = df.sort_values('Date')
@@ -413,7 +376,7 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
     odds_gap_min_delta = max(b365h, b365a, b365d) - min(b365h, b365a, b365d)
     form_diff = home_stats["Form"] - away_stats["Form"]
 
-    rank_home, rank_away, match_importance = add_ranks_and_importance(df, home_team, away_team, match_date,league_code)
+    rank_home, rank_away, match_importance = add_ranks_and_importance(df, home_team, away_team, match_date, league_code)
 
     features = pd.DataFrame([{
         'HTHG': 0, 'HTAG': 0, 'HTR': 0,
@@ -436,7 +399,7 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
         'MatchImportance': match_importance
     }])
 
-    return features  # ✅ (ne pas renvoyer (features,) )
+    return features
 
 # -------------------------------------------------------------------
 # Règles auxiliaires (inchangées / petites sécurités)
@@ -463,7 +426,7 @@ def detect_bias(features_df):
     max_odds = np.max(odds)
     min_odds = np.min(odds)
     bias_score = abs(max_odds - min_odds) / np.mean(odds)
-    return bias_score > 0.6  # Seuil simple (à affiner par ligue si besoin)
+    return bias_score > 0.6
 
 def is_confidence_low(proba_0, proba_1, proba_2):
     arr = np.array([proba_0, proba_1, proba_2], dtype=float)
@@ -477,6 +440,80 @@ def adjust_odds_weight_by_season(odds_gap, season_stage):
         return odds_gap
     else:
         return odds_gap * 0.9
+
+# ---------- AJOUT: porte "forme récente" ----------
+def _sigmoid(x: float) -> float:
+    return 1.0 / (1.0 + np.exp(-x))
+
+def _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code):
+    """
+    Ajuste UNIQUEMENT la répartition H/A (proba_0 / proba_2). Le nul (proba_1) est conservé,
+    puis renormalisation H/A. Effet piloté par (k, slope, tau) par ligue.
+    """
+    # Favori marché dé-margé
+    try:
+        b365h = float(features_df["B365H"].values[0])
+        b365d = float(features_df["B365D"].values[0])
+        b365a = float(features_df["B365A"].values[0])
+        eps = max(0.02, 0.5*_safe_parametres(league_code)[0])
+        fav_side, _, _, _ = _fav_by_demarged(b365h, b365d, b365a, eps=eps)
+    except Exception:
+        fav_side = None
+
+    if fav_side is None:
+        return proba_0, proba_1, proba_2, {"form_gate":"skipped_no_clear_fav"}
+
+    home_form = float(features_df["HomeForm"].values[0])
+    away_form = float(features_df["AwayForm"].values[0])
+    k, slope, tau = parametres_form_gate(league_code)
+
+    # delta > 0 si OUTSIDER a meilleure forme
+    if fav_side == "home":
+        delta = (away_form - home_form)
+        # +1 => transfert home->away
+        sign = +1 if delta > 0 else -1
+    else:
+        delta = (home_form - away_form)
+        # +1 => transfert away->home
+        sign = +1 if delta > 0 else -1
+
+    gate_strength = k * _sigmoid(slope * (abs(delta) - tau))
+    if sign < 0:
+        gate_strength *= 0.15  # on évite de renforcer le favori si l’outsider n’est pas meilleur
+
+    h = float(proba_0)
+    d = float(proba_1)
+    a = float(proba_2)
+
+    mass_HA = max(1e-9, (h + a))
+    transfer = gate_strength * mass_HA
+
+    if fav_side == "home":
+        h_new = max(0.0, h - transfer)
+        a_new = a + transfer
+    else:
+        a_new = max(0.0, a - transfer)
+        h_new = h + transfer
+
+    # renormaliser H/A en conservant d
+    scale = (h + a) / max(1e-9, (h_new + a_new))
+    h_new *= scale
+    a_new *= scale
+
+    meta = {
+        "form_gate":"applied",
+        "fav_side":fav_side,
+        "home_form":round(home_form,3),
+        "away_form":round(away_form,3),
+        "delta":round(delta,3),
+        "k":round(k,3),
+        "slope":round(slope,2),
+        "tau":round(tau,3),
+        "transfer":round(float(transfer),4)
+    }
+    return h_new, d, a_new, meta
+# ---------------------------------------------------
+
 # -------------------------------------------------------------------
 # 💡 Ton pipeline de prédiction (utilise _safe_parametres)
 # -------------------------------------------------------------------
@@ -507,32 +544,37 @@ def predict_match_with_proba(
     )
     odds_gap = adjust_odds_weight_by_season(odds_gap_raw, season_stage)
 
+    # Cas "margin band" autour du seuil de nul
     draw_margin_band = 0.02
     if threshold_draw - draw_margin_band <= proba_draw <= threshold_draw + draw_margin_band:
         if odds_gap <= bookmaker_margin:
             proba_1 = proba_draw
             proba_0 = proba_2 = (1 - proba_1) / 2
+            # 🔁 Applique la porte forme sur le split H/A
+            proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
             double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
             return {
                 "prediction": 1,
                 "proba_0": f"{round(proba_0*100,0)}%",
                 "proba_1": f"{round(proba_1*100,0)}%",
                 "proba_2": f"{round(proba_2*100,0)}%",
-                "rule_applied": "margin_adjusted",
+                "rule_applied": "margin_adjusted|form_gate",
                 "explanation": generate_explanation("margin_adjusted", features_df, user_profile),
                 "double_chance": double_chance
             }
 
+    # Cas "nul clair"
     if proba_draw >= threshold_draw:
         proba_1 = proba_draw
         proba_0 = proba_2 = (1 - proba_1) / 2
+        proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
         double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
         return {
             "prediction": 1,
             "proba_0": f"{round(proba_0*100,0)}%",
             "proba_1": f"{round(proba_1*100,0)}%",
             "proba_2": f"{round(proba_2*100,0)}%",
-            "rule_applied": "threshold",
+            "rule_applied": "threshold|form_gate",
             "explanation": generate_explanation("threshold", features_df, user_profile),
             "double_chance": double_chance
         }
@@ -558,8 +600,10 @@ def predict_match_with_proba(
     elif prediction_rf == 2 and proba_draw >= proba_rf[1]:
         proba_2, proba_1 = proba_1, proba_2
 
-    double_chance = detect_double_chance(proba_0, proba_1, proba_2, prediction_rf, league_code)
+    # 🔁 Applique la porte forme ici aussi (décisive pour le split H/A)
+    proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
 
+    double_chance = detect_double_chance(proba_0, proba_1, proba_2, prediction_rf, league_code)
     bias_detected = detect_bias(features_df)
     low_confidence = is_confidence_low(proba_0, proba_1, proba_2)
 
@@ -577,7 +621,7 @@ def predict_match_with_proba(
             "proba_0": f"{round(proba_0*100,0)}%",
             "proba_1": f"{round(proba_1*100,0)}%",
             "proba_2": f"{round(proba_2*100,0)}%",
-            "rule_applied": "filtered_out",
+            "rule_applied": "filtered_out|form_gate",
             "explanation": "⚠️ Attention : prédiction peu recommandée en raison d’un biais ou d’une incertitude élevée. Appuyez-vous sur la double chance suggérée.",
             "double_chance": double_chance
         }
@@ -587,10 +631,11 @@ def predict_match_with_proba(
         "proba_0": f"{round(proba_0*100,0)}%",
         "proba_1": f"{round(proba_1*100,0)}%",
         "proba_2": f"{round(proba_2*100,0)}%",
-        "rule_applied": "rf_decision",
+        "rule_applied": "rf_decision|form_gate",
         "explanation": generate_explanation("rf_decision", features_df, user_profile),
         "double_chance": double_chance
     }
+
 # -------------------------------------------------------------------
 # Explication (inchangée – si tu veux, tu pourras y injecter les proba)
 # -------------------------------------------------------------------
@@ -631,9 +676,11 @@ def generate_explanation(rule_applied, features, user_profile):
         msg += " Ce match est considéré comme important."
 
     return msg
+
 # -------------------------------------------------------------------
 # 🧠 Couche "hors-cadre" — PURE (n'altère jamais prediction/probas)
 # -------------------------------------------------------------------
+
 def apply_unexpected_layer(
     base_pred: dict,
     season_current_df: pd.DataFrame,
@@ -644,8 +691,9 @@ def apply_unexpected_layer(
     X_ref_features: pd.DataFrame = None
 ) -> dict:
     """
-    Ajoute (éventuellement) une double chance orientée 'anti-favori' et des notes explicatives,
-    SANS modifier prediction/proba_0/1/2/explanation.
+    Ajoute (éventuellement) :
+      1) une double chance 'anti-upset' (bogey/GKI) SANS modifier prediction/probas
+      2) une double chance 'forme vs favori du marché' prioritaire sur (1)
     """
 
     # --- 0) arbitre DC : coeur vs anti-upset ---------------------------------
@@ -664,6 +712,25 @@ def apply_unexpected_layer(
         # Sinon on garde la DC du coeur et on expose l'alternative
         return base_dc, "keep_base_conflict"
 
+    # --- 0bis) paramètres couche "forme vs marché" ---------------------------
+    def _get_form_layer_params(league_code):
+        """
+        Lit des seuils éventuels dans champ_config.json ; sinon défauts sûrs.
+        - form_dc_threshold: écart de forme minimal (HomeForm - AwayForm) en valeur absolue pour activer la couche
+        - max_fav_gap_for_override: favoritisme du marché (gap 2-voies) au-delà duquel on n'outrepasse pas le marché
+        - min_uncertainty_for_form_layer: (optionnel) niveau d'incertitude ligue requis pour activer la couche
+        """
+        try:
+            p = _get_params(league_code)  # déjà présent dans ton module
+        except Exception:
+            p = {}
+        form_dc_threshold = float(p.get("form_dc_threshold", 0.20))         # ~20 pts de forme
+        max_fav_gap_for_override = float(p.get("max_fav_gap_for_override", 0.08))  # 8 points de prob. 2-voies
+        min_uncertainty_for_form_layer = float(p.get("min_uncertainty_for_form_layer", 0.10))
+        return form_dc_threshold, max_fav_gap_for_override, min_uncertainty_for_form_layer
+
+    form_dc_threshold, max_fav_gap_for_override, min_unc_for_form = _get_form_layer_params(league_code)
+
     # --- 1) Copier et geler les sorties du modèle ----------------------------
     enriched = dict(base_pred)
     for k in ["prediction", "proba_0", "proba_1", "proba_2", "explanation", "double_chance", "rule_applied"]:
@@ -672,7 +739,7 @@ def apply_unexpected_layer(
 
     # --- helpers internes -----------------------------------------------------
     def _slice_asof(df: pd.DataFrame, asof: str) -> pd.DataFrame:
-        if df is None or df.empty: 
+        if df is None or df.empty:
             return pd.DataFrame()
         d = df.copy()
         d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
@@ -698,7 +765,7 @@ def apply_unexpected_layer(
         return pd.DataFrame(columns=["Date", "HomeTeam", "AwayTeam", "FTR", "HTHG", "HTAG", "_w"])
 
     def _points_for_team(row, team: str) -> int:
-        if row["FTR"] == "D": 
+        if row["FTR"] == "D":
             return 1
         return 3 if ((row["FTR"]=="H" and row["HomeTeam"]==team) or (row["FTR"]=="A" and row["AwayTeam"]==team)) else 0
 
@@ -721,12 +788,12 @@ def apply_unexpected_layer(
         d = _slice_asof(df_for_signals, asof)
         m = ((d["HomeTeam"]==team_a) & (d["AwayTeam"]==team_b)) | ((d["HomeTeam"]==team_b) & (d["AwayTeam"]==team_a))
         d = d.loc[m].sort_values("Date").tail(window)
-        if d.empty: 
+        if d.empty:
             return 0.0
         w = np.ones(len(d))
-        if "_w" in d.columns: 
+        if "_w" in d.columns:
             w *= d["_w"].to_numpy()
-        if not w.sum(): 
+        if not w.sum():
             w = np.ones(len(d))
         ptsA = d.apply(lambda r: _points_for_team(r, team_a), axis=1).to_numpy()
         ptsA_w = np.average(ptsA, weights=w)
@@ -735,7 +802,7 @@ def apply_unexpected_layer(
 
     def giant_killer_index(df_for_signals, team, asof, topn=5):
         d = _slice_asof(df_for_signals, asof)
-        if d.empty: 
+        if d.empty:
             return 0.0
         top = set(_table_points_asof(d)["Team"].head(topn).tolist())
         sel = d[(d["HomeTeam"]==team) | (d["AwayTeam"]==team)]
@@ -760,38 +827,35 @@ def apply_unexpected_layer(
     # --- 3) historique pondéré ------------------------------------------------
     df_sig = _combine_for_signals(season_current_df, season_past_list, match_date, 1.0, 0.6)
 
-    # --- 4) favori marché -----------------------------------------------------
-    
+    # --- 4) favori marché (démargé) ------------------------------------------
     try:
         b365h = float(feats_df["B365H"].values[0])
         b365d = float(feats_df["B365D"].values[0])
         b365a = float(feats_df["B365A"].values[0])
 
-        # option : eps calibré par ligue (simple heuristique)
-        bm, *_ = _safe_parametres(league_code)
-        eps = max(0.02, 0.5*float(bm))  # ou fixe 0.02
+        # eps: petite marge dépendante de la marge bookmaker par ligue
+        bm_eps, *_ = _safe_parametres(league_code)
+        eps = max(0.02, 0.5*float(bm_eps))
 
         fav_side, pH2, pA2, fav_gap = _fav_by_demarged(b365h, b365d, b365a, eps=eps)
-
         if fav_side is None:
-            # Marché ~coin-flip → on n’active pas l’anti-upset
             home_is_fav = None
             outsider = None
         else:
             home_is_fav = (fav_side == "home")
             outsider = away if home_is_fav else home
 
-        # (facultatif) traçabilité
         enriched.setdefault("notes", [])
-        enriched["notes"].append(f"fav_demarged: side={fav_side}, pH2={pH2:.3f}, pA2={pA2:.3f}, gap={fav_gap:.3f}, eps={eps:.3f}")
-
+        enriched["notes"].append(
+            f"fav_demarged: side={fav_side}, pH2={pH2:.3f}, pA2={pA2:.3f}, gap={fav_gap:.3f}, eps={eps:.3f}"
+        )
     except Exception as e:
         home_is_fav = None
         outsider = None
         enriched.setdefault("notes", [])
         enriched["notes"].append(f"fav_demarged: error={type(e).__name__}")
 
-    # --- 5) signaux hors-cadre ------------------------------------------------
+    # --- 5) signaux hors-cadre (anti-upset) ----------------------------------
     bidx_home = bogey_index(df_sig, home, away, match_date)
     gki_home  = giant_killer_index(df_sig, home, match_date)
     gki_away  = giant_killer_index(df_sig, away, match_date)
@@ -804,15 +868,14 @@ def apply_unexpected_layer(
     upset_score = max(0.0, bw*max(0.0, bogey_for_outsider) + gw*max(0.0, gki_outs))
     upset_score = float(min(1.0, upset_score))
 
-    # --- 6) combinaison DC (coeur vs anti-upset) ------------------------------
-    base_dc = base_pred.get("double_chance")           # DC proposée par le coeur
+    base_dc = base_pred.get("double_chance")
     if home_is_fav is None:
-        anti_dc = None  # pas de favori clair → on s’abstient
+        anti_dc = None
     else:
         anti_dc = "X2" if (upset_score >= upset_th and home_is_fav) else \
-              "1X" if (upset_score >= upset_th and not home_is_fav) else None
+                  "1X" if (upset_score >= upset_th and not home_is_fav) else None
 
-    dc_final, dc_reason = _combine_double_chance(
+    dc_after_anti, dc_reason = _combine_double_chance(
         base_dc=base_dc,
         anti_dc=anti_dc,
         base_rule_applied=enriched.get("rule_applied", ""),
@@ -820,31 +883,71 @@ def apply_unexpected_layer(
         upset_th=upset_th
     )
 
-    enriched["double_chance"] = dc_final
+    enriched["double_chance"] = dc_after_anti
     enriched["dc_reason"] = dc_reason
 
-    # tag visuel de la couche quand elle est utilisée (même si conflit)
     if anti_dc is not None:
         ra = enriched.get("rule_applied", "")
         if "unexpected_layer" not in str(ra):
             enriched["rule_applied"] = (ra + "|unexpected_layer") if ra else "unexpected_layer"
 
-    # si conflit et qu'on garde la base, exposer l'alternative
-    if anti_dc and base_dc and anti_dc != base_dc and dc_reason == "keep_base_conflict":
-        enriched["alt_double_chance"] = anti_dc
+    # --- 6) Couche PRIORITAIRE : Forme vs Favori du marché -------------------
+    # Règle métier (définie avec toi) :
+    #  - Si favori = domicile ET HomeForm < AwayForm (écart significatif)  -> DC = "1X"
+    #  - Si favori = extérieur ET HomeForm > AwayForm (écart significatif) -> DC = "12"
+    dc_form = None
+    try:
+        hform = float(feats_df["HomeForm"].values[0]) if "HomeForm" in feats_df.columns else 0.0
+        aform = float(feats_df["AwayForm"].values[0]) if "AwayForm" in feats_df.columns else 0.0
+        form_diff = hform - aform  # >0 avantage domicile ; <0 avantage extérieur
+
+        # Garde-fou: ne pas renverser si le marché a un favori très net
+        market_dominant = (home_is_fav is not None) and (abs(float(fav_gap)) >= max_fav_gap_for_override)
+
+        # (optionnel) gating par incertitude ligue
+        league_uncertainty_ok = (float(ut) >= float(min_unc_for_form))
+
+        if (home_is_fav is not None) and (not market_dominant) and league_uncertainty_ok:
+            if home_is_fav and (form_diff < -form_dc_threshold):
+                dc_form = "1X"   # couvre 1 + nul
+            elif (not home_is_fav) and (form_diff >  form_dc_threshold):
+                dc_form = "12"   # privilégie domicile, couvre favori extérieur (pas de nul)
+
+        # Journalisation
+        enriched.setdefault("notes", [])
+        enriched["notes"].append(
+            f"form_vs_market: HomeForm={hform:.2f}, AwayForm={aform:.2f}, diff={form_diff:.2f}, "
+            f"fav={('home' if home_is_fav else ('away' if home_is_fav is False else 'none'))}, "
+            f"fav_gap={float(fav_gap) if home_is_fav is not None else 'nan'}, "
+            f"th_form={form_dc_threshold:.2f}, max_fav_gap={max_fav_gap_for_override:.2f}, "
+            f"league_unc_ok={league_uncertainty_ok}"
+        )
+    except Exception as e:
+        enriched.setdefault("notes", [])
+        enriched["notes"].append(f"form_vs_market: error={type(e).__name__}")
+
+    # Priorité: si dc_form est posée, elle ECRASE la DC précédente
+    if dc_form is not None:
+        prev_dc = enriched.get("double_chance")
+        prev_reason = enriched.get("dc_reason", "")
+        enriched["double_chance"] = dc_form
+        enriched["dc_reason"] = f"override_by_form({prev_reason or 'none'})"
+        ra = enriched.get("rule_applied", "")
+        enriched["rule_applied"] = (ra + "|form_layer") if ra else "form_layer"
+        enriched.setdefault("notes", []).append(f"form_layer_applied: prev_dc={prev_dc} -> dc_form={dc_form}")
 
     # --- 7) notes d'audit -----------------------------------------------------
     enriched.setdefault("notes", [])
     enriched["notes"].append(
         f"anti-oc: Upset={upset_score:.2f}, Bogey={bidx_home:.2f}, "
         f"GKI_outsider={(gki_away if home_is_fav else gki_home):.2f}, "
-        f"DC_base={base_dc}, DC_anti={anti_dc}, DC_final={dc_final}, reason={dc_reason}"
+        f"DC_base={base_dc}, DC_anti={anti_dc}, DC_final={enriched.get('double_chance')}, reason={enriched.get('dc_reason')}"
     )
-    # (facultatif) exposer les meta pour debug
     enriched["_upset_score"] = upset_score
     enriched["_upset_threshold"] = float(upset_th)
 
     return enriched
+
 
 
 ##---------------------- FIN FONCTION  ------------------------------------------
