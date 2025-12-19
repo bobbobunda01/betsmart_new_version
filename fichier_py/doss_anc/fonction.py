@@ -19,65 +19,10 @@ from numpy import floating, integer, ndarray
 import datetime
 import pathlib
 from dateutil import parser
+import json
+
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
-# forme des équipes
-def form(d_plf):
 
-    def get_points(result):
-        if result == 'W':
-            return 3
-        elif result == 'D':
-            return 1
-        else:
-            return 0
-    
-    def get_form_points(string):
-        sum = 0
-        for letter in string:
-            sum += get_points(letter)
-        return sum
-
-    d_plf['HTFormPtsStr'] = d_plf['HM1'] + d_plf['HM2'] + d_plf['HM3'] + d_plf['HM4'] + d_plf['HM5']
-    d_plf['ATFormPtsStr'] = d_plf['AM1'] + d_plf['AM2'] + d_plf['AM3'] + d_plf['AM4'] + d_plf['AM5']
-
-    d_plf['HTFormPts'] = d_plf['HTFormPtsStr'].apply(get_form_points)
-    d_plf['ATFormPts'] = d_plf['ATFormPtsStr'].apply(get_form_points)
-
-    # Identify Win/Loss Streaks if any.
-    def get_3game_ws(string):
-        if string[-3:] == 'WWW':
-            return 1
-        else:
-            return 0
-
-    def get_5game_ws(string):
-        if string == 'WWWWW':
-            return 1
-        else:
-            return 0
-
-    def get_3game_ls(string):
-        if string[-3:] == 'LLL':
-            return 1
-        else:
-            return 0
-
-    def get_5game_ls(string):
-        if string == 'LLLLL':
-            return 1
-        else:
-            return 0
-
-    d_plf['HTWinStreak3'] = d_plf['HTFormPtsStr'].apply(get_3game_ws)
-    d_plf['HTWinStreak5'] = d_plf['HTFormPtsStr'].apply(get_5game_ws)
-    d_plf['HTLossStreak3'] = d_plf['HTFormPtsStr'].apply(get_3game_ls)
-    d_plf['HTLossStreak5'] = d_plf['HTFormPtsStr'].apply(get_5game_ls)
-
-    d_plf['ATWinStreak3'] = d_plf['ATFormPtsStr'].apply(get_3game_ws)
-    d_plf['ATWinStreak5'] = d_plf['ATFormPtsStr'].apply(get_5game_ws)
-    d_plf['ATLossStreak3'] = d_plf['ATFormPtsStr'].apply(get_3game_ls)
-    d_plf['ATLossStreak5'] = d_plf['ATFormPtsStr'].apply(get_5game_ls)
-    return d_plf
 
 # log des prédictions utilisateurs
 def log_prediction(prediction):
@@ -91,222 +36,181 @@ def log_prediction(prediction):
     with open("logs/logs.jsonl", "a") as f:
         f.write(json.dumps(log_data) + "\n")
         
-# Mise à jour des colonnes de dataset conformément aux variables des modèles
-def data_df(df, model):
     
-    for feature in model.feature_names_in_:
-        if feature not in df.columns:
-            df[feature] = False  # or np.nan, depending on your use case
-    # Reorder columns to match training data
-    df = df[model.feature_names_in_]
-    df.replace({True:1, False:0}, inplace=True)
-    return df
+        
+def log_dataframe_features_to_file(features_df, home, away, match_date, output_path="logs/features_log.jsonl"):
+    os.makedirs("logs", exist_ok=True)
+    log_data = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "home_team": home,
+        "away_team": away,
+        "match_date": str(match_date),
+        "features": features_df.to_dict(orient="records")[0]
+    }
+    with open(output_path, "a") as f:
+        f.write(json.dumps(log_data) + "\n")
 
-## fome des équipes 
-def df_data(sa_25, home, away):
-    cols_home=['HomeTeam','FTHG', 'FTAG', 'HTGS', 'HTGC','HTP','HM1','HM2', 'HM3', 'HM4', 'HM5', 'Date']
+
+RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
+chemin_csv = RACINE_PROJET / "data" /"champ_config.json"
+""""
+def parametres(league_code):
+    # Seuil dynamique par championnat (paramétrable)
+    #seuil_base = 0.12
     
-    cols_away=['AwayTeam','FTHG','FTAG','ATGS', 'ATGC','ATP','AM1','AM2', 'AM3', 'AM4', 'AM5','Date']
-    #HOME
-    df_home=pd.DataFrame()
-    df_away=pd.DataFrame()
-    ### Home
-    date_hh=sa_25.loc[sa_25['HomeTeam']==home,['Date']].sort_values(by='Date', ascending=False).head(1)
-    date_hw=sa_25.loc[sa_25['AwayTeam']==home,['Date']].sort_values(by='Date', ascending=False).head(1)
-    if (date_hh['Date'].values>date_hw['Date'].values) or  (date_hw.empty):
-        df_home=sa_25.loc[sa_25['HomeTeam']==home,cols_home].sort_values(by='Date', ascending=False).head(1)
-        df_home['HTGS']=df_home['HTGS']+df_home['FTHG']
-        df_home['HTGC']=df_home['HTGC']+df_home['FTAG']
-        #df_home['HHGS']=df_home['HHGS']+df_home['HTHG']
-        #df_home['HHGC']=df_home['HHGC']+df_home['HTAG']
-        if df_home['FTHG'].values>df_home['FTAG'].values:
-            df_home['HTP']=df_home['HTP']+3
-            a='W'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-        elif df_home['FTHG'].values==df_home['FTAG'].values:
-            df_home['HTP']=df_home['HTP']+1
-            a='D'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-        else:
-            a='L'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-    else:#
-        df_home=sa_25.loc[sa_25['AwayTeam']==home,cols_away].sort_values(by='Date', ascending=False).head(1)
-        df_home.columns=cols_home
-        #df_home['HTHG']=pd.to_numeric(df['HTHG'], errors='coerce')
-        df_home['HTGS']=df_home['HTGS']+df_home['FTAG']
-        df_home['HTGC']=df_home['HTGC']+df_home['FTHG']
-        #df_home['HHGS']=df_home['HHGS']+df_home['HTAG']
-        #df_home['HHGC']=df_home['HHGC']+df_home['HTHG']
-        if df_home['FTAG'].values>df_home['FTHG'].values:
-            df_home['HTP']=df_home['HTP']+3
-            a='W'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-            df_home['FTHG']=df_home['FTAG']
-        elif df_home['FTAG'].values==df_home['FTHG'].values:
-            df_home['HTP']=df_home['HTP']+1
-            a='D'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-            df_home['FTHG']=df_home['FTAG']
-        else:
-            a='L'
-            df_home['HM5']=df_home['HM4']
-            df_home['HM4']=df_home['HM3']
-            df_home['HM3']=df_home['HM2']
-            df_home['HM2']=df_home['HM1']
-            df_home['HM1']=a
-            df_home['FTHG']=df_home['FTAG']
-    #df_home['FTHG']=round((df_home['HTGS']/32),0)
-    #df_home=df_home.drop(['FTAG','HTAG'], axis=1)
-    #AWAY
-    date_hh=sa_25.loc[sa_25['HomeTeam']==away,['Date']].sort_values(by='Date', ascending=False).head(1)
-    date_hw=sa_25.loc[sa_25['AwayTeam']==away,['Date']].sort_values(by='Date', ascending=False).head(1)
-    if (date_hh['Date'].values>date_hw['Date'].values) or (date_hw.empty):
-        df_away=sa_25.loc[sa_25['HomeTeam']==away,cols_home].sort_values(by='Date', ascending=False).head(1)
-        df_away.columns=cols_away
-        df_away['ATGS']=df_away['ATGS']+df_away['FTHG']
-        df_away['ATGC']=df_away['ATGC']+df_away['FTAG']
-        #df_away['AHGS']=df_away['AHGS']+df_away['HTHG']
-        #df_away['AHGC']=df_away['AHGC']+df_away['HTAG']
+    with open(chemin_csv, "r") as f:
+        CHAMP_CONFIG = json.load(f)
 
-        if df_away['FTHG'].values>df_away['FTAG'].values:
-            df_away['ATP']=df_away['ATP']+3
-            a='W'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-            df_away['FTAG']=df_home['FTHG']
-        elif df_away['FTHG'].values==df_away['FTAG'].values:
-            df_away['ATP']=df_away['ATP']+1
-            a='D'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-            df_away['FTAG']=df_home['FTHG']
-        else:
-            a='L'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-            df_away['FTAG']=df_home['FTHG']
-    else:#
-        df_away=sa_25.loc[sa_25['AwayTeam']==away,cols_away].sort_values(by='Date', ascending=False).head(1)
-        df_away['ATGS']=df_away['ATGS']+df_away['FTAG']
-        df_away['ATGC']=df_away['ATGC']+df_away['FTHG']
-        #df_away['AHGS']=df_away['AHGS']+df_away['HTAG']
-        #df_away['AHGC']=df_away['AHGC']+df_away['HTHG']
+    # Exemple : lecture du bookmaker_margin pour pl
+     # ou fl, bl, lg, sa
+    params = CHAMP_CONFIG.get(league_code, {})
+    bookmaker_margin = params.get("bookmaker_margin", 0.0711)
+    uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
+    importance = params.get("importance", 3)
+    season_stage = params.get("season_stage", "mid")  # par défaut à "mid"
+    return bookmaker_margin, uncertainty_threshold, importance,season_stage
+"""
 
-        if df_away['FTAG'].values>df_away['FTHG'].values:
-            df_away['ATP']=df_away['ATP']+3
-            a='W'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-        elif df_away['FTHG'].values==df_away['FTAG'].values:
-            df_away['ATP']=df_away['ATP']+1
-            a='D'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-        else:
-            a='L'
-            df_away['AM5']=df_away['AM4']
-            df_away['AM4']=df_away['AM3']
-            df_away['AM3']=df_away['AM2']
-            df_away['AM2']=df_away['AM1']
-            df_away['AM1']=a
-    #df_away['FTAG']=round((df_away['ATGS']/32),0)
-    #df_away=df_away.drop(['FTHG', 'HTHG'], axis=1)
+def parametres(league_code):
+    # Seuil dynamique par championnat (paramétrable)
+    #seuil_base = 0.12
+    
+    with open(chemin_csv, "r") as f:
+        CHAMP_CONFIG = json.load(f)
 
-    df_home=df_home.reset_index()
-    df_away=df_away.reset_index()
-    df_home_away=pd.concat([df_home, df_away], axis=1)
-    df_home_away=df_home_away.drop('index', axis=1)
-    #df_home_away
-    #df_home_away=form(df_home_away)
-    #df_home_away['DiffPts']=df_home_away['HTP']-df_home_away['ATP']
-    #df_home_away['DiffFormPts']=df_home_away['HTFormPts']-df_home_away['ATFormPts']
+    # Exemple : lecture du bookmaker_margin pour pl
+     # ou fl, bl, lg, sa
+    params = CHAMP_CONFIG.get(league_code, {})
+    bookmaker_margin = params.get("bookmaker_margin", 0.0711)
+    uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
+    importance = params.get("importance", 3)
+    season_stage = params.get("season_stage", "mid")  # par défaut à "mid"
+    upset_threshold= params.get("upset_threshold", 0.55),
+    skip_threshold=params.get("skip_threshold", 1.50),
+    bogey_weight=params.get("bogey_weight", 0.40),
+    gki_weight=params.get("gki_weight", 0.60),
+    return bookmaker_margin, uncertainty_threshold, importance,season_stage,upset_threshold,skip_threshold,bogey_weight,gki_weight
+##---------------------- FONCTION DE PREDICTION ------------------------------------------
+# -------------------------------------------------------------------
+# 🔒 Adaptateurs de types + lecture sûre des paramètres de ligue
+# -------------------------------------------------------------------
+def _as_float(x, default=0.0):
+    try:
+        if x is None: return default
+        return float(x)
+    except Exception:
+        return default
 
-    #d_plf
-    # Get Goal Difference
-    df_home_away['HTGD'] = df_home_away['HTGS'] - df_home_away['HTGC']
-    df_home_away['ATGD'] = df_home_away['ATGS'] - df_home_away['ATGC']
-    #df_home_away['HHGD'] = df_home_away['HHGS'] - df_home_away['HHGC']
-    #df_home_away['AHGD'] = df_home_away['AHGS'] - df_home_away['AHGC']
+def _as_int(x, default=0):
+    try:
+        return int(x)
+    except Exception:
+        return default
 
-    # Diff in points
-    df_home_away['DiffPts'] = df_home_away['HTP'] - df_home_away['ATP']
-    #df_home_away['DiffFormPts'] = df_home_away['HTFormPts'] - df_home_away['ATFormPts']
-    #cols = ['HTGD','ATGD', 'HHGD', 'AHGD','DiffPts','HTP','ATP']
-    #for col in cols:
-    #    df_home_away[col] = df_home_away[col] /36
-    return df_home_away, df_home, df_away
+def _safe_parametres(league_code):
+    """
+    S'adapte à l'ancienne signature (4 valeurs) et la nouvelle (8),
+    force les bons types (floats/ints/str) et fournit des valeurs par défaut sûres.
+    On suppose que `parametres(league_code)` existe déjà dans ton projet.
+    """
+    vals = parametres(league_code)  # <-- ta fonction existante
 
-## Nouvelle version input_data_user
+    # Ancienne version: 4 valeurs
+    if isinstance(vals, (list, tuple)) and len(vals) == 4:
+        bookmaker_margin, uncertainty_threshold, importance, season_stage = vals
+        upset_threshold, skip_threshold, bogey_weight, gki_weight = 0.55, 1.50, 0.40, 0.60
+    # Nouvelle version: 8 valeurs
+    elif isinstance(vals, (list, tuple)) and len(vals) >= 8:
+        (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+         upset_threshold, skip_threshold, bogey_weight, gki_weight) = vals[:8]
+    else:
+        # Fallback très sûr
+        bookmaker_margin, uncertainty_threshold, importance, season_stage = 0.0711, 0.12, 3, "mid"
+        upset_threshold, skip_threshold, bogey_weight, gki_weight = 0.55, 1.50, 0.40, 0.60
 
-### enrichissement des variables
+    # Coercions
+    bookmaker_margin      = _as_float(bookmaker_margin, 0.0711)
+    uncertainty_threshold = _as_float(uncertainty_threshold, 0.12)
+    importance            = _as_int(importance, 3)
+    season_stage          = str(season_stage) if season_stage is not None else "mid"
+    upset_threshold       = _as_float(upset_threshold, 0.55)
+    skip_threshold        = _as_float(skip_threshold, 1.50)
+    bogey_weight          = _as_float(bogey_weight, 0.40)
+    gki_weight            = _as_float(gki_weight, 0.60)
+
+    return (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+            upset_threshold, skip_threshold, bogey_weight, gki_weight)
+
+def _fav_by_demarged(bh: float, bd: float, ba: float, eps: float = 0.02):
+    """
+    Détermine le favori via probabilités implicites dé-margées.
+    1) Convertit les cotes 1X2 en probs implicites, dé-marge (normalisation),
+    2) Replie en 2-voies (home vs away) en ignorant le nul,
+    3) Retourne (side, pH2, pA2, gap) où side ∈ {"home","away", None si coin-flip}.
+    eps = marge minimale de gap favori (ajuste par ligue si besoin).
+    """
+    bh = float(bh); bd = float(bd); ba = float(ba)
+    if min(bh, bd, ba) <= 1.0 or any(not np.isfinite(x) for x in (bh, bd, ba)):
+        return None, np.nan, np.nan, 0.0
+
+    qH, qD, qA = 1.0/bh, 1.0/bd, 1.0/ba
+    s = qH + qD + qA
+    if s <= 0:
+        return None, np.nan, np.nan, 0.0
+
+    # probs 3-voies dé-margées
+    pH, pD, pA = qH/s, qD/s, qA/s
+    # replie en 2-voies (on ignore D)
+    denom = (pH + pA)
+    if denom <= 0:
+        return None, np.nan, np.nan, 0.0
+    pH2, pA2 = pH/denom, pA/denom
+    gap = pH2 - pA2
+
+    if   gap >  eps: side = "home"
+    elif gap < -eps: side = "away"
+    else:            side = None  # marché trop équilibré
+    return side, pH2, pA2, gap
+
+# -------------------------------------------------------------------
+# ✅ BUGFIX : enrich_form_stats_dynamic (victoires à l’extérieur)
+# -------------------------------------------------------------------
 def enrich_form_stats_dynamic(df, team, match_date, window=5):
     """
     Calcule les statistiques dynamiques sur les derniers matchs avant match_date.
+    Form = points / (3*N), GD = diff de buts moyens, etc.
     """
-    recent_matches = df[((df['HomeTeam'] == team) | (df['AwayTeam'] == team)) & (df['Date'] < match_date)].sort_values('Date', ascending=False).head(window)
-    
+    df = df.copy()
+    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+    match_date = pd.to_datetime(match_date)
+
+    recent_matches = (
+        df[((df['HomeTeam'] == team) | (df['AwayTeam'] == team)) & (df['Date'] < match_date)]
+        .sort_values('Date', ascending=False)
+        .head(window)
+    )
     if recent_matches.empty:
         return {"Form": 0.0, "GD": 0.0, "WinRate": 0.0, "DrawRate": 0.0, "GoalsAvg": 0.0}
 
-    points = 0
-    goals_diff = 0
-    draws = 0
-    wins = 0
-    total_goals = 0
+    points = goals_diff = draws = wins = total_goals = 0
 
     for _, row in recent_matches.iterrows():
-        if row['HomeTeam'] == team:
-            goals_for = row['FTHG']
-            goals_against = row['FTAG']
-            result = row['FTR']
+        is_home = (row['HomeTeam'] == team)
+
+        if is_home:
+            goals_for, goals_against = row['FTHG'], row['FTAG']
+            win = (row['FTR'] == 'H')
         else:
-            goals_for = row['FTAG']
-            goals_against = row['FTHG']
-            result = 'H' if row['FTR'] == 'A' else 'A' if row['FTR'] == 'H' else 'D'
-        
-        if result == 'D':
-            draws += 1
-            points += 1
-        elif (result == 'H' and row['HomeTeam'] == team) or (result == 'A' and row['AwayTeam'] == team):
-            wins += 1
-            points += 3
-        
+            goals_for, goals_against = row['FTAG'], row['FTHG']
+            win = (row['FTR'] == 'A')
+
+        draw = (row['FTR'] == 'D')
+
+        if draw:
+            draws += 1; points += 1
+        elif win:
+            wins += 1; points += 3
+
         goals_diff += (goals_for - goals_against)
         total_goals += goals_for
 
@@ -318,54 +222,187 @@ def enrich_form_stats_dynamic(df, team, match_date, window=5):
         "DrawRate": draws / matches_played,
         "GoalsAvg": total_goals / matches_played
     }
-## position des équipes et l'importance des matchs
-def add_ranks_and_importance(df, home_team, away_team, match_date):
+# -------------------------------------------------------------------
+# Classement dynamique + importance binaire (inchangé)
+# -------------------------------------------------------------------
+def _league_profile(league_code: str | int | None):
     """
-    Calcule le classement dynamique + importance du match (binaire) à une date donnée.
+    Retourne un profil (region, late_months, late_threshold) par ligue.
+    - region: "europe" ou "calendar_year"
+    - late_months: mois considérés 'fin de saison' pour importance contextuelle
+    - late_threshold: seuil (0..1) de progression de saison (par dates) pour activer le mode 'run-in'
     """
-    df = df[df['Date'] < match_date].copy()
-    df['Points_H'] = df['FTR'].apply(lambda x: 3 if x == 'H' else 1 if x == 'D' else 0)
-    df['Points_A'] = df['FTR'].apply(lambda x: 3 if x == 'A' else 1 if x == 'D' else 0)
+    # cast sûr
+    try:
+        code = int(league_code) if league_code is not None else None
+    except Exception:
+        code = None
+
+    # Ligues Europe (saison ~août→mai/juin)
+    EURO = {
+        39,   # Premier League
+        61,   # Ligue 1
+        78,   # Bundesliga
+        140,  # La Liga
+        135,  # Serie A
+        88,   # Netherlands
+        207,  # Switzerland
+        94,   # Portugal
+        203,  # Turkey
+        144,  # Belgium
+        197,  # Greece
+        119,  # Denmark
+        179,  # Scotland
+        180,  # Scotland D1
+        253,  # Russia (calendrier décalé mais “style Europe”)
+         2,#"UEFA Champions League"
+        3,#"Europa League"
+        233, # egypte
+        62, #league 2 France,
+        40, #Championship
+        79, #Bundesliga2
+        136, #Serie B
+        141, #Liga Secunda
+    }
+    # Ligues “calendrier annuel”
+    CAL_Y = {
+        71,   # Brazil (Brasileirão)
+        98,   # Japan (J1 League)
+        # (ajoute MLS, Norvège, Suède si besoin)
+        262, #Mexique
+        292,#"Coree du Sud"
+        128, #Argentine
+    }
+
+    if code in EURO:
+        return {
+            "region": "europe",
+            "late_months": {4, 5, 6},   # run-in classique
+            "late_threshold": 0.70      # 70% de saison écoulée ≈ run-in
+        }
+    elif code in CAL_Y:
+        return {
+            "region": "calendar_year",
+            "late_months": {10, 11, 12},  # fin d'année = run-in
+            "late_threshold": 0.70
+        }
+    else:
+        # fallback conservateur
+        return {
+            "region": "unknown",
+            "late_months": set(),
+            "late_threshold": 0.70
+        }
+
+
+def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
+    """
+    Approxime la progression de saison via le percentile de la date 'asof'
+    entre min(Date) et max(Date) de la saison. Renvoie [0..1].
+    """
+    if df_all is None or df_all.empty:
+        return 0.0
+    d = df_all.copy()
+    d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
+    d = d.dropna(subset=["Date"])
+    if d.empty:
+        return 0.0
+
+    asof = pd.to_datetime(asof)
+    dmin, dmax = d["Date"].min(), d["Date"].max()
+    total = (dmax - dmin).days
+    if total <= 0:
+        return 0.0
+    prog = (asof - dmin).days / total
+    return float(max(0.0, min(1.0, prog)))
+
+def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
+    """
+    Classement dynamique + importance contextuelle (dépend de la ligue).
+
+    Importance = 1 si au moins une des conditions suivantes est vraie :
+      - 'run-in' (fin de saison) ET duel de rangs proches (|Δrank| <= 4)
+      - 'run-in' ET 'six-pointer' relégation (au moins une équipe dans le bas du tableau)
+      - duel direct du haut de tableau (top_k vs top_k)
+      - lutte européenne en fin de saison (top7 impliqué et |Δrank| <= 6)
+    """
+    if df is None or df.empty:
+        # par défaut neutre
+        return 10, 10, 0
+
+    prof = _league_profile(league_code)
+    late_months = prof["late_months"]
+    late_th = prof["late_threshold"]
+
+    d = df.copy()
+    d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
+    md = pd.to_datetime(match_date)
+    d = d[d["Date"] < md].dropna(subset=["Date"])
+
+    # points dynamiques
+    d["Points_H"] = d["FTR"].apply(lambda x: 3 if x == "H" else 1 if x == "D" else 0)
+    d["Points_A"] = d["FTR"].apply(lambda x: 3 if x == "A" else 1 if x == "D" else 0)
 
     team_points = {}
+    for _, row in d.iterrows():
+        team_points[row["HomeTeam"]] = team_points.get(row["HomeTeam"], 0) + row["Points_H"]
+        team_points[row["AwayTeam"]] = team_points.get(row["AwayTeam"], 0) + row["Points_A"]
 
-    for _, row in df.iterrows():
-        team_points[row['HomeTeam']] = team_points.get(row['HomeTeam'], 0) + row['Points_H']
-        team_points[row['AwayTeam']] = team_points.get(row['AwayTeam'], 0) + row['Points_A']
+    if not team_points:
+        return 10, 10, 0
 
+    # ranks
     sorted_teams = sorted(team_points.items(), key=lambda x: x[1], reverse=True)
     ranks = {team: idx + 1 for idx, (team, _) in enumerate(sorted_teams)}
+    n_teams = len(ranks)
 
-    rank_home = ranks.get(home_team, 10)
-    rank_away = ranks.get(away_team, 10)
+    rank_home = ranks.get(home_team, min(10, n_teams))
+    rank_away = ranks.get(away_team, min(10, n_teams))
+    rank_diff = abs(rank_home - rank_away)
 
-    match_importance = 1 if abs(rank_home - rank_away) <= 4 and match_date.month >= 4 else 0
-    return rank_home, rank_away, match_importance
-## entrées utilisateurs
-def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b365a, b365d, season_df):
+    # progression saison (par dates)
+    season_prog = _season_progress_by_dates(df, md)
+    late_season = (season_prog >= late_th) or (md.month in late_months)
+
+    # heuristiques d’importance
+    top_k = 5
+    close_ranks = (rank_diff <= 4)
+    top_clash = (rank_home <= top_k and rank_away <= top_k)
+
+    # zone relégation : les 3 ou 4 derniers (selon taille)
+    releg_zone = max(3, int(round(0.12 * n_teams)))  # ~12% du bas
+    six_pointer_releg = late_season and ((rank_home > n_teams - releg_zone) or (rank_away > n_teams - releg_zone))
+
+    euro_spot_fight = late_season and ((rank_home <= 7) or (rank_away <= 7)) and (rank_diff <= 6)
+
+    importance = 1 if (top_clash or (late_season and (close_ranks or six_pointer_releg or euro_spot_fight))) else 0
+
+    return rank_home, rank_away, importance
+
+# -------------------------------------------------------------------
+# Préparation des features (retour DataFrame — pas de tuple)
+# -------------------------------------------------------------------
+def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b365a, b365d, season_df,league_code):
     """
     Prépare les features enrichies pour la prédiction d'un match avec classement dynamique.
     """
     df = season_df.copy()
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df = df.sort_values('Date')
-
-    #if home_team not in df['HomeTeam'].values or away_team not in df['AwayTeam'].values:
-    #    raise ValueError("Une des équipes n'existe pas dans l'historique")
-    
     all_teams = pd.concat([df['HomeTeam'], df['AwayTeam']]).unique()
-    
-    if home_team not in all_teams or away_team not in all_teams:
+
+    if (home_team not in all_teams) or (away_team not in all_teams):
         print(f"⚠️ Attention : {home_team} ou {away_team} n'a pas d'historique. Les stats seront neutres.")
 
     match_date = pd.to_datetime(match_date)
     df_past = df[df['Date'] < match_date]
 
-    def safe_stats(stats_dict):
+    def safe_stats(d):
+        d = dict(d or {})
         for key in ['Form', 'GD', 'WinRate', 'DrawRate', 'GoalsAvg']:
-            if stats_dict.get(key) is None:
-                stats_dict[key] = 0.0
-        return stats_dict
+            if d.get(key) is None:
+                d[key] = 0.0
+        return d
 
     home_stats = safe_stats(enrich_form_stats_dynamic(df_past, home_team, match_date))
     away_stats = safe_stats(enrich_form_stats_dynamic(df_past, away_team, match_date))
@@ -376,7 +413,7 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
     odds_gap_min_delta = max(b365h, b365a, b365d) - min(b365h, b365a, b365d)
     form_diff = home_stats["Form"] - away_stats["Form"]
 
-    rank_home, rank_away, match_importance = add_ranks_and_importance(df, home_team, away_team, match_date)
+    rank_home, rank_away, match_importance = add_ranks_and_importance(df, home_team, away_team, match_date,league_code)
 
     features = pd.DataFrame([{
         'HTHG': 0, 'HTAG': 0, 'HTR': 0,
@@ -399,94 +436,83 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
         'MatchImportance': match_importance
     }])
 
-    return features
+    return features  # ✅ (ne pas renvoyer (features,) )
 
-## lecture des variables dynamiques 
-RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
-chemin_csv = RACINE_PROJET / "data" /"champ_config.json"
-def parametres(league_code):
-    # Seuil dynamique par championnat (paramétrable)
-    #seuil_base = 0.12
-    
-    with open(chemin_csv, "r") as f:
-        CHAMP_CONFIG = json.load(f)
-
-    # Exemple : lecture du bookmaker_margin pour pl
-     # ou fl, bl, lg, sa
-    params = CHAMP_CONFIG.get(league_code, {})
-    bookmaker_margin = params.get("bookmaker_margin", 0.0711)
-    uncertainty_threshold = params.get("uncertainty_threshold", 0.12)
-    importance = params.get("importance", 3)
-    return bookmaker_margin, uncertainty_threshold, importance
-
-## Double change
+# -------------------------------------------------------------------
+# Règles auxiliaires (inchangées / petites sécurités)
+# -------------------------------------------------------------------
 def detect_double_chance(proba_0, proba_1, proba_2, final_prediction, league_code):
-    """
-    Détecte une opportunité de double chance (1X ou X2) sans modifier la prédiction.
-    Retourne "1X", "X2" ou None.
-    """
-    # Seuil dynamique par championnat (paramétrable)
-    #seuil_base = 0.12
-    bookmaker_margin, uncertainty_threshold, importance=parametres(league_code)
+    (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+     upset_threshold, skip_threshold, bogey_weight, gki_weight) = _safe_parametres(league_code)
+
     seuil_incertitude = uncertainty_threshold - 0.02 * (importance / 5)
 
-    # Ecart entre les deux meilleures probabilités
-    probs = np.array([proba_0, proba_1, proba_2])
+    probs = np.array([proba_0, proba_1, proba_2], dtype=float)
     sorted_probs = np.sort(probs)
     ecart = sorted_probs[-1] - sorted_probs[-2]
 
     if ecart <= seuil_incertitude:
-        # Proposition de double chance uniquement si la proba gagnante n'est pas écrasante
         if final_prediction == 0 and proba_0 < 0.60:
             return "1X"
         elif final_prediction == 2 and proba_2 < 0.60:
             return "X2"
     return None
 
-# Prédiction
+def detect_bias(features_df):
+    odds = features_df[['B365H', 'B365A', 'B365D']].values[0].astype(float)
+    max_odds = np.max(odds)
+    min_odds = np.min(odds)
+    bias_score = abs(max_odds - min_odds) / np.mean(odds)
+    return bias_score > 0.6  # Seuil simple (à affiner par ligue si besoin)
 
+def is_confidence_low(proba_0, proba_1, proba_2):
+    arr = np.array([proba_0, proba_1, proba_2], dtype=float)
+    ecart_principal = np.max(arr) - np.median(arr)
+    return ecart_principal < 0.07
+
+def adjust_odds_weight_by_season(odds_gap, season_stage):
+    if season_stage == "early":
+        return odds_gap * 1.3
+    elif season_stage == "mid":
+        return odds_gap
+    else:
+        return odds_gap * 0.9
+# -------------------------------------------------------------------
+# 💡 Ton pipeline de prédiction (utilise _safe_parametres)
+# -------------------------------------------------------------------
 def predict_match_with_proba(
     features_df: pd.DataFrame,
     model_stage1,
     model_stage2,
-    threshold_draw,
+    threshold_draw=0.63,
     user_profile="standard",
     league_code="default"
 ) -> dict:
-    """
-    Prédiction en deux étapes :
-    1. Étape 1 (model_stage1) : prédire "nul" ou "non-nul" (Logistic Regression).
-    2. Étape 2 (model_stage2) : si non-nul, prédire "domicile" (0) ou "extérieur" (2) (Random Forest).
 
-    La fonction applique ensuite une logique pour garder la cohérence entre
-    la prédiction finale et les probabilités affichées pour l'utilisateur.
-    """
-    
-    bookmaker_margin, uncertainty_threshold, importance=parametres(league_code)
+    (bookmaker_margin, uncertainty_threshold, importance, season_stage,
+     upset_threshold, skip_threshold, bogey_weight, gki_weight) = _safe_parametres(league_code)
 
-    # --- Étape 1 : préparation des features ---
+    # Étape 1 : modèle de nul
     features_df_stage1 = features_df.copy()
     for feature in model_stage1.feature_names_in_:
         if feature not in features_df_stage1.columns:
             features_df_stage1[feature] = 0
     features_df_stage1 = features_df_stage1[model_stage1.feature_names_in_]
 
-    # Probabilité d'un match nul issue du premier modèle
-    proba_draw = model_stage1.predict_proba(features_df_stage1)[0][1]
+    proba_draw = float(model_stage1.predict_proba(features_df_stage1)[0][1])
 
-    # Calcul de l'écart de cotes
-    odds_gap = (
+    odds_gap_raw = (
         features_df_stage1[['B365H', 'B365A', 'B365D']].max(axis=1).values[0]
         - features_df_stage1[['B365H', 'B365A', 'B365D']].min(axis=1).values[0]
     )
+    odds_gap = adjust_odds_weight_by_season(odds_gap_raw, season_stage)
 
-    # --- Règle spéciale : cas de cotes très équilibrées (margin_adjusted) ---
     draw_margin_band = 0.02
     if threshold_draw - draw_margin_band <= proba_draw <= threshold_draw + draw_margin_band:
         if odds_gap <= bookmaker_margin:
             proba_1 = proba_draw
             proba_0 = proba_2 = (1 - proba_1) / 2
-            double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1)
+            double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
             return {
                 "prediction": 1,
                 "proba_0": f"{round(proba_0*100,0)}%",
@@ -497,7 +523,6 @@ def predict_match_with_proba(
                 "double_chance": double_chance
             }
 
-    # --- Règle simple : prédire directement un nul si proba_draw >= threshold_draw ---
     if proba_draw >= threshold_draw:
         proba_1 = proba_draw
         proba_0 = proba_2 = (1 - proba_1) / 2
@@ -512,35 +537,51 @@ def predict_match_with_proba(
             "double_chance": double_chance
         }
 
-    # --- Étape 2 : cas non-nuls, on passe au modèle Random Forest ---
+    # Étape 2 : modèle domicile/extérieur
     features_df_stage2 = features_df.copy()
     for feature in model_stage2.feature_names_in_:
         if feature not in features_df_stage2.columns:
             features_df_stage2[feature] = 0
     features_df_stage2 = features_df_stage2[model_stage2.feature_names_in_]
 
-    # Prédiction et probabilités du modèle 2 (0=domicile, 2=extérieur)
     proba_rf = model_stage2.predict_proba(features_df_stage2)[0]
+    proba_rf = np.asarray(proba_rf, dtype=float)  # [proba_home, proba_away]
     prediction_rf = int(model_stage2.predict(features_df_stage2)[0])
 
-    # Combinaison des probabilités
     total = proba_rf[0] + proba_draw + proba_rf[1]
-    proba_0 = proba_rf[0] / total
-    proba_1 = proba_draw / total
-    proba_2 = proba_rf[1] / total
+    proba_0 = float(proba_rf[0] / total)
+    proba_1 = float(proba_draw / total)
+    proba_2 = float(proba_rf[1] / total)
 
-    # --- Ajustement UX pour éviter la contradiction visible ---
-    if prediction_rf == 0:
-        if proba_draw >= proba_rf[0]:
-            proba_0, proba_1 = proba_1, proba_0
-    else:
-        if proba_draw >= proba_rf[1]:
-            proba_2, proba_1 = proba_1, proba_2
+    if prediction_rf == 0 and proba_draw >= proba_rf[0]:
+        proba_0, proba_1 = proba_1, proba_0
+    elif prediction_rf == 2 and proba_draw >= proba_rf[1]:
+        proba_2, proba_1 = proba_1, proba_2
 
-    # Détection double chance (après tout calcul)
     double_chance = detect_double_chance(proba_0, proba_1, proba_2, prediction_rf, league_code)
 
-    # --- Résultat final ---
+    bias_detected = detect_bias(features_df)
+    low_confidence = is_confidence_low(proba_0, proba_1, proba_2)
+
+    if low_confidence or bias_detected:
+        if double_chance is None:
+            if prediction_rf == 0:
+                double_chance = "1X"
+            elif prediction_rf == 2:
+                double_chance = "X2"
+            else:
+                double_chance = "1X"
+
+        return {
+            "prediction": prediction_rf,
+            "proba_0": f"{round(proba_0*100,0)}%",
+            "proba_1": f"{round(proba_1*100,0)}%",
+            "proba_2": f"{round(proba_2*100,0)}%",
+            "rule_applied": "filtered_out",
+            "explanation": "⚠️ Attention : prédiction peu recommandée en raison d’un biais ou d’une incertitude élevée. Appuyez-vous sur la double chance suggérée.",
+            "double_chance": double_chance
+        }
+
     return {
         "prediction": prediction_rf,
         "proba_0": f"{round(proba_0*100,0)}%",
@@ -550,14 +591,14 @@ def predict_match_with_proba(
         "explanation": generate_explanation("rf_decision", features_df, user_profile),
         "double_chance": double_chance
     }
-
-
+# -------------------------------------------------------------------
+# Explication (inchangée – si tu veux, tu pourras y injecter les proba)
+# -------------------------------------------------------------------
 def generate_explanation(rule_applied, features, user_profile):
     odds_ratio = features.get("OddsRatio_HA", 1)
     form_diff = features.get("Form_Diff", 0)
     match_importance = features.get("MatchImportance", 0)
 
-    # Gestion du type Series si la feature est issue d’un DataFrame à une seule ligne
     if isinstance(match_importance, pd.Series):
         match_importance = match_importance.values[0]
 
@@ -578,7 +619,7 @@ def generate_explanation(rule_applied, features, user_profile):
                 f"Proba_RF = [{features.get('proba_0', 0):.2f}, {features.get('proba_2', 0):.2f}], "
                 f"écart de forme = {form_diff:.2f}"
             )
-    else:  # profil standard
+    else:
         if rule_applied == "threshold":
             msg = "Match nul probable : la probabilité dépasse le seuil."
         elif rule_applied == "margin_adjusted":
@@ -586,13 +627,228 @@ def generate_explanation(rule_applied, features, user_profile):
         else:
             msg = "Victoire probable : un déséquilibre a été détecté entre les deux équipes."
 
-    # Ajout conditionnel selon importance du match
     if match_importance == 1:
         msg += " Ce match est considéré comme important."
 
     return msg
+# -------------------------------------------------------------------
+# 🧠 Couche "hors-cadre" — PURE (n'altère jamais prediction/probas)
+# -------------------------------------------------------------------
+def apply_unexpected_layer(
+    base_pred: dict,
+    season_current_df: pd.DataFrame,
+    season_past_list: list,
+    home: str, away: str, match_date: str,
+    feats_df: pd.DataFrame,
+    league_code: str = "default",
+    X_ref_features: pd.DataFrame = None
+) -> dict:
+    """
+    Ajoute (éventuellement) une double chance orientée 'anti-favori' et des notes explicatives,
+    SANS modifier prediction/proba_0/1/2/explanation.
+    """
 
-# conversion de la date
+    # --- 0) arbitre DC : coeur vs anti-upset ---------------------------------
+    def _combine_double_chance(base_dc, anti_dc, base_rule_applied, upset_score, upset_th):
+        # Cas simples
+        if anti_dc is None:
+            return base_dc, "base_only"
+        if base_dc is None:
+            return anti_dc, "anti_only"
+        if base_dc == anti_dc:
+            return base_dc, "agree"
+        # Conflit : prioriser l'anti-upset si coeur est déjà en doute,
+        # ou si le risque d'upset dépasse largement le seuil.
+        if ("filtered_out" in str(base_rule_applied)) or (upset_score >= 1.2 * float(upset_th)):
+            return anti_dc, "override_by_anti"
+        # Sinon on garde la DC du coeur et on expose l'alternative
+        return base_dc, "keep_base_conflict"
+
+    # --- 1) Copier et geler les sorties du modèle ----------------------------
+    enriched = dict(base_pred)
+    for k in ["prediction", "proba_0", "proba_1", "proba_2", "explanation", "double_chance", "rule_applied"]:
+        if k in base_pred:
+            enriched[k] = base_pred[k]
+
+    # --- helpers internes -----------------------------------------------------
+    def _slice_asof(df: pd.DataFrame, asof: str) -> pd.DataFrame:
+        if df is None or df.empty: 
+            return pd.DataFrame()
+        d = df.copy()
+        d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
+        return d[d["Date"] < pd.to_datetime(asof)]
+
+    def _combine_for_signals(cur: pd.DataFrame, past_list: list, asof: str, w_curr=1.0, w_past=0.6):
+        frames = []
+        c = _slice_asof(cur, asof)
+        if not c.empty:
+            c = c.copy(); c["_w"] = w_curr; frames.append(c)
+        if past_list:
+            plist = []
+            for x in past_list:
+                if x is not None:
+                    sl = _slice_asof(x, asof)
+                    if not sl.empty:
+                        plist.append(sl)
+            if plist:
+                p = pd.concat(plist, ignore_index=True)
+                p = p.copy(); p["_w"] = w_past; frames.append(p)
+        if frames:
+            return pd.concat(frames, ignore_index=True)
+        return pd.DataFrame(columns=["Date", "HomeTeam", "AwayTeam", "FTR", "HTHG", "HTAG", "_w"])
+
+    def _points_for_team(row, team: str) -> int:
+        if row["FTR"] == "D": 
+            return 1
+        return 3 if ((row["FTR"]=="H" and row["HomeTeam"]==team) or (row["FTR"]=="A" and row["AwayTeam"]==team)) else 0
+
+    def _table_points_asof(df):
+        teams = pd.unique(pd.concat([df["HomeTeam"], df["AwayTeam"]]))
+        pts = {t: 0.0 for t in teams}
+        for _, r in df.iterrows():
+            w = float(r.get("_w", 1.0))
+            if r["FTR"]=="H":
+                pts[r["HomeTeam"]] += 3*w
+            elif r["FTR"]=="A":
+                pts[r["AwayTeam"]] += 3*w
+            else:
+                pts[r["HomeTeam"]] += 1*w
+                pts[r["AwayTeam"]] += 1*w
+        tab = pd.DataFrame({"Team": list(pts.keys()), "Pts": list(pts.values())})
+        return tab.sort_values("Pts", ascending=False).reset_index(drop=True)
+
+    def bogey_index(df_for_signals, team_a, team_b, asof, window=5):
+        d = _slice_asof(df_for_signals, asof)
+        m = ((d["HomeTeam"]==team_a) & (d["AwayTeam"]==team_b)) | ((d["HomeTeam"]==team_b) & (d["AwayTeam"]==team_a))
+        d = d.loc[m].sort_values("Date").tail(window)
+        if d.empty: 
+            return 0.0
+        w = np.ones(len(d))
+        if "_w" in d.columns: 
+            w *= d["_w"].to_numpy()
+        if not w.sum(): 
+            w = np.ones(len(d))
+        ptsA = d.apply(lambda r: _points_for_team(r, team_a), axis=1).to_numpy()
+        ptsA_w = np.average(ptsA, weights=w)
+        expected = 1.5  # environ neutre
+        return float(max(-0.5, min(0.5, (ptsA_w - expected)/3.0)))
+
+    def giant_killer_index(df_for_signals, team, asof, topn=5):
+        d = _slice_asof(df_for_signals, asof)
+        if d.empty: 
+            return 0.0
+        top = set(_table_points_asof(d)["Team"].head(topn).tolist())
+        sel = d[(d["HomeTeam"]==team) | (d["AwayTeam"]==team)]
+        vs_top_pts = vs_top_g = vs_rest_pts = vs_rest_g = 0.0
+        for _, r in sel.iterrows():
+            p = _points_for_team(r, team)
+            opp = r["AwayTeam"] if r["HomeTeam"]==team else r["HomeTeam"]
+            if opp in top:
+                vs_top_pts += p; vs_top_g += 1
+            else:
+                vs_rest_pts += p; vs_rest_g += 1
+        if vs_top_g == 0:
+            return 0.0
+        s = (vs_top_pts/max(1,vs_top_g)) - (vs_rest_pts/max(1,vs_rest_g))
+        return float(max(-1.0, min(1.0, s/3.0)))
+
+    # --- 2) paramètres ligue (typage sûr) ------------------------------------
+    (bm, ut, imp, stage, upset_th, skip_th, bw, gw) = _safe_parametres(league_code)
+    bw = _as_float(bw, 0.40); gw = _as_float(gw, 0.60)
+    upset_th = _as_float(upset_th, 0.55); skip_th = _as_float(skip_th, 1.50)
+
+    # --- 3) historique pondéré ------------------------------------------------
+    df_sig = _combine_for_signals(season_current_df, season_past_list, match_date, 1.0, 0.6)
+
+    # --- 4) favori marché -----------------------------------------------------
+    
+    try:
+        b365h = float(feats_df["B365H"].values[0])
+        b365d = float(feats_df["B365D"].values[0])
+        b365a = float(feats_df["B365A"].values[0])
+
+        # option : eps calibré par ligue (simple heuristique)
+        bm, *_ = _safe_parametres(league_code)
+        eps = max(0.02, 0.5*float(bm))  # ou fixe 0.02
+
+        fav_side, pH2, pA2, fav_gap = _fav_by_demarged(b365h, b365d, b365a, eps=eps)
+
+        if fav_side is None:
+            # Marché ~coin-flip → on n’active pas l’anti-upset
+            home_is_fav = None
+            outsider = None
+        else:
+            home_is_fav = (fav_side == "home")
+            outsider = away if home_is_fav else home
+
+        # (facultatif) traçabilité
+        enriched.setdefault("notes", [])
+        enriched["notes"].append(f"fav_demarged: side={fav_side}, pH2={pH2:.3f}, pA2={pA2:.3f}, gap={fav_gap:.3f}, eps={eps:.3f}")
+
+    except Exception as e:
+        home_is_fav = None
+        outsider = None
+        enriched.setdefault("notes", [])
+        enriched["notes"].append(f"fav_demarged: error={type(e).__name__}")
+
+    # --- 5) signaux hors-cadre ------------------------------------------------
+    bidx_home = bogey_index(df_sig, home, away, match_date)
+    gki_home  = giant_killer_index(df_sig, home, match_date)
+    gki_away  = giant_killer_index(df_sig, away, match_date)
+    gki_outs  = gki_away if home_is_fav else gki_home
+
+    bogey_for_outsider = bidx_home if outsider == home else -bidx_home
+    bogey_for_outsider = _as_float(bogey_for_outsider, 0.0)
+    gki_outs           = _as_float(gki_outs, 0.0)
+
+    upset_score = max(0.0, bw*max(0.0, bogey_for_outsider) + gw*max(0.0, gki_outs))
+    upset_score = float(min(1.0, upset_score))
+
+    # --- 6) combinaison DC (coeur vs anti-upset) ------------------------------
+    base_dc = base_pred.get("double_chance")           # DC proposée par le coeur
+    if home_is_fav is None:
+        anti_dc = None  # pas de favori clair → on s’abstient
+    else:
+        anti_dc = "X2" if (upset_score >= upset_th and home_is_fav) else \
+              "1X" if (upset_score >= upset_th and not home_is_fav) else None
+
+    dc_final, dc_reason = _combine_double_chance(
+        base_dc=base_dc,
+        anti_dc=anti_dc,
+        base_rule_applied=enriched.get("rule_applied", ""),
+        upset_score=upset_score,
+        upset_th=upset_th
+    )
+
+    enriched["double_chance"] = dc_final
+    enriched["dc_reason"] = dc_reason
+
+    # tag visuel de la couche quand elle est utilisée (même si conflit)
+    if anti_dc is not None:
+        ra = enriched.get("rule_applied", "")
+        if "unexpected_layer" not in str(ra):
+            enriched["rule_applied"] = (ra + "|unexpected_layer") if ra else "unexpected_layer"
+
+    # si conflit et qu'on garde la base, exposer l'alternative
+    if anti_dc and base_dc and anti_dc != base_dc and dc_reason == "keep_base_conflict":
+        enriched["alt_double_chance"] = anti_dc
+
+    # --- 7) notes d'audit -----------------------------------------------------
+    enriched.setdefault("notes", [])
+    enriched["notes"].append(
+        f"anti-oc: Upset={upset_score:.2f}, Bogey={bidx_home:.2f}, "
+        f"GKI_outsider={(gki_away if home_is_fav else gki_home):.2f}, "
+        f"DC_base={base_dc}, DC_anti={anti_dc}, DC_final={dc_final}, reason={dc_reason}"
+    )
+    # (facultatif) exposer les meta pour debug
+    enriched["_upset_score"] = upset_score
+    enriched["_upset_threshold"] = float(upset_th)
+
+    return enriched
+
+
+##---------------------- FIN FONCTION  ------------------------------------------
+
 
 def get_valid_date(user_input):
     """

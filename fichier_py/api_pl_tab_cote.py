@@ -681,7 +681,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
-             ### LIGA SECUNDA
+            ### LIGA SECUNDA
             elif comp==141:
                 chemin_csv = RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv"
                 # Chargement des données historiques
@@ -694,6 +694,28 @@ def prediction():
                 df_2024=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv")
                 df_2024['Date']=pd.to_datetime(df_2024['Date'])
                 df_2025=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2025.csv")
+                df_2025['Date']=pd.to_datetime(df_2025['Date'])
+                
+                season_preced=pd.read_csv(chemin_csv)
+                season_preced['Date']=pd.to_datetime(season_preced['Date'])
+                hi=pd.read_csv(s_encours)
+                #hi.drop('Unnamed: 0', axis=1, inplace=True)
+                hi['Date']=pd.to_datetime(hi['Date'])
+                df=hi
+            
+            ### Coupe d'afrique des nations CAN
+            elif comp==6:
+                chemin_csv = RACINE_PROJET / "data" / "can" / "df_can_2023.csv"
+                # Chargement des données historiques
+                s_encours=RACINE_PROJET / "data" / "can" / "saison_encours.csv"
+                
+                df_2022=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2019.csv")
+                df_2022['Date']=pd.to_datetime(df_2022['Date'])
+                df_2023=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2021.csv")
+                df_2023['Date']=pd.to_datetime(df_2023['Date'])
+                df_2024=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2023.csv")
+                df_2024['Date']=pd.to_datetime(df_2024['Date'])
+                df_2025=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2025.csv")
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 season_preced=pd.read_csv(chemin_csv)
@@ -991,7 +1013,17 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.63
+            
+             ## Coupe d'Afrique des Nations, CAN
+            elif comp==6:
+                chemin_model1 = RACINE_PROJET / "modele" / "can" / "rf_stage1_can.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "can" / "rf_stage2_can.joblib"
+                chemin_but = RACINE_PROJET / "modele" / "can" / "xgboost_nbre_but_marque_can.joblib"
+                model_but=load(chemin_but)
+                modele1=load(chemin_model1)
+                modele2=load(chemin_model2)
+                thread=0.65
                 
             perf_home=get_last5_results_pattern(df,home , date_match)
             perf_away=get_last5_results_pattern(df,away, date_match)
