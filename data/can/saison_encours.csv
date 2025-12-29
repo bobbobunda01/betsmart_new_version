@@ -150,15 +150,27 @@
 148,can_qualification,2025,2024-11-19,Congo,Uganda,0,1,0,0,A
 149,can_qualification,2025,2024-11-19,South Africa,South Sudan,3,0,2,1,H
 150,can_qualification,2025,2024-11-19,Senegal,Burundi,2,0,1,1,H
-0,can,2025,2025-12-21,Morocco,Comoros,2,0,0,2,H
-1,can,2025,2025-12-22,Mali,Zambia,1,1,0,1,D
-2,can,2025,2025-12-22,South Africa,Angola,2,1,1,1,H
-3,can,2025,2025-12-22,Egypt,Zimbabwe,2,1,0,2,H
-4,can,2025,2025-12-23,Congo DR,Benin,1,0,1,0,H
-5,can,2025,2025-12-23,Senegal,Botswana,3,0,1,2,H
-6,can,2025,2025-12-23,Nigeria,Tanzania,2,1,1,1,H
-7,can,2025,2025-12-23,Tunisia,Uganda,3,1,2,1,H
-8,can,2025,2025-12-24,Burkina Faso,Equatorial Guinea,2,1,0,2,H
-9,can,2025,2025-12-24,Algeria,Sudan,3,0,1,2,H
-10,can,2025,2025-12-24,Ivory Coast,Mozambique,1,0,0,1,H
-11,can,2025,2025-12-24,Cameroon,Gabon,1,0,1,0,H
+151,can,2025,2025-12-21,Morocco,Comoros,2,0,0,2,H
+152,can,2025,2025-12-22,Mali,Zambia,1,1,0,1,D
+153,can,2025,2025-12-22,South Africa,Angola,2,1,1,1,H
+154,can,2025,2025-12-22,Egypt,Zimbabwe,2,1,0,2,H
+155,can,2025,2025-12-23,Congo DR,Benin,1,0,1,0,H
+156,can,2025,2025-12-23,Senegal,Botswana,3,0,1,2,H
+157,can,2025,2025-12-23,Nigeria,Tanzania,2,1,1,1,H
+158,can,2025,2025-12-23,Tunisia,Uganda,3,1,2,1,H
+159,can,2025,2025-12-24,Burkina Faso,Equatorial Guinea,2,1,0,2,H
+160,can,2025,2025-12-24,Algeria,Sudan,3,0,1,2,H
+161,can,2025,2025-12-24,Ivory Coast,Mozambique,1,0,0,1,H
+162,can,2025,2025-12-24,Cameroon,Gabon,1,0,1,0,H
+12,can,2025,2025-12-26,Angola,Zimbabwe,1,1,1,0,D
+13,can,2025,2025-12-26,Egypt,South Africa,1,0,1,0,H
+14,can,2025,2025-12-26,Zambia,Comoros,0,0,0,0,D
+15,can,2025,2025-12-26,Morocco,Mali,1,1,1,0,D
+16,can,2025,2025-12-27,Benin,Botswana,1,0,1,0,H
+17,can,2025,2025-12-27,Senegal,Congo DR,1,1,0,1,D
+18,can,2025,2025-12-27,Uganda,Tanzania,1,1,0,1,D
+19,can,2025,2025-12-27,Nigeria,Tunisia,3,2,1,2,H
+20,can,2025,2025-12-28,Gabon,Mozambique,2,3,1,1,A
+21,can,2025,2025-12-28,Equatorial Guinea,Sudan,0,1,0,0,A
+22,can,2025,2025-12-28,Algeria,Burkina Faso,1,0,1,0,H
+23,can,2025,2025-12-28,Ivory Coast,Cameroon,1,1,0,1,D
