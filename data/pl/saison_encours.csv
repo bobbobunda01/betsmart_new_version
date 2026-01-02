@@ -1,171 +1,191 @@
-league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-Premier League,2025,2025-08-15,Liverpool,Bournemouth,4,2,1,3,H
-Premier League,2025,2025-08-16,Aston Villa,Newcastle,0,0,0,0,D
-Premier League,2025,2025-08-16,Tottenham,Burnley,3,0,1,2,H
-Premier League,2025,2025-08-16,Brighton,Fulham,1,1,0,1,D
-Premier League,2025,2025-08-16,Sunderland,West Ham,3,0,0,3,H
-Premier League,2025,2025-08-16,Wolves,Manchester City,0,4,0,0,A
-Premier League,2025,2025-08-17,Chelsea,Crystal Palace,0,0,0,0,D
-Premier League,2025,2025-08-17,Nottingham Forest,Brentford,3,1,3,0,H
-Premier League,2025,2025-08-17,Manchester United,Arsenal,0,1,0,0,A
-Premier League,2025,2025-08-18,Leeds,Everton,1,0,0,1,H
-Premier League,2025,2025-08-22,West Ham,Chelsea,1,5,1,0,A
-Premier League,2025,2025-08-23,Manchester City,Tottenham,0,2,0,0,A
-Premier League,2025,2025-08-23,Bournemouth,Wolves,1,0,1,0,H
-Premier League,2025,2025-08-23,Burnley,Sunderland,2,0,0,2,H
-Premier League,2025,2025-08-23,Brentford,Aston Villa,1,0,1,0,H
-Premier League,2025,2025-08-23,Arsenal,Leeds,5,0,2,3,H
-Premier League,2025,2025-08-24,Everton,Brighton,2,0,1,1,H
-Premier League,2025,2025-08-24,Crystal Palace,Nottingham Forest,1,1,1,0,D
-Premier League,2025,2025-08-24,Fulham,Manchester United,1,1,0,1,D
-Premier League,2025,2025-08-25,Newcastle,Liverpool,2,3,0,2,A
-Premier League,2025,2025-08-30,Chelsea,Fulham,2,0,1,1,H
-Premier League,2025,2025-08-30,Manchester United,Burnley,3,2,1,2,H
-Premier League,2025,2025-08-30,Wolves,Everton,2,3,1,1,A
-Premier League,2025,2025-08-30,Tottenham,Bournemouth,0,1,0,0,A
-Premier League,2025,2025-08-30,Sunderland,Brentford,2,1,0,2,H
-Premier League,2025,2025-08-30,Leeds,Newcastle,0,0,0,0,D
-Premier League,2025,2025-08-31,Brighton,Manchester City,2,1,0,2,H
-Premier League,2025,2025-08-31,Nottingham Forest,West Ham,0,3,0,0,A
-Premier League,2025,2025-08-31,Liverpool,Arsenal,1,0,0,1,H
-Premier League,2025,2025-08-31,Aston Villa,Crystal Palace,0,3,0,0,A
-Premier League,2025,2025-09-13,Arsenal,Nottingham Forest,3,0,1,2,H
-Premier League,2025,2025-09-13,Newcastle,Wolves,1,0,1,0,H
-Premier League,2025,2025-09-13,Bournemouth,Brighton,2,1,1,1,H
-Premier League,2025,2025-09-13,Fulham,Leeds,1,0,0,1,H
-Premier League,2025,2025-09-13,Everton,Aston Villa,0,0,0,0,D
-Premier League,2025,2025-09-13,Crystal Palace,Sunderland,0,0,0,0,D
-Premier League,2025,2025-09-13,West Ham,Tottenham,0,3,0,0,A
-Premier League,2025,2025-09-13,Brentford,Chelsea,2,2,1,1,D
-Premier League,2025,2025-09-14,Burnley,Liverpool,0,1,0,0,A
-Premier League,2025,2025-09-14,Manchester City,Manchester United,3,0,1,2,H
-Premier League,2025,2025-09-20,Liverpool,Everton,2,1,2,0,H
-Premier League,2025,2025-09-20,Wolves,Leeds,1,3,1,0,A
-Premier League,2025,2025-09-20,Burnley,Nottingham Forest,1,1,1,0,D
-Premier League,2025,2025-09-20,West Ham,Crystal Palace,1,2,0,1,A
-Premier League,2025,2025-09-20,Brighton,Tottenham,2,2,2,0,D
-Premier League,2025,2025-09-20,Manchester United,Chelsea,2,1,2,0,H
-Premier League,2025,2025-09-20,Fulham,Brentford,3,1,2,1,H
-Premier League,2025,2025-09-21,Bournemouth,Newcastle,0,0,0,0,D
-Premier League,2025,2025-09-21,Sunderland,Aston Villa,1,1,0,1,D
-Premier League,2025,2025-09-21,Arsenal,Manchester City,1,1,0,1,D
-Premier League,2025,2025-09-27,Brentford,Manchester United,3,1,2,1,H
-Premier League,2025,2025-09-27,Chelsea,Brighton,1,3,1,0,A
-Premier League,2025,2025-09-27,Manchester City,Burnley,5,1,1,4,H
-Premier League,2025,2025-09-27,Crystal Palace,Liverpool,2,1,1,1,H
-Premier League,2025,2025-09-27,Leeds,Bournemouth,2,2,1,1,D
-Premier League,2025,2025-09-27,Nottingham Forest,Sunderland,0,1,0,0,A
-Premier League,2025,2025-09-27,Tottenham,Wolves,1,1,0,1,D
-Premier League,2025,2025-09-28,Aston Villa,Fulham,3,1,1,2,H
-Premier League,2025,2025-09-28,Newcastle,Arsenal,1,2,1,0,A
-Premier League,2025,2025-09-29,Everton,West Ham,1,1,1,0,D
-Premier League,2025,2025-10-03,Bournemouth,Fulham,3,1,0,3,H
-Premier League,2025,2025-10-04,Leeds,Tottenham,1,2,1,0,A
-Premier League,2025,2025-10-04,Manchester United,Sunderland,2,0,2,0,H
-Premier League,2025,2025-10-04,Arsenal,West Ham,2,0,1,1,H
-Premier League,2025,2025-10-04,Chelsea,Liverpool,2,1,1,1,H
-Premier League,2025,2025-10-05,Newcastle,Nottingham Forest,2,0,0,2,H
-Premier League,2025,2025-10-05,Wolves,Brighton,1,1,1,0,D
-Premier League,2025,2025-10-05,Everton,Crystal Palace,2,1,0,2,H
-Premier League,2025,2025-10-05,Aston Villa,Burnley,2,1,1,1,H
-Premier League,2025,2025-10-05,Brentford,Manchester City,0,1,0,0,A
-Premier League,2025,2025-10-18,Nottingham Forest,Chelsea,0,3,0,0,A
-Premier League,2025,2025-10-18,Burnley,Leeds,2,0,1,1,H
-Premier League,2025,2025-10-18,Manchester City,Everton,2,0,0,2,H
-Premier League,2025,2025-10-18,Brighton,Newcastle,2,1,1,1,H
-Premier League,2025,2025-10-18,Crystal Palace,Bournemouth,3,3,0,3,D
-Premier League,2025,2025-10-18,Sunderland,Wolves,2,0,1,1,H
-Premier League,2025,2025-10-18,Fulham,Arsenal,0,1,0,0,A
-Premier League,2025,2025-10-19,Tottenham,Aston Villa,1,2,1,0,A
-Premier League,2025,2025-10-19,Liverpool,Manchester United,1,2,0,1,A
-Premier League,2025,2025-10-20,West Ham,Brentford,0,2,0,0,A
-Premier League,2025,2025-10-24,Leeds,West Ham,2,1,2,0,H
-Premier League,2025,2025-10-25,Newcastle,Fulham,2,1,1,1,H
-Premier League,2025,2025-10-25,Chelsea,Sunderland,1,2,1,0,A
-Premier League,2025,2025-10-25,Manchester United,Brighton,4,2,2,2,H
-Premier League,2025,2025-10-25,Brentford,Liverpool,3,2,2,1,H
-Premier League,2025,2025-10-26,Bournemouth,Nottingham Forest,2,0,2,0,H
-Premier League,2025,2025-10-26,Wolves,Burnley,2,3,2,0,A
-Premier League,2025,2025-10-26,Arsenal,Crystal Palace,1,0,1,0,H
-Premier League,2025,2025-10-26,Aston Villa,Manchester City,1,0,1,0,H
-Premier League,2025,2025-10-26,Everton,Tottenham,0,3,0,0,A
-Premier League,2025,2025-11-01,Fulham,Wolves,3,0,1,2,H
-Premier League,2025,2025-11-01,Burnley,Arsenal,0,2,0,0,A
-Premier League,2025,2025-11-01,Brighton,Leeds,3,0,1,2,H
-Premier League,2025,2025-11-01,Crystal Palace,Brentford,2,0,1,1,H
-Premier League,2025,2025-11-01,Nottingham Forest,Manchester United,2,2,0,2,D
-Premier League,2025,2025-11-01,Tottenham,Chelsea,0,1,0,0,A
-Premier League,2025,2025-11-01,Liverpool,Aston Villa,2,0,1,1,H
-Premier League,2025,2025-11-02,West Ham,Newcastle,3,1,2,1,H
-Premier League,2025,2025-11-02,Manchester City,Bournemouth,3,1,2,1,H
-Premier League,2025,2025-11-03,Sunderland,Everton,1,1,0,1,D
-Premier League,2025,2025-11-08,Tottenham,Manchester United,2,2,0,2,D
-Premier League,2025,2025-11-08,Everton,Fulham,2,0,1,1,H
-Premier League,2025,2025-11-08,West Ham,Burnley,3,2,1,2,H
-Premier League,2025,2025-11-08,Sunderland,Arsenal,2,2,1,1,D
-Premier League,2025,2025-11-08,Chelsea,Wolves,3,0,0,3,H
-Premier League,2025,2025-11-09,Crystal Palace,Brighton,0,0,0,0,D
-Premier League,2025,2025-11-09,Brentford,Newcastle,3,1,0,3,H
-Premier League,2025,2025-11-09,Nottingham Forest,Leeds,3,1,1,2,H
-Premier League,2025,2025-11-09,Aston Villa,Bournemouth,4,0,2,2,H
-Premier League,2025,2025-11-09,Manchester City,Liverpool,3,0,2,1,H
-Premier League,2025,2025-11-22,Burnley,Chelsea,0,2,0,0,A
-Premier League,2025,2025-11-22,Bournemouth,West Ham,2,2,0,2,D
-Premier League,2025,2025-11-22,Fulham,Sunderland,1,0,0,1,H
-Premier League,2025,2025-11-22,Wolves,Crystal Palace,0,2,0,0,A
-Premier League,2025,2025-11-22,Liverpool,Nottingham Forest,0,3,0,0,A
-Premier League,2025,2025-11-22,Brighton,Brentford,2,1,0,2,H
-Premier League,2025,2025-11-22,Newcastle,Manchester City,2,1,0,2,H
-Premier League,2025,2025-11-23,Leeds,Aston Villa,1,2,1,0,A
-Premier League,2025,2025-11-23,Arsenal,Tottenham,4,1,2,2,H
-Premier League,2025,2025-11-24,Manchester United,Everton,0,1,0,0,A
-Premier League,2025,2025-11-29,Manchester City,Leeds,3,2,2,1,H
-Premier League,2025,2025-11-29,Brentford,Burnley,3,1,0,3,H
-Premier League,2025,2025-11-29,Sunderland,Bournemouth,3,2,1,2,H
-Premier League,2025,2025-11-29,Everton,Newcastle,1,4,0,1,A
-Premier League,2025,2025-11-29,Tottenham,Fulham,1,2,0,1,A
-Premier League,2025,2025-11-30,Crystal Palace,Manchester United,1,2,1,0,A
-Premier League,2025,2025-11-30,West Ham,Liverpool,0,2,0,0,A
-Premier League,2025,2025-11-30,Nottingham Forest,Brighton,0,2,0,0,A
-Premier League,2025,2025-11-30,Aston Villa,Wolves,1,0,0,1,H
-Premier League,2025,2025-11-30,Chelsea,Arsenal,1,1,0,1,D
-Premier League,2025,2025-12-02,Bournemouth,Everton,0,1,0,0,A
-Premier League,2025,2025-12-02,Fulham,Manchester City,4,5,1,3,A
-Premier League,2025,2025-12-02,Newcastle,Tottenham,2,2,0,2,D
-Premier League,2025,2025-12-03,Wolves,Nottingham Forest,0,1,0,0,A
-Premier League,2025,2025-12-03,Arsenal,Brentford,2,0,1,1,H
-Premier League,2025,2025-12-03,Burnley,Crystal Palace,0,1,0,0,A
-Premier League,2025,2025-12-03,Brighton,Aston Villa,3,4,2,1,A
-Premier League,2025,2025-12-03,Liverpool,Sunderland,1,1,0,1,D
-Premier League,2025,2025-12-03,Leeds,Chelsea,3,1,2,1,H
-Premier League,2025,2025-12-04,Manchester United,West Ham,1,1,0,1,D
-Premier League,2025,2025-12-06,Aston Villa,Arsenal,2,1,1,1,H
-Premier League,2025,2025-12-06,Newcastle,Burnley,2,1,2,0,H
-Premier League,2025,2025-12-06,Bournemouth,Chelsea,0,0,0,0,D
-Premier League,2025,2025-12-06,Everton,Nottingham Forest,3,0,2,1,H
-Premier League,2025,2025-12-06,Tottenham,Brentford,2,0,2,0,H
-Premier League,2025,2025-12-06,Manchester City,Sunderland,3,0,2,1,H
-Premier League,2025,2025-12-06,Leeds,Liverpool,3,3,0,3,D
-Premier League,2025,2025-12-07,Brighton,West Ham,1,1,0,1,D
-Premier League,2025,2025-12-07,Fulham,Crystal Palace,1,2,1,0,A
-Premier League,2025,2025-12-08,Wolves,Manchester United,1,4,1,0,A
-Premier League,2025,2025-12-13,Liverpool,Brighton,2,0,1,1,H
-Premier League,2025,2025-12-13,Chelsea,Everton,2,0,2,0,H
-Premier League,2025,2025-12-13,Burnley,Fulham,2,3,1,1,A
-Premier League,2025,2025-12-13,Arsenal,Wolves,2,1,0,2,H
-Premier League,2025,2025-12-14,West Ham,Aston Villa,2,3,2,0,A
-Premier League,2025,2025-12-14,Crystal Palace,Manchester City,0,3,0,0,A
-Premier League,2025,2025-12-14,Nottingham Forest,Tottenham,3,0,1,2,H
-Premier League,2025,2025-12-14,Sunderland,Newcastle,1,0,0,1,H
-Premier League,2025,2025-12-14,Brentford,Leeds,1,1,0,1,D
-Premier League,2025,2025-12-15,Manchester United,Bournemouth,4,4,2,2,D
-Premier League,2025,2025-12-20,Newcastle,Chelsea,2,2,2,0,D
-Premier League,2025,2025-12-20,Bournemouth,Burnley,1,1,0,1,D
-Premier League,2025,2025-12-20,Wolves,Brentford,0,2,0,0,A
-Premier League,2025,2025-12-20,Manchester City,West Ham,3,0,2,1,H
-Premier League,2025,2025-12-20,Brighton,Sunderland,0,0,0,0,D
-Premier League,2025,2025-12-20,Tottenham,Liverpool,1,2,0,1,A
-Premier League,2025,2025-12-20,Everton,Arsenal,0,1,0,0,A
-Premier League,2025,2025-12-20,Leeds,Crystal Palace,4,1,2,2,H
-Premier League,2025,2025-12-21,Aston Villa,Manchester United,2,1,1,1,H
-Premier League,2025,2025-12-22,Fulham,Nottingham Forest,1,0,1,0,H
+,league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+0,Premier League,2025,2025-08-15,Liverpool,Bournemouth,4,2,1,3,H
+1,Premier League,2025,2025-08-16,Aston Villa,Newcastle,0,0,0,0,D
+2,Premier League,2025,2025-08-16,Tottenham,Burnley,3,0,1,2,H
+3,Premier League,2025,2025-08-16,Brighton,Fulham,1,1,0,1,D
+4,Premier League,2025,2025-08-16,Sunderland,West Ham,3,0,0,3,H
+5,Premier League,2025,2025-08-16,Wolves,Manchester City,0,4,0,0,A
+6,Premier League,2025,2025-08-17,Chelsea,Crystal Palace,0,0,0,0,D
+7,Premier League,2025,2025-08-17,Nottingham Forest,Brentford,3,1,3,0,H
+8,Premier League,2025,2025-08-17,Manchester United,Arsenal,0,1,0,0,A
+9,Premier League,2025,2025-08-18,Leeds,Everton,1,0,0,1,H
+10,Premier League,2025,2025-08-22,West Ham,Chelsea,1,5,1,0,A
+11,Premier League,2025,2025-08-23,Manchester City,Tottenham,0,2,0,0,A
+12,Premier League,2025,2025-08-23,Bournemouth,Wolves,1,0,1,0,H
+13,Premier League,2025,2025-08-23,Burnley,Sunderland,2,0,0,2,H
+14,Premier League,2025,2025-08-23,Brentford,Aston Villa,1,0,1,0,H
+15,Premier League,2025,2025-08-23,Arsenal,Leeds,5,0,2,3,H
+16,Premier League,2025,2025-08-24,Everton,Brighton,2,0,1,1,H
+17,Premier League,2025,2025-08-24,Crystal Palace,Nottingham Forest,1,1,1,0,D
+18,Premier League,2025,2025-08-24,Fulham,Manchester United,1,1,0,1,D
+19,Premier League,2025,2025-08-25,Newcastle,Liverpool,2,3,0,2,A
+20,Premier League,2025,2025-08-30,Chelsea,Fulham,2,0,1,1,H
+21,Premier League,2025,2025-08-30,Manchester United,Burnley,3,2,1,2,H
+22,Premier League,2025,2025-08-30,Wolves,Everton,2,3,1,1,A
+23,Premier League,2025,2025-08-30,Tottenham,Bournemouth,0,1,0,0,A
+24,Premier League,2025,2025-08-30,Sunderland,Brentford,2,1,0,2,H
+25,Premier League,2025,2025-08-30,Leeds,Newcastle,0,0,0,0,D
+26,Premier League,2025,2025-08-31,Brighton,Manchester City,2,1,0,2,H
+27,Premier League,2025,2025-08-31,Nottingham Forest,West Ham,0,3,0,0,A
+28,Premier League,2025,2025-08-31,Liverpool,Arsenal,1,0,0,1,H
+29,Premier League,2025,2025-08-31,Aston Villa,Crystal Palace,0,3,0,0,A
+30,Premier League,2025,2025-09-13,Arsenal,Nottingham Forest,3,0,1,2,H
+31,Premier League,2025,2025-09-13,Newcastle,Wolves,1,0,1,0,H
+32,Premier League,2025,2025-09-13,Bournemouth,Brighton,2,1,1,1,H
+33,Premier League,2025,2025-09-13,Fulham,Leeds,1,0,0,1,H
+34,Premier League,2025,2025-09-13,Everton,Aston Villa,0,0,0,0,D
+35,Premier League,2025,2025-09-13,Crystal Palace,Sunderland,0,0,0,0,D
+36,Premier League,2025,2025-09-13,West Ham,Tottenham,0,3,0,0,A
+37,Premier League,2025,2025-09-13,Brentford,Chelsea,2,2,1,1,D
+38,Premier League,2025,2025-09-14,Burnley,Liverpool,0,1,0,0,A
+39,Premier League,2025,2025-09-14,Manchester City,Manchester United,3,0,1,2,H
+40,Premier League,2025,2025-09-20,Liverpool,Everton,2,1,2,0,H
+41,Premier League,2025,2025-09-20,Wolves,Leeds,1,3,1,0,A
+42,Premier League,2025,2025-09-20,Burnley,Nottingham Forest,1,1,1,0,D
+43,Premier League,2025,2025-09-20,West Ham,Crystal Palace,1,2,0,1,A
+44,Premier League,2025,2025-09-20,Brighton,Tottenham,2,2,2,0,D
+45,Premier League,2025,2025-09-20,Manchester United,Chelsea,2,1,2,0,H
+46,Premier League,2025,2025-09-20,Fulham,Brentford,3,1,2,1,H
+47,Premier League,2025,2025-09-21,Bournemouth,Newcastle,0,0,0,0,D
+48,Premier League,2025,2025-09-21,Sunderland,Aston Villa,1,1,0,1,D
+49,Premier League,2025,2025-09-21,Arsenal,Manchester City,1,1,0,1,D
+50,Premier League,2025,2025-09-27,Brentford,Manchester United,3,1,2,1,H
+51,Premier League,2025,2025-09-27,Chelsea,Brighton,1,3,1,0,A
+52,Premier League,2025,2025-09-27,Manchester City,Burnley,5,1,1,4,H
+53,Premier League,2025,2025-09-27,Crystal Palace,Liverpool,2,1,1,1,H
+54,Premier League,2025,2025-09-27,Leeds,Bournemouth,2,2,1,1,D
+55,Premier League,2025,2025-09-27,Nottingham Forest,Sunderland,0,1,0,0,A
+56,Premier League,2025,2025-09-27,Tottenham,Wolves,1,1,0,1,D
+57,Premier League,2025,2025-09-28,Aston Villa,Fulham,3,1,1,2,H
+58,Premier League,2025,2025-09-28,Newcastle,Arsenal,1,2,1,0,A
+59,Premier League,2025,2025-09-29,Everton,West Ham,1,1,1,0,D
+60,Premier League,2025,2025-10-03,Bournemouth,Fulham,3,1,0,3,H
+61,Premier League,2025,2025-10-04,Leeds,Tottenham,1,2,1,0,A
+62,Premier League,2025,2025-10-04,Manchester United,Sunderland,2,0,2,0,H
+63,Premier League,2025,2025-10-04,Arsenal,West Ham,2,0,1,1,H
+64,Premier League,2025,2025-10-04,Chelsea,Liverpool,2,1,1,1,H
+65,Premier League,2025,2025-10-05,Newcastle,Nottingham Forest,2,0,0,2,H
+66,Premier League,2025,2025-10-05,Wolves,Brighton,1,1,1,0,D
+67,Premier League,2025,2025-10-05,Everton,Crystal Palace,2,1,0,2,H
+68,Premier League,2025,2025-10-05,Aston Villa,Burnley,2,1,1,1,H
+69,Premier League,2025,2025-10-05,Brentford,Manchester City,0,1,0,0,A
+70,Premier League,2025,2025-10-18,Nottingham Forest,Chelsea,0,3,0,0,A
+71,Premier League,2025,2025-10-18,Burnley,Leeds,2,0,1,1,H
+72,Premier League,2025,2025-10-18,Manchester City,Everton,2,0,0,2,H
+73,Premier League,2025,2025-10-18,Brighton,Newcastle,2,1,1,1,H
+74,Premier League,2025,2025-10-18,Crystal Palace,Bournemouth,3,3,0,3,D
+75,Premier League,2025,2025-10-18,Sunderland,Wolves,2,0,1,1,H
+76,Premier League,2025,2025-10-18,Fulham,Arsenal,0,1,0,0,A
+77,Premier League,2025,2025-10-19,Tottenham,Aston Villa,1,2,1,0,A
+78,Premier League,2025,2025-10-19,Liverpool,Manchester United,1,2,0,1,A
+79,Premier League,2025,2025-10-20,West Ham,Brentford,0,2,0,0,A
+80,Premier League,2025,2025-10-24,Leeds,West Ham,2,1,2,0,H
+81,Premier League,2025,2025-10-25,Newcastle,Fulham,2,1,1,1,H
+82,Premier League,2025,2025-10-25,Chelsea,Sunderland,1,2,1,0,A
+83,Premier League,2025,2025-10-25,Manchester United,Brighton,4,2,2,2,H
+84,Premier League,2025,2025-10-25,Brentford,Liverpool,3,2,2,1,H
+85,Premier League,2025,2025-10-26,Bournemouth,Nottingham Forest,2,0,2,0,H
+86,Premier League,2025,2025-10-26,Wolves,Burnley,2,3,2,0,A
+87,Premier League,2025,2025-10-26,Arsenal,Crystal Palace,1,0,1,0,H
+88,Premier League,2025,2025-10-26,Aston Villa,Manchester City,1,0,1,0,H
+89,Premier League,2025,2025-10-26,Everton,Tottenham,0,3,0,0,A
+90,Premier League,2025,2025-11-01,Fulham,Wolves,3,0,1,2,H
+91,Premier League,2025,2025-11-01,Burnley,Arsenal,0,2,0,0,A
+92,Premier League,2025,2025-11-01,Brighton,Leeds,3,0,1,2,H
+93,Premier League,2025,2025-11-01,Crystal Palace,Brentford,2,0,1,1,H
+94,Premier League,2025,2025-11-01,Nottingham Forest,Manchester United,2,2,0,2,D
+95,Premier League,2025,2025-11-01,Tottenham,Chelsea,0,1,0,0,A
+96,Premier League,2025,2025-11-01,Liverpool,Aston Villa,2,0,1,1,H
+97,Premier League,2025,2025-11-02,West Ham,Newcastle,3,1,2,1,H
+98,Premier League,2025,2025-11-02,Manchester City,Bournemouth,3,1,2,1,H
+99,Premier League,2025,2025-11-03,Sunderland,Everton,1,1,0,1,D
+100,Premier League,2025,2025-11-08,Tottenham,Manchester United,2,2,0,2,D
+101,Premier League,2025,2025-11-08,Everton,Fulham,2,0,1,1,H
+102,Premier League,2025,2025-11-08,West Ham,Burnley,3,2,1,2,H
+103,Premier League,2025,2025-11-08,Sunderland,Arsenal,2,2,1,1,D
+104,Premier League,2025,2025-11-08,Chelsea,Wolves,3,0,0,3,H
+105,Premier League,2025,2025-11-09,Crystal Palace,Brighton,0,0,0,0,D
+106,Premier League,2025,2025-11-09,Brentford,Newcastle,3,1,0,3,H
+107,Premier League,2025,2025-11-09,Nottingham Forest,Leeds,3,1,1,2,H
+108,Premier League,2025,2025-11-09,Aston Villa,Bournemouth,4,0,2,2,H
+109,Premier League,2025,2025-11-09,Manchester City,Liverpool,3,0,2,1,H
+110,Premier League,2025,2025-11-22,Burnley,Chelsea,0,2,0,0,A
+111,Premier League,2025,2025-11-22,Bournemouth,West Ham,2,2,0,2,D
+112,Premier League,2025,2025-11-22,Fulham,Sunderland,1,0,0,1,H
+113,Premier League,2025,2025-11-22,Wolves,Crystal Palace,0,2,0,0,A
+114,Premier League,2025,2025-11-22,Liverpool,Nottingham Forest,0,3,0,0,A
+115,Premier League,2025,2025-11-22,Brighton,Brentford,2,1,0,2,H
+116,Premier League,2025,2025-11-22,Newcastle,Manchester City,2,1,0,2,H
+117,Premier League,2025,2025-11-23,Leeds,Aston Villa,1,2,1,0,A
+118,Premier League,2025,2025-11-23,Arsenal,Tottenham,4,1,2,2,H
+119,Premier League,2025,2025-11-24,Manchester United,Everton,0,1,0,0,A
+120,Premier League,2025,2025-11-29,Manchester City,Leeds,3,2,2,1,H
+121,Premier League,2025,2025-11-29,Brentford,Burnley,3,1,0,3,H
+122,Premier League,2025,2025-11-29,Sunderland,Bournemouth,3,2,1,2,H
+123,Premier League,2025,2025-11-29,Everton,Newcastle,1,4,0,1,A
+124,Premier League,2025,2025-11-29,Tottenham,Fulham,1,2,0,1,A
+125,Premier League,2025,2025-11-30,Crystal Palace,Manchester United,1,2,1,0,A
+126,Premier League,2025,2025-11-30,West Ham,Liverpool,0,2,0,0,A
+127,Premier League,2025,2025-11-30,Nottingham Forest,Brighton,0,2,0,0,A
+128,Premier League,2025,2025-11-30,Aston Villa,Wolves,1,0,0,1,H
+129,Premier League,2025,2025-11-30,Chelsea,Arsenal,1,1,0,1,D
+130,Premier League,2025,2025-12-02,Bournemouth,Everton,0,1,0,0,A
+131,Premier League,2025,2025-12-02,Fulham,Manchester City,4,5,1,3,A
+132,Premier League,2025,2025-12-02,Newcastle,Tottenham,2,2,0,2,D
+133,Premier League,2025,2025-12-03,Wolves,Nottingham Forest,0,1,0,0,A
+134,Premier League,2025,2025-12-03,Arsenal,Brentford,2,0,1,1,H
+135,Premier League,2025,2025-12-03,Burnley,Crystal Palace,0,1,0,0,A
+136,Premier League,2025,2025-12-03,Brighton,Aston Villa,3,4,2,1,A
+137,Premier League,2025,2025-12-03,Liverpool,Sunderland,1,1,0,1,D
+138,Premier League,2025,2025-12-03,Leeds,Chelsea,3,1,2,1,H
+139,Premier League,2025,2025-12-04,Manchester United,West Ham,1,1,0,1,D
+140,Premier League,2025,2025-12-06,Aston Villa,Arsenal,2,1,1,1,H
+141,Premier League,2025,2025-12-06,Newcastle,Burnley,2,1,2,0,H
+142,Premier League,2025,2025-12-06,Bournemouth,Chelsea,0,0,0,0,D
+143,Premier League,2025,2025-12-06,Everton,Nottingham Forest,3,0,2,1,H
+144,Premier League,2025,2025-12-06,Tottenham,Brentford,2,0,2,0,H
+145,Premier League,2025,2025-12-06,Manchester City,Sunderland,3,0,2,1,H
+146,Premier League,2025,2025-12-06,Leeds,Liverpool,3,3,0,3,D
+147,Premier League,2025,2025-12-07,Brighton,West Ham,1,1,0,1,D
+148,Premier League,2025,2025-12-07,Fulham,Crystal Palace,1,2,1,0,A
+149,Premier League,2025,2025-12-08,Wolves,Manchester United,1,4,1,0,A
+150,Premier League,2025,2025-12-13,Liverpool,Brighton,2,0,1,1,H
+151,Premier League,2025,2025-12-13,Chelsea,Everton,2,0,2,0,H
+152,Premier League,2025,2025-12-13,Burnley,Fulham,2,3,1,1,A
+153,Premier League,2025,2025-12-13,Arsenal,Wolves,2,1,0,2,H
+154,Premier League,2025,2025-12-14,West Ham,Aston Villa,2,3,2,0,A
+155,Premier League,2025,2025-12-14,Crystal Palace,Manchester City,0,3,0,0,A
+156,Premier League,2025,2025-12-14,Nottingham Forest,Tottenham,3,0,1,2,H
+157,Premier League,2025,2025-12-14,Sunderland,Newcastle,1,0,0,1,H
+158,Premier League,2025,2025-12-14,Brentford,Leeds,1,1,0,1,D
+159,Premier League,2025,2025-12-15,Manchester United,Bournemouth,4,4,2,2,D
+160,Premier League,2025,2025-12-20,Newcastle,Chelsea,2,2,2,0,D
+161,Premier League,2025,2025-12-20,Bournemouth,Burnley,1,1,0,1,D
+162,Premier League,2025,2025-12-20,Wolves,Brentford,0,2,0,0,A
+163,Premier League,2025,2025-12-20,Manchester City,West Ham,3,0,2,1,H
+164,Premier League,2025,2025-12-20,Brighton,Sunderland,0,0,0,0,D
+165,Premier League,2025,2025-12-20,Tottenham,Liverpool,1,2,0,1,A
+166,Premier League,2025,2025-12-20,Everton,Arsenal,0,1,0,0,A
+167,Premier League,2025,2025-12-20,Leeds,Crystal Palace,4,1,2,2,H
+168,Premier League,2025,2025-12-21,Aston Villa,Manchester United,2,1,1,1,H
+169,Premier League,2025,2025-12-22,Fulham,Nottingham Forest,1,0,1,0,H
+170,Premier League,2025,2025-12-26,Manchester United,Newcastle,1,0,1,0,H
+171,Premier League,2025,2025-12-27,Nottingham Forest,Manchester City,1,2,0,1,A
+172,Premier League,2025,2025-12-27,Liverpool,Wolves,2,1,2,0,H
+173,Premier League,2025,2025-12-27,Arsenal,Brighton,2,1,1,1,H
+174,Premier League,2025,2025-12-27,Burnley,Everton,0,0,0,0,D
+175,Premier League,2025,2025-12-27,West Ham,Fulham,0,1,0,0,A
+176,Premier League,2025,2025-12-27,Brentford,Bournemouth,4,1,2,2,H
+177,Premier League,2025,2025-12-27,Chelsea,Aston Villa,1,2,1,0,A
+178,Premier League,2025,2025-12-28,Sunderland,Leeds,1,1,1,0,D
+179,Premier League,2025,2025-12-28,Crystal Palace,Tottenham,0,1,0,0,A
+180,Premier League,2025,2025-12-30,Burnley,Newcastle,1,3,1,0,A
+181,Premier League,2025,2025-12-30,West Ham,Brighton,2,2,2,0,D
+182,Premier League,2025,2025-12-30,Chelsea,Bournemouth,2,2,2,0,D
+183,Premier League,2025,2025-12-30,Nottingham Forest,Everton,0,2,0,0,A
+184,Premier League,2025,2025-12-30,Manchester United,Wolves,1,1,1,0,D
+185,Premier League,2025,2025-12-30,Arsenal,Aston Villa,4,1,0,4,H
+186,Premier League,2025,2026-01-01,Liverpool,Leeds,0,0,0,0,D
+187,Premier League,2025,2026-01-01,Crystal Palace,Fulham,1,1,1,0,D
+188,Premier League,2025,2026-01-01,Brentford,Tottenham,0,0,0,0,D
+189,Premier League,2025,2026-01-01,Sunderland,Manchester City,0,0,0,0,D
