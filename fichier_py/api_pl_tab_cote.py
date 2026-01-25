@@ -18,7 +18,7 @@ import os
 import pathlib
 import sys
 import logging
-from datetime import datetime
+from  datetime import datetime
 from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
