@@ -793,8 +793,8 @@ def prediction():
             
             ## Bon modèle NEERDERLAND, PAYS BAS
             elif comp==88:
-                chemin_model1 = RACINE_PROJET / "modele" / "N1" / "xg_boost_stage1_.joblib"
-                chemin_model2 = RACINE_PROJET / "modele" / "N1" / "rf_stage2_.joblib"
+                chemin_model1 = RACINE_PROJET / "modele" / "N1" / "rf_N1_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "N1" / "rf_N1_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "N1" / "rf_nbre_but_marque_autre.joblib"
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
