@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
+from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -740,7 +740,7 @@ def prediction():
             #log_dataframe_features_to_file(features_input,home, away, match_date)
             
             X_inputs=entree_utilisateur(home, away, odds_h,odds_d,odds_a, df, season_preced)
-            log_prediction(X_inputs.to_json())
+            log_prediction(features_input.to_json())
             
 
            
