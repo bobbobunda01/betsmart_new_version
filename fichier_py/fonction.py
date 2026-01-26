@@ -19,13 +19,533 @@ from numpy import floating, integer, ndarray
 import datetime
 import pathlib
 from dateutil import parser
-import json
 from functools import lru_cache
+import requests
+import re
+import unicodedata
+from typing import Any, Dict, Optional, Tuple, List
+import datetime as dt
 
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
 
 
 # log des prédictions utilisateurs
+
+
+REALTIME_API_URL="https://v3.football.api-sports.io"
+REALTIME_API_KEY="1ccc14e8da5a40c0575ae0c272645ecf"
+DEBUG_REALTIME=1
+try:
+    import requests  # type: ignore
+except Exception:  # pragma: no cover
+    requests = None  # type: ignore
+
+
+def _norm_team_name(name: Any) -> str:
+    """Normalize team name for safer matching (accent/spacing/case)."""
+    if name is None:
+        return ""
+    s = str(name).strip().lower()
+    s = re.sub(r"\s+", " ", s)
+    return s
+
+
+def _parse_match_date(match_date: Any) -> Optional[dt.date]:
+    """Accepts date, datetime, or common string formats; returns date or None."""
+    if match_date is None or match_date == "":
+        return None
+    if isinstance(match_date, dt.date) and not isinstance(match_date, dt.datetime):
+        return match_date
+    if isinstance(match_date, dt.datetime):
+        return match_date.date()
+    s = str(match_date).strip()
+    # try ISO first
+    for fmt in ("%Y-%m-%d", "%Y/%m/%d", "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"):
+        try:
+            return dt.datetime.strptime(s[:19], fmt).date()
+        except Exception:
+            continue
+    # last resort: try fromisoformat
+    try:
+        return dt.date.fromisoformat(s[:10])
+    except Exception:
+        return None
+
+
+def _safe_get_first(df_like: Any, col: str) -> Any:
+    """Return first value of df_like[col] if possible (supports dict-like and pandas DataFrame)."""
+    try:
+        # pandas DataFrame
+        if hasattr(df_like, "columns") and col in getattr(df_like, "columns"):
+            if len(df_like) == 0:
+                return None
+            return df_like.iloc[0][col]
+    except Exception:
+        pass
+    try:
+        # dict-like
+        v = df_like.get(col)
+        if isinstance(v, list) and v:
+            return v[0]
+        return v
+    except Exception:
+        return None
+
+
+def _resolve_fixture_id_from_df(
+    season_df: Any,
+    home_name: Any,
+    away_name: Any,
+    match_date: Any,
+    league_code: Optional[str] = None,
+) -> Optional[int]:
+    """
+    Try to resolve fixture_id from a season dataframe (if present).
+    This is the preferred (offline) method used in apply_unexpected_layer().
+    """
+    if season_df is None:
+        return None
+    # candidate columns
+    fid_cols = [c for c in ["fixture_id", "FixtureID", "fixture", "Fixture", "id", "ID"] if hasattr(season_df, "columns") and c in season_df.columns]
+    if not fid_cols:
+        return None
+
+    # team/date column candidates
+    home_cols = [c for c in ["HomeTeam", "home", "home_name", "Home", "HomeTeamName"] if hasattr(season_df, "columns") and c in season_df.columns]
+    away_cols = [c for c in ["AwayTeam", "away", "away_name", "Away", "AwayTeamName"] if hasattr(season_df, "columns") and c in season_df.columns]
+    date_cols = [c for c in ["Date", "date", "match_date", "MatchDate", "fixture_date"] if hasattr(season_df, "columns") and c in season_df.columns]
+
+    if not home_cols or not away_cols or not date_cols:
+        return None
+
+    h = _norm_team_name(home_name)
+    a = _norm_team_name(away_name)
+    d = _parse_match_date(match_date)
+
+    # if no date, try only teams (less precise)
+    try:
+        df = season_df
+        # normalize to strings for compare
+        # We keep it safe: any error -> None
+        for hc in home_cols:
+            for ac in away_cols:
+                tmp = df
+                try:
+                    # filter by teams
+                    mask = tmp[hc].astype(str).str.lower().str.replace(r"\s+", " ", regex=True).eq(h) & \
+                           tmp[ac].astype(str).str.lower().str.replace(r"\s+", " ", regex=True).eq(a)
+                    tmp2 = tmp[mask]
+                except Exception:
+                    continue
+
+                if d is not None:
+                    for dc in date_cols:
+                        try:
+                            tmp3 = tmp2.copy()
+                            # parse date column safely
+                            tmp3[dc] = tmp3[dc].astype(str).str.slice(0, 10)
+                            maskd = tmp3[dc].apply(lambda x: _parse_match_date(x)).eq(d)
+                            tmp4 = tmp2[maskd]
+                            if len(tmp4) > 0:
+                                fid = tmp4.iloc[0][fid_cols[0]]
+                                try:
+                                    return int(fid)
+                                except Exception:
+                                    return None
+                        except Exception:
+                            continue
+
+                # no date match, but teams match
+                if len(tmp2) > 0:
+                    fid = tmp2.iloc[0][fid_cols[0]]
+                    try:
+                        return int(fid)
+                    except Exception:
+                        return None
+    except Exception:
+        return None
+
+    return None
+
+
+def _resolve_fixture_id_by_names(
+    home_name: Any,
+    away_name: Any,
+    match_date: Any,
+    league_code: Optional[str] = None,
+) -> Optional[int]:
+    """
+    Online fallback fixture resolver (API).
+    It is ONLY used when you don't have season_current_df to resolve offline.
+
+    Configure with env vars:
+      - REALTIME_API_URL (base, e.g. https://v3.football.api-sports.io)
+      - REALTIME_API_KEY
+      - REALTIME_API_HOST (optional, for RapidAPI-style hosts)
+    """
+    
+    api_url = os.getenv("REALTIME_API_URL", REALTIME_API_URL).rstrip("/")
+    api_key = os.getenv("REALTIME_API_KEY",REALTIME_API_KEY)
+    if not api_url or not api_key or requests is None:
+        return None
+
+    d = _parse_match_date(match_date)
+    if d is None:
+        return None
+
+    # Endpoint strategy: /fixtures?date=YYYY-MM-DD
+    # Then filter by team names (best effort).
+    url = f"{api_url}/fixtures"
+    headers = {
+        "x-apisports-key": api_key,
+    }
+    host = os.getenv("REALTIME_API_HOST", "").strip()
+    if host:
+        headers["x-rapidapi-host"] = host
+
+    params = {"date": d.isoformat()}
+    if league_code:
+        # if league_code is numeric, pass as league; otherwise ignore
+        try:
+            int(league_code)
+            params["league"] = league_code
+        except Exception:
+            pass
+
+    try:
+        r = requests.get(url, headers=headers, params=params, timeout=8)
+        r.raise_for_status()
+        data = r.json()
+    except Exception:
+        return None
+
+    # api-sports returns {"response":[{"fixture":{"id":...},"teams":{"home":{"name":...},"away":{"name":...}} ...}]}
+    home_n = _norm_team_name(home_name)
+    away_n = _norm_team_name(away_name)
+
+    try:
+        resp = data.get("response", [])
+        for item in resp:
+            th = _norm_team_name(item.get("teams", {}).get("home", {}).get("name"))
+            ta = _norm_team_name(item.get("teams", {}).get("away", {}).get("name"))
+            if th == home_n and ta == away_n:
+                fid = item.get("fixture", {}).get("id")
+                if fid is not None:
+                    return int(fid)
+    except Exception:
+        return None
+
+    return None
+
+
+def _safe_resolve_fixture_id(
+    home_name: Any,
+    away_name: Any,
+    match_date: Any,
+    league_code: Optional[str] = None,
+    season_df: Any = None,
+) -> Optional[int]:
+    """Safe wrapper: try offline df, then online resolver."""
+    # 1) offline resolution (best)
+    fid = _resolve_fixture_id_from_df(season_df, home_name, away_name, match_date, league_code=league_code)
+    if fid is not None:
+        return fid
+
+    # 2) online fallback
+    return _resolve_fixture_id_by_names(home_name, away_name, match_date, league_code=league_code)
+
+class RealtimeFetchError(Exception):
+    """Internal exception used to carry http/debug info without breaking the pipeline."""
+    def __init__(self, code: str, detail: str = "", status: Optional[int] = None):
+        super().__init__(code)
+        self.code = code
+        self.detail = detail
+        self.status = status
+
+
+def _get_realtime_api_config() -> Tuple[str, str, str]:
+    """
+    Returns (api_url, api_key, api_host).
+    - api_url/api_key first from env
+    - then fallback to module-level constants if you defined them (optional)
+    """
+    # Optional module-level fallbacks if you defined them elsewhere:
+    fallback_url = globals().get("REALTIME_API_URL",REALTIME_API_URL)
+    fallback_key = globals().get("REALTIME_API_KEY", REALTIME_API_KEY)
+    fallback_host = globals().get("REALTIME_API_HOST", "")
+
+    api_url = os.getenv("REALTIME_API_URL", fallback_url).strip().rstrip("/")
+    api_key = os.getenv("REALTIME_API_KEY", fallback_key).strip()
+    api_host = os.getenv("REALTIME_API_HOST", fallback_host).strip()
+    return api_url, api_key, api_host
+
+def _fetch_realtime_context(fixture_id: int) -> Optional[Dict[str, Any]]:
+    """
+    Fetch real-time context from API-Sports:
+      GET {REALTIME_API_URL}/fixtures?id=<fixture_id>
+
+    Returns:
+      - dict (response[0]) if available
+      - raises RealtimeFetchError for any diagnosable error
+      - NEVER returns invalid shapes
+    """
+    api_url, api_key, api_host = _get_realtime_api_config()
+
+    if requests is None:
+        raise RealtimeFetchError("requests_not_available", "requests is None")
+
+    if not api_url:
+        raise RealtimeFetchError("realtime_api_url_missing", "REALTIME_API_URL not set")
+    if not api_key:
+        raise RealtimeFetchError("realtime_api_key_missing", "REALTIME_API_KEY not set")
+
+    url = f"{api_url}/fixtures"
+
+    # ✅ API-Sports direct header
+    headers = {"x-apisports-key": api_key}
+
+    # ✅ RapidAPI mode (optional)
+    # If you use RapidAPI, REALTIME_API_HOST must be set, and the key may need to be x-rapidapi-key.
+    # We'll support both safely:
+    if api_host:
+        headers["x-rapidapi-host"] = api_host
+        # If you are *really* on RapidAPI, uncomment next line and/or set REALTIME_RAPIDAPI_MODE=1
+        rapid_mode = os.getenv("REALTIME_RAPIDAPI_MODE", "").strip() in ("1", "true", "True", "yes", "YES")
+        if rapid_mode:
+            headers["x-rapidapi-key"] = api_key
+
+    try:
+        r = requests.get(url, headers=headers, params={"id": int(fixture_id)}, timeout=10)
+
+        # Diagnose common HTTP issues explicitly
+        status = getattr(r, "status_code", None)
+
+        if status == 401:
+            raise RealtimeFetchError("http_401_unauthorized", "Invalid API key or wrong header", status=status)
+        if status == 403:
+            raise RealtimeFetchError("http_403_forbidden", "Forbidden (plan/host/key mismatch)", status=status)
+        if status == 429:
+            raise RealtimeFetchError("http_429_rate_limited", "Rate limit reached", status=status)
+
+        r.raise_for_status()
+
+        data = r.json() if r is not None else None
+        if not isinstance(data, dict):
+            raise RealtimeFetchError("invalid_json", "Response JSON is not a dict", status=status)
+
+        resp = data.get("response", [])
+        if not isinstance(resp, list):
+            raise RealtimeFetchError("invalid_response_shape", "data['response'] is not a list", status=status)
+
+        return resp[0] if len(resp) > 0 else None
+
+    except RealtimeFetchError:
+        raise
+    except Exception as e:
+        # Any unexpected error becomes diagnosable
+        raise RealtimeFetchError("fetch_exception", f"{type(e).__name__}: {e}")
+    
+def _realtime_risk_score(ctx: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Convert real-time context to a risk score.
+    This function is intentionally conservative: it NEVER throws, and defaults to UNKNOWN.
+    You can enrich later with your own signals without breaking the pipeline.
+    """
+    out = {
+        "risk_level": "UNKNOWN",
+        "risk_score": 0.0,
+        "reasons": [],
+    }
+    if not ctx:
+        out["reasons"].append("realtime_ctx_missing")
+        return out
+
+    # Example: if fixture status is not "Not Started" we flag (because prediction might be late)
+    try:
+        status = (ctx.get("fixture", {}).get("status", {}) or {}).get("short")  # e.g. NS, 1H, HT...
+        if status and status != "NS":
+            out["risk_level"] = "HIGH"
+            out["risk_score"] = 0.9
+            out["reasons"].append(f"fixture_status:{status}")
+            return out
+    except Exception:
+        pass
+
+    # If we have any injuries list (provider-specific), flag moderate.
+    try:
+        injuries = ctx.get("injuries") or ctx.get("players") or None
+        if injuries:
+            out["risk_level"] = "MEDIUM"
+            out["risk_score"] = max(out["risk_score"], 0.4)
+            out["reasons"].append("possible_injuries_or_lineup_changes")
+    except Exception:
+        pass
+
+    return out
+
+def _build_realtime_block(
+    features_df: Any,
+    league_code: Optional[str] = None,
+    home_name: Any = None,
+    away_name: Any = None,
+    match_date: Any = None,
+    season_df: Any = None,
+) -> Tuple[Dict[str, Any], str]:
+    """
+    Single, unambiguous builder used by BOTH predict_match_with_proba() and apply_unexpected_layer().
+    Does NOT change prediction. Only enriches realtime_risk + notes.
+    """
+
+    # read from df if not provided
+    if home_name is None:
+        home_name = _safe_get_first(features_df, "home")
+    if away_name is None:
+        away_name = _safe_get_first(features_df, "away")
+    if match_date is None:
+        match_date = _safe_get_first(features_df, "match_date")
+
+    use_realtime_val = _safe_get_first(features_df, "_use_realtime")
+    use_realtime = bool(use_realtime_val) if use_realtime_val is not None else False
+
+    missing_fields = []
+    if not home_name:
+        missing_fields.append("home_name_missing")
+    if not away_name:
+        missing_fields.append("away_name_missing")
+    if not match_date:
+        missing_fields.append("match_date_missing")
+
+    if not use_realtime:
+        block = {
+            "available": False,
+            "fixture_id": None,
+            "missing": ["realtime_not_enabled_or_unavailable"],
+            "reasons": [],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        return block, "realtime: not enabled"
+
+    if missing_fields:
+        block = {
+            "available": False,
+            "fixture_id": None,
+            "missing": missing_fields,
+            "reasons": [],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        return block, f"realtime: skipped_missing_fields={missing_fields}"
+
+    # 1) Resolve fixture_id (offline preferred if season_df is provided)
+    try:
+        fixture_id = _safe_resolve_fixture_id(
+            home_name, away_name, match_date,
+            league_code=league_code,
+            season_df=season_df
+        )
+    except Exception as e:
+        block = {
+            "available": False,
+            "fixture_id": None,
+            "missing": [f"fixture_resolve_error:{type(e).__name__}"],
+            "reasons": [],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        return block, f"realtime: resolve error={type(e).__name__}"
+
+    if not fixture_id:
+        block = {
+            "available": False,
+            "fixture_id": None,
+            "missing": ["fixture_id_not_found"],
+            "reasons": [],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        return block, "realtime: fixture not found"
+
+    # 2) Fetch ctx
+    try:
+        ctx = _fetch_realtime_context(int(fixture_id))
+        
+        debug_rt = os.getenv("DEBUG_REALTIME", "0") == "1"
+
+        ctx_debug = {}
+        if debug_rt and ctx is not None:
+            fixture = ctx.get("fixture") or {}
+            status = fixture.get("status") or {}
+            ctx_debug = {
+                "ctx_keys": sorted(list(ctx.keys())),
+                "fixture_keys": sorted(list(fixture.keys())) if isinstance(fixture, dict) else [],
+                "status_obj": status,
+                "status_short": status.get("short") if isinstance(status, dict) else None,
+                "goals": ctx.get("goals"),
+                "score": ctx.get("score"),
+                "has_lineups": bool(ctx.get("lineups")),
+                "has_events": bool(ctx.get("events")),
+                "has_players": bool(ctx.get("players")),
+            }
+
+        # If API responded but empty response => ctx truly not available yet (normal sometimes)
+        if ctx is None:
+            block = {
+                
+                "available": False,
+                "fixture_id": int(fixture_id),
+                "missing": ["realtime_ctx_empty"],
+                "reasons": ["realtime_ctx_empty"],
+                "risk_level": "UNKNOWN",
+                "risk_score": 0.0,
+            }
+            if debug_rt:
+                    block["debug"] = ctx_debug
+            return block, f"realtime: ok fixture_id={int(fixture_id)} but ctx empty"
+
+        risk = _realtime_risk_score(ctx) or {}
+        block = {
+            "available": True,
+            "fixture_id": int(fixture_id),
+            "missing": [],
+            "reasons": risk.get("reasons", []),
+            "risk_level": risk.get("risk_level", "UNKNOWN"),
+            "risk_score": float(risk.get("risk_score", 0.0) or 0.0),
+        }
+        return block, f"realtime: ok fixture_id={int(fixture_id)}"
+
+    except RealtimeFetchError as e:
+        # ✅ Here you finally see the real cause (401/403/429/url_missing/key_missing/etc.)
+        code = e.code
+        detail = e.detail
+        status = e.status
+
+        miss = [code] if status is None else [f"{code}:{status}"]
+
+        block = {
+            "available": False,
+            "fixture_id": int(fixture_id),
+            "missing": miss,
+            "reasons": miss,
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        # Keep note concise but informative
+        if detail:
+            return block, f"realtime: ok fixture_id={int(fixture_id)} but fetch failed ({code})"
+        return block, f"realtime: ok fixture_id={int(fixture_id)} but fetch failed"
+
+    except Exception as e:
+        block = {
+            "available": False,
+            "fixture_id": int(fixture_id),
+            "missing": [f"realtime_error:{type(e).__name__}"],
+            "reasons": [f"realtime_error:{type(e).__name__}"],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+        }
+        return block, f"realtime: ok fixture_id={int(fixture_id)} but error={type(e).__name__}"
+
 def log_prediction(prediction):
     log_data = {
         "request_date": datetime.datetime.utcnow().isoformat(),
@@ -53,20 +573,73 @@ def log_dataframe_features_to_file(features_df, home, away, match_date, output_p
 
 
 ###----------- DEBUT DES FONCTIONS DE PREDICTION-----
-
 # -*- coding: utf-8 -*-
-import pathlib, json
-from functools import lru_cache
-import numpy as np
-import pandas as pd
 
+
+
+# -------------------------------------------------------------------
+# 🔢 Conventions BetSmart (IMPORTANT: éviter toute confusion 0/1/2)
+# 0 = Victoire domicile (Home)
+# 1 = Match nul (Draw)
+# 2 = Victoire extérieur (Away)
+# -------------------------------------------------------------------
+LABEL_HOME = 0
+LABEL_DRAW = 1
+LABEL_AWAY = 2
+
+
+# =========================
+# Utils probas / mapping
+# =========================
+def _proba_for_class(model, X, cls_label, default=0.0):
+    """Récupère une probabilité de classe en utilisant model.classes_ (robuste à l'ordre)."""
+    try:
+        classes = list(getattr(model, "classes_", []))
+        if cls_label not in classes:
+            return float(default)
+        idx = classes.index(cls_label)
+        p = model.predict_proba(X)[0][idx]
+        return float(p)
+    except Exception:
+        return float(default)
+
+
+def _normalize3(p0, p1, p2):
+    p0 = float(p0)
+    p1 = float(p1)
+    p2 = float(p2)
+    s = p0 + p1 + p2
+    if not np.isfinite(s) or s <= 0:
+        return (1 / 3, 1 / 3, 1 / 3)
+    return (p0 / s, p1 / s, p2 / s)
+
+
+def _final_prediction_from_probas(p0, p1, p2):
+    arr = np.array([p0, p1, p2], dtype=float)
+    if not np.isfinite(arr).all():
+        return LABEL_DRAW
+    return int([LABEL_HOME, LABEL_DRAW, LABEL_AWAY][int(np.argmax(arr))])
+
+
+def _format_pct(p):
+    try:
+        return f"{round(float(p) * 100, 0)}%"
+    except Exception:
+        return "0%"
+
+
+# =========================
+# Config ligue
+# =========================
 RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
 chemin_csv = RACINE_PROJET / "data" / "champ_config.json"
+
 
 @lru_cache(maxsize=1)
 def _load_champ_config():
     with open(chemin_csv, "r", encoding="utf-8") as f:
         cfg = json.load(f)
+
     # double index: str et int
     cfg_by_str = {str(k): v for k, v in cfg.items()}
     cfg_by_int = {}
@@ -76,6 +649,7 @@ def _load_champ_config():
         except Exception:
             pass
     return {"by_str": cfg_by_str, "by_int": cfg_by_int}
+
 
 def _get_params(league_code):
     cfg = _load_champ_config()
@@ -88,6 +662,7 @@ def _get_params(league_code):
     except Exception:
         return cfg["by_str"].get(str(league_code), {})
 
+
 def parametres(league_code):
     """
     Retourne 8 valeurs:
@@ -96,19 +671,27 @@ def parametres(league_code):
     """
     p = _get_params(league_code)
 
-    bookmaker_margin      = float(p.get("bookmaker_margin", 0.0711))
+    bookmaker_margin = float(p.get("bookmaker_margin", 0.0711))
     uncertainty_threshold = float(p.get("uncertainty_threshold", 0.12))
-    importance            = int(p.get("importance", 3))
-    season_stage          = str(p.get("season_stage", "mid"))
+    importance = int(p.get("importance", 3))
+    season_stage = str(p.get("season_stage", "mid"))
 
-    # ⚠️ pas de virgules finales ici (sinon -> tuples)
     upset_threshold = float(p.get("upset_threshold", 0.55))
-    skip_threshold  = float(p.get("skip_threshold", 1.50))
-    bogey_weight    = float(p.get("bogey_weight", 0.40))
-    gki_weight      = float(p.get("gki_weight", 0.60))
+    skip_threshold = float(p.get("skip_threshold", 1.50))
+    bogey_weight = float(p.get("bogey_weight", 0.40))
+    gki_weight = float(p.get("gki_weight", 0.60))
 
-    return (bookmaker_margin, uncertainty_threshold, importance, season_stage,
-            upset_threshold, skip_threshold, bogey_weight, gki_weight)
+    return (
+        bookmaker_margin,
+        uncertainty_threshold,
+        importance,
+        season_stage,
+        upset_threshold,
+        skip_threshold,
+        bogey_weight,
+        gki_weight,
+    )
+
 
 # ---------- AJOUT: hyperparamètres de la porte de forme ----------
 def parametres_form_gate(league_code):
@@ -119,22 +702,23 @@ def parametres_form_gate(league_code):
       - gate_tolerance : tolérance d’écart de forme avant d’agir (défaut 0.036)
     """
     p = _get_params(league_code)
-    k     = float(p.get("k_market_form", 0.45))
+    k = float(p.get("k_market_form", 0.45))
     slope = float(p.get("gate_slope", 14.0))
-    tau   = float(p.get("gate_tolerance", 0.036))
+    tau = float(p.get("gate_tolerance", 0.036))
     return k, slope, tau
-# ---------------------------------------------------------------
 
-##---------------------- FONCTION DE PREDICTION ------------------------------------------
-# -------------------------------------------------------------------
-# 🔒 Adaptateurs de types + lecture sûre des paramètres de ligue
-# -------------------------------------------------------------------
+
+# =========================
+# Safe adapters
+# =========================
 def _as_float(x, default=0.0):
     try:
-        if x is None: return default
+        if x is None:
+            return default
         return float(x)
     except Exception:
         return default
+
 
 def _as_int(x, default=0):
     try:
@@ -142,111 +726,127 @@ def _as_int(x, default=0):
     except Exception:
         return default
 
+
 def _safe_parametres(league_code):
     """
-    S'adapte à l'ancienne signature (4 valeurs) et la nouvelle (8),
-    force les bons types (floats/ints/str) et fournit des valeurs par défaut sûres.
-    On suppose que `parametres(league_code)` existe déjà dans ton projet.
+    S'adapte à l'ancienne signature (4 valeurs) et la nouvelle (8).
+    Force les types et fournit des valeurs par défaut sûres.
     """
-    vals = parametres(league_code)  # <-- ta fonction existante
+    vals = parametres(league_code)
 
-    # Ancienne version: 4 valeurs
     if isinstance(vals, (list, tuple)) and len(vals) == 4:
         bookmaker_margin, uncertainty_threshold, importance, season_stage = vals
         upset_threshold, skip_threshold, bogey_weight, gki_weight = 0.55, 1.50, 0.40, 0.60
-    # Nouvelle version: 8 valeurs
     elif isinstance(vals, (list, tuple)) and len(vals) >= 8:
-        (bookmaker_margin, uncertainty_threshold, importance, season_stage,
-         upset_threshold, skip_threshold, bogey_weight, gki_weight) = vals[:8]
+        (
+            bookmaker_margin,
+            uncertainty_threshold,
+            importance,
+            season_stage,
+            upset_threshold,
+            skip_threshold,
+            bogey_weight,
+            gki_weight,
+        ) = vals[:8]
     else:
-        # Fallback très sûr
         bookmaker_margin, uncertainty_threshold, importance, season_stage = 0.0711, 0.12, 3, "mid"
         upset_threshold, skip_threshold, bogey_weight, gki_weight = 0.55, 1.50, 0.40, 0.60
 
-    # Coercions
-    bookmaker_margin      = _as_float(bookmaker_margin, 0.0711)
+    bookmaker_margin = _as_float(bookmaker_margin, 0.0711)
     uncertainty_threshold = _as_float(uncertainty_threshold, 0.12)
-    importance            = _as_int(importance, 3)
-    season_stage          = str(season_stage) if season_stage is not None else "mid"
-    upset_threshold       = _as_float(upset_threshold, 0.55)
-    skip_threshold        = _as_float(skip_threshold, 1.50)
-    bogey_weight          = _as_float(bogey_weight, 0.40)
-    gki_weight            = _as_float(gki_weight, 0.60)
+    importance = _as_int(importance, 3)
+    season_stage = str(season_stage) if season_stage is not None else "mid"
+    upset_threshold = _as_float(upset_threshold, 0.55)
+    skip_threshold = _as_float(skip_threshold, 1.50)
+    bogey_weight = _as_float(bogey_weight, 0.40)
+    gki_weight = _as_float(gki_weight, 0.60)
 
-    return (bookmaker_margin, uncertainty_threshold, importance, season_stage,
-            upset_threshold, skip_threshold, bogey_weight, gki_weight)
+    return (
+        bookmaker_margin,
+        uncertainty_threshold,
+        importance,
+        season_stage,
+        upset_threshold,
+        skip_threshold,
+        bogey_weight,
+        gki_weight,
+    )
+
 
 def _fav_by_demarged(bh: float, bd: float, ba: float, eps: float = 0.02):
     """
     Détermine le favori via probabilités implicites dé-margées.
-    1) Convertit les cotes 1X2 en probs implicites, dé-marge (normalisation),
-    2) Replie en 2-voies (home vs away) en ignorant le nul,
-    3) Retourne (side, pH2, pA2, gap) où side ∈ {"home","away", None si coin-flip}.
-    eps = marge minimale de gap favori (ajuste par ligue si besoin).
+    Retourne (side, pH2, pA2, gap) où side ∈ {"home","away", None}.
     """
-    bh = float(bh); bd = float(bd); ba = float(ba)
+    bh = float(bh)
+    bd = float(bd)
+    ba = float(ba)
     if min(bh, bd, ba) <= 1.0 or any(not np.isfinite(x) for x in (bh, bd, ba)):
         return None, np.nan, np.nan, 0.0
 
-    qH, qD, qA = 1.0/bh, 1.0/bd, 1.0/ba
+    qH, qD, qA = 1.0 / bh, 1.0 / bd, 1.0 / ba
     s = qH + qD + qA
     if s <= 0:
         return None, np.nan, np.nan, 0.0
 
-    # probs 3-voies dé-margées
-    pH, pD, pA = qH/s, qD/s, qA/s
-    # replie en 2-voies (on ignore D)
-    denom = (pH + pA)
+    pH, pD, pA = qH / s, qD / s, qA / s
+    denom = pH + pA
     if denom <= 0:
         return None, np.nan, np.nan, 0.0
-    pH2, pA2 = pH/denom, pA/denom
+    pH2, pA2 = pH / denom, pA / denom
     gap = pH2 - pA2
 
-    if   gap >  eps: side = "home"
-    elif gap < -eps: side = "away"
-    else:            side = None  # marché trop équilibré
+    if gap > eps:
+        side = "home"
+    elif gap < -eps:
+        side = "away"
+    else:
+        side = None
     return side, pH2, pA2, gap
 
-# -------------------------------------------------------------------
-# ✅ BUGFIX : enrich_form_stats_dynamic (victoires à l’extérieur)
-# -------------------------------------------------------------------
+
+# =========================
+# Form stats
+# =========================
 def enrich_form_stats_dynamic(df, team, match_date, window=5):
-    """
-    Calcule les statistiques dynamiques sur les derniers matchs avant match_date.
-    Form = points / (3*N), GD = diff de buts moyens, etc.
-    """
     df = df.copy()
-    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     match_date = pd.to_datetime(match_date)
 
     recent_matches = (
-        df[((df['HomeTeam'] == team) | (df['AwayTeam'] == team)) & (df['Date'] < match_date)]
-        .sort_values('Date', ascending=False)
+        df[((df["HomeTeam"] == team) | (df["AwayTeam"] == team)) & (df["Date"] < match_date)]
+        .sort_values("Date", ascending=False)
         .head(window)
     )
     if recent_matches.empty:
         return {"Form": 0.0, "GD": 0.0, "WinRate": 0.0, "DrawRate": 0.0, "GoalsAvg": 0.0}
 
-    points = goals_diff = draws = wins = total_goals = 0
+    points = 0
+    goals_diff = 0
+    draws = 0
+    wins = 0
+    total_goals = 0
 
     for _, row in recent_matches.iterrows():
-        is_home = (row['HomeTeam'] == team)
+        is_home = row["HomeTeam"] == team
 
         if is_home:
-            goals_for, goals_against = row['FTHG'], row['FTAG']
-            win = (row['FTR'] == 'H')
+            goals_for, goals_against = row["FTHG"], row["FTAG"]
+            win = row["FTR"] == "H"
         else:
-            goals_for, goals_against = row['FTAG'], row['FTHG']
-            win = (row['FTR'] == 'A')
+            goals_for, goals_against = row["FTAG"], row["FTHG"]
+            win = row["FTR"] == "A"
 
-        draw = (row['FTR'] == 'D')
+        draw = row["FTR"] == "D"
 
         if draw:
-            draws += 1; points += 1
+            draws += 1
+            points += 1
         elif win:
-            wins += 1; points += 3
+            wins += 1
+            points += 3
 
-        goals_diff += (goals_for - goals_against)
+        goals_diff += goals_for - goals_against
         total_goals += goals_for
 
     matches_played = len(recent_matches)
@@ -255,33 +855,53 @@ def enrich_form_stats_dynamic(df, team, match_date, window=5):
         "GD": goals_diff / matches_played,
         "WinRate": wins / matches_played,
         "DrawRate": draws / matches_played,
-        "GoalsAvg": total_goals / matches_played
+        "GoalsAvg": total_goals / matches_played,
     }
 
-# -------------------------------------------------------------------
-# Classement dynamique + importance binaire (inchangé)
-# -------------------------------------------------------------------
+
+# =========================
+# Importance / ranks
+# =========================
 def _league_profile(league_code: str | int | None):
-    """
-    Retourne un profil (region, late_months, late_threshold) par ligue.
-    """
     try:
         code = int(league_code) if league_code is not None else None
     except Exception:
         code = None
 
     EURO = {
-        39,61,78,140,135,88,207,94,203,144,197,119,179,180,253,
-        2,3,233,62,40,79,136,141
+        39,
+        61,
+        78,
+        140,
+        135,
+        88,
+        207,
+        94,
+        203,
+        144,
+        197,
+        119,
+        179,
+        180,
+        253,
+        2,
+        3,
+        233,
+        62,
+        40,
+        79,
+        136,
+        141,
     }
-    CAL_Y = {71,98,262,292,128}
+    CAL_Y = {71, 98, 262, 292, 128}
 
     if code in EURO:
-        return {"region":"europe","late_months":{4,5,6},"late_threshold":0.70}
+        return {"region": "europe", "late_months": {4, 5, 6}, "late_threshold": 0.70}
     elif code in CAL_Y:
-        return {"region":"calendar_year","late_months":{10,11,12},"late_threshold":0.70}
+        return {"region": "calendar_year", "late_months": {10, 11, 12}, "late_threshold": 0.70}
     else:
-        return {"region":"unknown","late_months":set(),"late_threshold":0.70}
+        return {"region": "unknown", "late_months": set(), "late_threshold": 0.70}
+
 
 def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
     if df_all is None or df_all.empty:
@@ -298,6 +918,7 @@ def _season_progress_by_dates(df_all: pd.DataFrame, asof) -> float:
         return 0.0
     prog = (asof - dmin).days / total
     return float(max(0.0, min(1.0, prog)))
+
 
 def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     if df is None or df.empty:
@@ -335,7 +956,7 @@ def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     late_season = (season_prog >= late_th) or (md.month in late_months)
 
     top_k = 5
-    close_ranks = (rank_diff <= 4)
+    close_ranks = rank_diff <= 4
     top_clash = (rank_home <= top_k and rank_away <= top_k)
 
     releg_zone = max(3, int(round(0.12 * n_teams)))
@@ -345,24 +966,25 @@ def add_ranks_and_importance(df, home_team, away_team, match_date, league_code):
     importance = 1 if (top_clash or (late_season and (close_ranks or six_pointer_releg or euro_spot_fight))) else 0
     return rank_home, rank_away, importance
 
-# -------------------------------------------------------------------
-# Préparation des features (retour DataFrame — pas de tuple)
-# -------------------------------------------------------------------
+
+# =========================
+# Features
+# =========================
 def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b365a, b365d, season_df, league_code):
     df = season_df.copy()
-    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
-    df = df.sort_values('Date')
-    all_teams = pd.concat([df['HomeTeam'], df['AwayTeam']]).unique()
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    df = df.sort_values("Date")
+    all_teams = pd.concat([df["HomeTeam"], df["AwayTeam"]]).unique()
 
     if (home_team not in all_teams) or (away_team not in all_teams):
         print(f"⚠️ Attention : {home_team} ou {away_team} n'a pas d'historique. Les stats seront neutres.")
 
     match_date = pd.to_datetime(match_date)
-    df_past = df[df['Date'] < match_date]
+    df_past = df[df["Date"] < match_date]
 
     def safe_stats(d):
         d = dict(d or {})
-        for key in ['Form', 'GD', 'WinRate', 'DrawRate', 'GoalsAvg']:
+        for key in ["Form", "GD", "WinRate", "DrawRate", "GoalsAvg"]:
             if d.get(key) is None:
                 d[key] = 0.0
         return d
@@ -378,35 +1000,50 @@ def prepare_input_features_enriched(home_team, away_team, match_date, b365h, b36
 
     rank_home, rank_away, match_importance = add_ranks_and_importance(df, home_team, away_team, match_date, league_code)
 
-    features = pd.DataFrame([{
-        'HTHG': 0, 'HTAG': 0, 'HTR': 0,
-        'B365H': b365h, 'B365A': b365a, 'B365D': b365d,
-        'OddsRatio_HA': odds_ratio_ha,
-        'OddsDiff_HD': odds_diff_hd,
-        'OddsDiff_AD': odds_diff_ad,
-        'OddsGap_MinDelta': odds_gap_min_delta,
-        'Year': match_date.year,
-        'Month': match_date.month,
-        'Weekday': match_date.weekday(),
-        'HomeForm': home_stats["Form"], 'AwayForm': away_stats["Form"],
-        'HomeGD': home_stats["GD"], 'AwayGD': away_stats["GD"],
-        'DrawRate_Home': home_stats["DrawRate"], 'DrawRate_Away': away_stats["DrawRate"],
-        'WinRate_Home': home_stats["WinRate"], 'WinRate_Away': away_stats["WinRate"],
-        'GoalsAvg_Home': home_stats["GoalsAvg"], 'GoalsAvg_Away': away_stats["GoalsAvg"],
-        'Form_Diff': form_diff,
-        'Rank_Home': rank_home,
-        'Rank_Away': rank_away,
-        'MatchImportance': match_importance
-    }])
+    features = pd.DataFrame(
+        [
+            {
+                "HTHG": 0,
+                "HTAG": 0,
+                "HTR": 0,
+                "B365H": b365h,
+                "B365A": b365a,
+                "B365D": b365d,
+                "OddsRatio_HA": odds_ratio_ha,
+                "OddsDiff_HD": odds_diff_hd,
+                "OddsDiff_AD": odds_diff_ad,
+                "OddsGap_MinDelta": odds_gap_min_delta,
+                "Year": match_date.year,
+                "Month": match_date.month,
+                "Weekday": match_date.weekday(),
+                "HomeForm": home_stats["Form"],
+                "AwayForm": away_stats["Form"],
+                "HomeGD": home_stats["GD"],
+                "AwayGD": away_stats["GD"],
+                "DrawRate_Home": home_stats["DrawRate"],
+                "DrawRate_Away": away_stats["DrawRate"],
+                "WinRate_Home": home_stats["WinRate"],
+                "WinRate_Away": away_stats["WinRate"],
+                "GoalsAvg_Home": home_stats["GoalsAvg"],
+                "GoalsAvg_Away": away_stats["GoalsAvg"],
+                "Form_Diff": form_diff,
+                "Rank_Home": rank_home,
+                "Rank_Away": rank_away,
+                "MatchImportance": match_importance,
+            }
+        ]
+    )
 
     return features
 
-# -------------------------------------------------------------------
-# Règles auxiliaires (inchangées / petites sécurités)
-# -------------------------------------------------------------------
+
+# =========================
+# Règles auxiliaires
+# =========================
 def detect_double_chance(proba_0, proba_1, proba_2, final_prediction, league_code):
-    (bookmaker_margin, uncertainty_threshold, importance, season_stage,
-     upset_threshold, skip_threshold, bogey_weight, gki_weight) = _safe_parametres(league_code)
+    (bookmaker_margin, uncertainty_threshold, importance, season_stage, upset_threshold, skip_threshold, bogey_weight, gki_weight) = _safe_parametres(
+        league_code
+    )
 
     seuil_incertitude = uncertainty_threshold - 0.02 * (importance / 5)
 
@@ -421,17 +1058,20 @@ def detect_double_chance(proba_0, proba_1, proba_2, final_prediction, league_cod
             return "X2"
     return None
 
+
 def detect_bias(features_df):
-    odds = features_df[['B365H', 'B365A', 'B365D']].values[0].astype(float)
+    odds = features_df[["B365H", "B365A", "B365D"]].values[0].astype(float)
     max_odds = np.max(odds)
     min_odds = np.min(odds)
     bias_score = abs(max_odds - min_odds) / np.mean(odds)
     return bias_score > 0.6
 
+
 def is_confidence_low(proba_0, proba_1, proba_2):
     arr = np.array([proba_0, proba_1, proba_2], dtype=float)
     ecart_principal = np.max(arr) - np.median(arr)
     return ecart_principal < 0.07
+
 
 def adjust_odds_weight_by_season(odds_gap, season_stage):
     if season_stage == "early":
@@ -441,82 +1081,103 @@ def adjust_odds_weight_by_season(odds_gap, season_stage):
     else:
         return odds_gap * 0.9
 
-# ---------- AJOUT: porte "forme récente" ----------
+
+# =========================
+# Porte "forme récente"
+# =========================
 def _sigmoid(x: float) -> float:
     return 1.0 / (1.0 + np.exp(-x))
 
-def _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code):
+
+
+
+LABEL_HOME = 0
+LABEL_DRAW = 1
+LABEL_AWAY = 2
+
+
+def _apply_form_gate(
+    p0, p1, p2,
+    features_df: pd.DataFrame,
+    league_code="default",
+    *,
+    # --- règle métier: forme prioritaire si contradiction ---
+    form_pick_threshold: float = 0.20,         # seuil contradiction forme
+    # --- intensité gate (transfert de masse sur H/A) ---
+    k_market_form: float = 0.35,               # intensité max (raisonnable)
+    gate_slope: float = 14.0,
+    gate_tolerance: float = 0.036,
+    # --- sécurité ---
+    preserve_draw_mass: bool = True            # on ne touche jamais p1
+):
     """
-    Ajuste UNIQUEMENT la répartition H/A (proba_0 / proba_2). Le nul (proba_1) est conservé,
-    puis renormalisation H/A. Effet piloté par (k, slope, tau) par ligue.
+    Gate = ajuste UNIQUEMENT p0/p2 (Home/Away) en fonction de la FORME,
+    en restant compatible avec tes outputs (notes: form_vs_market etc.)
+
+    ✅ Règle respectée:
+    - La FORME peut déplacer la décision (Home/Away) si contradiction significative.
+    - Le draw (p1) est conservé (on ne le gonfle pas), car ton verrou stage2 gère déjà le nul.
     """
-    # Favori marché dé-margé
+
+    # safe extraction
     try:
-        b365h = float(features_df["B365H"].values[0])
-        b365d = float(features_df["B365D"].values[0])
-        b365a = float(features_df["B365A"].values[0])
-        eps = max(0.02, 0.5*_safe_parametres(league_code)[0])
-        fav_side, _, _, _ = _fav_by_demarged(b365h, b365d, b365a, eps=eps)
+        home_form = float(features_df["HomeForm"].values[0])
+        away_form = float(features_df["AwayForm"].values[0])
     except Exception:
-        fav_side = None
+        return p0, p1, p2, {"form_gate": "skipped_missing_form"}
 
-    if fav_side is None:
-        return proba_0, proba_1, proba_2, {"form_gate":"skipped_no_clear_fav"}
+    # contradiction forme ?
+    form_diff = home_form - away_form  # + => home mieux
+    if abs(form_diff) < float(form_pick_threshold):
+        return p0, p1, p2, {
+            "form_gate": "skipped_no_strong_form_signal",
+            "home_form": round(home_form, 3),
+            "away_form": round(away_form, 3),
+            "form_diff": round(form_diff, 3),
+            "th": float(form_pick_threshold),
+        }
 
-    home_form = float(features_df["HomeForm"].values[0])
-    away_form = float(features_df["AwayForm"].values[0])
-    k, slope, tau = parametres_form_gate(league_code)
+    # gate strength via sigmoid
+    gate_strength = float(k_market_form) * _sigmoid(float(gate_slope) * (abs(form_diff) - float(gate_tolerance)))
+    gate_strength = float(np.clip(gate_strength, 0.0, 1.0))
 
-    # delta > 0 si OUTSIDER a meilleure forme
-    if fav_side == "home":
-        delta = (away_form - home_form)
-        # +1 => transfert home->away
-        sign = +1 if delta > 0 else -1
-    else:
-        delta = (home_form - away_form)
-        # +1 => transfert away->home
-        sign = +1 if delta > 0 else -1
+    h, d, a = float(p0), float(p1), float(p2)
 
-    gate_strength = k * _sigmoid(slope * (abs(delta) - tau))
-    if sign < 0:
-        gate_strength *= 0.15  # on évite de renforcer le favori si l’outsider n’est pas meilleur
-
-    h = float(proba_0)
-    d = float(proba_1)
-    a = float(proba_2)
-
+    # masse HA uniquement
     mass_HA = max(1e-9, (h + a))
     transfer = gate_strength * mass_HA
 
-    if fav_side == "home":
-        h_new = max(0.0, h - transfer)
-        a_new = a + transfer
+    # direction: vers l'équipe en forme
+    if form_diff > 0:   # home en forme
+        # transfère de Away -> Home
+        take = min(transfer, a)
+        a_new = a - take
+        h_new = h + take
+    else:               # away en forme
+        take = min(transfer, h)
+        h_new = h - take
+        a_new = a + take
+
+    # renormalise HA pour garder d identique
+    if preserve_draw_mass:
+        scale = (h + a) / max(1e-9, (h_new + a_new))
+        h_new *= scale
+        a_new *= scale
+        d_new = d
     else:
-        a_new = max(0.0, a - transfer)
-        h_new = h + transfer
+        # (non utilisé ici)
+        h_new, d_new, a_new = _normalize3(h_new, d, a_new)
 
-    # renormaliser H/A en conservant d
-    scale = (h + a) / max(1e-9, (h_new + a_new))
-    h_new *= scale
-    a_new *= scale
-
-    meta = {
-        "form_gate":"applied",
-        "fav_side":fav_side,
-        "home_form":round(home_form,3),
-        "away_form":round(away_form,3),
-        "delta":round(delta,3),
-        "k":round(k,3),
-        "slope":round(slope,2),
-        "tau":round(tau,3),
-        "transfer":round(float(transfer),4)
+    return h_new, d_new, a_new, {
+        "form_gate": "applied",
+        "home_form": round(home_form, 3),
+        "away_form": round(away_form, 3),
+        "form_diff": round(form_diff, 3),
+        "gate_strength": round(gate_strength, 4),
+        "transfer": round(float(transfer), 4),
     }
-    return h_new, d, a_new, meta
-# ---------------------------------------------------
 
-# -------------------------------------------------------------------
-# 💡 Ton pipeline de prédiction (utilise _safe_parametres)
-# -------------------------------------------------------------------
+
 def predict_match_with_proba(
     features_df: pd.DataFrame,
     model_stage1,
@@ -525,432 +1186,466 @@ def predict_match_with_proba(
     user_profile="standard",
     league_code="default"
 ) -> dict:
+    """
+    ✅ LOGIQUE BETSMART (verrouillée) — version stable
+
+    + Ajout REALTIME (fixture/injuries/lineups) SANS IMPACTER la logique de prédiction.
+    """
 
     (bookmaker_margin, uncertainty_threshold, importance, season_stage,
      upset_threshold, skip_threshold, bogey_weight, gki_weight) = _safe_parametres(league_code)
 
-    # Étape 1 : modèle de nul
-    features_df_stage1 = features_df.copy()
-    for feature in model_stage1.feature_names_in_:
-        if feature not in features_df_stage1.columns:
-            features_df_stage1[feature] = 0
-    features_df_stage1 = features_df_stage1[model_stage1.feature_names_in_]
+    # ---- params ligue / config ----
+    try:
+        params = _get_params(league_code)
+    except Exception:
+        params = {}
 
-    proba_draw = float(model_stage1.predict_proba(features_df_stage1)[0][1])
+    form_pick_threshold = float(params.get("form_pick_threshold", 0.20))
+    strong_conf_threshold = float(params.get("strong_conf_threshold", 0.70))
+    strong_conf_draw_cap = float(params.get("strong_conf_draw_cap", 0.12))
+    dc_disable_if_strong_conf = bool(params.get("dc_disable_if_strong_conf", True))
 
-    odds_gap_raw = (
-        features_df_stage1[['B365H', 'B365A', 'B365D']].max(axis=1).values[0]
-        - features_df_stage1[['B365H', 'B365A', 'B365D']].min(axis=1).values[0]
+    # ------------------------------------------------------------------
+    # ✅ REALTIME helpers (ne modifie pas les proba / décision finale)
+    # ------------------------------------------------------------------
+    def _pick_first_col(df, candidates):
+        for c in candidates:
+            if c in df.columns:
+                try:
+                    v = df[c].values[0]
+                    if v is not None and str(v).strip() != "":
+                        return v
+                except Exception:
+                    continue
+        return None
+
+    def _as_bool(x):
+        if isinstance(x, bool):
+            return x
+        s = str(x).strip().lower()
+        return s in ("1", "true", "yes", "y", "on")
+
+    # ---- util explication ----
+    def _explain(rule_tag, p0, p1, p2, extra=None):
+        f = features_df.copy()
+        f["proba_0"] = float(p0)
+        f["proba_1"] = float(p1)
+        f["proba_2"] = float(p2)
+        if isinstance(extra, dict):
+            for k, v in extra.items():
+                try:
+                    f[k] = v
+                except Exception:
+                    pass
+        return generate_explanation(rule_tag, f, user_profile)
+
+    # ---- clamp draw non-dominant (stage2) ----
+    def _clamp_draw_not_dominant(p0, p1, p2, eps=1e-6):
+        p0, p1, p2 = float(p0), float(p1), float(p2)
+        p0, p1, p2 = _normalize3(p0, p1, p2)
+        max_ha = max(p0, p2)
+        if p1 >= max_ha:
+            target = max(0.0, max_ha - float(eps))
+            if p1 > 0:
+                scale = target / p1
+                p1 = p1 * scale
+                rest = 1.0 - p1
+                ha_sum = max(1e-9, (p0 + p2))
+                p0 = rest * (p0 / ha_sum)
+                p2 = rest * (p2 / ha_sum)
+        return _normalize3(p0, p1, p2)
+
+    # ---- helper marché dé-margé + DC protection marché ----
+    def _market_fav_and_dc():
+        try:
+            b365h = float(features_df["B365H"].values[0])
+            b365d = float(features_df["B365D"].values[0])
+            b365a = float(features_df["B365A"].values[0])
+            eps_m = max(0.02, 0.5 * float(bookmaker_margin))
+            fav_side, pH2, pA2, fav_gap = _fav_by_demarged(b365h, b365d, b365a, eps=eps_m)
+            dc_market = None
+            if fav_side == "home":
+                dc_market = "1X"
+            elif fav_side == "away":
+                dc_market = "X2"
+            return fav_side, float(fav_gap), dc_market
+        except Exception:
+            return None, 0.0, None
+
+    # ------------------------------------------------------------------
+    # STAGE 1 : pDraw
+    # ------------------------------------------------------------------
+    X1 = features_df.copy()
+    for col in model_stage1.feature_names_in_:
+        if col not in X1.columns:
+            X1[col] = 0
+    X1 = X1[model_stage1.feature_names_in_]
+
+    p_draw = _proba_for_class(model_stage1, X1, LABEL_DRAW, default=0.0)
+    p_draw = float(np.clip(p_draw, 0.0, 1.0))
+
+    # ------------------------------------------------------------------
+    # CAS DRAW DIRECT
+    # ------------------------------------------------------------------
+    if p_draw >= float(threshold_draw):
+        p1 = p_draw
+        p0 = p2 = (1.0 - p1) / 2.0
+
+        p0, p1, p2, meta_gate = _apply_form_gate(
+            p0, p1, p2, features_df, league_code,
+            form_pick_threshold=form_pick_threshold
+        )
+        p0, p1, p2 = _normalize3(p0, p1, p2)
+
+        pred_final = LABEL_DRAW
+        dc = detect_double_chance(p0, p1, p2, pred_final, league_code)
+
+        # ✅ realtime (info only)
+        rt_block, rt_note = _build_realtime_block(features_df)
+        notes = []
+        if rt_note:
+            notes.append(rt_note)
+
+        return {
+            "prediction": int(pred_final),
+            "prediction_model": LABEL_DRAW,
+            "proba_0": _format_pct(p0),
+            "proba_1": _format_pct(p1),
+            "proba_2": _format_pct(p2),
+            "rule_applied": "threshold|draw_dominant|form_gate",
+            "explanation": _explain("threshold", p0, p1, p2, extra={"form_gate_meta": str(meta_gate)}),
+            "double_chance": dc,
+            "realtime_risk": rt_block,
+            "notes": notes
+        }
+
+    # ------------------------------------------------------------------
+    # STAGE 2 : Home vs Away (ND)
+    # ------------------------------------------------------------------
+    X2 = features_df.copy()
+    for col in model_stage2.feature_names_in_:
+        if col not in X2.columns:
+            X2[col] = 0
+    X2 = X2[model_stage2.feature_names_in_]
+
+    pH_nd = _proba_for_class(model_stage2, X2, LABEL_HOME, default=0.5)
+    pA_nd = _proba_for_class(model_stage2, X2, LABEL_AWAY, default=0.5)
+    s = float(pH_nd) + float(pA_nd)
+    if not np.isfinite(s) or s <= 0:
+        pH_nd, pA_nd = 0.5, 0.5
+    else:
+        pH_nd, pA_nd = float(pH_nd) / s, float(pA_nd) / s
+
+    prediction_rf = int(model_stage2.predict(X2)[0])
+
+    p1 = p_draw
+    pND = max(0.0, 1.0 - p1)
+    p0 = pND * pH_nd
+    p2 = pND * pA_nd
+    p0, p1, p2 = _normalize3(p0, p1, p2)
+
+    p0, p1, p2 = _clamp_draw_not_dominant(p0, p1, p2)
+
+    p0, p1, p2, meta_gate = _apply_form_gate(
+        p0, p1, p2, features_df, league_code,
+        form_pick_threshold=form_pick_threshold
     )
-    odds_gap = adjust_odds_weight_by_season(odds_gap_raw, season_stage)
+    p0, p1, p2 = _normalize3(p0, p1, p2)
 
-    # Cas "margin band" autour du seuil de nul
-    draw_margin_band = 0.02
-    if threshold_draw - draw_margin_band <= proba_draw <= threshold_draw + draw_margin_band:
-        if odds_gap <= bookmaker_margin:
-            proba_1 = proba_draw
-            proba_0 = proba_2 = (1 - proba_1) / 2
-            # 🔁 Applique la porte forme sur le split H/A
-            proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
-            double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
-            return {
-                "prediction": 1,
-                "proba_0": f"{round(proba_0*100,0)}%",
-                "proba_1": f"{round(proba_1*100,0)}%",
-                "proba_2": f"{round(proba_2*100,0)}%",
-                "rule_applied": "margin_adjusted|form_gate",
-                "explanation": generate_explanation("margin_adjusted", features_df, user_profile),
-                "double_chance": double_chance
-            }
+    p0, p1, p2 = _clamp_draw_not_dominant(p0, p1, p2)
 
-    # Cas "nul clair"
-    if proba_draw >= threshold_draw:
-        proba_1 = proba_draw
-        proba_0 = proba_2 = (1 - proba_1) / 2
-        proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
-        double_chance = detect_double_chance(proba_0, proba_1, proba_2, 1, league_code)
-        return {
-            "prediction": 1,
-            "proba_0": f"{round(proba_0*100,0)}%",
-            "proba_1": f"{round(proba_1*100,0)}%",
-            "proba_2": f"{round(proba_2*100,0)}%",
-            "rule_applied": "threshold|form_gate",
-            "explanation": generate_explanation("threshold", features_df, user_profile),
-            "double_chance": double_chance
-        }
+    strong_side = max(float(p0), float(p2))
+    strong_conf = (strong_side >= float(strong_conf_threshold))
 
-    # Étape 2 : modèle domicile/extérieur
-    features_df_stage2 = features_df.copy()
-    for feature in model_stage2.feature_names_in_:
-        if feature not in features_df_stage2.columns:
-            features_df_stage2[feature] = 0
-    features_df_stage2 = features_df_stage2[model_stage2.feature_names_in_]
+    if strong_conf:
+        cap = float(np.clip(strong_conf_draw_cap, 0.0, 0.30))
+        if float(p1) > cap:
+            rest = 1.0 - cap
+            ha_sum = max(1e-9, (float(p0) + float(p2)))
+            p0 = rest * (float(p0) / ha_sum)
+            p2 = rest * (float(p2) / ha_sum)
+            p1 = cap
+            p0, p1, p2 = _normalize3(p0, p1, p2)
+        strong_tag = "strong_conf_draw_cut"
+    else:
+        strong_tag = None
 
-    proba_rf = model_stage2.predict_proba(features_df_stage2)[0]
-    proba_rf = np.asarray(proba_rf, dtype=float)  # [proba_home, proba_away]
-    prediction_rf = int(model_stage2.predict(features_df_stage2)[0])
+    pred_final = LABEL_HOME if float(p0) >= float(p2) else LABEL_AWAY
 
-    total = proba_rf[0] + proba_draw + proba_rf[1]
-    proba_0 = float(proba_rf[0] / total)
-    proba_1 = float(proba_draw / total)
-    proba_2 = float(proba_rf[1] / total)
+    fav_side, fav_gap, dc_market = _market_fav_and_dc()
 
-    if prediction_rf == 0 and proba_draw >= proba_rf[0]:
-        proba_0, proba_1 = proba_1, proba_0
-    elif prediction_rf == 2 and proba_draw >= proba_rf[1]:
-        proba_2, proba_1 = proba_1, proba_2
+    try:
+        home_form = float(features_df["HomeForm"].values[0])
+        away_form = float(features_df["AwayForm"].values[0])
+        form_diff = home_form - away_form
+    except Exception:
+        home_form = away_form = form_diff = 0.0
 
-    # 🔁 Applique la porte forme ici aussi (décisive pour le split H/A)
-    proba_0, proba_1, proba_2, _ = _apply_form_gate(proba_0, proba_1, proba_2, features_df, league_code)
+    override_tag = None
+    dc_override = None
 
-    double_chance = detect_double_chance(proba_0, proba_1, proba_2, prediction_rf, league_code)
-    bias_detected = detect_bias(features_df)
-    low_confidence = is_confidence_low(proba_0, proba_1, proba_2)
+    if abs(float(form_diff)) >= float(form_pick_threshold):
+        form_side = "home" if form_diff > 0 else "away"
+        if fav_side is not None and form_side != fav_side:
+            pred_final = LABEL_HOME if form_side == "home" else LABEL_AWAY
+            override_tag = "form_over_market_pick_" + ("home" if form_side == "home" else "away")
+            dc_override = dc_market
 
-    if low_confidence or bias_detected:
-        if double_chance is None:
-            if prediction_rf == 0:
-                double_chance = "1X"
-            elif prediction_rf == 2:
-                double_chance = "X2"
-            else:
-                double_chance = "1X"
+    bias_detected = bool(detect_bias(features_df))
+    low_confidence = bool(is_confidence_low(p0, p1, p2))
 
-        return {
-            "prediction": prediction_rf,
-            "proba_0": f"{round(proba_0*100,0)}%",
-            "proba_1": f"{round(proba_1*100,0)}%",
-            "proba_2": f"{round(proba_2*100,0)}%",
-            "rule_applied": "filtered_out|form_gate",
-            "explanation": "⚠️ Attention : prédiction peu recommandée en raison d’un biais ou d’une incertitude élevée. Appuyez-vous sur la double chance suggérée.",
-            "double_chance": double_chance
-        }
+    dc = detect_double_chance(p0, p1, p2, pred_final, league_code)
 
-    return {
-        "prediction": prediction_rf,
-        "proba_0": f"{round(proba_0*100,0)}%",
-        "proba_1": f"{round(proba_1*100,0)}%",
-        "proba_2": f"{round(proba_2*100,0)}%",
-        "rule_applied": "rf_decision|form_gate",
-        "explanation": generate_explanation("rf_decision", features_df, user_profile),
-        "double_chance": double_chance
+    if dc_override is not None:
+        dc = dc_override
+
+    if strong_conf and dc_disable_if_strong_conf and (not bias_detected) and (not low_confidence):
+        dc = None
+
+    if (bias_detected or low_confidence) and dc is None:
+        dc = "1X" if pred_final == LABEL_HOME else "X2"
+
+    rule_parts = ["rf_decision", "stage2_locked_no_draw", "form_gate"]
+    if strong_tag:
+        rule_parts.append(strong_tag)
+    if override_tag:
+        rule_parts.append(override_tag)
+
+    rule_applied = "|".join(rule_parts)
+
+    extra = {
+        "bias_detected": int(bias_detected),
+        "low_confidence": int(low_confidence),
+        "form_gate_meta": str(meta_gate),
+        "strong_conf": int(bool(strong_conf)),
+        "fav_side": str(fav_side),
+        "fav_gap": float(fav_gap),
+        "form_diff": float(form_diff),
     }
 
-# -------------------------------------------------------------------
-# Explication (inchangée – si tu veux, tu pourras y injecter les proba)
-# -------------------------------------------------------------------
-def generate_explanation(rule_applied, features, user_profile):
-    odds_ratio = features.get("OddsRatio_HA", 1)
-    form_diff = features.get("Form_Diff", 0)
-    match_importance = features.get("MatchImportance", 0)
+    # ✅ realtime (info only)
+    rt_block, rt_note = _build_realtime_block(features_df)
+    notes = []
+    if rt_note:
+        notes.append(rt_note)
 
-    if isinstance(match_importance, pd.Series):
-        match_importance = match_importance.values[0]
+    return {
+        "prediction": int(pred_final),
+        "prediction_model": prediction_rf,
+        "proba_0": _format_pct(p0),
+        "proba_1": _format_pct(p1),
+        "proba_2": _format_pct(p2),
+        "rule_applied": rule_applied,
+        "explanation": _explain("rf_decision", p0, p1, p2, extra=extra),
+        "double_chance": dc,
+        "bias_detected": bias_detected,
+        "low_confidence": low_confidence,
+        "realtime_risk": rt_block,
+        "notes": notes
+    }
+
+# =========================
+# Unexpected / anti-OC layer
+# =========================
+def apply_unexpected_layer(
+    base_pred: dict,
+    season_current_df=None,
+    season_past_list=None,
+    home: str = None,
+    away: str = None,
+    match_date=None,
+    feats_df=None,
+    league_code: str = None,
+    X_ref_features=None,
+    upset_threshold: float = 0.52,
+):
+    """
+    Safe post-layer that can enrich the base prediction with:
+      - real-time risk block (without overwriting a valid fixture_id from predict_match_with_proba)
+      - conservative 'unexpected' score placeholders
+
+    Constraint respected: does NOT change your existing 1N2 prediction logic;
+    it only enriches output fields and notes.
+    """
+    out = dict(base_pred or {})
+    notes = list(out.get("notes", []))
+
+    # ---- feats_df must exist for safe getters ----
+    feats_df = feats_df if feats_df is not None else {}
+
+    # ---- propagate home/away (prefer base_pred if already set) ----
+    if out.get("home") is None and home is not None:
+        out["home"] = str(home)
+    if out.get("away") is None and away is not None:
+        out["away"] = str(away)
+
+    # Resolve canonical names for realtime calls:
+    home_name = str(home) if home is not None else (str(out.get("home")) if out.get("home") is not None else None)
+    away_name = str(away) if away is not None else (str(out.get("away")) if out.get("away") is not None else None)
+
+    # match_date: prefer explicit arg, else feats_df["match_date"] if present
+    if match_date is None:
+        try:
+            md = _safe_get_first(feats_df, "match_date")
+            match_date = md if md not in ("", None) else None
+        except Exception:
+            match_date = None
+
+    # _use_realtime: prefer feats_df flag if present else keep existing else False
+    try:
+        if _safe_get_first(feats_df, "_use_realtime") is not None:
+            out["_use_realtime"] = bool(_safe_get_first(feats_df, "_use_realtime"))
+        else:
+            out["_use_realtime"] = bool(out.get("_use_realtime", False))
+    except Exception:
+        out["_use_realtime"] = bool(out.get("_use_realtime", False))
+
+    # ------------------------------------------------------------------
+    # REALTIME BLOCK (FIXED):
+    # Rule: if base already contains a fixture_id, NEVER overwrite it.
+    # Even if ctx missing / available False / missing not empty -> keep fixture_id.
+    # Only build realtime if fixture_id is absent.
+    # ------------------------------------------------------------------
+    rt_existing = out.get("realtime_risk")
+
+    existing_fixture_id = None
+    if isinstance(rt_existing, dict):
+        existing_fixture_id = rt_existing.get("fixture_id", None)
+
+    # If realtime isn't enabled, keep block as-is (or set minimal) and do not try to resolve.
+    if not out["_use_realtime"]:
+        # keep existing if any, else set minimal
+        if not isinstance(rt_existing, dict):
+            out["realtime_risk"] = {
+                "available": False,
+                "fixture_id": None,
+                "missing": ["realtime_not_enabled_or_unavailable"],
+                "reasons": [],
+                "risk_level": "UNKNOWN",
+                "risk_score": 0.0,
+            }
+        notes.append("realtime: not enabled")
+    else:
+        # realtime enabled
+        if existing_fixture_id is not None:
+            # ✅ KEEP, do not overwrite (prevents your contradictory logs)
+            notes.append(f"realtime: kept_fixture_id={existing_fixture_id}")
+            # keep existing block untouched
+            out["realtime_risk"] = rt_existing
+        else:
+            # Only now we attempt to build realtime
+            try:
+                rt_block, rt_note = _build_realtime_block(
+                    feats_df,
+                    league_code=league_code,
+                    home_name=home_name,
+                    away_name=away_name,
+                    match_date=match_date,
+                    season_df=season_current_df,
+                )
+                out["realtime_risk"] = rt_block
+                notes.append(rt_note)
+            except Exception as e:
+                out["realtime_risk"] = {
+                    "available": False,
+                    "fixture_id": None,
+                    "missing": [f"realtime_error:{type(e).__name__}"],
+                    "reasons": [],
+                    "risk_level": "UNKNOWN",
+                    "risk_score": 0.0,
+                }
+                notes.append(f"realtime: error={type(e).__name__}")
+
+    # ------------------------------------------------------------------
+    # Unexpected score (unchanged behaviour)
+    # ------------------------------------------------------------------
+    out.setdefault("_upset_threshold", float(upset_threshold))
+
+    upset_score = out.get("_upset_score")
+    if upset_score is None:
+        try:
+            odd_h = float(_safe_get_first(feats_df, "B365H") or 0.0)
+            odd_a = float(_safe_get_first(feats_df, "B365A") or 0.0)
+            odd_d = float(_safe_get_first(feats_df, "B365D") or 0.0)
+
+            inv = []
+            for o in (odd_h, odd_d, odd_a):
+                inv.append(1.0 / o if o and o > 0 else 0.0)
+            s = sum(inv) if sum(inv) > 0 else 1.0
+            p_h, p_d, p_a = [v / s for v in inv]
+
+            pred = out.get("prediction")
+            best = max(p_h, p_a)
+            if pred == 0:
+                outsider = p_h
+            elif pred == 2:
+                outsider = p_a
+            else:
+                outsider = p_d
+
+            upset_score = float(max(0.0, min(1.0, best - outsider)))
+        except Exception:
+            upset_score = 0.0
+
+    out["_upset_score"] = float(upset_score)
+
+    out["notes"] = notes
+    return out
+
+##---------------------- FIN FONCTIONS  ------------------------------------------
+
+def generate_explanation(rule_applied, features, user_profile):
+    if isinstance(features, pd.DataFrame):
+        row = features.to_dict(orient="records")[0] if not features.empty else {}
+    elif isinstance(features, dict):
+        row = dict(features)
+    else:
+        row = {}
+
+    odds_gap = float(row.get("OddsGap_MinDelta", 0.0) or 0.0)
+    form_diff = float(row.get("Form_Diff", 0.0) or 0.0)
+    match_importance = int(row.get("MatchImportance", 0) or 0)
+
+    p0 = float(row.get("proba_0", 0.0) or 0.0)
+    p1 = float(row.get("proba_1", 0.0) or 0.0)
+    p2 = float(row.get("proba_2", 0.0) or 0.0)
+
+    bias_detected = bool(int(row.get("bias_detected", 0) or 0))
+    low_confidence = bool(int(row.get("low_confidence", 0) or 0))
 
     if user_profile == "débutant":
-        if rule_applied == "threshold":
-            msg = "L'IA pense qu’il y aura un match nul car la probabilité dépasse le seuil fixé."
-        elif rule_applied == "margin_adjusted":
-            msg = "Les cotes sont très proches : cela suggère un match équilibré, donc nul."
+        if rule_applied in ("threshold", "margin_adjusted"):
+            msg = "Match nul probable : le match paraît équilibré selon les signaux."
+        elif rule_applied == "filtered_out":
+            msg = "⚠️ Prudence : le match présente une incertitude élevée. Mieux vaut jouer en double chance."
         else:
-            msg = "L’IA prédit une victoire car les chances sont déséquilibrées entre les équipes."
+            msg = "Victoire probable : l'analyse détecte un léger avantage."
     elif user_profile == "expert":
-        if rule_applied == "threshold":
-            msg = f"Proba_nul = {features.get('proba_1', 0):.2f}, supérieur au seuil : nul prédit."
-        elif rule_applied == "margin_adjusted":
-            msg = f"Match ajusté à nul : cotes trop proches (écart ≈ {features.get('OddsGap_MinDelta', 0):.3f})."
-        else:
-            msg = (
-                f"Proba_RF = [{features.get('proba_0', 0):.2f}, {features.get('proba_2', 0):.2f}], "
-                f"écart de forme = {form_diff:.2f}"
-            )
+        msg = f"p=[H:{p0:.2f}, D:{p1:.2f}, A:{p2:.2f}] | gap_odds≈{odds_gap:.2f} | form_diff={form_diff:.2f}"
+        if rule_applied == "filtered_out":
+            msg = "⚠️ " + msg + " | incertitude/biais → privilégier DC"
     else:
-        if rule_applied == "threshold":
-            msg = "Match nul probable : la probabilité dépasse le seuil."
-        elif rule_applied == "margin_adjusted":
-            msg = "Les cotes sont serrées, et l’IA anticipe un nul."
+        if rule_applied == "filtered_out":
+            msg = "⚠️ Attention : incertitude/biais détecté. Appuyez-vous sur la double chance."
+        elif rule_applied in ("threshold", "margin_adjusted"):
+            msg = "Match nul probable : le match est équilibré."
         else:
-            msg = "Victoire probable : un déséquilibre a été détecté entre les deux équipes."
+            msg = "Victoire probable : un déséquilibre a été détecté entre les équipes."
 
     if match_importance == 1:
-        msg += " Ce match est considéré comme important."
+        msg += " Match à enjeu (importance élevée)."
+
+    reasons = []
+    if low_confidence:
+        reasons.append("confiance faible")
+    if bias_detected:
+        reasons.append("biais de cotes")
+    if reasons and rule_applied != "filtered_out":
+        msg += " (" + ", ".join(reasons) + ")"
 
     return msg
 
-# -------------------------------------------------------------------
-# 🧠 Couche "hors-cadre" — PURE (n'altère jamais prediction/probas)
-# -------------------------------------------------------------------
-
-def apply_unexpected_layer(
-    base_pred: dict,
-    season_current_df: pd.DataFrame,
-    season_past_list: list,
-    home: str, away: str, match_date: str,
-    feats_df: pd.DataFrame,
-    league_code: str = "default",
-    X_ref_features: pd.DataFrame = None
-) -> dict:
-    """
-    Ajoute (éventuellement) :
-      1) une double chance 'anti-upset' (bogey/GKI) SANS modifier prediction/probas
-      2) une double chance 'forme vs favori du marché' prioritaire sur (1)
-    """
-
-    # --- 0) arbitre DC : coeur vs anti-upset ---------------------------------
-    def _combine_double_chance(base_dc, anti_dc, base_rule_applied, upset_score, upset_th):
-        # Cas simples
-        if anti_dc is None:
-            return base_dc, "base_only"
-        if base_dc is None:
-            return anti_dc, "anti_only"
-        if base_dc == anti_dc:
-            return base_dc, "agree"
-        # Conflit : prioriser l'anti-upset si coeur est déjà en doute,
-        # ou si le risque d'upset dépasse largement le seuil.
-        if ("filtered_out" in str(base_rule_applied)) or (upset_score >= 1.2 * float(upset_th)):
-            return anti_dc, "override_by_anti"
-        # Sinon on garde la DC du coeur et on expose l'alternative
-        return base_dc, "keep_base_conflict"
-
-    # --- 0bis) paramètres couche "forme vs marché" ---------------------------
-    def _get_form_layer_params(league_code):
-        """
-        Lit des seuils éventuels dans champ_config.json ; sinon défauts sûrs.
-        - form_dc_threshold: écart de forme minimal (HomeForm - AwayForm) en valeur absolue pour activer la couche
-        - max_fav_gap_for_override: favoritisme du marché (gap 2-voies) au-delà duquel on n'outrepasse pas le marché
-        - min_uncertainty_for_form_layer: (optionnel) niveau d'incertitude ligue requis pour activer la couche
-        """
-        try:
-            p = _get_params(league_code)  # déjà présent dans ton module
-        except Exception:
-            p = {}
-        form_dc_threshold = float(p.get("form_dc_threshold", 0.20))         # ~20 pts de forme
-        max_fav_gap_for_override = float(p.get("max_fav_gap_for_override", 0.08))  # 8 points de prob. 2-voies
-        min_uncertainty_for_form_layer = float(p.get("min_uncertainty_for_form_layer", 0.10))
-        return form_dc_threshold, max_fav_gap_for_override, min_uncertainty_for_form_layer
-
-    form_dc_threshold, max_fav_gap_for_override, min_unc_for_form = _get_form_layer_params(league_code)
-
-    # --- 1) Copier et geler les sorties du modèle ----------------------------
-    enriched = dict(base_pred)
-    for k in ["prediction", "proba_0", "proba_1", "proba_2", "explanation", "double_chance", "rule_applied"]:
-        if k in base_pred:
-            enriched[k] = base_pred[k]
-
-    # --- helpers internes -----------------------------------------------------
-    def _slice_asof(df: pd.DataFrame, asof: str) -> pd.DataFrame:
-        if df is None or df.empty:
-            return pd.DataFrame()
-        d = df.copy()
-        d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
-        return d[d["Date"] < pd.to_datetime(asof)]
-
-    def _combine_for_signals(cur: pd.DataFrame, past_list: list, asof: str, w_curr=1.0, w_past=0.6):
-        frames = []
-        c = _slice_asof(cur, asof)
-        if not c.empty:
-            c = c.copy(); c["_w"] = w_curr; frames.append(c)
-        if past_list:
-            plist = []
-            for x in past_list:
-                if x is not None:
-                    sl = _slice_asof(x, asof)
-                    if not sl.empty:
-                        plist.append(sl)
-            if plist:
-                p = pd.concat(plist, ignore_index=True)
-                p = p.copy(); p["_w"] = w_past; frames.append(p)
-        if frames:
-            return pd.concat(frames, ignore_index=True)
-        return pd.DataFrame(columns=["Date", "HomeTeam", "AwayTeam", "FTR", "HTHG", "HTAG", "_w"])
-
-    def _points_for_team(row, team: str) -> int:
-        if row["FTR"] == "D":
-            return 1
-        return 3 if ((row["FTR"]=="H" and row["HomeTeam"]==team) or (row["FTR"]=="A" and row["AwayTeam"]==team)) else 0
-
-    def _table_points_asof(df):
-        teams = pd.unique(pd.concat([df["HomeTeam"], df["AwayTeam"]]))
-        pts = {t: 0.0 for t in teams}
-        for _, r in df.iterrows():
-            w = float(r.get("_w", 1.0))
-            if r["FTR"]=="H":
-                pts[r["HomeTeam"]] += 3*w
-            elif r["FTR"]=="A":
-                pts[r["AwayTeam"]] += 3*w
-            else:
-                pts[r["HomeTeam"]] += 1*w
-                pts[r["AwayTeam"]] += 1*w
-        tab = pd.DataFrame({"Team": list(pts.keys()), "Pts": list(pts.values())})
-        return tab.sort_values("Pts", ascending=False).reset_index(drop=True)
-
-    def bogey_index(df_for_signals, team_a, team_b, asof, window=5):
-        d = _slice_asof(df_for_signals, asof)
-        m = ((d["HomeTeam"]==team_a) & (d["AwayTeam"]==team_b)) | ((d["HomeTeam"]==team_b) & (d["AwayTeam"]==team_a))
-        d = d.loc[m].sort_values("Date").tail(window)
-        if d.empty:
-            return 0.0
-        w = np.ones(len(d))
-        if "_w" in d.columns:
-            w *= d["_w"].to_numpy()
-        if not w.sum():
-            w = np.ones(len(d))
-        ptsA = d.apply(lambda r: _points_for_team(r, team_a), axis=1).to_numpy()
-        ptsA_w = np.average(ptsA, weights=w)
-        expected = 1.5  # environ neutre
-        return float(max(-0.5, min(0.5, (ptsA_w - expected)/3.0)))
-
-    def giant_killer_index(df_for_signals, team, asof, topn=5):
-        d = _slice_asof(df_for_signals, asof)
-        if d.empty:
-            return 0.0
-        top = set(_table_points_asof(d)["Team"].head(topn).tolist())
-        sel = d[(d["HomeTeam"]==team) | (d["AwayTeam"]==team)]
-        vs_top_pts = vs_top_g = vs_rest_pts = vs_rest_g = 0.0
-        for _, r in sel.iterrows():
-            p = _points_for_team(r, team)
-            opp = r["AwayTeam"] if r["HomeTeam"]==team else r["HomeTeam"]
-            if opp in top:
-                vs_top_pts += p; vs_top_g += 1
-            else:
-                vs_rest_pts += p; vs_rest_g += 1
-        if vs_top_g == 0:
-            return 0.0
-        s = (vs_top_pts/max(1,vs_top_g)) - (vs_rest_pts/max(1,vs_rest_g))
-        return float(max(-1.0, min(1.0, s/3.0)))
-
-    # --- 2) paramètres ligue (typage sûr) ------------------------------------
-    (bm, ut, imp, stage, upset_th, skip_th, bw, gw) = _safe_parametres(league_code)
-    bw = _as_float(bw, 0.40); gw = _as_float(gw, 0.60)
-    upset_th = _as_float(upset_th, 0.55); skip_th = _as_float(skip_th, 1.50)
-
-    # --- 3) historique pondéré ------------------------------------------------
-    df_sig = _combine_for_signals(season_current_df, season_past_list, match_date, 1.0, 0.6)
-
-    # --- 4) favori marché (démargé) ------------------------------------------
-    try:
-        b365h = float(feats_df["B365H"].values[0])
-        b365d = float(feats_df["B365D"].values[0])
-        b365a = float(feats_df["B365A"].values[0])
-
-        # eps: petite marge dépendante de la marge bookmaker par ligue
-        bm_eps, *_ = _safe_parametres(league_code)
-        eps = max(0.02, 0.5*float(bm_eps))
-
-        fav_side, pH2, pA2, fav_gap = _fav_by_demarged(b365h, b365d, b365a, eps=eps)
-        if fav_side is None:
-            home_is_fav = None
-            outsider = None
-        else:
-            home_is_fav = (fav_side == "home")
-            outsider = away if home_is_fav else home
-
-        enriched.setdefault("notes", [])
-        enriched["notes"].append(
-            f"fav_demarged: side={fav_side}, pH2={pH2:.3f}, pA2={pA2:.3f}, gap={fav_gap:.3f}, eps={eps:.3f}"
-        )
-    except Exception as e:
-        home_is_fav = None
-        outsider = None
-        enriched.setdefault("notes", [])
-        enriched["notes"].append(f"fav_demarged: error={type(e).__name__}")
-
-    # --- 5) signaux hors-cadre (anti-upset) ----------------------------------
-    bidx_home = bogey_index(df_sig, home, away, match_date)
-    gki_home  = giant_killer_index(df_sig, home, match_date)
-    gki_away  = giant_killer_index(df_sig, away, match_date)
-    gki_outs  = gki_away if home_is_fav else gki_home
-
-    bogey_for_outsider = bidx_home if outsider == home else -bidx_home
-    bogey_for_outsider = _as_float(bogey_for_outsider, 0.0)
-    gki_outs           = _as_float(gki_outs, 0.0)
-
-    upset_score = max(0.0, bw*max(0.0, bogey_for_outsider) + gw*max(0.0, gki_outs))
-    upset_score = float(min(1.0, upset_score))
-
-    base_dc = base_pred.get("double_chance")
-    if home_is_fav is None:
-        anti_dc = None
-    else:
-        anti_dc = "X2" if (upset_score >= upset_th and home_is_fav) else \
-                  "1X" if (upset_score >= upset_th and not home_is_fav) else None
-
-    dc_after_anti, dc_reason = _combine_double_chance(
-        base_dc=base_dc,
-        anti_dc=anti_dc,
-        base_rule_applied=enriched.get("rule_applied", ""),
-        upset_score=upset_score,
-        upset_th=upset_th
-    )
-
-    enriched["double_chance"] = dc_after_anti
-    enriched["dc_reason"] = dc_reason
-
-    if anti_dc is not None:
-        ra = enriched.get("rule_applied", "")
-        if "unexpected_layer" not in str(ra):
-            enriched["rule_applied"] = (ra + "|unexpected_layer") if ra else "unexpected_layer"
-
-    # --- 6) Couche PRIORITAIRE : Forme vs Favori du marché -------------------
-    # Règle métier (définie avec toi) :
-    #  - Si favori = domicile ET HomeForm < AwayForm (écart significatif)  -> DC = "1X"
-    #  - Si favori = extérieur ET HomeForm > AwayForm (écart significatif) -> DC = "12"
-    dc_form = None
-    try:
-        hform = float(feats_df["HomeForm"].values[0]) if "HomeForm" in feats_df.columns else 0.0
-        aform = float(feats_df["AwayForm"].values[0]) if "AwayForm" in feats_df.columns else 0.0
-        form_diff = hform - aform  # >0 avantage domicile ; <0 avantage extérieur
-
-        # Garde-fou: ne pas renverser si le marché a un favori très net
-        market_dominant = (home_is_fav is not None) and (abs(float(fav_gap)) >= max_fav_gap_for_override)
-
-        # (optionnel) gating par incertitude ligue
-        league_uncertainty_ok = (float(ut) >= float(min_unc_for_form))
-
-        if (home_is_fav is not None) and (not market_dominant) and league_uncertainty_ok:
-            if home_is_fav and (form_diff < -form_dc_threshold):
-                dc_form = "1X"   # couvre 1 + nul
-            elif (not home_is_fav) and (form_diff >  form_dc_threshold):
-                dc_form = "12"   # privilégie domicile, couvre favori extérieur (pas de nul)
-
-        # Journalisation
-        enriched.setdefault("notes", [])
-        enriched["notes"].append(
-            f"form_vs_market: HomeForm={hform:.2f}, AwayForm={aform:.2f}, diff={form_diff:.2f}, "
-            f"fav={('home' if home_is_fav else ('away' if home_is_fav is False else 'none'))}, "
-            f"fav_gap={float(fav_gap) if home_is_fav is not None else 'nan'}, "
-            f"th_form={form_dc_threshold:.2f}, max_fav_gap={max_fav_gap_for_override:.2f}, "
-            f"league_unc_ok={league_uncertainty_ok}"
-        )
-    except Exception as e:
-        enriched.setdefault("notes", [])
-        enriched["notes"].append(f"form_vs_market: error={type(e).__name__}")
-
-    # Priorité: si dc_form est posée, elle ECRASE la DC précédente
-    if dc_form is not None:
-        prev_dc = enriched.get("double_chance")
-        prev_reason = enriched.get("dc_reason", "")
-        enriched["double_chance"] = dc_form
-        enriched["dc_reason"] = f"override_by_form({prev_reason or 'none'})"
-        ra = enriched.get("rule_applied", "")
-        enriched["rule_applied"] = (ra + "|form_layer") if ra else "form_layer"
-        enriched.setdefault("notes", []).append(f"form_layer_applied: prev_dc={prev_dc} -> dc_form={dc_form}")
-
-    # --- 7) notes d'audit -----------------------------------------------------
-    enriched.setdefault("notes", [])
-    enriched["notes"].append(
-        f"anti-oc: Upset={upset_score:.2f}, Bogey={bidx_home:.2f}, "
-        f"GKI_outsider={(gki_away if home_is_fav else gki_home):.2f}, "
-        f"DC_base={base_dc}, DC_anti={anti_dc}, DC_final={enriched.get('double_chance')}, reason={enriched.get('dc_reason')}"
-    )
-    enriched["_upset_score"] = upset_score
-    enriched["_upset_threshold"] = float(upset_th)
-
-    return enriched
-
-
-
-##---------------------- FIN FONCTION  ------------------------------------------
 
 
 def get_valid_date(user_input):
