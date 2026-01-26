@@ -65,17 +65,17 @@
         "gate_tolerance": 0.034
     },
     "88": {
-        "bookmaker_margin": 0.056,
-        "importance": 4,
-        "uncertainty_threshold": 0.109,
-        "season_stage": "mid",
+        "bookmaker_margin": 0.15,
+        "importance": 3,
+        "uncertainty_threshold": 0.112,
+        "season_stage": "late",
         "upset_threshold": 0.52,
-        "skip_threshold": 1.5,
-        "bogey_weight": 0.35,
-        "gki_weight": 0.65,
-        "k_market_form": 0.4,
-        "gate_slope": 14.0,
-        "gate_tolerance": 0.037
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.4,
+        "gki_weight": 0.6,
+        "k_market_form": 0.6,
+        "gate_slope": 7.87,
+        "gate_tolerance": 0.04
     },
     "207": {
         "bookmaker_margin": 0.05,
