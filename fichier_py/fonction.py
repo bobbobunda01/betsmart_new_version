@@ -24,7 +24,7 @@ from functools import lru_cache
 
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
 
-########
+
 # log des prédictions utilisateurs
 def log_prediction(prediction):
     log_data = {
