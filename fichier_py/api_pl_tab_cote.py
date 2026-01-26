@@ -19,7 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
+from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -740,7 +740,7 @@ def prediction():
             #log_dataframe_features_to_file(features_input,home, away, match_date)
             
             X_inputs=entree_utilisateur(home, away, odds_h,odds_d,odds_a, df, season_preced)
-            log_prediction(features_input.to_json())
+            log_prediction(X_inputs.to_json())
             
 
            
@@ -944,7 +944,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.63
+                thread=0.65
             
             # EGYPTE
             elif comp==233:
@@ -1028,7 +1028,19 @@ def prediction():
             perf_home=get_last5_results_pattern(df,home , date_match)
             perf_away=get_last5_results_pattern(df,away, date_match)
             
+            x_home=home
+            x_away=away
+            x_date=date_match
+            
+            features_input = features_input.copy()
+            features_input["home"] = str(x_home)
+            features_input["away"] = str(x_away)
+            features_input["match_date"] = str(x_date)
+            
+           # features_input["_use_realtime"] = True
+                        
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
+            #pred["_use_realtime"] = True 
             pred_final = apply_unexpected_layer(
                 base_pred=pred,
                 season_current_df=df,                                       # saison en cours
@@ -1039,6 +1051,7 @@ def prediction():
                 league_code=comp,
                 X_ref_features=None     # optionnel (ref num. pour OOD)
                 )
+           
           
             pred_but = model_but.predict(X_inputs)[0]
             mess_but="✅ Prédiction :", "Plus de buts en 2ᵉ mi-temps" if pred_but == 1 else "Plus de buts en 1ʳᵉ mi-temps"
