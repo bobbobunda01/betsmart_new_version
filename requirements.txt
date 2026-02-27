@@ -12,3 +12,4 @@ parse
 xgboost
 datetime
 lru_cache
+requests
