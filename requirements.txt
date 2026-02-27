@@ -14,5 +14,3 @@ datetime
 lru_cache
 json
 os
-requests
-re
