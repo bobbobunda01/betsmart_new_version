@@ -19,11 +19,7 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from openai import OpenAI
-
-from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer,_resolve_fixture_id_by_names,explanation_from_pred_final,clean_extract_final_result
-
-
+from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
 thread=0
 app = Flask(__name__)
 
@@ -685,7 +681,7 @@ def prediction():
                 hi['Date']=pd.to_datetime(hi['Date'])
                 df=hi
             
-            ### LIGA SECUNDA
+             ### LIGA SECUNDA
             elif comp==141:
                 chemin_csv = RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv"
                 # Chargement des données historiques
@@ -698,28 +694,6 @@ def prediction():
                 df_2024=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2024.csv")
                 df_2024['Date']=pd.to_datetime(df_2024['Date'])
                 df_2025=pd.read_csv(RACINE_PROJET / "data" / "lg2" / "lg2_2025.csv")
-                df_2025['Date']=pd.to_datetime(df_2025['Date'])
-                
-                season_preced=pd.read_csv(chemin_csv)
-                season_preced['Date']=pd.to_datetime(season_preced['Date'])
-                hi=pd.read_csv(s_encours)
-                #hi.drop('Unnamed: 0', axis=1, inplace=True)
-                hi['Date']=pd.to_datetime(hi['Date'])
-                df=hi
-            
-            ### Coupe d'afrique des nations CAN
-            elif comp==6:
-                chemin_csv = RACINE_PROJET / "data" / "can" / "df_can_2023.csv"
-                # Chargement des données historiques
-                s_encours=RACINE_PROJET / "data" / "can" / "saison_encours.csv"
-                
-                df_2022=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2019.csv")
-                df_2022['Date']=pd.to_datetime(df_2022['Date'])
-                df_2023=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2021.csv")
-                df_2023['Date']=pd.to_datetime(df_2023['Date'])
-                df_2024=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2023.csv")
-                df_2024['Date']=pd.to_datetime(df_2024['Date'])
-                df_2025=pd.read_csv(RACINE_PROJET / "data" / "can" / "df_can_2025.csv")
                 df_2025['Date']=pd.to_datetime(df_2025['Date'])
                 
                 season_preced=pd.read_csv(chemin_csv)
@@ -744,7 +718,7 @@ def prediction():
             #log_dataframe_features_to_file(features_input,home, away, match_date)
             
             X_inputs=entree_utilisateur(home, away, odds_h,odds_d,odds_a, df, season_preced)
-            #log_prediction(features_input.to_json())
+            log_prediction(X_inputs.to_json())
             
 
            
@@ -797,8 +771,8 @@ def prediction():
             
             ## Bon modèle NEERDERLAND, PAYS BAS
             elif comp==88:
-                chemin_model1 = RACINE_PROJET / "modele" / "N1" / "rf_N1_stage1.joblib"
-                chemin_model2 = RACINE_PROJET / "modele" / "N1" / "rf_N1_stage2.joblib"
+                chemin_model1 = RACINE_PROJET / "modele" / "N1" / "xg_boost_stage1.joblib"
+                chemin_model2 = RACINE_PROJET / "modele" / "N1" / "rf_stage2.joblib"
                 chemin_but = RACINE_PROJET / "modele" / "N1" / "rf_nbre_but_marque_autre.joblib"
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
@@ -948,7 +922,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.65
+                thread=0.63
             
             # EGYPTE
             elif comp==233:
@@ -1007,7 +981,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.63
+                thread=0.6
             
              ## Bon modèle LIGA SECUNDA
             elif comp==141:
@@ -1017,46 +991,12 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.63
-            
-             ## Coupe d'Afrique des Nations, CAN
-            elif comp==6:
-                chemin_model1 = RACINE_PROJET / "modele" / "can" / "rf_stage1_can.joblib"
-                chemin_model2 = RACINE_PROJET / "modele" / "can" / "rf_stage2_can.joblib"
-                chemin_but = RACINE_PROJET / "modele" / "can" / "xgboost_nbre_but_marque_can.joblib"
-                model_but=load(chemin_but)
-                modele1=load(chemin_model1)
-                modele2=load(chemin_model2)
-                thread=0.65
+                thread=0.6
                 
             perf_home=get_last5_results_pattern(df,home , date_match)
             perf_away=get_last5_results_pattern(df,away, date_match)
             
-            x_home=home
-            x_away=away
-            x_date=date_match
-            
-            features_input = features_input.copy()
-            features_input["home"] = str(x_home)
-            features_input["away"] = str(x_away)
-            features_input["match_date"] = str(x_date)
-            log_prediction(features_input.to_json())
-            fid = _resolve_fixture_id_by_names(home, away, match_date, league_code=comp)
-            #features_input = attach_fixture_id_if_missing(features_input, league_code=comp)
-            #if fid is not None:
-            #    features_input["fixture_id"] = int(fid)
-            #fid = resolve_fixture_id_from_user_input(home, away, match_date, league_code=comp)
-
-            if fid is None:
-                print("[fixture_id] NOT FOUND:", {"home": home, "away": away, "date": match_date, "league": comp})
-            else:
-                features_input["fixture_id"] = int(fid)
-                
-            features_input["_use_realtime"] = True
-            log_prediction(features_input.to_json())
-                    
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
-            #pred["_use_realtime"] = True 
             pred_final = apply_unexpected_layer(
                 base_pred=pred,
                 season_current_df=df,                                       # saison en cours
@@ -1067,7 +1007,6 @@ def prediction():
                 league_code=comp,
                 X_ref_features=None     # optionnel (ref num. pour OOD)
                 )
-            pred_final = explanation_from_pred_final(pred_final, user_profile="standard")
           
             pred_but = model_but.predict(X_inputs)[0]
             mess_but="✅ Prédiction :", "Plus de buts en 2ᵉ mi-temps" if pred_but == 1 else "Plus de buts en 1ʳᵉ mi-temps"
@@ -1077,8 +1016,7 @@ def prediction():
             pred_final['5_dern_perf_away']=np.array(perf_away).item()
             pred_final['plus_but']=int(pred_but)
             pred_final['mess_but']=str(mess_but)
-            final_json = clean_extract_final_result(pred_final)
-            all_results.append(final_json)
+            all_results.append(pred_final)
             # Log l'entrée + les prédictionsÒ
             #log_prediction(all_results)
         
