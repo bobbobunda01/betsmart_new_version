@@ -13,3 +13,4 @@ xgboost
 datetime
 lru_cache
 requests
+openai
