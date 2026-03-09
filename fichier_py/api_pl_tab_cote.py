@@ -19,7 +19,11 @@ import pathlib
 import sys
 import logging
 from datetime import datetime
-from  fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer
+from openai import OpenAI
+
+from fichier_py.fonction import  prepare_input_features_enriched, predict_match_with_proba,log_prediction, get_valid_date, entree_utilisateur,get_last5_results_pattern,apply_unexpected_layer,_resolve_fixture_id_by_names,explanation_from_pred_final,clean_extract_final_result
+
+
 thread=0
 app = Flask(__name__)
 
@@ -740,7 +744,7 @@ def prediction():
             #log_dataframe_features_to_file(features_input,home, away, match_date)
             
             X_inputs=entree_utilisateur(home, away, odds_h,odds_d,odds_a, df, season_preced)
-            log_prediction(X_inputs.to_json())
+            #log_prediction(features_input.to_json())
             
 
            
@@ -1003,7 +1007,7 @@ def prediction():
                 model_but=load(chemin_but)
                 modele1=load(chemin_model1)
                 modele2=load(chemin_model2)
-                thread=0.6
+                thread=0.63
             
              ## Bon modèle LIGA SECUNDA
             elif comp==141:
@@ -1036,9 +1040,21 @@ def prediction():
             features_input["home"] = str(x_home)
             features_input["away"] = str(x_away)
             features_input["match_date"] = str(x_date)
-            
-           # features_input["_use_realtime"] = True
-                        
+            log_prediction(features_input.to_json())
+            fid = _resolve_fixture_id_by_names(home, away, match_date, league_code=comp)
+            #features_input = attach_fixture_id_if_missing(features_input, league_code=comp)
+            #if fid is not None:
+            #    features_input["fixture_id"] = int(fid)
+            #fid = resolve_fixture_id_from_user_input(home, away, match_date, league_code=comp)
+
+            if fid is None:
+                print("[fixture_id] NOT FOUND:", {"home": home, "away": away, "date": match_date, "league": comp})
+            else:
+                features_input["fixture_id"] = int(fid)
+                
+            features_input["_use_realtime"] = True
+            log_prediction(features_input.to_json())
+                    
             pred = predict_match_with_proba(features_input,model_stage1=modele1,model_stage2=modele2,threshold_draw=thread, league_code=comp)
             #pred["_use_realtime"] = True 
             pred_final = apply_unexpected_layer(
@@ -1051,7 +1067,7 @@ def prediction():
                 league_code=comp,
                 X_ref_features=None     # optionnel (ref num. pour OOD)
                 )
-           
+            pred_final = explanation_from_pred_final(pred_final, user_profile="standard")
           
             pred_but = model_but.predict(X_inputs)[0]
             mess_but="✅ Prédiction :", "Plus de buts en 2ᵉ mi-temps" if pred_but == 1 else "Plus de buts en 1ʳᵉ mi-temps"
@@ -1061,7 +1077,8 @@ def prediction():
             pred_final['5_dern_perf_away']=np.array(perf_away).item()
             pred_final['plus_but']=int(pred_but)
             pred_final['mess_but']=str(mess_but)
-            all_results.append(pred_final)
+            final_json = clean_extract_final_result(pred_final)
+            all_results.append(final_json)
             # Log l'entrée + les prédictionsÒ
             #log_prediction(all_results)
         

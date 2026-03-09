@@ -22,23 +22,122 @@ from dateutil import parser
 from functools import lru_cache
 import requests
 import re
-import unicodedata
 from typing import Any, Dict, Optional, Tuple, List
 import datetime as dt
+from datetime import timedelta
+from openai import OpenAI
 
 ##------------------------------- PREDICTION DES EQUIPES WIN LOSS DRAW ------------------------------------------------
 
 
 # log des prédictions utilisateurs
 
+LABEL_HOME = 0
+LABEL_DRAW = 1
+LABEL_AWAY = 2
 
 REALTIME_API_URL="https://v3.football.api-sports.io"
-REALTIME_API_KEY="1ccc14e8da5a40c0575ae0c272645ecf"
+
 DEBUG_REALTIME=1
+
+USE_LLM_EXPLANATION = True          
+
+OPENAI_EXPLAIN_ENABLED = True    # True/False
+OPENAI_EXPLAIN_MODEL = "gpt-4.1"
+OPENAI_EXPLAIN_TEMPERATURE = 0.5
+OPENAI_EXPLAIN_MAX_TOKENS = 460
+OPENAI_EXPLAIN_TIMEOUT = 20
+
+LLM_DEBUG = False          
+
+# Mapping officiel BetSmart (API-SPORTS)
+LEAGUES = {
+    "Premier League": 39,
+    "Ligue 1": 61,
+    "Bundesliga": 78,
+    "La Liga": 140,
+    "Serie A": 135,
+    "Neerdeland": 88,
+    "Suisse": 207,
+    "Portugais": 94,
+    "Turquie": 203,
+    "Belgique": 144,
+    "Japon": 98,
+    "Grece": 197,
+    "bresil": 71,
+    "ecosse": 179,
+    "ecosse_div_1": 180,
+    "coree_sud": 292,
+    "Argentine_league_1": 128,
+    "League_europa": 3,
+    "champions_league": 2,
+    "egypte": 233,
+    "mexique": 262,
+    "france_league_2": 62,
+    "bundesliga_2": 79,
+    "serie_B": 136,
+    "Championship": 40,
+    "secunda": 141,
+    "can": 6
+}
+
+REASON_TRANSLATION_FR = {
+    # Suspensions
+    "yellow cards": "Suspendu (cartons)",
+    "red card": "Suspendu (carton rouge)",
+
+    # Générique blessure
+    "injury": "Blessé",
+
+    # Détails blessures
+    "thigh injury": "Blessure à la cuisse",
+    "muscle injury": "Blessure musculaire",
+    "foot injury": "Blessure au pied",
+    "knee injury": "Blessure au genou",
+    "ankle injury": "Blessure à la cheville",
+    "hamstring injury": "Ischio-jambiers",
+    "back injury": "Dos",
+    "groin injury": "Adducteurs",
+    "calf injury": "Blessure au mollet",
+
+    # Autres
+    "illness": "Maladie",
+}
+
 try:
     import requests  # type: ignore
 except Exception:  # pragma: no cover
     requests = None  # type: ignore
+
+def _safe_prob(x: Any, default: float = 0.0) -> float:
+    """
+    Convertit x en probabilité float [0..1] si possible.
+    Supporte: 0.13, "13%", "13.0%", "0.13"
+    """
+    try:
+        if x is None:
+            return float(default)
+        if isinstance(x, (int, float)):
+            v = float(x)
+            # si quelqu'un passe 13 au lieu de 0.13 -> on interprète comme %
+            if v > 1.0 and v <= 100.0:
+                return max(0.0, min(1.0, v / 100.0))
+            return max(0.0, min(1.0, v))
+        if isinstance(x, str):
+            s = x.strip()
+            if not s:
+                return float(default)
+            if s.endswith("%"):
+                s2 = s[:-1].strip()
+                v = float(s2)
+                return max(0.0, min(1.0, v / 100.0))
+            v = float(s)
+            if v > 1.0 and v <= 100.0:
+                return max(0.0, min(1.0, v / 100.0))
+            return max(0.0, min(1.0, v))
+        return float(default)
+    except Exception:
+        return float(default)
 
 
 def _norm_team_name(name: Any) -> str:
@@ -72,25 +171,53 @@ def _parse_match_date(match_date: Any) -> Optional[dt.date]:
         return None
 
 
-def _safe_get_first(df_like: Any, col: str) -> Any:
-    """Return first value of df_like[col] if possible (supports dict-like and pandas DataFrame)."""
-    try:
-        # pandas DataFrame
-        if hasattr(df_like, "columns") and col in getattr(df_like, "columns"):
-            if len(df_like) == 0:
-                return None
-            return df_like.iloc[0][col]
-    except Exception:
-        pass
-    try:
-        # dict-like
-        v = df_like.get(col)
-        if isinstance(v, list) and v:
-            return v[0]
-        return v
-    except Exception:
+def _season_from_date(match_date: Any) -> Optional[int]:
+    """
+    API-FOOTBALL season is the start year of the season.
+    For European leagues: Jan–Jun belongs to previous start year (e.g., Jan 2026 -> season 2025).
+    """
+    # _parse_match_date must be defined in your codebase
+    d = _parse_match_date(match_date)  # noqa: F821
+    if d is None:
         return None
+    try:
+        month = int(getattr(d, "month", 0))
+    except Exception:
+        month = 0
+    return int(d.year - 1) if month <= 6 else int(d.year)
 
+def _safe_get_first(obj, key, default=None):
+    try:
+        # dict
+        if isinstance(obj, dict):
+            return obj.get(key, default)
+
+        # pandas DataFrame
+        if isinstance(obj, pd.DataFrame):
+            if key in obj.columns and len(obj) > 0:
+                v = obj[key].iloc[0]
+                return v if v is not None else default
+            return default
+
+        # pandas Series
+        if isinstance(obj, pd.Series):
+            v = obj.get(key, default)
+            # si v est une Series (cas rare), prends le 1er élément
+            if isinstance(v, pd.Series):
+                return v.iloc[0] if len(v) else default
+            return v
+
+        # fallback attribute access
+        if hasattr(obj, "get"):
+            v = obj.get(key, default)
+            if isinstance(v, pd.Series):
+                return v.iloc[0] if len(v) else default
+            return v
+
+    except Exception:
+        return default
+
+    return default
 
 def _resolve_fixture_id_from_df(
     season_df: Any,
@@ -167,7 +294,6 @@ def _resolve_fixture_id_from_df(
 
     return None
 
-
 def _resolve_fixture_id_by_names(
     home_name: Any,
     away_name: Any,
@@ -175,65 +301,87 @@ def _resolve_fixture_id_by_names(
     league_code: Optional[str] = None,
 ) -> Optional[int]:
     """
-    Online fallback fixture resolver (API).
-    It is ONLY used when you don't have season_current_df to resolve offline.
-
-    Configure with env vars:
-      - REALTIME_API_URL (base, e.g. https://v3.football.api-sports.io)
-      - REALTIME_API_KEY
-      - REALTIME_API_HOST (optional, for RapidAPI-style hosts)
+    Online fallback resolver.
+    Strategy:
+      - call /fixtures with date
+      - if league provided, also pass season (critical)
+      - try date delta (0, -1, +1)
+      - if league filter returns 0, retry without league/season
+      - match by normalized names
     """
-    
-    api_url = os.getenv("REALTIME_API_URL", REALTIME_API_URL).rstrip("/")
-    api_key = os.getenv("REALTIME_API_KEY",REALTIME_API_KEY)
+    api_url = os.getenv("REALTIME_API_URL", REALTIME_API_URL).rstrip("/")  # noqa: F821
+    api_key = os.getenv("REALTIME_API_KEY", REALTIME_API_KEY)  # noqa: F821
     if not api_url or not api_key or requests is None:
         return None
 
-    d = _parse_match_date(match_date)
+    d = _parse_match_date(match_date)  # noqa: F821
     if d is None:
         return None
 
-    # Endpoint strategy: /fixtures?date=YYYY-MM-DD
-    # Then filter by team names (best effort).
     url = f"{api_url}/fixtures"
-    headers = {
-        "x-apisports-key": api_key,
-    }
+    headers = {"x-apisports-key": api_key}
     host = os.getenv("REALTIME_API_HOST", "").strip()
     if host:
         headers["x-rapidapi-host"] = host
 
-    params = {"date": d.isoformat()}
-    if league_code:
-        # if league_code is numeric, pass as league; otherwise ignore
+    home_n = _norm_team_name(home_name)  # noqa: F821
+    away_n = _norm_team_name(away_name)  # noqa: F821
+
+    # league param (int or label)
+    league_param: Optional[int] = None
+    if league_code is not None:
         try:
-            int(league_code)
-            params["league"] = league_code
+            league_param = int(league_code)
         except Exception:
-            pass
+            try:
+                if isinstance(league_code, str) and league_code in LEAGUES:  # noqa: F821
+                    league_param = int(LEAGUES[league_code])  # noqa: F821
+            except Exception:
+                league_param = None
 
-    try:
-        r = requests.get(url, headers=headers, params=params, timeout=8)
-        r.raise_for_status()
-        data = r.json()
-    except Exception:
-        return None
+    season_param: Optional[int] = _season_from_date(match_date) if league_param is not None else None  # noqa: F821
 
-    # api-sports returns {"response":[{"fixture":{"id":...},"teams":{"home":{"name":...},"away":{"name":...}} ...}]}
-    home_n = _norm_team_name(home_name)
-    away_n = _norm_team_name(away_name)
+    for delta in (0, -1, 1):
+        date_str = (d + timedelta(days=delta)).strftime("%Y-%m-%d")
+        params = {"date": date_str}
 
-    try:
-        resp = data.get("response", [])
-        for item in resp:
-            th = _norm_team_name(item.get("teams", {}).get("home", {}).get("name"))
-            ta = _norm_team_name(item.get("teams", {}).get("away", {}).get("name"))
-            if th == home_n and ta == away_n:
-                fid = item.get("fixture", {}).get("id")
-                if fid is not None:
-                    return int(fid)
-    except Exception:
-        return None
+        if league_param is not None:
+            params["league"] = int(league_param)
+            if season_param is not None:
+                params["season"] = int(season_param)
+
+        # 1) attempt
+        try:
+            r = requests.get(url, headers=headers, params=params, timeout=8)
+            r.raise_for_status()
+            data = r.json()
+        except Exception:
+            continue
+
+        resp = (data or {}).get("response", []) or []
+
+        # 2) fallback if league filter too strict
+        if league_param is not None and len(resp) == 0:
+            try:
+                params2 = {"date": date_str}
+                r2 = requests.get(url, headers=headers, params=params2, timeout=8)
+                r2.raise_for_status()
+                data = r2.json()
+                resp = (data or {}).get("response", []) or []
+            except Exception:
+                resp = []
+
+        # 3) match
+        try:
+            for item in resp:
+                th = _norm_team_name(item.get("teams", {}).get("home", {}).get("name"))  # noqa: F821
+                ta = _norm_team_name(item.get("teams", {}).get("away", {}).get("name"))  # noqa: F821
+                if (th == home_n and ta == away_n) or (th == away_n and ta == home_n):
+                    fid = item.get("fixture", {}).get("id")
+                    if fid is not None:
+                        return int(fid)
+        except Exception:
+            continue
 
     return None
 
@@ -244,15 +392,86 @@ def _safe_resolve_fixture_id(
     match_date: Any,
     league_code: Optional[str] = None,
     season_df: Any = None,
+    features_df: Any = None,
 ) -> Optional[int]:
-    """Safe wrapper: try offline df, then online resolver."""
+    """
+    Safe wrapper:
+      0) if fixture_id already present in features_df -> use it directly (best)
+      1) offline resolution (season_df)
+      2) online resolver by names
+    """
+
+    def _scalar(v):
+        """Normalize pandas/array-likes to a single scalar (or None)."""
+        try:
+            if isinstance(v, pd.Series):
+                return v.iloc[0] if len(v) else None
+            if isinstance(v, (list, tuple, np.ndarray)):
+                return v[0] if len(v) else None
+        except Exception:
+            return None
+        return v
+
+    # 0) Direct fixture_id (FAST + RELIABLE) — avoid `or` on Series
+    try:
+        fid = None
+
+        if features_df is not None:
+
+            # dict
+            if isinstance(features_df, dict):
+                for k in ("fixture_id", "_fixture_id"):
+                    if k in features_df:
+                        candidate = _scalar(features_df.get(k))
+                        if candidate is not None and str(candidate).strip() != "":
+                            fid = candidate
+                            break
+
+            # DataFrame
+            elif isinstance(features_df, pd.DataFrame):
+                if len(features_df) > 0:
+                    for k in ("fixture_id", "_fixture_id"):
+                        if k in features_df.columns:
+                            candidate = _scalar(features_df[k].iloc[0])
+                            if candidate is not None and str(candidate).strip() != "":
+                                fid = candidate
+                                break
+
+            # Series (row)
+            elif isinstance(features_df, pd.Series):
+                for k in ("fixture_id", "_fixture_id"):
+                    if k in features_df.index:
+                        candidate = _scalar(features_df.get(k))
+                        if candidate is not None and str(candidate).strip() != "":
+                            fid = candidate
+                            break
+
+            # fallback: dict-like get, but NO boolean ops
+            elif hasattr(features_df, "get"):
+                for k in ("fixture_id", "_fixture_id"):
+                    candidate = _scalar(features_df.get(k, None))
+                    if candidate is not None and str(candidate).strip() != "":
+                        fid = candidate
+                        break
+
+        if fid is not None and str(fid).strip() != "":
+            return int(fid)
+    except Exception:
+        pass
+
     # 1) offline resolution (best)
-    fid = _resolve_fixture_id_from_df(season_df, home_name, away_name, match_date, league_code=league_code)
-    if fid is not None:
-        return fid
+    try:
+        fid2 = _resolve_fixture_id_from_df(season_df, home_name, away_name, match_date, league_code=league_code)
+        if fid2 is not None and str(fid2).strip() != "":
+            return int(fid2)
+    except Exception:
+        pass
 
     # 2) online fallback
-    return _resolve_fixture_id_by_names(home_name, away_name, match_date, league_code=league_code)
+    try:
+        return _resolve_fixture_id_by_names(home_name, away_name, match_date, league_code=league_code)
+    except Exception:
+        return None
 
 class RealtimeFetchError(Exception):
     """Internal exception used to carry http/debug info without breaking the pipeline."""
@@ -271,7 +490,7 @@ def _get_realtime_api_config() -> Tuple[str, str, str]:
     """
     # Optional module-level fallbacks if you defined them elsewhere:
     fallback_url = globals().get("REALTIME_API_URL",REALTIME_API_URL)
-    fallback_key = globals().get("REALTIME_API_KEY", REALTIME_API_KEY)
+    fallback_key = globals().get("REALTIME_API_KEY", "REALTIME_API_KEY")
     fallback_host = globals().get("REALTIME_API_HOST", "")
 
     api_url = os.getenv("REALTIME_API_URL", fallback_url).strip().rstrip("/")
@@ -279,72 +498,96 @@ def _get_realtime_api_config() -> Tuple[str, str, str]:
     api_host = os.getenv("REALTIME_API_HOST", fallback_host).strip()
     return api_url, api_key, api_host
 
-def _fetch_realtime_context(fixture_id: int) -> Optional[Dict[str, Any]]:
-    """
-    Fetch real-time context from API-Sports:
-      GET {REALTIME_API_URL}/fixtures?id=<fixture_id>
+def _api_get(endpoint: str, params: dict, timeout: int = 10) -> dict:
+    api_url = os.getenv("REALTIME_API_URL", REALTIME_API_URL).rstrip("/")
+    api_key = os.getenv("REALTIME_API_KEY")
 
-    Returns:
-      - dict (response[0]) if available
-      - raises RealtimeFetchError for any diagnosable error
-      - NEVER returns invalid shapes
-    """
-    api_url, api_key, api_host = _get_realtime_api_config()
+    if not api_url or not api_key:
+        raise RealtimeFetchError(code="key_missing", detail="Missing API URL/KEY", status=None)
 
-    if requests is None:
-        raise RealtimeFetchError("requests_not_available", "requests is None")
-
-    if not api_url:
-        raise RealtimeFetchError("realtime_api_url_missing", "REALTIME_API_URL not set")
-    if not api_key:
-        raise RealtimeFetchError("realtime_api_key_missing", "REALTIME_API_KEY not set")
-
-    url = f"{api_url}/fixtures"
-
-    # ✅ API-Sports direct header
+    url = f"{api_url}/{endpoint.lstrip('/')}"
     headers = {"x-apisports-key": api_key}
-
-    # ✅ RapidAPI mode (optional)
-    # If you use RapidAPI, REALTIME_API_HOST must be set, and the key may need to be x-rapidapi-key.
-    # We'll support both safely:
-    if api_host:
-        headers["x-rapidapi-host"] = api_host
-        # If you are *really* on RapidAPI, uncomment next line and/or set REALTIME_RAPIDAPI_MODE=1
-        rapid_mode = os.getenv("REALTIME_RAPIDAPI_MODE", "").strip() in ("1", "true", "True", "yes", "YES")
-        if rapid_mode:
-            headers["x-rapidapi-key"] = api_key
+    host = os.getenv("REALTIME_API_HOST", "").strip()
+    if host:
+        headers["x-rapidapi-host"] = host
 
     try:
-        r = requests.get(url, headers=headers, params={"id": int(fixture_id)}, timeout=10)
+        r = requests.get(url, headers=headers, params=params, timeout=timeout)
+        status = r.status_code
 
-        # Diagnose common HTTP issues explicitly
-        status = getattr(r, "status_code", None)
-
-        if status == 401:
-            raise RealtimeFetchError("http_401_unauthorized", "Invalid API key or wrong header", status=status)
-        if status == 403:
-            raise RealtimeFetchError("http_403_forbidden", "Forbidden (plan/host/key mismatch)", status=status)
+        if status in (401, 403):
+            raise RealtimeFetchError(code="unauthorized", detail="API key unauthorized", status=status)
         if status == 429:
-            raise RealtimeFetchError("http_429_rate_limited", "Rate limit reached", status=status)
+            raise RealtimeFetchError(code="rate_limited", detail="Rate limit", status=status)
 
         r.raise_for_status()
-
-        data = r.json() if r is not None else None
-        if not isinstance(data, dict):
-            raise RealtimeFetchError("invalid_json", "Response JSON is not a dict", status=status)
-
-        resp = data.get("response", [])
-        if not isinstance(resp, list):
-            raise RealtimeFetchError("invalid_response_shape", "data['response'] is not a list", status=status)
-
-        return resp[0] if len(resp) > 0 else None
+        js = r.json()
+        return js if isinstance(js, dict) else {"response": js}
 
     except RealtimeFetchError:
         raise
     except Exception as e:
-        # Any unexpected error becomes diagnosable
-        raise RealtimeFetchError("fetch_exception", f"{type(e).__name__}: {e}")
-    
+        raise RealtimeFetchError(code="http_error", detail=str(e), status=None)
+
+def _fetch_realtime_context(fixture_id: int) -> Optional[dict]:
+    """
+    Fetch full realtime context for a fixture_id.
+    Returns ctx dict or None if fixture not found / empty response.
+    """
+    fixture_id = int(fixture_id)
+    ctx = {"meta": {"missing": [], "fixture_id": fixture_id}}
+
+    # 1) fixture core (mandatory)
+    data_fx = _api_get("fixtures", {"id": fixture_id}, timeout=10)
+    if not isinstance(data_fx, dict):
+        return None
+
+    resp_fx = data_fx.get("response", []) or []
+    if len(resp_fx) == 0:
+        return None
+
+    fx = resp_fx[0]
+    if not isinstance(fx, dict):
+        ctx["meta"]["missing"].append(f"fixture_shape_invalid:{type(fx).__name__}")
+        return None
+
+    ctx["fixture"] = fx.get("fixture") if isinstance(fx.get("fixture"), dict) else {}
+    ctx["league"]  = fx.get("league")  if isinstance(fx.get("league"), dict)  else {}
+    ctx["teams"]   = fx.get("teams")   if isinstance(fx.get("teams"), dict)   else {}
+    ctx["goals"]   = fx.get("goals")   if isinstance(fx.get("goals"), dict)   else {}
+    ctx["score"]   = fx.get("score")   if isinstance(fx.get("score"), dict)   else {}
+
+    def _optional(name: str, endpoint: str, params: dict):
+        try:
+            d = _api_get(endpoint, params, timeout=10)
+            if isinstance(d, dict):
+                ctx[name] = d.get("response", []) or []
+            else:
+                ctx[name] = []
+                ctx["meta"]["missing"].append(f"{name}_shape_invalid:{type(d).__name__}")
+
+            if len(ctx[name]) == 0:
+                ctx["meta"]["missing"].append(f"{name}_empty")
+
+        except RealtimeFetchError as e:
+            ctx[name] = []
+            ctx["meta"]["missing"].append(f"{name}_err:{e.code}")
+        except Exception:
+            ctx[name] = []
+            ctx["meta"]["missing"].append(f"{name}_err:unknown")
+
+    # optional endpoints
+    _optional("events", "fixtures/events", {"fixture": fixture_id})
+    _optional("lineups", "fixtures/lineups", {"fixture": fixture_id})
+    _optional("statistics", "fixtures/statistics", {"fixture": fixture_id})
+    _optional("players", "fixtures/players", {"fixture": fixture_id})
+    _optional("injuries", "injuries", {"fixture": fixture_id})
+
+    #ctx["meta"]["fetched_at"] = datetime.utcnow().isoformat() + "Z"
+    ctx["meta"]["fetched_at"] = datetime.datetime.utcnow().isoformat() + "Z"
+   # ctx["meta"]["fetched_at"] = datetime.utcnow().isoformat() + "Z"
+    return ctx
+
 def _realtime_risk_score(ctx: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     """
     Convert real-time context to a risk score.
@@ -383,6 +626,505 @@ def _realtime_risk_score(ctx: Optional[Dict[str, Any]]) -> Dict[str, Any]:
 
     return out
 
+def resolve_fixture_id_from_user_input(
+    home: Any,
+    away: Any,
+    match_date: Any,
+    league_code: Optional[str] = None,
+    season_df: Any = None,
+) -> Optional[int]:
+    """
+    Résout un fixture_id à partir des entrées utilisateur (home, away, date, league).
+    - essaie offline d'abord si season_df fourni
+    - sinon fallback online via API (/fixtures?date=YYYY-MM-DD + league+season si possible)
+    Retourne uniquement fixture_id (int) ou None.
+    """
+    # offline preferred
+    try:
+        if season_df is not None:
+            fid = _resolve_fixture_id_from_df(  # noqa: F821
+                season_df, home, away, match_date, league_code=league_code
+            )
+            if fid is not None and str(fid).strip() != "":
+                return int(fid)
+    except Exception:
+        pass
+
+    # online fallback
+    try:
+        fid = _resolve_fixture_id_by_names(  # noqa: F821
+            home, away, match_date, league_code=league_code
+        )
+        if fid is not None and str(fid).strip() != "":
+            return int(fid)
+    except Exception:
+        pass
+
+    return None
+
+
+def attach_fixture_id_if_missing(features_input: Any, league_code: Optional[str] = None, season_df: Any = None):
+    """
+    Backward-compatible wrapper:
+    resolves fixture_id from home/away/match_date (+league) then injects it.
+    """
+    existing = _safe_get_first(features_input, "fixture_id")  # noqa: F821
+    if isinstance(existing, pd.Series):
+        existing = existing.iloc[0] if len(existing) else None
+    elif isinstance(existing, (list, tuple, np.ndarray)):
+        existing = existing[0] if len(existing) else None
+
+    if existing is not None and str(existing).strip() != "":
+        return features_input
+
+    home = _safe_get_first(features_input, "home")  # noqa: F821
+    away = _safe_get_first(features_input, "away")  # noqa: F821
+    match_date = _safe_get_first(features_input, "match_date")  # noqa: F821
+
+    if home is None or away is None or match_date is None:
+        return features_input
+
+    fid = resolve_fixture_id_from_user_input(  # noqa: F821
+        home, away, match_date, league_code=league_code, season_df=season_df
+    )
+    if fid is None:
+        return features_input  # ✅ never int(None)
+
+    try:
+        if isinstance(features_input, dict):
+            features_input["fixture_id"] = int(fid)
+        elif isinstance(features_input, pd.Series):
+            features_input.loc["fixture_id"] = int(fid)
+        elif isinstance(features_input, pd.DataFrame) and len(features_input) > 0:
+            features_input.at[features_input.index[0], "fixture_id"] = int(fid)
+    except Exception:
+        pass
+
+    return features_input
+
+def translate_reason_fr(reason: str) -> str:
+    """
+    Traduction métier FR des raisons d'absence (API-Sports → BetSmart).
+    """
+    if not reason:
+        return "Indisponible"
+
+    r = reason.strip().lower()
+
+    # ignorer libellés techniques inutiles
+    if r in ("missing fixture",):
+        return ""
+
+    return REASON_TRANSLATION_FR.get(r, reason)
+
+
+def format_absences_summary(summary: Dict[str, Any], max_players_per_team: int = 3) -> str:
+    """
+    Format UI-friendly absences summary:
+      - counts home/away
+      - lists up to N players per team with reason
+    Works with summary produced by _realtime_summary_enriched (Option B).
+    """
+
+    def _as_list(x):
+        return x if isinstance(x, list) else []
+
+    def _clean(s: Any) -> str:
+        if s is None:
+            return ""
+        return str(s).strip()
+
+    def _fmt_player(it: Dict[str, Any]) -> str:
+        name = _clean(it.get("player"))
+        reason_raw = _clean(it.get("reason"))
+        status_type = _clean(it.get("status_type"))
+
+        reason_fr = translate_reason_fr(reason_raw)
+
+        if reason_fr:
+            return f"{name} ({reason_fr})"
+
+        # fallback (rare)
+        if status_type and status_type.lower() != "missing fixture":
+            return f"{name} ({status_type})"
+
+        return f"{name}"
+
+    home = _clean(summary.get("home")) or "Domicile"
+    away = _clean(summary.get("away")) or "Extérieur"
+
+    injuries_home = int(summary.get("injuries_home") or 0)
+    injuries_away = int(summary.get("injuries_away") or 0)
+    injuries_total = int(summary.get("injuries_total") or (injuries_home + injuries_away) or 0)
+
+    home_list = _as_list(summary.get("top_injuries_home"))[:max_players_per_team]
+    away_list = _as_list(summary.get("top_injuries_away"))[:max_players_per_team]
+
+    home_players = ", ".join([_fmt_player(it) for it in home_list if isinstance(it, dict) and _clean(it.get("player"))])
+    away_players = ", ".join([_fmt_player(it) for it in away_list if isinstance(it, dict) and _clean(it.get("player"))])
+
+    # Status hints
+    status_short = _clean(summary.get("status_short"))
+    lineups_available = bool(summary.get("lineups_available"))
+    lineups_expected_soon = bool(summary.get("lineups_expected_soon"))
+
+    # If nothing at all
+    if injuries_total <= 0 and not home_players and not away_players:
+        if status_short == "NS" and not lineups_available:
+            return "Absences : non disponibles pour l’instant (compositions non publiées)."
+        return "Absences : aucune information notable."
+
+    # Build lines
+    line1 = f"Absences (pré-match) — {home}: {injuries_home} | {away}: {injuries_away}"
+
+    # Build detail lines only if we have players
+    lines = [line1]
+
+    if home_players:
+        lines.append(f"• {home}: {home_players}")
+    if away_players:
+        lines.append(f"• {away}: {away_players}")
+
+    # Add small caution hint
+    if status_short == "NS" and not lineups_available:
+        if lineups_expected_soon:
+            lines.append("ℹ️ Compositions attendues bientôt : prudence avant validation finale.")
+        else:
+            lines.append("ℹ️ Compositions non disponibles : prudence (infos peuvent évoluer).")
+
+    return "\n".join(lines)
+
+###--------- FONCTION SUR LA POSITION AU CLASSEMENT 
+
+def _fetch_league_standings(league_id: int, season: int) -> Optional[dict]:
+    """
+    API-Sports: GET /standings?league=..&season=..
+    Returns raw response dict or None.
+    """
+    try:
+        data = _api_get("standings", {"league": int(league_id), "season": int(season)}, timeout=10)
+        resp = (data or {}).get("response", []) or []
+        if not resp:
+            return None
+        return resp[0]  # usually one object with "league" + "standings"
+    except Exception:
+        return None
+
+
+def _extract_team_rank_from_standings(standings_payload: dict, team_id: int) -> Optional[dict]:
+    """
+    Extract rank/points/played for a team_id from standings payload.
+    API often: payload["league"]["standings"] is a list of groups (list of lists).
+    """
+    try:
+        league_obj = standings_payload.get("league") or {}
+        groups = league_obj.get("standings") or []
+
+        # groups can be: [[{...},{...}...]] or [{...},{...}]
+        if isinstance(groups, list) and len(groups) > 0 and isinstance(groups[0], list):
+            rows = [r for g in groups for r in (g or [])]
+        else:
+            rows = groups if isinstance(groups, list) else []
+
+        for r in rows:
+            if not isinstance(r, dict):
+                continue
+            t = (r.get("team") or {})
+            if int(t.get("id") or -1) == int(team_id):
+                all_ = r.get("all") or {}
+                return {
+                    "team_id": int(team_id),
+                    "team": t.get("name"),
+                    "rank": r.get("rank"),
+                    "points": r.get("points"),
+                    "played": all_.get("played"),
+                    "win": all_.get("win"),
+                    "draw": all_.get("draw"),
+                    "lose": all_.get("lose"),
+                    "goals_for": (all_.get("goals") or {}).get("for"),
+                    "goals_against": (all_.get("goals") or {}).get("against"),
+                    "form": r.get("form"),  # sometimes present like "WWDLW"
+                }
+        return None
+    except Exception:
+        return None
+
+
+def _build_ranking_block_from_ctx(ctx: dict) -> dict:
+    """
+    Build ranking block (home/away) from realtime ctx.
+    Safe: returns empty dict if unavailable.
+    """
+    try:
+        league = ctx.get("league") or {}
+        teams = ctx.get("teams") or {}
+
+        league_id = league.get("id")
+        season = league.get("season")
+
+        home = (teams.get("home") or {})
+        away = (teams.get("away") or {})
+
+        home_id = home.get("id")
+        away_id = away.get("id")
+
+        if not league_id or season is None or not home_id or not away_id:
+            return {}
+
+        payload = _fetch_league_standings(int(league_id), int(season))
+        if payload is None:
+            return {
+                "league_id": int(league_id),
+                "season": int(season),
+                "available": False,
+                "missing": ["standings_empty"],
+            }
+
+        home_rank = _extract_team_rank_from_standings(payload, int(home_id))
+        away_rank = _extract_team_rank_from_standings(payload, int(away_id))
+
+        return {
+            "league_id": int(league_id),
+            "season": int(season),
+            "available": True,
+            "home": home_rank or {"team_id": int(home_id), "team": home.get("name"), "missing": ["team_not_in_standings"]},
+            "away": away_rank or {"team_id": int(away_id), "team": away.get("name"), "missing": ["team_not_in_standings"]},
+        }
+    except Exception:
+        return {}
+
+def realtime_summary_enriched(ctx: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Résumé enrichi (pré-match / live / post-match) basé sur ctx API-Sports.
+    Spécifique à ta structure injuries: item = {player, team, fixture, league}.
+    Ne plante jamais.
+    + Ajout: position au classement (ranking) home/away, sans casser les champs existants.
+    """
+
+    def _d(x): 
+        return x if isinstance(x, dict) else {}
+
+    def _l(x): 
+        return x if isinstance(x, list) else []
+
+    def _norm(s: Any) -> str:
+        if s is None:
+            return ""
+        return str(s).strip().lower()
+
+    def _parse_iso_dt(s: Any) -> Optional[datetime]:
+        if not isinstance(s, str) or not s.strip():
+            return None
+        try:
+            dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except Exception:
+            return None
+
+    # -----------------------------
+    # Base ctx
+    # -----------------------------
+    fixture = _d(ctx.get("fixture"))
+    status = _d(fixture.get("status"))
+    st_short = status.get("short")
+    st_long = status.get("long")
+    elapsed = status.get("elapsed")
+
+    teams = _d(ctx.get("teams"))
+    home_obj = _d(teams.get("home"))
+    away_obj = _d(teams.get("away"))
+    home_name = home_obj.get("name")
+    away_name = away_obj.get("name")
+    home_id = home_obj.get("id")
+    away_id = away_obj.get("id")
+
+    league = _d(ctx.get("league"))
+    league_id = league.get("id")
+    season = league.get("season")
+
+    injuries_raw = _l(ctx.get("injuries"))
+    injuries: List[Dict[str, Any]] = [it for it in injuries_raw if isinstance(it, dict)]
+
+    # minutes to kickoff
+    minutes_to_kickoff = None
+    try:
+        dt = _parse_iso_dt(fixture.get("date"))
+        if dt is not None:
+            now = datetime.now(timezone.utc)
+            minutes_to_kickoff = int((dt - now).total_seconds() // 60)
+    except Exception:
+        pass
+
+    # available blocks
+    lineups = _l(ctx.get("lineups"))
+    events = _l(ctx.get("events"))
+    players = _l(ctx.get("players"))
+    stats = _l(ctx.get("statistics"))
+
+    # meta missing
+    meta = _d(ctx.get("meta"))
+    missing_meta = meta.get("missing", []) if isinstance(meta.get("missing"), list) else []
+
+    # -----------------------------
+    # Injuries split home/away (counts)
+    # -----------------------------
+    injuries_home = 0
+    injuries_away = 0
+    hn = _norm(home_name)
+    an = _norm(away_name)
+
+    for it in injuries:
+        team_name = _d(it.get("team")).get("name")
+        tn = _norm(team_name)
+        if tn and hn and tn == hn:
+            injuries_home += 1
+        elif tn and an and tn == an:
+            injuries_away += 1
+
+    # build top injuries (up to 3) - keeps your existing behavior
+    top_injuries = []
+    for it in injuries[:3]:
+        p = _d(it.get("player"))
+        t = _d(it.get("team"))
+        top_injuries.append({
+            "team": t.get("name"),
+            "player": p.get("name"),
+            "status_type": p.get("type"),   # ex: Missing Fixture
+            "reason": p.get("reason"),      # ex: Injury
+        })
+
+    # lineups expected soon if match is close and still empty
+    lineups_expected_soon = False
+    try:
+        if st_short == "NS" and minutes_to_kickoff is not None and minutes_to_kickoff <= 120 and len(lineups) == 0:
+            lineups_expected_soon = True
+    except Exception:
+        pass
+
+    # started/finished flags
+    finished_set = {"FT", "AET", "PEN", "CANC", "PST", "ABD", "SUSP", "INT"}
+    is_finished = bool(st_short in finished_set)
+    is_started = bool(st_short not in (None, "NS") and not is_finished)
+
+    # -----------------------------
+    # ✅ Ranking block (standings)
+    # -----------------------------
+    def _fetch_standings_payload(lid: int, seas: int) -> Optional[dict]:
+        """
+        Calls API-Sports standings endpoint via your existing _api_get.
+        Returns resp[0] or None.
+        """
+        try:
+            # _api_get must exist in your module
+            if "_api_get" not in globals():
+                return None
+            data = _api_get("standings", {"league": int(lid), "season": int(seas)}, timeout=10)
+            resp = (data or {}).get("response", []) or []
+            if not resp:
+                return None
+            return resp[0]
+        except Exception:
+            return None
+
+    def _extract_team_rank(payload: dict, team_id_: int) -> Optional[dict]:
+        """
+        Extract minimal rank info for one team from standings payload.
+        Safe across shapes: standings = [[...]] or [...]
+        """
+        try:
+            league_obj = payload.get("league") or {}
+            standings = league_obj.get("standings") or []
+
+            # flatten if grouped
+            rows: List[dict] = []
+            if isinstance(standings, list) and standings and isinstance(standings[0], list):
+                for g in standings:
+                    if isinstance(g, list):
+                        rows.extend([r for r in g if isinstance(r, dict)])
+            elif isinstance(standings, list):
+                rows = [r for r in standings if isinstance(r, dict)]
+
+            for r in rows:
+                t = r.get("team") or {}
+                if int(t.get("id") or -1) == int(team_id_):
+                    all_ = r.get("all") or {}
+                    goals_ = all_.get("goals") or {}
+                    return {
+                        "team_id": int(team_id_),
+                        "team": t.get("name"),
+                        "rank": r.get("rank"),
+                        "points": r.get("points"),
+                        "played": all_.get("played"),
+                        "win": all_.get("win"),
+                        "draw": all_.get("draw"),
+                        "lose": all_.get("lose"),
+                        "goals_for": goals_.get("for"),
+                        "goals_against": goals_.get("against"),
+                        "form": r.get("form"),
+                    }
+            return None
+        except Exception:
+            return None
+
+    ranking: Dict[str, Any] = {
+        "available": False,
+        "league_id": league_id,
+        "season": season,
+        "home": {"team_id": home_id, "team": home_name},
+        "away": {"team_id": away_id, "team": away_name},
+        "missing": []
+    }
+
+    try:
+        # only attempt if we have necessary ids
+        if league_id and season is not None and home_id and away_id:
+            payload = _fetch_standings_payload(int(league_id), int(season))
+            if payload is None:
+                ranking["missing"].append("standings_empty_or_unavailable")
+            else:
+                home_rank = _extract_team_rank(payload, int(home_id))
+                away_rank = _extract_team_rank(payload, int(away_id))
+                ranking["available"] = True
+                ranking["home"] = home_rank or {"team_id": int(home_id), "team": home_name, "missing": ["team_not_in_standings"]}
+                ranking["away"] = away_rank or {"team_id": int(away_id), "team": away_name, "missing": ["team_not_in_standings"]}
+        else:
+            ranking["missing"].append("ranking_ids_missing")
+    except Exception:
+        ranking["available"] = False
+        ranking["missing"].append("ranking_error")
+
+    # -----------------------------
+    # Return (unchanged fields + ranking)
+    # -----------------------------
+    return {
+        "status_short": st_short,
+        "status_long": st_long,
+        "elapsed": elapsed,
+        "home": home_name,
+        "away": away_name,
+
+        "is_started": is_started,
+        "is_finished": is_finished,
+
+        "minutes_to_kickoff": minutes_to_kickoff,
+        "lineups_available": len(lineups) > 0,
+        "events_available": len(events) > 0,
+        "players_available": len(players) > 0,
+        "statistics_available": len(stats) > 0,
+
+        "injuries_total": len(injuries),
+        "injuries_home": injuries_home,
+        "injuries_away": injuries_away,
+        "top_injuries": top_injuries,
+
+        "lineups_expected_soon": bool(lineups_expected_soon),
+        "missing_meta": missing_meta,
+
+        # ✅ new (safe)
+        "ranking": ranking,
+    }
 def _build_realtime_block(
     features_df: Any,
     league_code: Optional[str] = None,
@@ -392,11 +1134,189 @@ def _build_realtime_block(
     season_df: Any = None,
 ) -> Tuple[Dict[str, Any], str]:
     """
-    Single, unambiguous builder used by BOTH predict_match_with_proba() and apply_unexpected_layer().
+    Realtime enrichment block (Option B):
+    - summary.top_injuries_home (max 3)
+    - summary.top_injuries_away (max 3)
+
     Does NOT change prediction. Only enriches realtime_risk + notes.
     """
 
-    # read from df if not provided
+    # -----------------------------
+    # helpers (safe & local)
+    # -----------------------------
+    def _as_scalar(v):
+        try:
+            if isinstance(v, pd.Series):
+                return v.iloc[0] if len(v) else None
+            if isinstance(v, (list, tuple, np.ndarray)):
+                return v[0] if len(v) else None
+        except Exception:
+            return None
+        return v
+
+    def _as_dict(x):
+        return x if isinstance(x, dict) else {}
+
+    def _as_list(x):
+        return x if isinstance(x, list) else []
+
+    def _safe_len(x):
+        try:
+            return len(x) if x is not None else 0
+        except Exception:
+            return 0
+
+    def _parse_iso_dt(s: Any) -> Optional[datetime]:
+        if not isinstance(s, str) or not s.strip():
+            return None
+        try:
+            dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except Exception:
+            return None
+
+    def _minutes_to_kickoff(ctx: Dict[str, Any]) -> Optional[int]:
+        fixture = _as_dict(ctx.get("fixture"))
+        dt = _parse_iso_dt(fixture.get("date"))
+        if dt is None:
+            return None
+        now = datetime.now(timezone.utc)
+        return int((dt - now).total_seconds() // 60)
+
+    def _norm(s: Any) -> str:
+        if s is None:
+            return ""
+        return str(s).strip().lower()
+
+    def _inj_to_rec(it: Dict[str, Any]) -> Dict[str, Any]:
+        p = _as_dict(it.get("player"))
+        t = _as_dict(it.get("team"))
+        rec = {
+            "team": t.get("name"),
+            "player": p.get("name"),
+            "status_type": p.get("type"),
+            "reason": p.get("reason"),
+            # optionnel (si tu veux UI + riche):
+            # "player_id": p.get("id"),
+            # "photo": p.get("photo"),
+            # "team_id": t.get("id"),
+            # "logo": t.get("logo"),
+        }
+        return {k: v for k, v in rec.items() if v is not None and str(v).strip() != ""}
+
+    # --- summary (Option B) ---
+    def _realtime_summary_enriched(ctx: Dict[str, Any]) -> Dict[str, Any]:
+        fixture = _as_dict(ctx.get("fixture"))
+        status = _as_dict(fixture.get("status"))
+        st_short = status.get("short")
+        st_long = status.get("long")
+        elapsed = status.get("elapsed")
+
+        teams = _as_dict(ctx.get("teams"))
+        home_nm = _as_dict(teams.get("home")).get("name")
+        away_nm = _as_dict(teams.get("away")).get("name")
+
+        injuries_raw = _as_list(ctx.get("injuries"))
+        injuries = [it for it in injuries_raw if isinstance(it, dict)]
+
+        lineups = _as_list(ctx.get("lineups"))
+        events = _as_list(ctx.get("events"))
+        players = _as_list(ctx.get("players"))
+        stats = _as_list(ctx.get("statistics"))
+
+        meta = _as_dict(ctx.get("meta"))
+        missing_meta = meta.get("missing", []) if isinstance(meta.get("missing"), list) else []
+
+        # Split injuries home/away
+        hn = _norm(home_nm)
+        an = _norm(away_nm)
+
+        injuries_home_list: List[Dict[str, Any]] = []
+        injuries_away_list: List[Dict[str, Any]] = []
+
+        for it in injuries:
+            team_name = _norm(_as_dict(it.get("team")).get("name"))
+            if hn and team_name == hn:
+                injuries_home_list.append(it)
+            elif an and team_name == an:
+                injuries_away_list.append(it)
+
+        injuries_home = len(injuries_home_list)
+        injuries_away = len(injuries_away_list)
+
+        # Top 3 each side
+        top_injuries_home = [_inj_to_rec(it) for it in injuries_home_list[:3]]
+        top_injuries_away = [_inj_to_rec(it) for it in injuries_away_list[:3]]
+
+        # (Optionnel) Top global (compat)
+        top_injuries_global = [_inj_to_rec(it) for it in injuries[:3]]
+
+        minutes_to = _minutes_to_kickoff(ctx)
+
+        lineups_expected_soon = False
+        try:
+            if st_short == "NS" and minutes_to is not None and minutes_to <= 120 and len(lineups) == 0:
+                lineups_expected_soon = True
+        except Exception:
+            lineups_expected_soon = False
+
+        finished_set = {"FT", "AET", "PEN", "CANC", "PST", "ABD", "SUSP", "INT"}
+        is_finished = bool(st_short in finished_set)
+        is_started = bool(st_short not in (None, "NS") and (not is_finished))
+
+        return {
+            "status_short": st_short,
+            "status_long": st_long,
+            "elapsed": elapsed,
+            "home": home_nm,
+            "away": away_nm,
+            "is_started": is_started,
+            "is_finished": is_finished,
+            "minutes_to_kickoff": minutes_to,
+            "lineups_available": len(lineups) > 0,
+            "events_available": len(events) > 0,
+            "players_available": len(players) > 0,
+            "statistics_available": len(stats) > 0,
+            "injuries_total": len(injuries),
+            "injuries_home": injuries_home,
+            "injuries_away": injuries_away,
+
+            # ✅ Option B:
+            "top_injuries_home": top_injuries_home,
+            "top_injuries_away": top_injuries_away,
+
+            # ✅ (facultatif) compat:
+            "top_injuries": top_injuries_global,
+
+            "lineups_expected_soon": bool(lineups_expected_soon),
+            "missing_meta": missing_meta,
+        }
+
+    def _risk_from_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
+        st = summary.get("status_short")
+        injuries_total = int(summary.get("injuries_total") or 0)
+        lineups_ok = bool(summary.get("lineups_available"))
+
+        finished_set = {"FT", "AET", "PEN", "CANC", "PST", "ABD", "SUSP", "INT"}
+        if st in finished_set:
+            return {"risk_level": "HIGH", "risk_score": 0.9, "reasons": [f"fixture_status:{st}"]}
+
+        # Pre-match: injuries OR no lineups -> medium
+        if st == "NS":
+            if injuries_total > 0 or (not lineups_ok):
+                score = 0.4
+                if injuries_total >= 8:
+                    score = 0.55
+                return {"risk_level": "MEDIUM", "risk_score": score, "reasons": ["possible_injuries_or_lineup_changes"]}
+            return {"risk_level": "LOW", "risk_score": 0.1, "reasons": ["pre_match_no_major_signals"]}
+
+        return {"risk_level": "MEDIUM", "risk_score": 0.5, "reasons": [f"fixture_status:{st}"]}
+
+    # -----------------------------
+    # read inputs (df or args)
+    # -----------------------------
     if home_name is None:
         home_name = _safe_get_first(features_df, "home")
     if away_name is None:
@@ -404,7 +1324,7 @@ def _build_realtime_block(
     if match_date is None:
         match_date = _safe_get_first(features_df, "match_date")
 
-    use_realtime_val = _safe_get_first(features_df, "_use_realtime")
+    use_realtime_val = _as_scalar(_safe_get_first(features_df, "_use_realtime"))
     use_realtime = bool(use_realtime_val) if use_realtime_val is not None else False
 
     missing_fields = []
@@ -423,6 +1343,7 @@ def _build_realtime_block(
             "reasons": [],
             "risk_level": "UNKNOWN",
             "risk_score": 0.0,
+            "summary": {},
         }
         return block, "realtime: not enabled"
 
@@ -434,15 +1355,19 @@ def _build_realtime_block(
             "reasons": [],
             "risk_level": "UNKNOWN",
             "risk_score": 0.0,
+            "summary": {},
         }
         return block, f"realtime: skipped_missing_fields={missing_fields}"
 
-    # 1) Resolve fixture_id (offline preferred if season_df is provided)
+    # -----------------------------
+    # resolve fixture_id
+    # -----------------------------
     try:
         fixture_id = _safe_resolve_fixture_id(
             home_name, away_name, match_date,
             league_code=league_code,
-            season_df=season_df
+            season_df=season_df,
+            features_df=features_df
         )
     except Exception as e:
         block = {
@@ -452,10 +1377,11 @@ def _build_realtime_block(
             "reasons": [],
             "risk_level": "UNKNOWN",
             "risk_score": 0.0,
+            "summary": {},
         }
         return block, f"realtime: resolve error={type(e).__name__}"
 
-    if not fixture_id:
+    if fixture_id is None or str(fixture_id).strip() == "":
         block = {
             "available": False,
             "fixture_id": None,
@@ -463,88 +1389,115 @@ def _build_realtime_block(
             "reasons": [],
             "risk_level": "UNKNOWN",
             "risk_score": 0.0,
+            "summary": {},
         }
         return block, "realtime: fixture not found"
 
-    # 2) Fetch ctx
     try:
-        ctx = _fetch_realtime_context(int(fixture_id))
-        
-        debug_rt = os.getenv("DEBUG_REALTIME", "0") == "1"
+        fixture_id_int = int(fixture_id)
+    except Exception:
+        block = {
+            "available": False,
+            "fixture_id": None,
+            "missing": ["fixture_id_invalid"],
+            "reasons": ["fixture_id_invalid"],
+            "risk_level": "UNKNOWN",
+            "risk_score": 0.0,
+            "summary": {},
+        }
+        return block, f"realtime: fixture id invalid={fixture_id}"
 
-        ctx_debug = {}
-        if debug_rt and ctx is not None:
-            fixture = ctx.get("fixture") or {}
-            status = fixture.get("status") or {}
-            ctx_debug = {
-                "ctx_keys": sorted(list(ctx.keys())),
-                "fixture_keys": sorted(list(fixture.keys())) if isinstance(fixture, dict) else [],
-                "status_obj": status,
-                "status_short": status.get("short") if isinstance(status, dict) else None,
-                "goals": ctx.get("goals"),
-                "score": ctx.get("score"),
-                "has_lineups": bool(ctx.get("lineups")),
-                "has_events": bool(ctx.get("events")),
-                "has_players": bool(ctx.get("players")),
+    # -----------------------------
+    # fetch ctx & compute
+    # -----------------------------
+    debug_rt = os.getenv("DEBUG_REALTIME", "0") == "1"
+
+    try:
+        ctx = _fetch_realtime_context(fixture_id_int)
+
+        if ctx is not None and not isinstance(ctx, dict):
+            block = {
+                "available": False,
+                "fixture_id": fixture_id_int,
+                "missing": [f"realtime_ctx_invalid:{type(ctx).__name__}"],
+                "reasons": [f"realtime_ctx_invalid:{type(ctx).__name__}"],
+                "risk_level": "UNKNOWN",
+                "risk_score": 0.0,
+                "summary": {},
             }
+            return block, f"realtime: ok fixture_id={fixture_id_int} but ctx invalid type={type(ctx).__name__}"
 
-        # If API responded but empty response => ctx truly not available yet (normal sometimes)
         if ctx is None:
             block = {
-                
                 "available": False,
-                "fixture_id": int(fixture_id),
+                "fixture_id": fixture_id_int,
                 "missing": ["realtime_ctx_empty"],
                 "reasons": ["realtime_ctx_empty"],
                 "risk_level": "UNKNOWN",
                 "risk_score": 0.0,
+                "summary": {},
             }
-            if debug_rt:
-                    block["debug"] = ctx_debug
-            return block, f"realtime: ok fixture_id={int(fixture_id)} but ctx empty"
+            return block, f"realtime: ok fixture_id={fixture_id_int} but ctx empty"
 
-        risk = _realtime_risk_score(ctx) or {}
+        #summary = _realtime_summary_enriched(ctx)
+        summary = realtime_summary_enriched(ctx)
+        risk_pm = _risk_from_summary(summary)
+        summary["absences_text"] = format_absences_summary(summary)
+
+        # optional legacy scorer (guarded)
+        risk_raw = {}
+        try:
+            rr = _realtime_risk_score(ctx)  # if exists
+            if isinstance(rr, dict):
+                risk_raw = rr
+        except Exception:
+            risk_raw = {}
+
+        st_short = summary.get("status_short")
+        chosen = risk_pm if st_short == "NS" else (risk_raw or risk_pm)
+
         block = {
             "available": True,
-            "fixture_id": int(fixture_id),
+            "fixture_id": fixture_id_int,
             "missing": [],
-            "reasons": risk.get("reasons", []),
-            "risk_level": risk.get("risk_level", "UNKNOWN"),
-            "risk_score": float(risk.get("risk_score", 0.0) or 0.0),
+            "reasons": chosen.get("reasons", []),
+            "risk_level": chosen.get("risk_level", "UNKNOWN"),
+            "risk_score": float(chosen.get("risk_score", 0.0) or 0.0),
+            "summary": summary,
         }
-        return block, f"realtime: ok fixture_id={int(fixture_id)}"
 
-    except RealtimeFetchError as e:
-        # ✅ Here you finally see the real cause (401/403/429/url_missing/key_missing/etc.)
-        code = e.code
-        detail = e.detail
-        status = e.status
+        if debug_rt:
+            try:
+                fixture = _as_dict(ctx.get("fixture"))
+                status = _as_dict(fixture.get("status"))
+                block["debug"] = {
+                    "ctx_keys": sorted(list(ctx.keys())),
+                    "fixture_keys": sorted(list(fixture.keys())) if isinstance(fixture, dict) else [],
+                    "status_short": status.get("short"),
+                    "injuries_count": _safe_len(ctx.get("injuries")),
+                    "injuries_home": summary.get("injuries_home"),
+                    "injuries_away": summary.get("injuries_away"),
+                    "missing_meta": summary.get("missing_meta"),
+                    "risk_pm": risk_pm,
+                    "risk_raw": risk_raw,
+                    "risk_chosen": chosen,
+                }
+            except Exception:
+                block["debug"] = {"debug_error": "failed_to_build_debug"}
 
-        miss = [code] if status is None else [f"{code}:{status}"]
-
-        block = {
-            "available": False,
-            "fixture_id": int(fixture_id),
-            "missing": miss,
-            "reasons": miss,
-            "risk_level": "UNKNOWN",
-            "risk_score": 0.0,
-        }
-        # Keep note concise but informative
-        if detail:
-            return block, f"realtime: ok fixture_id={int(fixture_id)} but fetch failed ({code})"
-        return block, f"realtime: ok fixture_id={int(fixture_id)} but fetch failed"
+        return block, f"realtime: ok fixture_id={fixture_id_int}"
 
     except Exception as e:
         block = {
             "available": False,
-            "fixture_id": int(fixture_id),
+            "fixture_id": fixture_id_int,
             "missing": [f"realtime_error:{type(e).__name__}"],
             "reasons": [f"realtime_error:{type(e).__name__}"],
             "risk_level": "UNKNOWN",
             "risk_score": 0.0,
+            "summary": {},
         }
-        return block, f"realtime: ok fixture_id={int(fixture_id)} but error={type(e).__name__}"
+        return block, f"realtime: ok fixture_id={fixture_id_int} but error={type(e).__name__}"
 
 def log_prediction(prediction):
     log_data = {
@@ -574,7 +1527,7 @@ def log_dataframe_features_to_file(features_df, home, away, match_date, output_p
 
 ###----------- DEBUT DES FONCTIONS DE PREDICTION-----
 # -*- coding: utf-8 -*-
-
+REALTIME_API_KEY = os.getenv("REALTIME_API_KEY")
 
 
 # -------------------------------------------------------------------
@@ -583,9 +1536,6 @@ def log_dataframe_features_to_file(features_df, home, away, match_date, output_p
 # 1 = Match nul (Draw)
 # 2 = Victoire extérieur (Away)
 # -------------------------------------------------------------------
-LABEL_HOME = 0
-LABEL_DRAW = 1
-LABEL_AWAY = 2
 
 
 # =========================
@@ -1059,6 +2009,89 @@ def detect_double_chance(proba_0, proba_1, proba_2, final_prediction, league_cod
     return None
 
 
+
+def _entropy(p0, p1, p2, eps=1e-12):
+    p = np.array([p0, p1, p2], dtype=float)
+    p = np.clip(p, eps, 1.0)
+    p = p / p.sum()
+    return float(-(p * np.log(p)).sum())  # max ~ 1.098
+
+def detect_double_chance_v2(
+    p0: float, p1: float, p2: float,
+    pred_final: int,
+    *,
+    league_code: str = "default",
+    bias_detected: bool = False,
+    low_confidence: bool = False,
+    upset_score: float = 0.0,
+    upset_threshold: float = 0.52,
+    override_tag: Optional[str] = None,
+) -> Optional[str]:
+    """
+    DC renforcée (version pro).
+    Retourne "1X", "X2" ou None.
+    """
+
+    # 1) seuils ligue
+    try:
+        params = _get_params(league_code)
+    except Exception:
+        params = {}
+
+    # seuils par défaut
+    base_gap = float(params.get("dc_gap_threshold", 0.12))          # plus strict que avant
+    draw_th = float(params.get("dc_draw_threshold", 0.28))          # si nul >= 28% => DC
+    ent_th  = float(params.get("dc_entropy_threshold", 1.03))       # proche du max (1.098)
+    max_win_no_dc = float(params.get("dc_max_win_no_dc", 0.72))     # si win >= 72% => pas besoin
+
+    # 2) métriques
+    probs = np.array([p0, p1, p2], dtype=float)
+    probs = probs / max(1e-9, probs.sum())
+
+    top = float(np.max(probs))
+    srt = np.sort(probs)
+    gap = float(srt[-1] - srt[-2])
+    ent = _entropy(probs[0], probs[1], probs[2])
+
+    # 3) règles dures (force)
+    force = False
+    reasons = []
+
+    if bias_detected:
+        force = True; reasons.append("bias")
+    if low_confidence:
+        force = True; reasons.append("low_conf")
+    if upset_score is not None and upset_score >= (upset_threshold * 0.85):
+        force = True; reasons.append("upset_near_threshold")
+    if override_tag is not None and "form_over_market" in str(override_tag):
+        force = True; reasons.append("form_vs_market_conflict")
+
+    # 4) règles probabilistes (force si risque)
+    if float(p1) >= draw_th:
+        force = True; reasons.append("high_draw")
+    if gap <= base_gap:
+        force = True; reasons.append("small_gap")
+    if ent >= ent_th:
+        force = True; reasons.append("high_entropy")
+
+    # 5) si top win trop fort => on annule DC (sauf force métier)
+    if (top >= max_win_no_dc) and (not (bias_detected or low_confidence)):
+        return None
+
+    if not force:
+        return None
+
+    # 6) sortie DC cohérente
+    # pred_final: 0=home, 1=draw, 2=away
+    if pred_final == 0:
+        return "1X"
+    if pred_final == 2:
+        return "X2"
+
+    # si draw prédit, DC dépend du plus fort entre home/away
+    return "1X" if p0 >= p2 else "X2"
+
+
 def detect_bias(features_df):
     odds = features_df[["B365H", "B365A", "B365D"]].values[0].astype(float)
     max_odds = np.max(odds)
@@ -1089,13 +2122,450 @@ def _sigmoid(x: float) -> float:
     return 1.0 / (1.0 + np.exp(-x))
 
 
+def generate_explanation(rule_applied, features, user_profile):
+    odds_ratio = features.get("OddsRatio_HA", 1)
+    form_diff = features.get("Form_Diff", 0)
+    match_importance = features.get("MatchImportance", 0)
+
+    if isinstance(match_importance, pd.Series):
+        match_importance = match_importance.values[0]
+
+    if user_profile == "débutant":
+        if rule_applied == "threshold":
+            msg = "L'IA pense qu’il y aura un match nul car la probabilité dépasse le seuil fixé."
+        elif rule_applied == "margin_adjusted":
+            msg = "Les cotes sont très proches : cela suggère un match équilibré, donc nul."
+        else:
+            msg = "L’IA prédit une victoire car les chances sont déséquilibrées entre les équipes."
+    elif user_profile == "expert":
+        if rule_applied == "threshold":
+            msg = f"Proba_nul = {features.get('proba_1', 0):.2f}, supérieur au seuil : nul prédit."
+        elif rule_applied == "margin_adjusted":
+            msg = f"Match ajusté à nul : cotes trop proches (écart ≈ {features.get('OddsGap_MinDelta', 0):.3f})."
+        else:
+            msg = (
+                f"Proba_RF = [{features.get('proba_0', 0):.2f}, {features.get('proba_2', 0):.2f}], "
+                f"écart de forme = {form_diff:.2f}"
+            )
+    else:
+        if rule_applied == "threshold":
+            msg = "Match nul probable : la probabilité dépasse le seuil."
+        elif rule_applied == "margin_adjusted":
+            msg = "Les cotes sont serrées, et l’IA anticipe un nul."
+        else:
+            msg = "Victoire probable : un déséquilibre a été détecté entre les deux équipes."
+
+    if match_importance == 1:
+        msg += " Ce match est considéré comme important."
+
+    return msg
 
 
-LABEL_HOME = 0
-LABEL_DRAW = 1
-LABEL_AWAY = 2
+# -----------------------------
+# Config (ENV friendly)
+# -----------------------------
+
+def get_openai_client() -> OpenAI:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "OPENAI_API_KEY manquante. "
+            "En local: mets-la dans un fichier .env. "
+            "Sur Render: ajoute-la dans Environment Variables."
+        )
+    return OpenAI(api_key=api_key)
+
+def explanation_from_pred_final(pred_final: Dict[str, Any], user_profile: str = "standard") -> Dict[str, Any]:
+    """
+    Prend le JSON FINAL (après apply_unexpected_layer) et renvoie le même JSON
+    avec pred_final["explanation"] remplacé (4 à 8 phrases FR).
+    - Fallback robuste offline
+    - Optionnel LLM OpenAI si OPENAI_EXPLAIN_ENABLED=1 et clé ok
+    - Ajoute des metas: explain_llm_used, explain_llm_model, explain_llm_error, explain_llm_debug
+    """
+
+    def _is_nan(x: Any) -> bool:
+        try:
+            return isinstance(x, float) and math.isnan(x)
+        except Exception:
+            return False
+
+    def _get(d: Dict[str, Any], key: str, default=None):
+        try:
+            v = d.get(key, default)
+            if _is_nan(v):
+                return default
+            return v
+        except Exception:
+            return default
+
+    def _pct_from_any(v: Any) -> float:
+        """
+        Convertit:
+          - 0.52 -> 0.52
+          - "52%" -> 0.52
+          - 52 -> 0.52 (si >1 on suppose %)
+        """
+        try:
+            if v is None or _is_nan(v):
+                return 0.0
+            if isinstance(v, str):
+                s = v.strip().replace(",", ".")
+                if not s:
+                    return 0.0
+                if s.endswith("%"):
+                    x = float(s[:-1].strip()) / 100.0
+                    return max(0.0, min(1.0, x))
+                x = float(s)
+                if x > 1.0:
+                    x /= 100.0
+                return max(0.0, min(1.0, x))
+            x = float(v)
+            if x > 1.0:
+                x /= 100.0
+            return max(0.0, min(1.0, x))
+        except Exception:
+            return 0.0
+
+    def _fmt_pct(x: float) -> str:
+        try:
+            return f"{round(float(x)*100,1)}%"
+        except Exception:
+            return "0.0%"
+
+    # -----------------------------
+    # Extract from FINAL JSON
+    # -----------------------------
+    home = str(_get(pred_final, "home", "") or "")
+    away = str(_get(pred_final, "away", "") or "")
+    match_date = str(_get(pred_final, "match_date", "") or _get(pred_final, "date", "") or "")
+
+    form_home = str(_get(pred_final, "5_dern_perf_home", "") or "")
+    form_away = str(_get(pred_final, "5_dern_perf_away", "") or "")
+
+    bias_detected = bool(_get(pred_final, "bias_detected", False) or False)
+    low_confidence = bool(_get(pred_final, "low_confidence", False) or False)
+    double_chance = _get(pred_final, "double_chance", None)
+
+    # probs: prefer proba_* if present, else p*_raw
+    p0 = _pct_from_any(_get(pred_final, "proba_0", None))
+    p1 = _pct_from_any(_get(pred_final, "proba_1", None))
+    p2 = _pct_from_any(_get(pred_final, "proba_2", None))
+    if (p0 + p1 + p2) <= 1e-6:
+        p0 = _pct_from_any(_get(pred_final, "p0_raw", 0.0))
+        p1 = _pct_from_any(_get(pred_final, "p1_raw", 0.0))
+        p2 = _pct_from_any(_get(pred_final, "p2_raw", 0.0))
+
+    # odds if present in pred_final
+    odds = {}
+    for k in ("B365H", "B365D", "B365A"):
+        v = _get(pred_final, k, None)
+        try:
+            if v is not None and str(v).strip() != "":
+                odds[k] = float(str(v).replace(",", "."))
+        except Exception:
+            pass
+
+    rule_applied = str(_get(pred_final, "rule_applied", "") or "")
+    upset_score = float(_get(pred_final, "_upset_score", 0.0) or 0.0)
+    upset_threshold = float(_get(pred_final, "_upset_threshold", 0.52) or 0.52)
+
+    # realtime summary
+    realtime_risk = _get(pred_final, "realtime_risk", {}) or {}
+    summary = {}
+    try:
+        summary = (realtime_risk or {}).get("summary") or {}
+        if not isinstance(summary, dict):
+            summary = {}
+    except Exception:
+        summary = {}
+
+    absences_text = str(summary.get("absences_text") or "")
+    missing_meta = summary.get("missing_meta") or []
+    if not isinstance(missing_meta, list):
+        missing_meta = []
+
+    top_injuries = summary.get("top_injuries") or []
+    if not isinstance(top_injuries, list):
+        top_injuries = []
+
+    ranking = summary.get("ranking") or {}
+    if not isinstance(ranking, dict):
+        ranking = {}
+
+    rank_home = rank_away = None
+    pts_home = pts_away = None
+    if ranking.get("available") is True:
+        try:
+            rh = ranking.get("home") or {}
+            ra = ranking.get("away") or {}
+            rank_home = rh.get("rank")
+            rank_away = ra.get("rank")
+            pts_home = rh.get("points")
+            pts_away = ra.get("points")
+        except Exception:
+            pass
+
+    status_short = str(summary.get("status_short") or "")
+    status_long = str(summary.get("status_long") or "")
+    is_finished = bool(summary.get("is_finished") is True)
+    is_started = bool(summary.get("is_started") is True)
+    elapsed = summary.get("elapsed")
+
+    # -----------------------------
+    # OFFLINE fallback (4-8 phrases)
+    # -----------------------------
+    def _fallback() -> str:
+        lines: List[str] = []
+
+        title = f"{home} vs {away}" if home and away else "Match"
+        if match_date:
+            title += f" ({match_date})"
+        lines.append(f"{title}.")
+
+        if (p0 + p1 + p2) > 1e-6:
+            lines.append(f"Probabilités (1/N/2) : {_fmt_pct(p0)}, {_fmt_pct(p1)}, {_fmt_pct(p2)}.")
+        else:
+            lines.append("Probabilités (1/N/2) : indisponibles.")
+
+        # favorite
+        if (p0 + p1 + p2) > 1e-6:
+            fav = "home" if p0 >= max(p1, p2) else ("draw" if p1 >= max(p0, p2) else "away")
+            if fav == "home":
+                lines.append(f"Lecture modèle : avantage {home} (victoire à domicile).")
+            elif fav == "away":
+                lines.append(f"Lecture modèle : avantage {away} (victoire à l’extérieur).")
+            else:
+                lines.append("Lecture modèle : match équilibré (nul plausible).")
+
+        if form_home or form_away:
+            lines.append(f"Forme (5 derniers) : {home}={form_home or 'n/a'} ; {away}={form_away or 'n/a'}.")
+
+        if isinstance(rank_home, int) and isinstance(rank_away, int):
+            pts_txt = ""
+            if isinstance(pts_home, int) and isinstance(pts_away, int):
+                pts_txt = f" ({pts_home} pts vs {pts_away} pts)"
+            lines.append(f"Classement : {home} est {rank_home}ᵉ, {away} est {rank_away}ᵉ{pts_txt}.")
+
+        if odds:
+            parts = []
+            if "B365H" in odds: parts.append(f"H={odds['B365H']}")
+            if "B365D" in odds: parts.append(f"N={odds['B365D']}")
+            if "B365A" in odds: parts.append(f"A={odds['B365A']}")
+            lines.append("Cotes (B365) : " + ", ".join(parts) + ".")
+
+        if double_chance:
+            lines.append(f"Double chance : {double_chance} (filet de sécurité).")
+
+        if bias_detected:
+            lines.append("Biais de cotes détecté : prudence (effet popularité / surcote possible).")
+
+        if upset_score > 0 and upset_score >= upset_threshold:
+            lines.append("Risque de surprise (upset) élevé : éviter les mises agressives.")
+
+        if absences_text:
+            lines.append(absences_text.strip())
+
+        # status (live/FT)
+        if status_short:
+            if is_finished or status_short == "FT":
+                lines.append("Note : le match est terminé (infos temps réel post-match).")
+            elif is_started:
+                lines.append(f"Note : match en cours ({status_short}), minute ≈ {elapsed}.")
+
+        # prudence if missing key live info
+        if isinstance(missing_meta, list) and len(missing_meta) > 0:
+            lines.append("Certaines données temps réel manquent encore (compos/stats/événements) : prudence avant de valider un pari.")
+
+        return " ".join(lines[:8]).strip()
+
+    fallback_text = _fallback()
+
+    # -----------------------------
+    # LLM explanation (uses FINAL JSON only)
+    # -----------------------------
+    api_key = get_openai_client()
+    if not OPENAI_EXPLAIN_ENABLED or not api_key:
+        pred_final["explanation"] = fallback_text
+        pred_final["explain_llm_used"] = 0
+        pred_final["explain_llm_model"] = ""
+        pred_final["explain_llm_error"] = ""
+        if LLM_DEBUG:
+            pred_final["explain_llm_debug"] = {"enabled": OPENAI_EXPLAIN_ENABLED, "has_key": bool(api_key), "payload": None}
+        return pred_final
+
+    # Build "facts" to reduce hallucination
+    facts: List[str] = []
+    facts.append(f"Match: {home} vs {away} | date={match_date}")
+    facts.append(f"Probas 1/N/2: {_fmt_pct(p0)}, {_fmt_pct(p1)}, {_fmt_pct(p2)}")
+    if form_home or form_away:
+        facts.append(f"Forme(5): {home}={form_home or 'n/a'} ; {away}={form_away or 'n/a'}")
+    if isinstance(rank_home, int) and isinstance(rank_away, int):
+        facts.append(f"Classement: {home} rank={rank_home} pts={pts_home} | {away} rank={rank_away} pts={pts_away}")
+    if odds:
+        facts.append(f"Cotes B365: H={odds.get('B365H')} N={odds.get('B365D')} A={odds.get('B365A')}")
+    facts.append(f"Flags: bias_detected={bias_detected} double_chance={double_chance} low_confidence={low_confidence}")
+    if absences_text:
+        facts.append(f"Absences: {absences_text}")
+    if top_injuries:
+        inj_txt = "; ".join([f"{x.get('team','')}:{x.get('player','')}({x.get('reason','')})" for x in top_injuries[:3]])
+        facts.append(f"Top injuries: {inj_txt}")
+    if status_short:
+        facts.append(f"Status: {status_short} ({status_long}) started={is_started} finished={is_finished} elapsed={elapsed}")
+    if upset_score:
+        facts.append(f"Upset score: {upset_score} (threshold={upset_threshold})")
+
+    payload = {
+        "pred_final": pred_final,          # JSON final complet (source of truth)
+        "facts": facts,                   # facts verrouillés anti-hallucination
+        "user_profile": user_profile,
+    }
+
+    try:
+       
+        #client = OpenAI(api_key=api_key)
+        client =get_openai_client()
+
+        sys_msg = """Tu es un analyste professionnel de football ET un parieur expérimenté.
+                    Ton style est celui d’un consultant TV + trader de marché des cotes.
+
+                    Mission :
+                    Produire 6 à 9 phrases en français, structurées, claires, avec une vraie prise de position.
+
+                    Règles STRICTES :
+                    - Utilise uniquement les données du JSON. N’invente jamais.
+                    - Si une donnée manque, dis-le explicitement.
+                    - Analyse la cohérence entre probabilités du modèle et cotes bookmakers.
+                    - Détecte s’il existe une VALUE BET (écart modèle vs marché).
+                    - Mentionne obligatoirement : probabilités 1/N/2, forme 5 matchs, classement (rank + points),
+                    absences (absences_text + top_injuries), risk_level/risk_score, double_chance,
+                    bias_detected, low_confidence, statut match (NS/1H/HT/FT).
+                    - Si match ≠ NS → préciser que c’est du live/post-match.
+
+                    Structure obligatoire :
+
+                    1) Résumé du match + favori.
+                    2) Lecture du nul (si ≥25% → "nul non négligeable").
+                    3) Classement + écart de points + interprétation.
+                    4) Forme récente convertie en bilan (ex: 2 Victoire- 2 Null - 1 Défaite).
+                    5) Absences majeures et impact potentiel pour les deux équipes.
+                    6) Prédiction du modèle vs côte du marché
+                    7) Recommandation EXPERTE :
+                    - Niveau de confiance (faible / modéré / élevé)
+                    - Gestion de mise (prudente / standard / agressive)
+
+                    Style :
+                    - Ton professionnel.
+                    - Décision claire.
+                    - Pas de blabla.
+                    - Conclusion ferme comme un expert parieur.
+                    """
+
+        user_msg = (
+            "FACTS (à respecter strictement):\n"
+            + "\n".join([f"- {x}" for x in facts])
+            + "\n\npred_final JSON:\n"
+            + json.dumps(pred_final, ensure_ascii=False)
+        )
+
+        resp = client.chat.completions.create(
+            model=OPENAI_EXPLAIN_MODEL,
+            temperature=OPENAI_EXPLAIN_TEMPERATURE,
+            max_tokens=OPENAI_EXPLAIN_MAX_TOKENS,
+            timeout=OPENAI_EXPLAIN_TIMEOUT,
+            messages=[
+                {"role": "system", "content": sys_msg},
+                {"role": "user", "content": user_msg},
+            ],
+        )
+        text_out = (resp.choices[0].message.content or "").strip()
+        
+        def _one_line(s: str) -> str:
+            s = s.replace("\r\n", "\n").replace("\r", "\n")
+            s = re.sub(r"\n+", " ", s)      # remplace tous les retours ligne par espace
+            s = re.sub(r"\s{2,}", " ", s)   # compact espaces multiples
+            return s.strip()
+        
+        text_out = _one_line(text_out)
+
+        if text_out:
+            pred_final["explanation"] = text_out
+            pred_final["explain_llm_used"] = 1
+            pred_final["explain_llm_model"] = OPENAI_EXPLAIN_MODEL
+            pred_final["explain_llm_error"] = ""
+            if LLM_DEBUG:
+                pred_final["explain_llm_debug"] = payload
+            return pred_final
+
+        # empty => fallback
+        pred_final["explanation"] = fallback_text
+        pred_final["explain_llm_used"] = 0
+        pred_final["explain_llm_model"] = ""
+        pred_final["explain_llm_error"] = "empty_response"
+        if LLM_DEBUG:
+            pred_final["explain_llm_debug"] = payload
+        return pred_final
+
+    except Exception as e:
+        pred_final["explanation"] = fallback_text
+        pred_final["explain_llm_used"] = 0
+        pred_final["explain_llm_model"] = ""
+        pred_final["explain_llm_error"] = f"{type(e).__name__}: {e}"
+        if LLM_DEBUG:
+            pred_final["explain_llm_debug"] = payload
+        return pred_final
 
 
+def clean_extract_final_result(pred_final: dict) -> dict:
+    """
+    Retourne un JSON final propre à partir de pred_final,
+    en conservant uniquement les champs stratégiques.
+
+    - Supprime tout objet potentiellement circulaire
+    - Garantit que les clés existent
+    - Ne modifie pas l'objet original
+    """
+
+    if not isinstance(pred_final, dict):
+        raise ValueError("pred_final doit être un dictionnaire")
+
+    # Helper pour éviter KeyError
+    def _get(key, default=None):
+        return pred_final.get(key, default)
+
+    # Construction du JSON final propre
+    result = {
+        "5_dern_perf_away": _get("5_dern_perf_away"),
+        "5_dern_perf_home": _get("5_dern_perf_home"),
+        "_upset_score": _get("_upset_score", 0.0),
+        "_upset_threshold": _get("_upset_threshold", 0.52),
+        "_use_realtime": _get("_use_realtime", False),
+
+        "away": _get("away"),
+        "home": _get("home"),
+
+        "bias_detected": _get("bias_detected", False),
+        "low_confidence": _get("low_confidence", False),
+
+        "double_chance": _get("double_chance"),
+        "prediction": _get("prediction"),
+        "prediction_model": _get("prediction_model"),
+        "explanation": _get("explanation", ""),
+        "proba_0": _get("proba_0"),
+        "proba_1": _get("proba_1"),
+        "proba_2": _get("proba_2"),
+
+        "plus_but": _get("plus_but"),
+        "mess_but": _get("mess_but"),
+
+        "rule_applied": _get("rule_applied"),
+        # ⚠️ explanation laissée vide si absente
+       
+    }
+
+    return result
+
+## DC
 def _apply_form_gate(
     p0, p1, p2,
     features_df: pd.DataFrame,
@@ -1184,12 +2654,12 @@ def predict_match_with_proba(
     model_stage2,
     threshold_draw=0.63,
     user_profile="standard",
-    league_code="default"
+    league_code="default",
 ) -> dict:
     """
     ✅ LOGIQUE BETSMART (verrouillée) — version stable
-
-    + Ajout REALTIME (fixture/injuries/lineups) SANS IMPACTER la logique de prédiction.
+    + Anti-0%: floor+renormalize appliqué en FIN de pipeline (draw ET non-draw)
+    + REALTIME (info only) sans impacter la prédiction
     """
 
     (bookmaker_margin, uncertainty_threshold, importance, season_stage,
@@ -1206,39 +2676,50 @@ def predict_match_with_proba(
     strong_conf_draw_cap = float(params.get("strong_conf_draw_cap", 0.12))
     dc_disable_if_strong_conf = bool(params.get("dc_disable_if_strong_conf", True))
 
-    # ------------------------------------------------------------------
-    # ✅ REALTIME helpers (ne modifie pas les proba / décision finale)
-    # ------------------------------------------------------------------
-    def _pick_first_col(df, candidates):
-        for c in candidates:
-            if c in df.columns:
-                try:
-                    v = df[c].values[0]
-                    if v is not None and str(v).strip() != "":
-                        return v
-                except Exception:
-                    continue
-        return None
+    # ✅ nouveau: floor proba (évite 0% / 100% strict)
+    min_prob_floor = float(params.get("min_prob_floor", 0.01))  # 1% par défaut
 
-    def _as_bool(x):
-        if isinstance(x, bool):
-            return x
-        s = str(x).strip().lower()
-        return s in ("1", "true", "yes", "y", "on")
-
-    # ---- util explication ----
+    # ---- util explication ---
+    
     def _explain(rule_tag, p0, p1, p2, extra=None):
         f = features_df.copy()
-        f["proba_0"] = float(p0)
-        f["proba_1"] = float(p1)
-        f["proba_2"] = float(p2)
+
+        # IMPORTANT: expose les probas au format attendu
+        f["p0_raw"] = float(p0)
+        f["p1_raw"] = float(p1)
+        f["p2_raw"] = float(p2)
+
+        
         if isinstance(extra, dict):
             for k, v in extra.items():
                 try:
-                    f[k] = v
+                    # ✅ dict/list => forcer "scalaire" en cellule, pas alignement par index
+                    if isinstance(v, (dict, list)):
+                        if len(f) == 1:
+                            f.at[f.index[0], k] = v
+                        else:
+                            f[k] = [v] * len(f)
+                    else:
+                        f[k] = v
                 except Exception:
                     pass
-        return generate_explanation(rule_tag, f, user_profile)
+
+        
+        
+        assert "realtime_risk" in f.columns, "realtime_risk missing at explain-time"
+        text = generate_explanation(rule_tag, f, user_profile)
+        
+        
+
+        # ✅ PATCH: copier les metas LLM dans features_df pour que _notes_llm_debug(features_df) marche
+        for col in ["_llm_used", "_llm_mode", "_llm_model", "_llm_error", "_llm_debug"]:
+            try:
+                if col in f.columns:
+                    features_df.loc[:, col] = f[col].values[0]
+            except Exception:
+                pass
+
+        return text
 
     # ---- clamp draw non-dominant (stage2) ----
     def _clamp_draw_not_dominant(p0, p1, p2, eps=1e-6):
@@ -1273,6 +2754,78 @@ def predict_match_with_proba(
         except Exception:
             return None, 0.0, None
 
+    # ✅ floor + renormalize (anti 0% / 100%)
+    def _clip_and_normalize_probs(p0, p1, p2, *, min_prob=0.01):
+        p = np.array([float(p0), float(p1), float(p2)], dtype=float)
+        if not np.isfinite(p).all():
+            p = np.array([1/3, 1/3, 1/3], dtype=float)
+
+        # clip
+        min_prob = float(min_prob)
+        min_prob = max(0.0, min(min_prob, 0.10))  # sécurité
+        p = np.clip(p, min_prob, 1.0 - min_prob)
+
+        # renormalize
+        s = p.sum()
+        if not np.isfinite(s) or s <= 0:
+            p = np.array([1/3, 1/3, 1/3], dtype=float)
+        else:
+            p = p / s
+        return float(p[0]), float(p[1]), float(p[2])
+    
+    def _notes_llm_debug(df):
+        try:
+            import pandas as pd
+            if not isinstance(df, pd.DataFrame) or df.empty:
+                return []
+            used = df.get("_llm_used")
+            err = df.get("_llm_error")
+            model = df.get("_llm_model")
+            mode = df.get("_llm_mode")
+
+            used_v = used.values[0] if hasattr(used, "values") else used
+            err_v = err.values[0] if hasattr(err, "values") else err
+            model_v = model.values[0] if hasattr(model, "values") else model
+            mode_v = mode.values[0] if hasattr(mode, "values") else mode
+
+            if str(used_v) == "1":
+                return [f"explain: llm_used=1 model={model_v}"]
+            else:
+                if err_v:
+                    return [f"explain: llm_used=0 err={str(err_v)[:160]}"]
+                return [f"explain: llm_used=0 mode={mode_v}"]
+        except Exception:
+            return []
+    ### nouvels ajouts
+    def soften_probs_temperature(p0, p1, p2, T=1.6, eps=1e-12):
+        p = np.array([float(p0), float(p1), float(p2)], dtype=float)
+        p = np.clip(p, eps, 1.0)
+        p = p / p.sum()
+
+        # log-softmax avec température
+        logits = np.log(p + eps)
+        logits = logits / float(T)
+        exp = np.exp(logits - np.max(logits))
+        q = exp / exp.sum()
+        return float(q[0]), float(q[1]), float(q[2])
+    
+    def shrink_to_prior(p0, p1, p2, alpha=0.15, prior=(1/3, 1/3, 1/3)):
+        # alpha = part de prior (0.10 à 0.30 en pratique)
+        p = np.array([p0, p1, p2], dtype=float)
+        p = p / p.sum()
+        pr = np.array(prior, dtype=float)
+        pr = pr / pr.sum()
+        q = (1 - alpha) * p + alpha * pr
+        q = q / q.sum()
+        return float(q[0]), float(q[1]), float(q[2])
+
+    def clip_probs(p0, p1, p2, min_p=0.05, max_p=0.90):
+        p = np.array([p0, p1, p2], dtype=float)
+        p = p / p.sum()
+        p = np.clip(p, float(min_p), float(max_p))
+        p = p / p.sum()
+        return float(p[0]), float(p[1]), float(p[2])
+
     # ------------------------------------------------------------------
     # STAGE 1 : pDraw
     # ------------------------------------------------------------------
@@ -1296,28 +2849,59 @@ def predict_match_with_proba(
             p0, p1, p2, features_df, league_code,
             form_pick_threshold=form_pick_threshold
         )
-        p0, p1, p2 = _normalize3(p0, p1, p2)
+
+        # ✅ anti-0%
+        p0_raw, p1_raw, p2_raw = float(p0), float(p1), float(p2)
+        p0, p1, p2 = _clip_and_normalize_probs(p0, p1, p2, min_prob=min_prob_floor)
+        # adoucissement
+        p0, p1, p2 = soften_probs_temperature(p0, p1, p2, T=1.6)
+
+        # shrink léger
+        p0, p1, p2 = shrink_to_prior(p0, p1, p2, alpha=0.12)
 
         pred_final = LABEL_DRAW
         dc = detect_double_chance(p0, p1, p2, pred_final, league_code)
 
-        # ✅ realtime (info only)
-        rt_block, rt_note = _build_realtime_block(features_df)
+        
+        rt_block, rt_note = _build_realtime_block(features_df, league_code=league_code)
+
+        explanation_text = _explain(
+            "threshold",
+            p0, p1, p2,
+            extra={
+                "form_gate_meta": str(meta_gate),
+                "double_chance": dc,
+                "realtime_risk": rt_block,
+            }
+        )
+        
+        debug_payload = None
+        try:
+            if bool(os.getenv("LLM_DEBUG", "").strip() in ("1","true","True")) and "_llm_debug" in features_df.columns:
+                debug_payload = features_df["_llm_debug"].values[0]
+        except Exception:
+            pass
+
         notes = []
         if rt_note:
             notes.append(rt_note)
-
+        
+        notes += _notes_llm_debug(features_df)
+        
         return {
             "prediction": int(pred_final),
             "prediction_model": LABEL_DRAW,
             "proba_0": _format_pct(p0),
             "proba_1": _format_pct(p1),
             "proba_2": _format_pct(p2),
+            "p0_raw": p0_raw, "p1_raw": p1_raw, "p2_raw": p2_raw,
             "rule_applied": "threshold|draw_dominant|form_gate",
-            "explanation": _explain("threshold", p0, p1, p2, extra={"form_gate_meta": str(meta_gate)}),
+            #"explanation": _explain("threshold", p0, p1, p2, extra={"form_gate_meta": str(meta_gate)}),
+            "explanation": generate_explanation("margin_adjusted", features_df, user_profile),
             "double_chance": dc,
             "realtime_risk": rt_block,
-            "notes": notes
+            "notes": notes,
+            "llm_debug": debug_payload,
         }
 
     # ------------------------------------------------------------------
@@ -1352,12 +2936,12 @@ def predict_match_with_proba(
         form_pick_threshold=form_pick_threshold
     )
     p0, p1, p2 = _normalize3(p0, p1, p2)
-
     p0, p1, p2 = _clamp_draw_not_dominant(p0, p1, p2)
 
+    # strong conf draw cap
     strong_side = max(float(p0), float(p2))
     strong_conf = (strong_side >= float(strong_conf_threshold))
-
+    strong_tag = None
     if strong_conf:
         cap = float(np.clip(strong_conf_draw_cap, 0.0, 0.30))
         if float(p1) > cap:
@@ -1368,11 +2952,20 @@ def predict_match_with_proba(
             p1 = cap
             p0, p1, p2 = _normalize3(p0, p1, p2)
         strong_tag = "strong_conf_draw_cut"
-    else:
-        strong_tag = None
+
+    # ✅ anti-0% (IMPORTANT: après TOUS les gates/caps)
+    p0_raw, p1_raw, p2_raw = float(p0), float(p1), float(p2)
+    p0, p1, p2 = _clip_and_normalize_probs(p0, p1, p2, min_prob=min_prob_floor)
+    
+     # adoucissement
+    p0, p1, p2 = soften_probs_temperature(p0, p1, p2, T=1.6)
+
+        # shrink léger
+    p0, p1, p2 = shrink_to_prior(p0, p1, p2, alpha=0.12)
 
     pred_final = LABEL_HOME if float(p0) >= float(p2) else LABEL_AWAY
 
+    # marché / forme override tag (NE change pas les probas, uniquement la décision)
     fav_side, fav_gap, dc_market = _market_fav_and_dc()
 
     try:
@@ -1384,19 +2977,37 @@ def predict_match_with_proba(
 
     override_tag = None
     dc_override = None
-
     if abs(float(form_diff)) >= float(form_pick_threshold):
         form_side = "home" if form_diff > 0 else "away"
         if fav_side is not None and form_side != fav_side:
             pred_final = LABEL_HOME if form_side == "home" else LABEL_AWAY
             override_tag = "form_over_market_pick_" + ("home" if form_side == "home" else "away")
-            dc_override = dc_market
 
-    bias_detected = bool(detect_bias(features_df))
+            # ✅ DC cohérente avec la décision finale (forme)
+            dc_override = "1X" if form_side == "home" else "X2"
+            
+            
+
+    bd = detect_bias(features_df)
+    if isinstance(bd, pd.Series):
+        bias_detected = bool(bd.iloc[0])
+    elif isinstance(bd, (list, tuple, np.ndarray)):
+        bias_detected = bool(np.any(bd))
+    else:
+        bias_detected = bool(bd)
+        
     low_confidence = bool(is_confidence_low(p0, p1, p2))
 
-    dc = detect_double_chance(p0, p1, p2, pred_final, league_code)
-
+    #dc = detect_double_chance(p0, p1, p2, pred_final, league_code)
+    dc = detect_double_chance_v2(
+        p0, p1, p2, pred_final,
+        league_code=league_code,
+        bias_detected=bias_detected,
+        low_confidence=low_confidence,
+        upset_score=float(_safe_get_first(features_df, "_upset_score") or 0.0),
+        upset_threshold=float(_safe_get_first(features_df, "_upset_threshold") or 0.52),
+        override_tag=override_tag
+    )
     if dc_override is not None:
         dc = dc_override
 
@@ -1405,13 +3016,18 @@ def predict_match_with_proba(
 
     if (bias_detected or low_confidence) and dc is None:
         dc = "1X" if pred_final == LABEL_HOME else "X2"
+    
+    if dc == "1X" and pred_final == LABEL_AWAY:
+        dc = "X2"
+
+    if dc == "X2" and pred_final == LABEL_HOME:
+        dc = "1X"
 
     rule_parts = ["rf_decision", "stage2_locked_no_draw", "form_gate"]
     if strong_tag:
         rule_parts.append(strong_tag)
     if override_tag:
         rule_parts.append(override_tag)
-
     rule_applied = "|".join(rule_parts)
 
     extra = {
@@ -1423,12 +3039,39 @@ def predict_match_with_proba(
         "fav_gap": float(fav_gap),
         "form_diff": float(form_diff),
     }
+   
+    rt_block, rt_note = _build_realtime_block(features_df, league_code=league_code)
 
-    # ✅ realtime (info only)
-    rt_block, rt_note = _build_realtime_block(features_df)
+    extra = {
+        "bias_detected": int(bias_detected),
+        "low_confidence": int(low_confidence),
+        "form_gate_meta": str(meta_gate),
+        "strong_conf": int(bool(strong_conf)),
+        "fav_side": str(fav_side),
+        "fav_gap": float(fav_gap),
+        "form_diff": float(form_diff),
+        "double_chance": dc,
+
+        # ✅ TRÈS IMPORTANT : passer le realtime au générateur d'explication
+        "realtime_risk": rt_block,
+    }
+
+    # ✅ ensuite explication (maintenant elle voit summary/ranking/absences)
+    explanation_text = _explain("rf_decision", p0, p1, p2, extra=extra)
+    
+    debug_payload = None
+    try:
+        if bool(os.getenv("LLM_DEBUG", "").strip() in ("1","true","True")) and "_llm_debug" in features_df.columns:
+            debug_payload = features_df["_llm_debug"].values[0]
+    except Exception:
+        pass
+    
+    
     notes = []
     if rt_note:
         notes.append(rt_note)
+    
+    notes += _notes_llm_debug(features_df)
 
     return {
         "prediction": int(pred_final),
@@ -1436,14 +3079,18 @@ def predict_match_with_proba(
         "proba_0": _format_pct(p0),
         "proba_1": _format_pct(p1),
         "proba_2": _format_pct(p2),
+        "p0_raw": p0_raw, "p1_raw": p1_raw, "p2_raw": p2_raw,
         "rule_applied": rule_applied,
-        "explanation": _explain("rf_decision", p0, p1, p2, extra=extra),
+        #"explanation": _explain("rf_decision", p0, p1, p2, extra=extra),
+        "explanation": explanation_text,
         "double_chance": dc,
         "bias_detected": bias_detected,
         "low_confidence": low_confidence,
         "realtime_risk": rt_block,
-        "notes": notes
+        "notes": notes,
+        "llm_debug": debug_payload,
     }
+
 
 # =========================
 # Unexpected / anti-OC layer
@@ -1593,60 +3240,65 @@ def apply_unexpected_layer(
     out["notes"] = notes
     return out
 
+
 ##---------------------- FIN FONCTIONS  ------------------------------------------
 
-def generate_explanation(rule_applied, features, user_profile):
-    if isinstance(features, pd.DataFrame):
-        row = features.to_dict(orient="records")[0] if not features.empty else {}
-    elif isinstance(features, dict):
-        row = dict(features)
-    else:
-        row = {}
-
-    odds_gap = float(row.get("OddsGap_MinDelta", 0.0) or 0.0)
-    form_diff = float(row.get("Form_Diff", 0.0) or 0.0)
-    match_importance = int(row.get("MatchImportance", 0) or 0)
-
-    p0 = float(row.get("proba_0", 0.0) or 0.0)
-    p1 = float(row.get("proba_1", 0.0) or 0.0)
-    p2 = float(row.get("proba_2", 0.0) or 0.0)
-
-    bias_detected = bool(int(row.get("bias_detected", 0) or 0))
-    low_confidence = bool(int(row.get("low_confidence", 0) or 0))
-
-    if user_profile == "débutant":
-        if rule_applied in ("threshold", "margin_adjusted"):
-            msg = "Match nul probable : le match paraît équilibré selon les signaux."
-        elif rule_applied == "filtered_out":
-            msg = "⚠️ Prudence : le match présente une incertitude élevée. Mieux vaut jouer en double chance."
-        else:
-            msg = "Victoire probable : l'analyse détecte un léger avantage."
-    elif user_profile == "expert":
-        msg = f"p=[H:{p0:.2f}, D:{p1:.2f}, A:{p2:.2f}] | gap_odds≈{odds_gap:.2f} | form_diff={form_diff:.2f}"
-        if rule_applied == "filtered_out":
-            msg = "⚠️ " + msg + " | incertitude/biais → privilégier DC"
-    else:
-        if rule_applied == "filtered_out":
-            msg = "⚠️ Attention : incertitude/biais détecté. Appuyez-vous sur la double chance."
-        elif rule_applied in ("threshold", "margin_adjusted"):
-            msg = "Match nul probable : le match est équilibré."
-        else:
-            msg = "Victoire probable : un déséquilibre a été détecté entre les équipes."
-
-    if match_importance == 1:
-        msg += " Match à enjeu (importance élevée)."
-
-    reasons = []
-    if low_confidence:
-        reasons.append("confiance faible")
-    if bias_detected:
-        reasons.append("biais de cotes")
-    if reasons and rule_applied != "filtered_out":
-        msg += " (" + ", ".join(reasons) + ")"
-
-    return msg
+def _safe_float(x: Any, default: float = 0.0) -> float:
+    try:
+        if x is None:
+            return float(default)
+        return float(x)
+    except Exception:
+        return float(default)
 
 
+def _safe_int(x: Any, default: int = 0) -> int:
+    try:
+        if x is None:
+            return int(default)
+        return int(x)
+    except Exception:
+        return int(default)
+
+
+def _extract_row(features: Any) -> Dict[str, Any]:
+    # features peut être DataFrame (1 ligne), dict, etc.
+    try:
+        import pandas as pd
+        if isinstance(features, pd.DataFrame):
+            if features.empty:
+                return {}
+            return features.to_dict(orient="records")[0] or {}
+    except Exception:
+        pass
+
+    if isinstance(features, dict):
+        return dict(features)
+    return {}
+
+# ============================================================
+# Helpers (assume you already have these in fonction.py)
+# - _safe_get_first(df, col)
+# - detect_bias(df)
+# - _format_pct(x)  # if x in [0..1] => "13.0%" etc
+# ============================================================
+def _safe_get_first(df: Any, col: str):
+    try:
+        if isinstance(df, pd.DataFrame) and col in df.columns and len(df) > 0:
+            v = df[col].iloc[0]
+            # unwrap numpy scalars
+            if isinstance(v, (np.generic,)):
+                return v.item()
+            return v
+    except Exception:
+        pass
+    return None
+
+def _format_pct(x: float) -> str:
+    try:
+        return f"{float(x) * 100:.1f}%"
+    except Exception:
+        return "0.0%"
 
 def get_valid_date(user_input):
     """
