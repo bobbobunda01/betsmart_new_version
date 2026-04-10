@@ -1,441 +1,465 @@
 ,fixture_id,HomeTeam,AwayTeam,comp,odds_home,odds_draw,odds_away,match_Date
-0,1379288,West Ham,Wolves,39,1.73,3.75,4.33,2026-04-10
-1,1379279,Arsenal,Bournemouth,39,1.38,4.33,8.0,2026-04-11
-2,1379281,Burnley,Brighton,39,4.33,3.7,1.75,2026-04-11
-3,1379280,Brentford,Everton,39,2.15,3.3,3.3,2026-04-11
-4,1379284,Liverpool,Fulham,39,1.53,4.33,5.5,2026-04-11
-5,1379283,Crystal Palace,Newcastle,39,2.7,3.5,2.38,2026-04-12
-6,1379286,Nottingham Forest,Aston Villa,39,2.45,3.4,2.7,2026-04-12
-7,1379287,Sunderland,Tottenham,39,2.62,3.25,2.6,2026-04-12
-8,1379282,Chelsea,Manchester City,39,2.7,3.6,2.3,2026-04-12
-9,1379285,Manchester United,Leeds,39,1.57,3.9,5.5,2026-04-13
-10,1387948,Paris Saint Germain,Toulouse,61,1.3,5.5,10.0,2026-04-03
-11,1387949,Strasbourg,Nice,61,1.8,3.75,4.33,2026-04-04
-12,1387942,Stade Brestois 29,Rennes,61,3.1,3.5,2.25,2026-04-04
-13,1387944,Lille,Lens,61,2.62,3.4,2.7,2026-04-04
-14,1387941,Angers,Lyon,61,4.5,3.6,1.8,2026-04-05
-15,1387945,Lorient,Paris FC,61,2.25,3.3,3.3,2026-04-05
-16,1387943,Le Havre,Auxerre,61,2.45,3.1,3.1,2026-04-05
-17,1387946,Metz,Nantes,61,2.88,3.3,2.5,2026-04-05
-18,1387947,Monaco,Marseille,61,2.2,3.6,3.1,2026-04-05
-19,1387956,Paris FC,Monaco,61,3.25,3.5,2.05,2026-04-10
-20,1387954,Marseille,Metz,61,1.27,5.5,10.0,2026-04-10
-21,1387950,Auxerre,Nantes,61,2.05,3.1,3.7,2026-04-11
-22,1387957,Rennes,Angers,61,1.4,4.33,7.5,2026-04-11
-23,1387955,Nice,Le Havre,61,1.95,3.4,3.8,2026-04-12
-24,1387958,Toulouse,Lille,61,3.0,3.25,2.35,2026-04-12
-25,1387953,Lyon,Lorient,61,1.7,3.6,4.75,2026-04-12
-26,1388554,SC Freiburg,Bayern München,78,6.5,5.5,1.4,2026-04-04
-27,1388559,Werder Bremen,RB Leipzig,78,3.5,4.0,1.95,2026-04-04
-28,1388552,Borussia Mönchengladbach,1. FC Heidenheim,78,1.55,4.33,5.5,2026-04-04
-29,1388556,1899 Hoffenheim,FSV Mainz 05,78,1.73,4.0,4.5,2026-04-04
-30,1388551,Bayer Leverkusen,VfL Wolfsburg,78,1.4,5.0,7.0,2026-04-04
-31,1388555,Hamburger SV,FC Augsburg,78,2.2,3.5,3.2,2026-04-04
-32,1388557,VfB Stuttgart,Borussia Dortmund,78,2.35,3.9,2.7,2026-04-04
-33,1388558,Union Berlin,FC St. Pauli,78,2.1,3.25,3.75,2026-04-05
-34,1388553,Eintracht Frankfurt,1. FC Köln,78,2.1,3.5,3.4,2026-04-05
-35,1388560,FC Augsburg,1899 Hoffenheim,78,3.3,3.7,2.0,2026-04-10
-36,1388568,VfL Wolfsburg,Eintracht Frankfurt,78,2.35,3.6,2.62,2026-04-11
-37,1388561,Borussia Dortmund,Bayer Leverkusen,78,1.85,3.75,3.6,2026-04-11
-38,1388565,RB Leipzig,Borussia Mönchengladbach,78,1.53,4.33,5.5,2026-04-11
-39,1388563,1. FC Heidenheim,Union Berlin,78,3.3,3.5,2.1,2026-04-11
-40,1388566,FC St. Pauli,Bayern München,78,9.0,4.75,1.33,2026-04-11
-41,1388562,1. FC Köln,Werder Bremen,78,2.2,3.5,3.0,2026-04-12
-42,1388567,VfB Stuttgart,Hamburger SV,78,1.44,4.5,6.5,2026-04-12
-43,1388564,FSV Mainz 05,SC Freiburg,78,2.05,3.1,4.0,2026-04-12
-44,1391115,Rayo Vallecano,Elche,140,1.73,3.75,5.0,2026-04-03
-45,1391116,Real Sociedad,Levante,140,1.57,4.2,5.5,2026-04-04
-46,1391114,Mallorca,Real Madrid,140,5.75,4.2,1.57,2026-04-04
-47,1391111,Real Betis,Espanyol,140,1.73,4.0,4.5,2026-04-04
-48,1391110,Atletico Madrid,Barcelona,140,3.1,3.5,2.25,2026-04-04
-49,1391112,Getafe,Athletic Club,140,3.1,2.88,2.62,2026-04-05
-50,1391118,Valencia,Celta Vigo,140,2.3,3.3,3.2,2026-04-05
-51,1391117,Oviedo,Sevilla,140,2.9,3.1,2.6,2026-04-05
-52,1391109,Alaves,Osasuna,140,2.55,3.2,2.88,2026-04-05
-53,1391113,Girona,Villarreal,140,3.2,3.6,2.2,2026-04-06
-54,1391126,Real Madrid,Girona,140,1.2,6.5,12.0,2026-04-10
-55,1391127,Real Sociedad,Alaves,140,1.75,3.3,4.75,2026-04-11
-56,1391122,Elche,Valencia,140,2.35,3.25,2.9,2026-04-11
-57,1391120,Barcelona,Espanyol,140,1.22,6.0,11.0,2026-04-11
-58,1391128,Sevilla,Atletico Madrid,140,3.3,3.3,2.15,2026-04-11
-59,1391125,Osasuna,Real Betis,140,2.35,3.3,2.9,2026-04-12
-60,1391124,Mallorca,Rayo Vallecano,140,2.55,3.2,2.7,2026-04-12
-61,1391121,Celta Vigo,Oviedo,140,1.65,3.6,5.25,2026-04-12
-62,1391119,Athletic Club,Villarreal,140,2.3,3.5,2.88,2026-04-12
-63,1391123,Levante,Getafe,140,2.62,2.9,2.88,2026-04-13
-64,1378171,Sassuolo,Cagliari,135,2.0,3.0,4.33,2026-04-04
-65,1378173,Hellas Verona,Fiorentina,135,4.0,3.25,1.91,2026-04-04
-66,1378167,Lazio,Parma,135,1.8,3.4,4.75,2026-04-04
-67,1378164,Cremonese,Bologna,135,3.6,3.5,2.05,2026-04-05
-68,1378170,Pisa,Torino,135,3.2,3.0,2.45,2026-04-05
-69,1378165,Inter,AS Roma,135,1.62,4.0,5.5,2026-04-05
-70,1378172,Udinese,Como,135,5.25,3.8,1.67,2026-04-06
-71,1378168,Lecce,Atalanta,135,5.0,3.75,1.73,2026-04-06
-72,1378166,Juventus,Genoa,135,1.38,4.5,9.5,2026-04-06
-73,1378169,Napoli,AC Milan,135,2.55,3.0,3.0,2026-04-06
-74,1378182,AS Roma,Pisa,135,1.33,4.33,10.0,2026-04-10
-75,1378176,Cagliari,Cremonese,135,2.2,3.2,3.5,2026-04-11
-76,1378183,Torino,Hellas Verona,135,1.9,3.2,4.33,2026-04-11
-77,1378180,AC Milan,Udinese,135,1.33,4.5,9.5,2026-04-11
-78,1378174,Atalanta,Juventus,135,3.0,3.4,2.25,2026-04-11
-79,1378179,Genoa,Sassuolo,135,2.15,3.2,3.4,2026-04-12
-80,1378181,Parma,Napoli,135,5.5,3.4,1.7,2026-04-12
-81,1378175,Bologna,Lecce,135,1.65,3.5,5.5,2026-04-12
-82,1378177,Como,Inter,135,3.0,3.4,2.25,2026-04-12
-83,1378178,Fiorentina,Lazio,135,2.1,3.2,3.5,2026-04-13
-84,1381126,PSV Eindhoven,Utrecht,88,1.5,4.75,4.75,2026-04-04
-85,1381120,AZ Alkmaar,Fortuna Sittard,88,1.33,4.75,8.0,2026-04-04
-86,1381127,Telstar,Groningen,88,2.55,3.6,2.45,2026-04-04
-87,1381119,Ajax,Twente,88,2.25,3.6,2.75,2026-04-04
-88,1381121,Excelsior,NEC Nijmegen,88,3.25,3.9,1.91,2026-04-04
-89,1381123,GO Ahead Eagles,PEC Zwolle,88,1.9,3.75,3.4,2026-04-05
-90,1381124,Heerenveen,Heracles,88,1.5,4.75,5.0,2026-04-05
-91,1381122,FC Volendam,Feyenoord,88,5.5,5.0,1.44,2026-04-05
-92,1381125,NAC Breda,Sparta Rotterdam,88,2.38,3.4,2.7,2026-04-05
-93,1381134,Twente,FC Volendam,88,1.17,7.0,15.0,2026-04-10
-94,1381135,Utrecht,Telstar,88,1.55,4.0,5.75,2026-04-11
-95,1381133,Sparta Rotterdam,PSV Eindhoven,88,4.5,4.2,1.62,2026-04-11
-96,1381129,Groningen,GO Ahead Eagles,88,1.8,3.75,4.0,2026-04-11
-97,1381130,Heracles,Ajax,88,5.75,4.33,1.5,2026-04-11
-98,1381132,Fortuna Sittard,NAC Breda,88,2.1,3.5,3.1,2026-04-12
-99,1381136,PEC Zwolle,Excelsior,88,2.0,3.6,3.4,2026-04-12
-100,1381131,NEC Nijmegen,Feyenoord,88,2.6,3.9,2.38,2026-04-12
-101,1381128,AZ Alkmaar,Heerenveen,88,1.85,3.8,3.75,2026-04-12
-102,1494585,FC Lugano,FC Thun,207,2.62,3.6,2.35,2026-04-04
-103,1494584,Lausanne,FC Winterthur,207,1.42,4.33,6.25,2026-04-04
-104,1494586,FC Basel 1893,BSC Young Boys,207,2.35,3.8,2.5,2026-04-04
-105,1494587,Grasshoppers,FC Sion,207,2.7,3.4,2.38,2026-04-06
-106,1494589,FC ST. Gallen,FC Zurich,207,1.48,4.2,5.5,2026-04-06
-107,1494588,Servette FC,FC Luzern,207,2.05,3.75,3.0,2026-04-06
-108,1494595,FC Zurich,FC Lugano,207,,,,2026-04-11
-109,1494593,FC Winterthur,Grasshoppers,207,,,,2026-04-11
-110,1494592,FC Thun,FC Basel 1893,207,,,,2026-04-11
-111,1494594,BSC Young Boys,Servette FC,207,,,,2026-04-12
-112,1494591,FC Sion,Lausanne,207,,,,2026-04-12
-113,1494590,FC Luzern,FC ST. Gallen,207,,,,2026-04-12
-114,1396483,GIL Vicente,AVS,94,1.33,4.5,10.0,2026-04-03
-115,1396488,Guimaraes,Tondela,94,1.73,3.6,4.75,2026-04-03
-116,1396487,Sporting CP,Santa Clara,94,1.25,5.5,12.0,2026-04-03
-117,1396485,Nacional,Estrela,94,2.0,3.4,3.7,2026-04-04
-118,1396484,Moreirense,SC Braga,94,6.0,3.9,1.53,2026-04-04
-119,1396486,Rio Ave,Alverca,94,2.5,3.3,2.75,2026-04-04
-120,1396482,FC Porto,Famalicao,94,1.44,4.33,7.5,2026-04-04
-121,1396480,Arouca,Estoril,94,2.5,3.4,2.7,2026-04-06
-122,1396481,Casa Pia,Benfica,94,13.0,6.0,1.22,2026-04-06
-123,1396495,Famalicao,Moreirense,94,,,,2026-04-10
-124,1396489,AVS,Guimaraes,94,,,,2026-04-11
-125,1396496,Santa Clara,Rio Ave,94,,,,2026-04-11
-126,1396494,Estrela,Sporting CP,94,,,,2026-04-11
-127,1396490,Alverca,Casa Pia,94,,,,2026-04-12
-128,1396491,Benfica,Nacional,94,,,,2026-04-12
-129,1396492,SC Braga,Arouca,94,,,,2026-04-12
-130,1396493,Estoril,FC Porto,94,,,,2026-04-12
-131,1396497,Tondela,GIL Vicente,94,,,,2026-04-13
-132,1394679,Gençlerbirliği S.K.,Göztepe,203,2.9,3.1,2.38,2026-04-04
-133,1394681,Kasımpaşa,Kayserispor,203,2.1,3.4,3.2,2026-04-04
-134,1394678,Gaziantep FK,Alanyaspor,203,2.75,3.4,2.35,2026-04-04
-135,1394684,Trabzonspor,Galatasaray,203,3.25,3.7,2.05,2026-04-04
-136,1394680,Fatih Karagümrük,Rizespor,203,2.8,3.4,2.3,2026-04-05
-137,1394683,Samsunspor,Konyaspor,203,2.25,3.0,3.2,2026-04-05
-138,1394676,Antalyaspor,Eyüpspor,203,2.1,3.0,3.75,2026-04-05
-139,1394677,Fenerbahçe,Beşiktaş,203,1.95,3.6,3.3,2026-04-05
-140,1394682,Kocaelispor,Başakşehir,203,2.75,3.25,2.45,2026-04-06
-141,1394672,Göztepe,Galatasaray,203,,,,2026-04-08
-142,1394675,Rizespor,Samsunspor,203,,,,2026-04-09
-143,1394687,Beşiktaş,Antalyaspor,203,,,,2026-04-10
-144,1394686,Başakşehir,Gençlerbirliği S.K.,203,,,,2026-04-11
-145,1394685,Alanyaspor,Trabzonspor,203,,,,2026-04-11
-146,1394691,Kayserispor,Fenerbahçe,203,,,,2026-04-11
-147,1394692,Konyaspor,Fatih Karagümrük,203,,,,2026-04-12
-148,1394690,Göztepe,Kasımpaşa,203,,,,2026-04-12
-149,1394689,Galatasaray,Kocaelispor,203,,,,2026-04-12
-150,1394693,Rizespor,Gaziantep FK,203,,,,2026-04-13
-151,1394688,Eyüpspor,Samsunspor,203,,,,2026-04-13
-152,1536936,Antwerp,Genk,144,3.0,3.4,2.2,2026-04-03
-153,1536966,Zulte Waregem,Cercle Brugge,144,2.25,3.6,2.7,2026-04-04
-154,1536937,OH Leuven,Standard Liege,144,2.05,3.2,3.5,2026-04-04
-155,1536978,Union St. Gilloise,St. Truiden,144,1.7,3.5,4.5,2026-04-04
-156,1536938,KVC Westerlo,Charleroi,144,2.4,3.4,2.55,2026-04-05
-157,1536979,Club Brugge KV,Anderlecht,144,1.48,4.2,5.75,2026-04-06
-158,1536967,RAAL La Louvière,Dender,144,1.75,3.3,4.5,2026-04-06
-159,1536980,Gent,KV Mechelen,144,1.9,3.5,3.6,2026-04-06
-160,1536939,Charleroi,Antwerp,144,,,,2026-04-10
-161,1536968,Cercle Brugge,RAAL La Louvière,144,,,,2026-04-11
-162,1536940,Standard Liege,KVC Westerlo,144,,,,2026-04-11
-163,1536982,St. Truiden,Club Brugge KV,144,,,,2026-04-11
-164,1536981,KV Mechelen,Union St. Gilloise,144,,,,2026-04-12
-165,1536941,Genk,OH Leuven,144,,,,2026-04-12
-166,1536983,Anderlecht,Gent,144,,,,2026-04-12
-167,1536969,Dender,Zulte Waregem,144,,,,2026-04-12
-168,1504729,JEF United Chiba,Tokyo Verdy,98,2.7,2.9,2.7,2026-04-04
-169,1504730,Mito Hollyhock,Kashima,98,4.1,3.3,1.9,2026-04-04
-170,1504731,Nagoya Grampus,Cerezo Osaka,98,2.15,3.3,3.1,2026-04-04
-171,1504732,Gamba Osaka,Kyoto Sanga,98,2.25,3.5,2.88,2026-04-04
-172,1504733,V-varen Nagasaki,Shimizu S-pulse,98,2.62,3.4,2.45,2026-04-05
-173,1504734,Kashiwa Reysol,Yokohama F. Marinos,98,1.62,3.7,5.25,2026-04-05
-174,1504736,Sanfrecce Hiroshima,Avispa Fukuoka,98,1.5,3.7,6.25,2026-04-05
-175,1504735,Fagiano Okayama,Vissel Kobe,98,3.75,3.1,2.05,2026-04-05
-176,1504737,FC Tokyo,Machida Zelvia,98,2.2,3.2,3.2,2026-04-05
-177,1504738,Kawasaki Frontale,Urawa,98,2.45,3.4,2.62,2026-04-05
-178,1504739,JEF United Chiba,Mito Hollyhock,98,,,,2026-04-11
-179,1504742,Sanfrecce Hiroshima,Shimizu S-pulse,98,,,,2026-04-11
-180,1504741,Machida Zelvia,Kashiwa Reysol,98,,,,2026-04-11
-181,1504740,Avispa Fukuoka,V-varen Nagasaki,98,,,,2026-04-11
-182,1504743,Vissel Kobe,Nagoya Grampus,98,,,,2026-04-11
-183,1504744,Yokohama F. Marinos,FC Tokyo,98,,,,2026-04-11
-184,1504745,Gamba Osaka,Cerezo Osaka,98,,,,2026-04-11
-185,1504746,Kyoto Sanga,Fagiano Okayama,98,,,,2026-04-11
-186,1504747,Urawa,Tokyo Verdy,98,,,,2026-04-12
-187,1504748,Kawasaki Frontale,Kashima,98,,,,2026-04-12
-188,1537079,Kifisia,Panserraikos,197,1.57,3.5,5.75,2026-04-04
-189,1537080,Asteras Tripolis,Larisa,197,2.3,3.2,3.0,2026-04-04
-190,1537081,Panetolikos,Atromitos,197,2.75,2.9,2.6,2026-04-04
-191,1537109,Levadiakos,Aris Thessalonikis,197,2.3,3.3,3.0,2026-04-05
-192,1537110,Volos NFC,OFI,197,2.15,3.4,3.2,2026-04-05
-193,1537122,PAOK,Panathinaikos,197,1.67,3.5,5.0,2026-04-05
-194,1537121,Olympiakos Piraeus,AEK Athens FC,197,1.83,3.4,4.2,2026-04-05
-195,1537084,Larisa,Panetolikos,197,2.0,3.1,3.8,2026-04-08
-196,1537082,Panserraikos,Asteras Tripolis,197,3.0,3.0,2.4,2026-04-08
-197,1537083,Atromitos,Kifisia,197,1.95,3.25,3.8,2026-04-08
-198,1492196,Fluminense,Corinthians,71,1.75,3.5,5.0,2026-04-02
-199,1492199,Santos,Remo,71,1.53,4.0,6.5,2026-04-02
-200,1492193,Chapecoense-sc,Atletico-MG,71,3.0,3.25,2.45,2026-04-02
-201,1492198,Palmeiras,Gremio,71,1.5,4.2,6.25,2026-04-03
-202,1492192,RB Bragantino,Flamengo,71,3.8,3.4,2.0,2026-04-03
-203,1492208,Sao Paulo,Cruzeiro,71,2.15,3.2,3.7,2026-04-04
-204,1492204,Coritiba,Fluminense,71,3.75,3.25,2.1,2026-04-04
-205,1492209,Vasco DA Gama,Botafogo,71,2.05,3.4,3.75,2026-04-05
-206,1492202,Chapecoense-sc,Vitoria,71,2.4,3.2,3.0,2026-04-05
-207,1492205,Flamengo,Santos,71,1.36,4.5,8.5,2026-04-05
-208,1492200,Atletico-MG,Atletico Paranaense,71,1.85,3.3,4.33,2026-04-05
-209,1492201,Bahia,Palmeiras,71,3.0,3.25,2.3,2026-04-05
-210,1492203,Corinthians,Internacional,71,2.0,3.3,3.7,2026-04-05
-211,1492207,Mirassol,RB Bragantino,71,2.0,3.2,3.75,2026-04-05
-212,1492206,Gremio,Remo,71,1.42,4.2,7.0,2026-04-05
-213,1492219,Vitoria,Sao Paulo,71,,,,2026-04-11
-214,1492217,Remo,Vasco DA Gama,71,,,,2026-04-11
-215,1492214,Fluminense,Flamengo,71,,,,2026-04-11
-216,1492216,Mirassol,Bahia,71,,,,2026-04-11
-217,1492218,Santos,Atletico-MG,71,,,,2026-04-11
-218,1492215,Internacional,Gremio,71,,,,2026-04-11
-219,1492210,Atletico Paranaense,Chapecoense-sc,71,,,,2026-04-12
-220,1492211,Botafogo,Coritiba,71,,,,2026-04-12
-221,1492212,Corinthians,Palmeiras,71,,,,2026-04-12
-222,1492213,Cruzeiro,RB Bragantino,71,,,,2026-04-12
-223,1382853,Hibernian,Kilmarnock,179,1.5,4.1,6.0,2026-04-04
-224,1382857,ST Mirren,Aberdeen,179,2.1,3.4,3.25,2026-04-04
-225,1382855,Motherwell,Falkirk,179,1.73,3.6,4.75,2026-04-04
-226,1382856,Rangers,Dundee Utd,179,1.22,6.0,13.0,2026-04-04
-227,1382854,Livingston,Heart Of Midlothian,179,5.75,3.9,1.55,2026-04-05
-228,1382852,Dundee,Celtic,179,5.75,4.33,1.5,2026-04-05
-229,1382859,Celtic,ST Mirren,179,1.2,6.25,12.0,2026-04-11
-230,1382863,Kilmarnock,Dundee,179,2.25,3.4,3.0,2026-04-11
-231,1382858,Aberdeen,Hibernian,179,3.1,3.4,2.2,2026-04-11
-232,1382862,Heart Of Midlothian,Motherwell,179,1.85,3.5,4.0,2026-04-11
-233,1382860,Dundee Utd,Livingston,179,1.75,3.6,4.5,2026-04-11
-234,1382861,Falkirk,Rangers,179,4.75,3.6,1.7,2026-04-12
-235,1383023,Ross County,Airdrie United,180,1.8,3.3,3.8,2026-04-04
-236,1383020,Ayr Utd,Partick,180,2.8,3.25,2.2,2026-04-04
-237,1383021,Dunfermline,Morton,180,1.8,3.2,4.1,2026-04-04
-238,1383019,Arbroath,ST Johnstone,180,4.5,3.3,1.67,2026-04-04
-239,1383000,Ayr Utd,Dunfermline,180,,,,2026-04-07
-240,1383026,Queen's Park,Ross County,180,,,,2026-04-10
-241,1383028,ST Johnstone,Airdrie United,180,,,,2026-04-11
-242,1383025,Partick,Dunfermline,180,,,,2026-04-11
-243,1383027,Raith Rovers,Morton,180,,,,2026-04-11
-244,1383024,Ayr Utd,Arbroath,180,,,,2026-04-11
-245,1383014,Airdrie United,Dunfermline,180,,,,2026-04-14
-246,1383022,Queen's Park,Raith Rovers,180,,,,2026-04-14
-247,1506926,Jeju United FC,Bucheon FC 1995,292,2.15,3.2,3.3,2026-04-04
-248,1506927,Jeonbuk Motors,Ulsan Hyundai FC,292,2.1,3.3,3.4,2026-04-04
-249,1506928,Gangwon FC,Gwangju FC,292,,,,2026-04-04
-250,1506929,Pohang Steelers,Daejeon Citizen,292,,,,2026-04-04
-251,1506930,FC Anyang,FC Seoul,292,3.4,3.2,2.1,2026-04-05
-252,1506931,Incheon United,Gimcheon Sangmu FC,292,2.25,3.3,3.1,2026-04-05
-253,1506932,Pohang Steelers,Jeju United FC,292,,,,2026-04-11
-254,1506933,FC Seoul,Jeonbuk Motors,292,,,,2026-04-11
-255,1506934,Gwangju FC,Bucheon FC 1995,292,,,,2026-04-11
-256,1506935,Incheon United,Ulsan Hyundai FC,292,,,,2026-04-11
-257,1506936,Daejeon Citizen,Gangwon FC,292,,,,2026-04-12
-258,1506937,Gimcheon Sangmu FC,FC Anyang,292,,,,2026-04-12
-259,1506903,Ulsan Hyundai FC,FC Seoul,292,,,,2026-04-15
-260,1491998,Aldosivi,Estudiantes de Rio Cuarto,128,2.1,3.0,4.1,2026-04-04
-261,1491999,Argentinos JRS,Banfield,128,1.5,3.6,7.5,2026-04-06
-262,1492000,Barracas Central,Sarmiento Junin,128,2.8,2.75,2.9,2026-04-02
-263,1492001,Central Cordoba de Santiago,Newells Old Boys,128,2.38,2.88,3.25,2026-04-05
-264,1492002,Gimnasia L.P.,Huracan,128,2.9,2.8,2.7,2026-04-05
-265,1492003,Gimnasia M.,Velez Sarsfield,128,3.6,2.88,2.35,2026-04-03
-266,1492004,Independiente,Racing Club,128,2.55,3.0,3.0,2026-04-04
-267,1492005,Instituto Cordoba,Defensa Y Justicia,128,1.95,3.0,4.1,2026-04-07
-268,1492007,River Plate,Belgrano Cordoba,128,1.53,3.5,5.75,2026-04-05
-269,1492008,Rosario Central,Atletico Tucuman,128,1.57,3.75,6.5,2026-04-05
-270,1492009,San Lorenzo,Estudiantes L.P.,128,3.0,2.8,2.75,2026-04-03
-271,1492010,Talleres Cordoba,Boca Juniors,128,2.75,3.0,2.8,2026-04-02
-272,1492011,Tigre,Independ. Rivadavia,128,2.3,3.0,3.4,2026-04-02
-273,1492012,Union Santa Fe,Deportivo Riestra,128,1.85,3.1,5.25,2026-04-03
-274,1492013,Atletico Tucuman,Tigre,128,,,,2026-04-12
-275,1492014,Belgrano Cordoba,Aldosivi,128,1.7,3.3,5.5,2026-04-11
-276,1492015,Boca Juniors,Independiente,128,,,,2026-04-11
-277,1492016,Defensa Y Justicia,Talleres Cordoba,128,,,,2026-04-13
-278,1492017,Deportivo Riestra,Instituto Cordoba,128,,,,2026-04-11
-279,1492018,Estudiantes L.P.,Union Santa Fe,128,,,,2026-04-11
-280,1492019,Estudiantes de Rio Cuarto,Barracas Central,128,,,,2026-04-12
-281,1492020,Huracan,Rosario Central,128,,,,2026-04-12
-282,1492021,Independ. Rivadavia,Argentinos JRS,128,,,,2026-04-11
-283,1492022,Lanus,Banfield,128,,,,2026-04-13
-284,1492023,Newells Old Boys,San Lorenzo,128,,,,2026-04-12
-285,1492024,Platense,Gimnasia M.,128,,,,2026-04-12
-286,1492025,Racing Club,River Plate,128,,,,2026-04-12
-287,1492026,Sarmiento Junin,Gimnasia L.P.,128,,,,2026-04-13
-288,1492027,Velez Sarsfield,Central Cordoba de Santiago,128,,,,2026-04-14
-289,1535334,SC Braga,Real Betis,3,2.4,3.4,2.8,2026-04-08
-290,1535337,SC Freiburg,Celta Vigo,3,2.3,3.3,3.1,2026-04-09
-291,1535336,FC Porto,Nottingham Forest,3,2.1,3.4,3.3,2026-04-09
-292,1535335,Bologna,Aston Villa,3,3.2,3.4,2.2,2026-04-09
-293,1535338,Celta Vigo,SC Freiburg,3,,,,2026-04-16
-294,1535341,Nottingham Forest,FC Porto,3,,,,2026-04-16
-295,1535339,Aston Villa,Bologna,3,,,,2026-04-16
-296,1535340,Real Betis,SC Braga,3,,,,2026-04-16
-297,1534570,Sporting CP,Arsenal,2,4.2,3.7,1.83,2026-04-07
-298,1534909,Real Madrid,Bayern München,2,2.8,4.2,2.15,2026-04-07
-299,1534908,Paris Saint Germain,Liverpool,2,1.83,3.8,4.1,2026-04-08
-300,1534907,Barcelona,Atletico Madrid,2,1.5,4.33,5.5,2026-04-08
-301,1534912,Liverpool,Paris Saint Germain,2,,,,2026-04-14
-302,1534910,Atletico Madrid,Barcelona,2,,,,2026-04-14
-303,1534571,Arsenal,Sporting CP,2,,,,2026-04-15
-304,1534911,Bayern München,Real Madrid,2,,,,2026-04-15
-305,1389369,Grenoble,Clermont Foot,62,2.35,2.9,2.9,2026-04-03
-306,1389364,RED Star FC 93,Laval,62,1.83,3.1,4.0,2026-04-03
-307,1389366,Dunkerque,Rodez,62,1.95,3.3,3.25,2026-04-03
-308,1389363,Bastia,Amiens,62,1.85,3.1,3.75,2026-04-03
-309,1389361,Annecy,Guingamp,62,2.6,3.1,2.45,2026-04-03
-310,1389367,Montpellier,Estac Troyes,62,2.55,3.2,2.45,2026-04-04
-311,1389368,Reims,Boulogne,62,1.5,3.6,5.75,2026-04-04
-312,1389365,Nancy,Saint Etienne,62,3.6,3.25,1.85,2026-04-04
-313,1389362,Le Mans,PAU,62,1.9,3.3,3.5,2026-04-06
-314,1389370,Amiens,PAU,62,,,,2026-04-10
-315,1389375,Guingamp,Grenoble,62,,,,2026-04-10
-316,1389378,Clermont Foot,Nancy,62,,,,2026-04-10
-317,1389374,Laval,Reims,62,,,,2026-04-10
-318,1389377,Annecy,Montpellier,62,,,,2026-04-10
-319,1389376,RED Star FC 93,Bastia,62,,,,2026-04-11
-320,1389371,Boulogne,Le Mans,62,,,,2026-04-11
-321,1389373,Saint Etienne,Dunkerque,62,,,,2026-04-11
-322,1389372,Rodez,Estac Troyes,62,,,,2026-04-13
-323,1388863,1. FC Magdeburg,VfL Bochum,79,2.1,3.6,3.25,2026-04-04
-324,1388857,Arminia Bielefeld,SV Darmstadt 98,79,2.25,3.75,2.88,2026-04-04
-325,1388862,1. FC Kaiserslautern,Fortuna Düsseldorf,79,2.5,3.6,2.62,2026-04-04
-326,1388865,Dynamo Dresden,Hertha BSC,79,2.6,3.5,2.6,2026-04-04
-327,1388860,Hannover 96,SV Elversberg,79,2.2,3.5,3.1,2026-04-05
-328,1388864,FC Schalke 04,Karlsruher SC,79,1.48,4.5,6.0,2026-04-05
-329,1388859,SpVgg Greuther Fürth,SC Paderborn 07,79,4.0,3.75,1.85,2026-04-05
-330,1388861,Holstein Kiel,Preußen Münster,79,1.85,3.8,3.8,2026-04-05
-331,1388858,Eintracht Braunschweig,1. FC Nürnberg,79,2.5,3.6,2.62,2026-04-05
-332,1388868,Fortuna Düsseldorf,Holstein Kiel,79,,,,2026-04-10
-333,1388871,Karlsruher SC,Arminia Bielefeld,79,,,,2026-04-10
-334,1388870,Hertha BSC,1. FC Kaiserslautern,79,,,,2026-04-11
-335,1388872,1. FC Nürnberg,Dynamo Dresden,79,,,,2026-04-11
-336,1388874,Preußen Münster,SpVgg Greuther Fürth,79,,,,2026-04-11
-337,1388867,SV Darmstadt 98,Hannover 96,79,,,,2026-04-11
-338,1388866,VfL Bochum,Eintracht Braunschweig,79,,,,2026-04-12
-339,1388873,SC Paderborn 07,1. FC Magdeburg,79,,,,2026-04-12
-340,1388869,SV Elversberg,FC Schalke 04,79,,,,2026-04-12
-341,1419918,Frosinone,Padova,136,1.5,4.1,5.5,2026-04-05
-342,1419916,Palermo,Avellino,136,1.5,3.8,6.25,2026-04-05
-343,1419913,Cesena,Sudtirol,136,2.1,3.2,3.3,2026-04-06
-344,1419919,Bari,Modena,136,4.2,3.3,1.83,2026-04-06
-345,1419912,Venezia,Juve Stabia,136,1.42,4.0,7.0,2026-04-06
-346,1419911,Reggiana,Pescara,136,2.8,3.3,2.3,2026-04-06
-347,1419915,Catanzaro,Monza,136,2.7,3.3,2.45,2026-04-06
-348,1419920,Mantova,Virtus Entella,136,1.9,3.2,4.2,2026-04-06
-349,1419914,Sampdoria,Empoli,136,2.25,3.1,3.2,2026-04-06
-350,1419917,Carrarese,Spezia,136,2.0,3.1,3.9,2026-04-06
-351,1419926,Frosinone,Palermo,136,,,,2026-04-10
-352,1419924,Pescara,Sampdoria,136,,,,2026-04-11
-353,1419923,Virtus Entella,Venezia,136,,,,2026-04-11
-354,1419925,Juve Stabia,Cesena,136,,,,2026-04-11
-355,1419922,Sudtirol,Modena,136,,,,2026-04-11
-356,1419927,Avellino,Catanzaro,136,,,,2026-04-11
-357,1419930,Monza,Bari,136,,,,2026-04-11
-358,1419921,Padova,Empoli,136,,,,2026-04-12
-359,1419928,Spezia,Mantova,136,,,,2026-04-12
-360,1419929,Reggiana,Carrarese,136,,,,2026-04-12
-361,1419899,Catanzaro,Modena,136,,,,2026-04-14
-362,1387026,Middlesbrough,Millwall,40,1.73,3.9,4.33,2026-04-03
-363,1387022,Leicester,Preston,40,1.85,3.6,4.1,2026-04-03
-364,1387020,Birmingham,Blackburn,40,1.8,3.4,4.75,2026-04-03
-365,1387027,West Brom,Wrexham,40,2.1,3.3,3.5,2026-04-03
-366,1387021,Sheffield Utd,Swansea,40,1.85,3.75,3.9,2026-04-03
-367,1387019,Norwich,Portsmouth,40,1.95,3.6,3.75,2026-04-03
-368,1387025,QPR,Watford,40,2.7,3.25,2.6,2026-04-03
-369,1387029,Stoke City,Sheffield Wednesday,40,1.33,4.75,10.0,2026-04-03
-370,1387030,Charlton,Bristol City,40,2.5,3.2,2.88,2026-04-03
-371,1387023,Oxford United,Hull City,40,2.5,3.2,2.9,2026-04-03
-372,1387024,Coventry,Derby,40,1.57,4.0,6.0,2026-04-03
-373,1387040,Portsmouth,Oxford United,40,1.88,3.45,4.2,2026-04-06
-374,1387038,Millwall,Norwich,40,2.08,3.6,3.25,2026-04-06
-375,1387033,Watford,Charlton,40,1.74,3.7,4.6,2026-04-06
-376,1387042,Bristol City,Sheffield Utd,40,3.1,3.6,2.15,2026-04-06
-377,1387032,Ipswich,Birmingham,40,1.79,3.8,4.2,2026-04-06
-378,1387039,Preston,QPR,40,2.35,3.35,2.95,2026-04-06
-379,1387036,Blackburn,West Brom,40,2.48,3.15,2.9,2026-04-06
-380,1387034,Derby,Stoke City,40,2.0,3.45,3.65,2026-04-06
-381,1387031,Sheffield Wednesday,Leicester,40,5.6,4.1,1.57,2026-04-06
-382,1387041,Swansea,Middlesbrough,40,,,,2026-04-06
-383,1387035,Hull City,Coventry,40,,,,2026-04-06
-384,1387037,Wrexham,Southampton,40,,,,2026-04-07
-385,1387051,West Brom,Millwall,40,,,,2026-04-10
-386,1387043,Norwich,Ipswich,40,,,,2026-04-11
-387,1387049,QPR,Bristol City,40,,,,2026-04-11
-388,1387048,Coventry,Sheffield Wednesday,40,,,,2026-04-11
-389,1387053,Southampton,Derby,40,,,,2026-04-11
-390,1387045,Leicester,Swansea,40,,,,2026-04-11
-391,1387046,Sheffield Utd,Hull City,40,,,,2026-04-11
-392,1387050,Middlesbrough,Portsmouth,40,,,,2026-04-11
-393,1387052,Stoke City,Blackburn,40,,,,2026-04-11
-394,1387054,Charlton,Preston,40,,,,2026-04-11
-395,1387047,Oxford United,Watford,40,,,,2026-04-11
-396,1387044,Birmingham,Wrexham,40,,,,2026-04-12
-397,1386857,Portsmouth,Ipswich,40,,,,2026-04-14
-398,1392123,Las Palmas,Granada CF,141,1.75,3.3,5.25,2026-04-02
-399,1392117,Castellón,Almeria,141,2.05,3.8,3.2,2026-04-02
-400,1392118,Real Sociedad II,Eibar,141,2.88,3.0,2.6,2026-04-02
-401,1392119,Leganes,Zaragoza,141,2.0,3.3,3.8,2026-04-02
-402,1392130,Cadiz,Cordoba,141,2.9,3.5,2.3,2026-04-04
-403,1392137,Albacete,Burgos,141,2.25,3.2,3.3,2026-04-04
-404,1392132,Deportivo La Coruna,Malaga,141,1.85,3.7,3.9,2026-04-04
-405,1392138,Cultural Leonesa,Valladolid,141,2.7,3.3,2.6,2026-04-04
-406,1392131,Eibar,AD Ceuta FC,141,1.76,3.35,4.5,2026-04-05
-407,1396982,FC Andorra,Racing Santander,141,,,,2026-04-05
-408,1392134,Las Palmas,Huesca,141,1.64,3.45,5.3,2026-04-05
-409,1392136,Almeria,Leganes,141,1.66,3.8,4.5,2026-04-05
-410,1392133,Zaragoza,Mirandes,141,1.84,3.4,4.33,2026-04-05
-411,1392129,Castellón,Granada CF,141,1.6,3.85,4.9,2026-04-06
-412,1392128,Sporting Gijon,Real Sociedad II,141,1.79,3.5,4.1,2026-04-06
-413,1392139,AD Ceuta FC,Real Sociedad II,141,,,,2026-04-10
-414,1392146,Leganes,Albacete,141,,,,2026-04-11
-415,1392142,Burgos,Sporting Gijon,141,,,,2026-04-11
-416,1392140,Malaga,Las Palmas,141,,,,2026-04-11
-417,1392144,Cordoba,Zaragoza,141,,,,2026-04-11
-418,1392147,Granada CF,Cultural Leonesa,141,,,,2026-04-12
-419,1392141,Huesca,Deportivo La Coruna,141,,,,2026-04-12
-420,1396983,Cadiz,FC Andorra,141,,,,2026-04-12
-421,1392143,Mirandes,Castellón,141,,,,2026-04-12
-422,1392145,Racing Santander,Almeria,141,,,,2026-04-12
-423,1392149,Valladolid,Eibar,141,,,,2026-04-13
-424,1400208,Akron,CSKA Moscow,235,4.6,4.25,1.72,2026-04-04
-425,1400214,Zenit,Krylia Sovetov,235,1.22,6.8,14.75,2026-04-04
-426,1400210,Dynamo,FC Orenburg,235,1.46,4.9,6.9,2026-04-04
-427,1400207,Akhmat,FC Krasnodar,235,4.45,3.7,1.86,2026-04-04
-428,1400211,Nizhny Novgorod,FC Rostov,235,3.2,3.24,2.42,2026-04-05
-429,1400209,Dinamo Makhachkala,Baltika,235,3.74,3.1,2.25,2026-04-05
-430,1400213,Spartak Moscow,Lokomotiv,235,1.86,3.94,4.15,2026-04-05
-431,1400212,FC Sochi,Rubin,235,4.15,3.48,1.98,2026-04-06
-432,1400219,Krylia Sovetov,Akhmat,235,3.24,3.54,2.26,2026-04-11
-433,1400221,Rubin,FC Orenburg,235,1.88,3.64,4.4,2026-04-11
-434,1400216,Baltika,Nizhny Novgorod,235,1.45,4.3,8.9,2026-04-11
-435,1400217,CSKA Moscow,FC Sochi,235,1.31,5.4,11.75,2026-04-12
-436,1400220,Lokomotiv,Dinamo Makhachkala,235,1.72,3.78,5.3,2026-04-12
-437,1400218,FC Rostov,Spartak Moscow,235,4.75,4.2,1.71,2026-04-12
-438,1400222,Zenit,FC Krasnodar,235,1.76,3.78,5.0,2026-04-12
-439,1400215,Akron,Dynamo,235,6.05,4.4,1.56,2026-04-13
+0,1379288,West Ham,Wolves,39,1.8,3.75,4.33,2026-04-10
+1,1379279,Arsenal,Bournemouth,39,1.45,4.33,7.0,2026-04-11
+2,1379281,Burnley,Brighton,39,4.5,4.0,1.73,2026-04-11
+3,1379280,Brentford,Everton,39,2.15,3.3,3.5,2026-04-11
+4,1379284,Liverpool,Fulham,39,1.65,4.2,4.75,2026-04-11
+5,1379283,Crystal Palace,Newcastle,39,3.0,3.6,2.25,2026-04-12
+6,1379286,Nottingham Forest,Aston Villa,39,2.62,3.3,2.7,2026-04-12
+7,1379287,Sunderland,Tottenham,39,2.7,3.2,2.7,2026-04-12
+8,1379282,Chelsea,Manchester City,39,3.1,3.8,2.15,2026-04-12
+9,1379285,Manchester United,Leeds,39,1.62,4.1,5.0,2026-04-13
+10,1379290,Brentford,Fulham,39,2.1,3.4,3.25,2026-04-18
+11,1379296,Newcastle,Bournemouth,39,1.85,3.8,3.6,2026-04-18
+12,1379294,Leeds,Wolves,39,1.7,3.6,5.25,2026-04-18
+13,1379298,Tottenham,Brighton,39,2.5,3.5,2.62,2026-04-18
+14,1379291,Chelsea,Manchester United,39,2.1,3.6,3.0,2026-04-18
+15,1379293,Everton,Liverpool,39,3.4,3.5,2.05,2026-04-19
+16,1379297,Nottingham Forest,Burnley,39,1.55,3.7,6.0,2026-04-19
+17,1379289,Aston Villa,Sunderland,39,1.62,3.7,5.75,2026-04-19
+18,1379295,Manchester City,Arsenal,39,2.05,3.5,3.3,2026-04-19
+19,1379292,Crystal Palace,West Ham,39,2.1,3.3,3.2,2026-04-20
+20,1379301,Brighton,Chelsea,39,,,,2026-04-21
+21,1379300,Bournemouth,Leeds,39,,,,2026-04-22
+22,1379302,Burnley,Manchester City,39,,,,2026-04-22
+23,1379306,Sunderland,Nottingham Forest,39,,,,2026-04-24
+24,1387956,Paris FC,Monaco,61,3.75,3.7,1.95,2026-04-10
+25,1387954,Marseille,Metz,61,1.22,6.25,13.0,2026-04-10
+26,1387950,Auxerre,Nantes,61,2.0,3.3,4.0,2026-04-11
+27,1387957,Rennes,Angers,61,1.36,4.75,8.5,2026-04-11
+28,1387955,Nice,Le Havre,61,1.83,3.1,4.0,2026-04-12
+29,1387958,Toulouse,Lille,61,3.2,3.3,2.3,2026-04-12
+30,1387953,Lyon,Lorient,61,1.67,3.8,5.25,2026-04-12
+31,1387960,Lens,Toulouse,61,1.6,3.8,5.25,2026-04-17
+32,1387962,Lorient,Marseille,61,3.75,3.6,1.9,2026-04-18
+33,1387959,Angers,Le Havre,61,2.75,3.1,2.55,2026-04-18
+34,1387961,Lille,Nice,61,1.6,3.7,5.75,2026-04-18
+35,1387964,Monaco,Auxerre,61,1.57,3.9,5.75,2026-04-19
+36,1387965,Nantes,Stade Brestois 29,61,2.35,3.25,3.0,2026-04-19
+37,1387967,Strasbourg,Rennes,61,2.5,3.5,2.6,2026-04-19
+38,1387963,Metz,Paris FC,61,3.2,3.3,2.15,2026-04-19
+39,1387966,Paris Saint Germain,Lyon,61,1.27,5.25,9.5,2026-04-19
+40,1387929,Paris Saint Germain,Nantes,61,1.14,9.0,15.0,2026-04-22
+41,1387969,Stade Brestois 29,Lens,61,,,,2026-04-24
+42,1388560,FC Augsburg,1899 Hoffenheim,78,3.4,3.75,2.05,2026-04-10
+43,1388568,VfL Wolfsburg,Eintracht Frankfurt,78,2.55,3.6,2.6,2026-04-11
+44,1388561,Borussia Dortmund,Bayer Leverkusen,78,1.95,3.8,3.6,2026-04-11
+45,1388565,RB Leipzig,Borussia Mönchengladbach,78,1.45,5.0,6.25,2026-04-11
+46,1388563,1. FC Heidenheim,Union Berlin,78,3.0,3.5,2.3,2026-04-11
+47,1388566,FC St. Pauli,Bayern München,78,8.0,5.0,1.36,2026-04-11
+48,1388562,1. FC Köln,Werder Bremen,78,2.2,3.5,3.2,2026-04-12
+49,1388567,VfB Stuttgart,Hamburger SV,78,1.42,4.75,7.0,2026-04-12
+50,1388564,FSV Mainz 05,SC Freiburg,78,2.25,3.1,3.5,2026-04-12
+51,1388575,FC St. Pauli,1. FC Köln,78,2.3,3.2,3.1,2026-04-17
+52,1388577,Werder Bremen,Hamburger SV,78,2.0,3.5,3.3,2026-04-18
+53,1388574,1899 Hoffenheim,Borussia Dortmund,78,2.7,3.75,2.3,2026-04-18
+54,1388569,Bayer Leverkusen,FC Augsburg,78,1.44,4.33,6.25,2026-04-18
+55,1388576,Union Berlin,VfL Wolfsburg,78,2.2,3.4,3.2,2026-04-18
+56,1388572,Eintracht Frankfurt,RB Leipzig,78,3.1,3.8,2.05,2026-04-18
+57,1388573,SC Freiburg,1. FC Heidenheim,78,1.62,3.8,5.25,2026-04-19
+58,1388570,Bayern München,VfB Stuttgart,78,1.38,5.25,7.0,2026-04-19
+59,1388571,Borussia Mönchengladbach,FSV Mainz 05,78,2.45,3.4,2.75,2026-04-19
+60,1391126,Real Madrid,Girona,140,1.3,6.0,8.5,2026-04-10
+61,1391127,Real Sociedad,Alaves,140,1.73,3.7,4.75,2026-04-11
+62,1391122,Elche,Valencia,140,2.45,3.3,2.9,2026-04-11
+63,1391120,Barcelona,Espanyol,140,1.28,6.0,9.0,2026-04-11
+64,1391128,Sevilla,Atletico Madrid,140,3.1,3.1,2.45,2026-04-11
+65,1391125,Osasuna,Real Betis,140,2.2,3.4,3.3,2026-04-12
+66,1391124,Mallorca,Rayo Vallecano,140,2.38,3.25,3.0,2026-04-12
+67,1391121,Celta Vigo,Oviedo,140,1.7,3.7,5.25,2026-04-12
+68,1391119,Athletic Club,Villarreal,140,2.25,3.5,3.1,2026-04-12
+69,1391123,Levante,Getafe,140,2.75,3.0,2.88,2026-04-13
+70,1391139,Athletic Club,Osasuna,140,1.83,3.3,4.5,2026-04-21
+71,1391144,Mallorca,Valencia,140,2.38,3.1,2.9,2026-04-21
+72,1391146,Real Madrid,Alaves,140,1.25,5.25,11.0,2026-04-21
+73,1391142,Girona,Real Betis,140,2.4,3.4,2.7,2026-04-21
+74,1391141,Elche,Atletico Madrid,140,3.9,3.6,1.85,2026-04-22
+75,1391147,Real Sociedad,Getafe,140,1.83,3.1,5.0,2026-04-22
+76,1391140,Barcelona,Celta Vigo,140,1.3,5.5,8.5,2026-04-22
+77,1391143,Levante,Sevilla,140,2.88,3.25,2.45,2026-04-23
+78,1391145,Rayo Vallecano,Espanyol,140,1.8,3.4,4.5,2026-04-23
+79,1391148,Oviedo,Villarreal,140,4.0,3.6,1.85,2026-04-23
+80,1391131,Real Betis,Real Madrid,140,,,,2026-04-24
+81,1378182,AS Roma,Pisa,135,1.33,5.0,9.5,2026-04-10
+82,1378176,Cagliari,Cremonese,135,2.15,3.1,3.6,2026-04-11
+83,1378183,Torino,Hellas Verona,135,1.9,3.3,4.33,2026-04-11
+84,1378180,AC Milan,Udinese,135,1.42,4.5,8.0,2026-04-11
+85,1378174,Atalanta,Juventus,135,3.1,3.4,2.3,2026-04-11
+86,1378179,Genoa,Sassuolo,135,2.15,3.3,3.5,2026-04-12
+87,1378181,Parma,Napoli,135,6.0,3.8,1.6,2026-04-12
+88,1378175,Bologna,Lecce,135,1.8,3.4,4.75,2026-04-12
+89,1378177,Como,Inter,135,3.2,3.5,2.2,2026-04-12
+90,1378178,Fiorentina,Lazio,135,2.25,3.2,3.4,2026-04-13
+91,1378191,Sassuolo,Como,135,5.0,3.75,1.67,2026-04-17
+92,1378185,Inter,Cagliari,135,1.2,6.0,15.0,2026-04-17
+93,1378192,Udinese,Parma,135,2.15,3.1,3.4,2026-04-18
+94,1378188,Napoli,Lazio,135,1.62,3.5,6.0,2026-04-18
+95,1378190,AS Roma,Atalanta,135,2.1,3.3,3.3,2026-04-18
+96,1378184,Cremonese,Torino,135,2.75,3.2,2.55,2026-04-19
+97,1378193,Hellas Verona,AC Milan,135,5.75,3.5,1.62,2026-04-19
+98,1378189,Pisa,Genoa,135,3.5,3.2,2.2,2026-04-19
+99,1378186,Juventus,Bologna,135,1.45,4.1,7.0,2026-04-19
+100,1378187,Lecce,Fiorentina,135,3.4,3.2,2.1,2026-04-20
+101,1378200,Napoli,Cremonese,135,,,,2026-04-24
+102,1381134,Twente,FC Volendam,88,1.2,7.5,11.0,2026-04-10
+103,1381135,Utrecht,Telstar,88,1.62,3.7,6.0,2026-04-11
+104,1381133,Sparta Rotterdam,PSV Eindhoven,88,3.75,4.2,1.83,2026-04-11
+105,1381129,Groningen,GO Ahead Eagles,88,1.85,4.0,3.75,2026-04-11
+106,1381130,Heracles,Ajax,88,5.25,4.33,1.57,2026-04-11
+107,1381132,Fortuna Sittard,NAC Breda,88,2.62,3.5,2.55,2026-04-12
+108,1381136,PEC Zwolle,Excelsior,88,2.15,3.75,3.1,2026-04-12
+109,1381131,NEC Nijmegen,Feyenoord,88,2.05,4.1,3.1,2026-04-12
+110,1381128,AZ Alkmaar,Heerenveen,88,1.7,4.33,4.33,2026-04-12
+111,1381144,Telstar,Sparta Rotterdam,88,2.55,3.7,2.4,2026-04-22
+112,1381139,GO Ahead Eagles,AZ Alkmaar,88,2.88,3.75,2.2,2026-04-23
+113,1381143,PSV Eindhoven,PEC Zwolle,88,1.18,7.0,12.0,2026-04-23
+114,1494595,FC Zurich,FC Lugano,207,,,,2026-04-11
+115,1494593,FC Winterthur,Grasshoppers,207,,,,2026-04-11
+116,1494592,FC Thun,FC Basel 1893,207,,,,2026-04-11
+117,1494594,BSC Young Boys,Servette FC,207,2.05,3.8,3.2,2026-04-12
+118,1494591,FC Sion,Lausanne,207,2.0,3.25,4.0,2026-04-12
+119,1494590,FC Luzern,FC ST. Gallen,207,2.3,4.0,2.62,2026-04-12
+120,1396495,Famalicao,Moreirense,94,1.5,4.0,6.5,2026-04-10
+121,1396489,AVS,Guimaraes,94,5.25,3.8,1.65,2026-04-11
+122,1396496,Santa Clara,Rio Ave,94,1.8,3.4,4.75,2026-04-11
+123,1396494,Estrela,Sporting CP,94,12.0,6.0,1.22,2026-04-11
+124,1396490,Alverca,Casa Pia,94,2.1,3.25,3.6,2026-04-12
+125,1396491,Benfica,Nacional,94,1.14,8.0,15.0,2026-04-12
+126,1396492,SC Braga,Arouca,94,1.4,4.5,8.0,2026-04-12
+127,1396493,Estoril,FC Porto,94,6.5,4.5,1.45,2026-04-12
+128,1396497,Tondela,GIL Vicente,94,4.0,3.2,2.0,2026-04-13
+129,1396505,Rio Ave,AVS,94,,,,2026-04-17
+130,1396504,Nacional,Alverca,94,,,,2026-04-18
+131,1396500,Casa Pia,Santa Clara,94,,,,2026-04-18
+132,1396502,GIL Vicente,Guimaraes,94,,,,2026-04-18
+133,1396498,Arouca,Estrela,94,,,,2026-04-19
+134,1396506,Sporting CP,Benfica,94,,,,2026-04-19
+135,1396501,FC Porto,Tondela,94,,,,2026-04-19
+136,1396499,SC Braga,Famalicao,94,,,,2026-04-19
+137,1396503,Moreirense,Estoril,94,,,,2026-04-20
+138,1396464,Casa Pia,SC Braga,94,,,,2026-04-23
+139,1394687,Beşiktaş,Antalyaspor,203,1.3,5.25,10.0,2026-04-10
+140,1394686,Başakşehir,Gençlerbirliği S.K.,203,1.6,3.9,5.5,2026-04-11
+141,1394685,Alanyaspor,Trabzonspor,203,3.0,3.3,2.3,2026-04-11
+142,1394691,Kayserispor,Fenerbahçe,203,6.51,4.83,1.44,2026-04-11
+143,1394692,Konyaspor,Fatih Karagümrük,203,1.68,3.72,5.24,2026-04-12
+144,1394690,Göztepe,Kasımpaşa,203,1.93,3.42,4.12,2026-04-12
+145,1394689,Galatasaray,Kocaelispor,203,1.22,6.0,12.0,2026-04-12
+146,1394693,Rizespor,Gaziantep FK,203,1.84,3.73,4.14,2026-04-13
+147,1394688,Eyüpspor,Samsunspor,203,4.2,3.4,1.85,2026-04-13
+148,1394695,Fenerbahçe,Rizespor,203,,,,2026-04-17
+149,1394694,Antalyaspor,Konyaspor,203,,,,2026-04-17
+150,1394698,Fatih Karagümrük,Eyüpspor,203,,,,2026-04-18
+151,1394700,Kocaelispor,Göztepe,203,,,,2026-04-18
+152,1394697,Gençlerbirliği S.K.,Galatasaray,203,,,,2026-04-18
+153,1394699,Kasımpaşa,Alanyaspor,203,,,,2026-04-19
+154,1394701,Samsunspor,Beşiktaş,203,,,,2026-04-19
+155,1394702,Trabzonspor,Başakşehir,203,,,,2026-04-19
+156,1394696,Gaziantep FK,Kayserispor,203,,,,2026-04-20
+157,1394704,Başakşehir,Kasımpaşa,203,,,,2026-04-24
+158,1536939,Charleroi,Antwerp,144,1.67,3.5,4.75,2026-04-10
+159,1536968,Cercle Brugge,RAAL La Louvière,144,,,,2026-04-11
+160,1536940,Standard Liege,KVC Westerlo,144,,,,2026-04-11
+161,1536982,St. Truiden,Club Brugge KV,144,,,,2026-04-11
+162,1536981,KV Mechelen,Union St. Gilloise,144,5.0,3.5,1.65,2026-04-12
+163,1536941,Genk,OH Leuven,144,1.62,3.75,4.75,2026-04-12
+164,1536983,Anderlecht,Gent,144,1.85,3.5,3.6,2026-04-12
+165,1536969,Dender,Zulte Waregem,144,3.0,3.3,2.2,2026-04-12
+166,1536944,Antwerp,OH Leuven,144,,,,2026-04-18
+167,1536942,KVC Westerlo,Genk,144,,,,2026-04-18
+168,1536943,Charleroi,Standard Liege,144,,,,2026-04-18
+169,1536985,KV Mechelen,Anderlecht,144,,,,2026-04-18
+170,1536984,Gent,St. Truiden,144,,,,2026-04-19
+171,1536970,Dender,Cercle Brugge,144,,,,2026-04-19
+172,1536986,Union St. Gilloise,Club Brugge KV,144,,,,2026-04-19
+173,1536971,RAAL La Louvière,Zulte Waregem,144,,,,2026-04-19
+174,1536946,OH Leuven,KVC Westerlo,144,,,,2026-04-21
+175,1536945,Standard Liege,Antwerp,144,,,,2026-04-21
+176,1536947,Genk,Charleroi,144,,,,2026-04-21
+177,1536989,Club Brugge KV,KV Mechelen,144,,,,2026-04-22
+178,1536988,Union St. Gilloise,Gent,144,,,,2026-04-22
+179,1536987,St. Truiden,Anderlecht,144,,,,2026-04-23
+180,1536972,Cercle Brugge,Dender,144,,,,2026-04-24
+181,1504739,JEF United Chiba,Mito Hollyhock,98,2.7,3.1,2.7,2026-04-11
+182,1504742,Sanfrecce Hiroshima,Shimizu S-pulse,98,1.6,4.0,5.25,2026-04-11
+183,1504741,Machida Zelvia,Kashiwa Reysol,98,2.9,3.1,2.5,2026-04-11
+184,1504740,Avispa Fukuoka,V-varen Nagasaki,98,2.45,3.2,2.88,2026-04-11
+185,1504743,Vissel Kobe,Nagoya Grampus,98,1.95,3.4,3.8,2026-04-11
+186,1504744,Yokohama F. Marinos,FC Tokyo,98,3.2,3.4,2.2,2026-04-11
+187,1504745,Gamba Osaka,Cerezo Osaka,98,2.3,3.4,3.0,2026-04-11
+188,1504746,Kyoto Sanga,Fagiano Okayama,98,1.9,3.5,3.9,2026-04-11
+189,1504747,Urawa,Tokyo Verdy,98,1.83,3.25,4.5,2026-04-12
+190,1504748,Kawasaki Frontale,Kashima,98,2.8,3.6,2.3,2026-04-12
+191,1504749,Yokohama F. Marinos,Kawasaki Frontale,98,,,,2026-04-18
+192,1504752,Sanfrecce Hiroshima,V-varen Nagasaki,98,,,,2026-04-18
+193,1504750,Kashima,Urawa,98,,,,2026-04-18
+194,1504753,Tokyo Verdy,JEF United Chiba,98,,,,2026-04-18
+195,1504754,Cerezo Osaka,Kyoto Sanga,98,,,,2026-04-18
+196,1504755,Mito Hollyhock,Kashiwa Reysol,98,,,,2026-04-19
+197,1504757,Gamba Osaka,Fagiano Okayama,98,,,,2026-04-19
+198,1504758,Nagoya Grampus,Avispa Fukuoka,98,,,,2026-04-19
+199,1504817,Gamba Osaka,Avispa Fukuoka,98,,,,2026-04-22
+200,1504760,Kashiwa Reysol,Kashima,98,,,,2026-04-24
+201,1504759,FC Tokyo,Mito Hollyhock,98,,,,2026-04-24
+202,1537085,Kifisia,Asteras Tripolis,197,,,,2026-04-18
+203,1537086,Atromitos,Larisa,197,,,,2026-04-18
+204,1537112,OFI,Levadiakos,197,2.55,3.25,2.55,2026-04-18
+205,1537111,Aris Thessalonikis,Volos NFC,197,1.67,3.4,5.25,2026-04-18
+206,1537087,Panetolikos,Panserraikos,197,,,,2026-04-18
+207,1537123,AEK Athens FC,PAOK,197,2.25,3.3,3.1,2026-04-19
+208,1537124,Panathinaikos,Olympiakos Piraeus,197,3.1,3.1,2.3,2026-04-19
+209,1537088,Panserraikos,Atromitos,197,,,,2026-04-22
+210,1537090,Larisa,Kifisia,197,,,,2026-04-22
+211,1537089,Asteras Tripolis,Panetolikos,197,,,,2026-04-22
+212,1492219,Vitoria,Sao Paulo,71,3.2,3.1,2.4,2026-04-11
+213,1492217,Remo,Vasco DA Gama,71,3.0,3.4,2.35,2026-04-11
+214,1492214,Fluminense,Flamengo,71,3.4,3.0,2.38,2026-04-11
+215,1492216,Mirassol,Bahia,71,2.3,3.4,3.1,2026-04-11
+216,1492218,Santos,Atletico-MG,71,2.25,3.2,3.3,2026-04-11
+217,1492215,Internacional,Gremio,71,1.95,3.5,3.9,2026-04-11
+218,1492210,Atletico Paranaense,Chapecoense-sc,71,1.6,4.0,5.5,2026-04-12
+219,1492211,Botafogo,Coritiba,71,1.75,3.6,4.75,2026-04-12
+220,1492212,Corinthians,Palmeiras,71,2.88,3.2,2.55,2026-04-12
+221,1492213,Cruzeiro,RB Bragantino,71,1.85,3.5,4.33,2026-04-12
+222,1492221,Chapecoense-sc,Botafogo,71,,,,2026-04-18
+223,1492228,Vasco DA Gama,Sao Paulo,71,,,,2026-04-18
+224,1492229,Vitoria,Corinthians,71,,,,2026-04-18
+225,1492223,Cruzeiro,Gremio,71,,,,2026-04-18
+226,1492225,Internacional,Mirassol,71,,,,2026-04-19
+227,1492227,Santos,Fluminense,71,,,,2026-04-19
+228,1492222,Coritiba,Atletico-MG,71,,,,2026-04-19
+229,1492226,Palmeiras,Atletico Paranaense,71,,,,2026-04-19
+230,1492220,RB Bragantino,Remo,71,,,,2026-04-19
+231,1492224,Flamengo,Bahia,71,,,,2026-04-19
+232,1382859,Celtic,ST Mirren,179,1.3,5.25,8.0,2026-04-11
+233,1382863,Kilmarnock,Dundee,179,2.15,3.5,3.25,2026-04-11
+234,1382858,Aberdeen,Hibernian,179,3.4,3.4,2.1,2026-04-11
+235,1382862,Heart Of Midlothian,Motherwell,179,1.95,3.4,4.0,2026-04-11
+236,1382860,Dundee Utd,Livingston,179,1.62,3.9,5.5,2026-04-11
+237,1382861,Falkirk,Rangers,179,4.75,3.5,1.75,2026-04-12
+238,1383026,Queen's Park,Ross County,180,2.7,3.2,2.35,2026-04-10
+239,1383028,ST Johnstone,Airdrie United,180,1.25,5.25,9.0,2026-04-11
+240,1383025,Partick,Dunfermline,180,1.91,3.2,3.5,2026-04-11
+241,1383027,Raith Rovers,Morton,180,1.83,3.2,3.8,2026-04-11
+242,1383024,Ayr Utd,Arbroath,180,2.25,3.0,2.88,2026-04-11
+243,1383014,Airdrie United,Dunfermline,180,2.8,3.15,2.4,2026-04-14
+244,1383022,Queen's Park,Raith Rovers,180,,,,2026-04-14
+245,1383033,Ross County,Ayr Utd,180,,,,2026-04-18
+246,1383032,Morton,Queen's Park,180,,,,2026-04-18
+247,1383030,Arbroath,Raith Rovers,180,,,,2026-04-18
+248,1383029,Airdrie United,Partick,180,,,,2026-04-18
+249,1383031,Dunfermline,ST Johnstone,180,,,,2026-04-21
+250,1383038,ST Johnstone,Raith Rovers,180,,,,2026-04-24
+251,1506932,Pohang Steelers,Jeju United FC,292,1.95,3.2,4.0,2026-04-11
+252,1506933,FC Seoul,Jeonbuk Motors,292,2.3,3.25,3.1,2026-04-11
+253,1506934,Gwangju FC,Bucheon FC 1995,292,2.6,3.0,2.88,2026-04-11
+254,1506935,Incheon United,Ulsan Hyundai FC,292,,,,2026-04-11
+255,1506936,Daejeon Citizen,Gangwon FC,292,2.45,3.2,2.88,2026-04-12
+256,1506937,Gimcheon Sangmu FC,FC Anyang,292,2.2,3.3,3.2,2026-04-12
+257,1506903,Ulsan Hyundai FC,FC Seoul,292,,,,2026-04-15
+258,1506938,Gangwon FC,Jeonbuk Motors,292,,,,2026-04-18
+259,1506939,FC Seoul,Daejeon Citizen,292,,,,2026-04-18
+260,1506940,Bucheon FC 1995,Incheon United,292,,,,2026-04-18
+261,1506941,Jeju United FC,Gimcheon Sangmu FC,292,,,,2026-04-18
+262,1506942,Ulsan Hyundai FC,Gwangju FC,292,,,,2026-04-19
+263,1506943,Pohang Steelers,FC Anyang,292,,,,2026-04-19
+264,1506945,Jeonbuk Motors,Incheon United,292,,,,2026-04-21
+265,1506946,FC Seoul,Bucheon FC 1995,292,,,,2026-04-21
+266,1506944,Gimcheon Sangmu FC,Gangwon FC,292,,,,2026-04-21
+267,1506947,FC Anyang,Ulsan Hyundai FC,292,,,,2026-04-22
+268,1506948,Daejeon Citizen,Jeju United FC,292,,,,2026-04-22
+269,1506949,Pohang Steelers,Gwangju FC,292,,,,2026-04-22
+270,1492013,Atletico Tucuman,Tigre,128,2.7,2.9,3.0,2026-04-12
+271,1492014,Belgrano Cordoba,Aldosivi,128,1.7,3.4,6.0,2026-04-11
+272,1492015,Boca Juniors,Independiente,128,2.3,3.0,3.6,2026-04-11
+273,1492016,Defensa Y Justicia,Talleres Cordoba,128,2.9,2.75,2.9,2026-04-13
+274,1492017,Deportivo Riestra,Instituto Cordoba,128,2.8,2.7,3.0,2026-04-11
+275,1492018,Estudiantes L.P.,Union Santa Fe,128,2.25,2.8,3.9,2026-04-11
+276,1492019,Estudiantes de Rio Cuarto,Barracas Central,128,2.45,2.8,3.4,2026-04-12
+277,1492020,Huracan,Rosario Central,128,2.55,2.8,3.3,2026-04-12
+278,1492021,Independ. Rivadavia,Argentinos JRS,128,2.9,2.7,2.9,2026-04-11
+279,1492022,Lanus,Banfield,128,1.85,3.4,4.5,2026-04-13
+280,1492023,Newells Old Boys,San Lorenzo,128,2.75,2.8,3.0,2026-04-12
+281,1492024,Platense,Gimnasia M.,128,2.0,3.0,4.5,2026-04-12
+282,1492025,Racing Club,River Plate,128,2.62,3.0,2.9,2026-04-12
+283,1492026,Sarmiento Junin,Gimnasia L.P.,128,2.38,3.0,3.3,2026-04-13
+284,1492027,Velez Sarsfield,Central Cordoba de Santiago,128,1.57,3.6,7.0,2026-04-14
+285,1492028,Aldosivi,Racing Club,128,,,,2026-04-19
+286,1492029,Argentinos JRS,Atletico Tucuman,128,1.45,3.8,8.0,2026-04-19
+287,1492030,Banfield,Independ. Rivadavia,128,,,,2026-04-20
+288,1492031,Barracas Central,Belgrano Cordoba,128,,,,2026-04-20
+289,1492032,Central Cordoba de Santiago,Platense,128,,,,2026-04-20
+290,1492033,Gimnasia L.P.,Estudiantes de Rio Cuarto,128,1.75,3.2,5.25,2026-04-18
+291,1492034,Gimnasia M.,Lanus,128,,,,2026-04-21
+292,1492035,Independiente,Defensa Y Justicia,128,1.67,3.4,5.5,2026-04-18
+293,1492036,Instituto Cordoba,Estudiantes L.P.,128,3.2,3.0,2.3,2026-04-18
+294,1492037,River Plate,Boca Juniors,128,,,,2026-04-19
+295,1492038,Rosario Central,Sarmiento Junin,128,,,,2026-04-19
+296,1492039,San Lorenzo,Velez Sarsfield,128,,,,2026-04-20
+297,1492040,Talleres Cordoba,Deportivo Riestra,128,,,,2026-04-19
+298,1492041,Tigre,Huracan,128,,,,2026-04-21
+299,1492042,Union Santa Fe,Newells Old Boys,128,1.57,3.6,6.5,2026-04-17
+300,1492045,Defensa Y Justicia,Boca Juniors,128,,,,2026-04-23
+301,1492046,Deportivo Riestra,Independiente,128,,,,2026-04-24
+302,1492048,Estudiantes de Rio Cuarto,Rosario Central,128,,,,2026-04-24
+303,1492051,Lanus,Central Cordoba de Santiago,128,,,,2026-04-24
+304,1535338,Celta Vigo,SC Freiburg,3,1.8,3.7,4.1,2026-04-16
+305,1535341,Nottingham Forest,FC Porto,3,2.2,3.1,3.5,2026-04-16
+306,1535339,Aston Villa,Bologna,3,1.7,3.75,4.75,2026-04-16
+307,1535340,Real Betis,SC Braga,3,1.9,3.5,4.1,2026-04-16
+308,1534912,Liverpool,Paris Saint Germain,2,2.3,4.33,2.5,2026-04-14
+309,1534910,Atletico Madrid,Barcelona,2,4.0,3.8,1.8,2026-04-14
+310,1534571,Arsenal,Sporting CP,2,1.4,4.75,7.0,2026-04-15
+311,1534911,Bayern München,Real Madrid,2,1.57,4.75,4.5,2026-04-15
+312,1389370,Amiens,PAU,62,2.6,3.4,2.3,2026-04-10
+313,1389375,Guingamp,Grenoble,62,1.67,3.5,4.5,2026-04-10
+314,1389378,Clermont Foot,Nancy,62,2.1,3.1,3.1,2026-04-10
+315,1389374,Laval,Reims,62,4.2,3.25,1.73,2026-04-10
+316,1389377,Annecy,Montpellier,62,2.4,3.0,2.62,2026-04-10
+317,1389376,RED Star FC 93,Bastia,62,2.1,2.88,3.4,2026-04-11
+318,1389371,Boulogne,Le Mans,62,3.2,3.0,2.15,2026-04-11
+319,1389373,Saint Etienne,Dunkerque,62,1.62,3.6,4.5,2026-04-11
+320,1389372,Rodez,Estac Troyes,62,3.2,3.5,1.95,2026-04-13
+321,1389387,Montpellier,Grenoble,62,,,,2026-04-17
+322,1389386,Nancy,Annecy,62,,,,2026-04-17
+323,1389383,PAU,Guingamp,62,,,,2026-04-17
+324,1389384,Le Mans,Clermont Foot,62,,,,2026-04-17
+325,1389385,Rodez,Amiens,62,,,,2026-04-17
+326,1389379,Reims,RED Star FC 93,62,,,,2026-04-18
+327,1389382,Estac Troyes,Boulogne,62,,,,2026-04-18
+328,1389381,Bastia,Saint Etienne,62,,,,2026-04-18
+329,1389380,Dunkerque,Laval,62,,,,2026-04-20
+330,1389396,Amiens,Montpellier,62,,,,2026-04-24
+331,1389391,Clermont Foot,Bastia,62,,,,2026-04-24
+332,1389392,RED Star FC 93,Guingamp,62,,,,2026-04-24
+333,1389389,Laval,Rodez,62,,,,2026-04-24
+334,1389390,Annecy,PAU,62,,,,2026-04-24
+335,1388868,Fortuna Düsseldorf,Holstein Kiel,79,2.0,3.7,3.4,2026-04-10
+336,1388871,Karlsruher SC,Arminia Bielefeld,79,3.1,3.6,2.15,2026-04-10
+337,1388870,Hertha BSC,1. FC Kaiserslautern,79,1.75,4.2,4.0,2026-04-11
+338,1388872,1. FC Nürnberg,Dynamo Dresden,79,2.1,3.6,3.3,2026-04-11
+339,1388874,Preußen Münster,SpVgg Greuther Fürth,79,2.2,3.4,3.2,2026-04-11
+340,1388867,SV Darmstadt 98,Hannover 96,79,2.7,3.6,2.45,2026-04-11
+341,1388866,VfL Bochum,Eintracht Braunschweig,79,1.83,3.75,3.9,2026-04-12
+342,1388873,SC Paderborn 07,1. FC Magdeburg,79,1.83,4.0,3.8,2026-04-12
+343,1388869,SV Elversberg,FC Schalke 04,79,2.0,3.6,3.5,2026-04-12
+344,1388880,Holstein Kiel,1. FC Kaiserslautern,79,,,,2026-04-17
+345,1388877,SV Elversberg,Karlsruher SC,79,,,,2026-04-17
+346,1388881,1. FC Magdeburg,Fortuna Düsseldorf,79,,,,2026-04-18
+347,1388883,Dynamo Dresden,VfL Bochum,79,,,,2026-04-18
+348,1388875,Arminia Bielefeld,1. FC Nürnberg,79,,,,2026-04-18
+349,1388879,Hannover 96,SC Paderborn 07,79,,,,2026-04-18
+350,1388882,FC Schalke 04,Preußen Münster,79,,,,2026-04-19
+351,1388878,SpVgg Greuther Fürth,SV Darmstadt 98,79,,,,2026-04-19
+352,1388876,Eintracht Braunschweig,Hertha BSC,79,,,,2026-04-19
+353,1388886,Fortuna Düsseldorf,Dynamo Dresden,79,,,,2026-04-24
+354,1388888,1. FC Kaiserslautern,Eintracht Braunschweig,79,,,,2026-04-24
+355,1419926,Frosinone,Palermo,136,2.3,3.4,3.0,2026-04-10
+356,1419924,Pescara,Sampdoria,136,2.15,3.4,3.3,2026-04-11
+357,1419923,Virtus Entella,Venezia,136,5.0,3.8,1.67,2026-04-11
+358,1419925,Juve Stabia,Cesena,136,2.2,3.2,3.5,2026-04-11
+359,1419922,Sudtirol,Modena,136,3.1,3.1,2.38,2026-04-11
+360,1419927,Avellino,Catanzaro,136,2.7,3.25,2.62,2026-04-11
+361,1419930,Monza,Bari,136,1.33,5.0,9.0,2026-04-11
+362,1419921,Padova,Empoli,136,3.2,3.3,2.25,2026-04-12
+363,1419928,Spezia,Mantova,136,2.35,3.25,3.1,2026-04-12
+364,1419929,Reggiana,Carrarese,136,3.3,3.2,2.25,2026-04-12
+365,1419899,Catanzaro,Modena,136,2.8,3.3,2.35,2026-04-14
+366,1419940,Sampdoria,Monza,136,3.1,3.1,2.3,2026-04-17
+367,1419931,Bari,Venezia,136,6.5,4.1,1.44,2026-04-18
+368,1419935,Spezia,Sudtirol,136,2.3,3.2,3.0,2026-04-18
+369,1419932,Modena,Frosinone,136,2.1,3.5,3.1,2026-04-18
+370,1419933,Mantova,Avellino,136,2.35,3.2,2.88,2026-04-18
+371,1419934,Palermo,Cesena,136,1.6,3.8,5.0,2026-04-18
+372,1419936,Juve Stabia,Catanzaro,136,2.1,3.3,3.3,2026-04-18
+373,1419937,Carrarese,Pescara,136,1.95,3.5,3.5,2026-04-19
+374,1419938,Padova,Reggiana,136,2.0,3.25,3.6,2026-04-19
+375,1419939,Empoli,Virtus Entella,136,,,,2026-04-19
+376,1419947,Monza,Modena,136,,,,2026-04-24
+377,1419945,Avellino,Bari,136,,,,2026-04-24
+378,1387051,West Brom,Millwall,40,2.3,3.25,3.1,2026-04-10
+379,1387043,Norwich,Ipswich,40,,,,2026-04-11
+380,1387049,QPR,Bristol City,40,2.25,3.3,3.1,2026-04-11
+381,1387048,Coventry,Sheffield Wednesday,40,1.12,8.5,17.0,2026-04-11
+382,1387053,Southampton,Derby,40,1.75,3.8,4.2,2026-04-11
+383,1387045,Leicester,Swansea,40,2.1,3.5,3.4,2026-04-11
+384,1387046,Sheffield Utd,Hull City,40,1.8,3.75,4.2,2026-04-11
+385,1387050,Middlesbrough,Portsmouth,40,1.53,4.0,6.25,2026-04-11
+386,1387052,Stoke City,Blackburn,40,2.62,3.25,2.7,2026-04-11
+387,1387054,Charlton,Preston,40,2.1,3.3,3.5,2026-04-11
+388,1387047,Oxford United,Watford,40,2.35,3.2,3.0,2026-04-11
+389,1387044,Birmingham,Wrexham,40,2.05,3.5,3.5,2026-04-12
+390,1387087,Southampton,Blackburn,40,1.66,3.9,4.9,2026-04-14
+391,1386857,Portsmouth,Ipswich,40,3.95,3.4,1.93,2026-04-14
+392,1387061,Blackburn,Coventry,40,,,,2026-04-17
+393,1387063,Millwall,QPR,40,,,,2026-04-18
+394,1387059,Derby,Oxford United,40,,,,2026-04-18
+395,1387065,Portsmouth,Leicester,40,,,,2026-04-18
+396,1387058,Watford,Sheffield Utd,40,,,,2026-04-18
+397,1387066,Bristol City,Norwich,40,,,,2026-04-18
+398,1387064,Preston,West Brom,40,,,,2026-04-18
+399,1387060,Hull City,Birmingham,40,,,,2026-04-18
+400,1387055,Sheffield Wednesday,Charlton,40,,,,2026-04-18
+401,1387056,Swansea,Southampton,40,,,,2026-04-18
+402,1387062,Wrexham,Stoke City,40,,,,2026-04-18
+403,1387057,Ipswich,Middlesbrough,40,,,,2026-04-19
+404,1387073,Southampton,Bristol City,40,,,,2026-04-21
+405,1387077,Leicester,Hull City,40,,,,2026-04-21
+406,1387072,West Brom,Watford,40,,,,2026-04-21
+407,1387067,Norwich,Derby,40,,,,2026-04-21
+408,1387070,QPR,Swansea,40,,,,2026-04-21
+409,1387074,Stoke City,Millwall,40,,,,2026-04-21
+410,1387068,Oxford United,Wrexham,40,,,,2026-04-21
+411,1387069,Coventry,Portsmouth,40,,,,2026-04-21
+412,1387076,Birmingham,Preston,40,,,,2026-04-22
+413,1387078,Sheffield Utd,Blackburn,40,,,,2026-04-22
+414,1387071,Middlesbrough,Sheffield Wednesday,40,,,,2026-04-22
+415,1387075,Charlton,Ipswich,40,,,,2026-04-22
+416,1387080,Leicester,Millwall,40,,,,2026-04-24
+417,1392139,AD Ceuta FC,Real Sociedad II,141,2.0,3.5,3.7,2026-04-10
+418,1392146,Leganes,Albacete,141,2.25,3.1,3.4,2026-04-11
+419,1392142,Burgos,Sporting Gijon,141,2.15,3.1,3.6,2026-04-11
+420,1392140,Malaga,Las Palmas,141,2.3,3.2,3.2,2026-04-11
+421,1392144,Cordoba,Zaragoza,141,1.91,3.5,4.0,2026-04-11
+422,1392147,Granada CF,Cultural Leonesa,141,1.85,3.3,4.5,2026-04-12
+423,1392141,Huesca,Deportivo La Coruna,141,3.6,3.1,2.15,2026-04-12
+424,1396983,Cadiz,FC Andorra,141,,,,2026-04-12
+425,1392143,Mirandes,Castellón,141,3.75,3.4,2.0,2026-04-12
+426,1392145,Racing Santander,Almeria,141,2.3,3.6,2.88,2026-04-12
+427,1392149,Valladolid,Eibar,141,2.3,3.1,3.3,2026-04-13
+428,1392160,Real Sociedad II,Racing Santander,141,,,,2026-04-17
+429,1392158,Las Palmas,Leganes,141,,,,2026-04-17
+430,1392156,Zaragoza,AD Ceuta FC,141,,,,2026-04-18
+431,1392151,Cultural Leonesa,Cordoba,141,,,,2026-04-18
+432,1392159,Castellón,Burgos,141,,,,2026-04-18
+433,1396984,FC Andorra,Valladolid,141,,,,2026-04-19
+434,1392152,Sporting Gijon,Cadiz,141,,,,2026-04-19
+435,1392150,Eibar,Huesca,141,,,,2026-04-19
+436,1392153,Albacete,Granada CF,141,,,,2026-04-19
+437,1392157,Almeria,Malaga,141,,,,2026-04-19
+438,1392155,Deportivo La Coruna,Mirandes,141,,,,2026-04-20
+439,1392170,Albacete,Eibar,141,,,,2026-04-24
+440,1400219,Krylia Sovetov,Akhmat,235,,,,2026-04-11
+441,1400221,Rubin,FC Orenburg,235,,,,2026-04-11
+442,1400216,Baltika,Nizhny Novgorod,235,,,,2026-04-11
+443,1400217,CSKA Moscow,FC Sochi,235,1.24,6.85,12.25,2026-04-12
+444,1400220,Lokomotiv,Dinamo Makhachkala,235,1.58,4.05,6.5,2026-04-12
+445,1400218,FC Rostov,Spartak Moscow,235,3.42,3.64,2.14,2026-04-12
+446,1400222,Zenit,FC Krasnodar,235,2.03,3.42,4.05,2026-04-12
+447,1400215,Akron,Dynamo,235,4.2,4.3,1.78,2026-04-13
+448,1400224,FC Rostov,FC Sochi,235,1.44,4.3,9.3,2026-04-17
+449,1400230,FC Orenburg,Lokomotiv,235,3.5,4.05,2.0,2026-04-18
+450,1400226,Krylia Sovetov,CSKA Moscow,235,5.55,4.15,1.63,2026-04-18
+451,1400228,Rubin,Akron,235,1.93,3.62,4.2,2026-04-18
+452,1400227,Nizhny Novgorod,Dynamo,235,5.75,4.25,1.6,2026-04-18
+453,1400223,Dinamo Makhachkala,Zenit,235,10.0,4.55,1.4,2026-04-19
+454,1400229,Spartak Moscow,Akhmat,235,1.57,4.3,6.1,2026-04-19
+455,1400225,FC Krasnodar,Baltika,235,1.73,3.72,5.4,2026-04-19
+456,1400236,FC Sochi,Krylia Sovetov,235,,,,2026-04-21
+457,1400233,CSKA Moscow,FC Rostov,235,,,,2026-04-21
+458,1400238,FC Orenburg,Nizhny Novgorod,235,,,,2026-04-22
+459,1400235,Lokomotiv,Zenit,235,,,,2026-04-22
+460,1400234,Dynamo,Rubin,235,,,,2026-04-22
+461,1400232,Akron,Dinamo Makhachkala,235,,,,2026-04-23
+462,1400237,Spartak Moscow,FC Krasnodar,235,,,,2026-04-23
+463,1400231,Akhmat,Baltika,235,,,,2026-04-23
