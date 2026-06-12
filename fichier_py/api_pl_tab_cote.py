@@ -27,8 +27,7 @@ from fichier_py.fonction import (
 
 app = Flask(__name__)
 RACINE_PROJET = pathlib.Path(__file__).resolve().parents[1]
-######------------------
-######### SDDDE
+
 # -------------------------------------------------------------------
 # CONFIG GLOBALE
 # -------------------------------------------------------------------
@@ -568,6 +567,23 @@ COMP_CONFIG = {
             "stage1": "can/rf_stage1_can.joblib",
             "stage2": "can/rf_stage2_can.joblib",
             "goals": "can/xgboost_nbre_but_marque_can.joblib",
+        },
+    },
+    1: {
+        "key": "mondiale",
+        "thread": 0.6,
+        "current_df": "mondiale/saison_encours.csv",
+        "season_prev": "mondiale/mondiale_2022.csv",
+        "past": {
+            2022: "mondiale/mondiale_2010.csv",
+            2023: "mondiale/mondiale_2014.csv",
+            2024: "mondiale/mondiale_2018.csv",
+            2025: "mondiale/mondiale_2022.csv",
+        },
+        "models": {
+            "stage1": "mondiale/mondiale_stage1.joblib",
+            "stage2": "mondiale/mondiale_stage2.joblib",
+            "goals": "mondiale/xgboost_nbre_but_marque_can.joblib",
         },
     },
 }
