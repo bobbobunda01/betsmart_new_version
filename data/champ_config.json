@@ -375,5 +375,18 @@
         "k_market_form": 0.6,
         "gate_slope": 8.33,
         "gate_tolerance": 0.034
+    },
+    "15": {
+        "bookmaker_margin": 0.15,
+        "importance": 4,
+        "uncertainty_threshold": 0.123,
+        "season_stage": "late",
+        "upset_threshold": 0.52,
+        "skip_threshold": 1.55,
+        "bogey_weight": 0.35,
+        "gki_weight": 0.65,
+        "k_market_form": 0.6,
+        "gate_slope": 7.13,
+        "gate_tolerance": 0.049
     }
 }
