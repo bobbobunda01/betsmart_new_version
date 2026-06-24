@@ -1,62 +1,46 @@
 ,fixture_id,HomeTeam,AwayTeam,comp,odds_home,odds_draw,odds_away,match_Date
-0,1538999,South Korea,Czech Republic,1,2.62,3.0,3.0,2026-06-12
-1,1539000,Canada,Bosnia & Herzegovina,1,1.8,3.6,4.5,2026-06-12
-2,1489370,USA,Paraguay,1,2.1,3.2,3.8,2026-06-13
-3,1489373,Qatar,Switzerland,1,11.0,7.0,1.22,2026-06-13
-4,1489371,Brazil,Morocco,1,1.65,3.9,5.25,2026-06-13
-5,1489372,Haiti,Scotland,1,5.25,4.33,1.57,2026-06-14
-6,1539001,Australia,Türkiye,1,5.0,3.75,1.7,2026-06-14
-7,1489374,Germany,Curaçao,1,1.04,17.0,29.0,2026-06-14
-8,1489376,Netherlands,Japan,1,1.95,3.6,3.7,2026-06-14
-9,1489375,Ivory Coast,Ecuador,1,3.6,2.8,2.38,2026-06-14
-10,1539002,Sweden,Tunisia,1,1.85,3.5,4.2,2026-06-15
-11,1489380,Spain,Cape Verde Islands,1,1.08,12.0,21.0,2026-06-15
-12,1489377,Belgium,Egypt,1,1.62,3.8,5.75,2026-06-15
-13,1489379,Saudi Arabia,Uruguay,1,7.5,4.33,1.44,2026-06-15
-14,1489378,Iran,New Zealand,1,1.83,3.4,4.75,2026-06-16
-15,1489383,France,Senegal,1,1.48,4.5,6.5,2026-06-16
-16,1539016,Iraq,Norway,1,13.0,7.0,1.2,2026-06-16
-17,1489381,Argentina,Algeria,1,1.36,4.75,9.0,2026-06-17
-18,1489382,Austria,Jordan,1,1.33,5.75,7.5,2026-06-17
-19,1539003,Portugal,Congo DR,1,1.28,5.75,10.0,2026-06-17
-20,1489384,England,Croatia,1,1.73,3.8,4.75,2026-06-17
-21,1489385,Ghana,Panama,1,2.15,3.5,3.4,2026-06-17
-22,1489386,Uzbekistan,Colombia,1,8.5,4.5,1.4,2026-06-18
-23,1539004,Czech Republic,South Africa,1,1.7,3.9,5.0,2026-06-18
-24,1539005,Switzerland,Bosnia & Herzegovina,1,1.57,4.0,5.5,2026-06-18
-25,1489387,Canada,Qatar,1,1.28,5.0,11.0,2026-06-18
-26,1489388,Mexico,South Korea,1,2.0,3.25,4.1,2026-06-19
-27,1489391,USA,Australia,1,1.73,3.9,4.33,2026-06-19
-28,1489390,Scotland,Morocco,1,4.0,3.3,1.95,2026-06-19
-29,1489389,Brazil,Haiti,1,1.07,11.0,29.0,2026-06-20
-30,1539006,Türkiye,Paraguay,1,2.2,3.1,3.5,2026-06-20
-31,1539007,Netherlands,Sweden,1,1.6,4.0,5.25,2026-06-20
-32,1489393,Germany,Ivory Coast,1,1.55,4.2,5.5,2026-06-20
-33,1489392,Ecuador,Curaçao,1,1.18,7.0,13.0,2026-06-21
-34,1489394,Tunisia,Japan,1,5.5,3.5,1.67,2026-06-21
-35,1489397,Spain,Saudi Arabia,1,1.1,9.0,23.0,2026-06-21
-36,1489395,Belgium,Iran,1,1.4,4.75,7.0,2026-06-21
-37,1489398,Uruguay,Cape Verde Islands,1,1.42,4.33,7.5,2026-06-21
-38,1489396,New Zealand,Egypt,1,5.0,3.5,1.73,2026-06-22
-39,1489399,Argentina,Austria,1,1.62,3.8,5.5,2026-06-22
-40,1539017,France,Iraq,1,1.11,9.0,19.0,2026-06-22
-41,1489401,Norway,Senegal,1,2.1,3.3,3.5,2026-06-23
-42,1489400,Jordan,Algeria,1,6.5,3.8,1.53,2026-06-23
-43,1489404,Portugal,Uzbekistan,1,1.25,6.5,9.0,2026-06-23
-44,1489402,England,Ghana,1,1.33,5.0,9.0,2026-06-23
-45,1489403,Panama,Croatia,1,6.0,4.0,1.53,2026-06-23
-46,1539008,Colombia,Congo DR,1,1.45,4.33,7.0,2026-06-24
-47,1489408,Switzerland,Canada,1,2.1,3.3,3.5,2026-06-24
-48,1539009,Bosnia & Herzegovina,Qatar,1,1.62,3.7,5.75,2026-06-24
-49,1489405,Morocco,Haiti,1,1.33,5.25,8.5,2026-06-24
-50,1489406,Scotland,Brazil,1,7.0,4.5,1.42,2026-06-24
-51,1539010,Czech Republic,Mexico,1,4.33,3.5,1.85,2026-06-25
-52,1489407,South Africa,South Korea,1,5.25,4.0,1.6,2026-06-25
-53,1489410,Ecuador,Germany,1,5.0,3.6,1.7,2026-06-25
-54,1489409,Curaçao,Ivory Coast,1,13.0,6.5,1.2,2026-06-25
-55,1539011,Japan,Sweden,1,2.05,3.4,3.5,2026-06-25
-56,1489412,Tunisia,Netherlands,1,6.25,4.2,1.5,2026-06-25
-57,1539012,Türkiye,USA,1,2.6,3.5,2.6,2026-06-26
-58,1489411,Paraguay,Australia,1,2.2,3.2,3.4,2026-06-26
-59,1539074,Senegal,Iraq,1,1.42,4.5,7.0,2026-06-26
-60,1489416,Norway,France,1,4.2,3.5,1.83,2026-06-26
+0,1506986,FC Anyang,Pohang Steelers,292,,,,2026-07-04
+1,1506987,Daejeon Citizen,Bucheon FC 1995,292,,,,2026-07-04
+2,1506988,Jeonbuk Motors,Gangwon FC,292,,,,2026-07-04
+3,1506990,Gwangju FC,Ulsan Hyundai FC,292,,,,2026-07-05
+4,1506991,FC Seoul,Incheon United,292,,,,2026-07-05
+5,1506989,Gimcheon Sangmu FC,Jeju United FC,292,,,,2026-07-05
+6,1554368,Lincoln Red Imps FC,Inter Club d'Escaldes,2,,,,2026-07-07
+7,1554361,Ararat-Armenia,Riga,2,,,,2026-07-07
+8,1554366,Kauno Žalgiris,Drita,2,,,,2026-07-07
+9,1554371,Sabah FA,The New Saints,2,,,,2026-07-07
+10,1554373,Vardar Skopje,KuPS,2,,,,2026-07-07
+11,1554364,Floriana,Shamrock Rovers,2,,,,2026-07-07
+12,1554372,Tre Fiori,Larne,2,,,,2026-07-07
+13,1554362,Borac Banja Luka,Levski Sofia,2,,,,2026-07-07
+14,1554367,KI Klaksvik,Atert Bissen,2,,,,2026-07-07
+15,1554374,Vikingur Reykjavik,Gyori ETO FC,2,,,,2026-07-07
+16,1554365,Kairat Almaty,Sutjeska,2,,,,2026-07-08
+17,1554363,Flora Tallinn,Saburtalo,2,,,,2026-07-08
+18,1554370,Petrocub,Egnatia Rrogozhinë,2,,,,2026-07-08
+19,1554369,ML Vitebsk,Universitatea Craiova,2,,,,2026-07-08
+20,1539008,Colombia,Congo DR,1,1.55,3.9,6.5,2026-06-24
+21,1489408,Switzerland,Canada,1,2.38,3.1,3.3,2026-06-24
+22,1539009,Bosnia & Herzegovina,Qatar,1,1.4,5.0,7.5,2026-06-24
+23,1489405,Morocco,Haiti,1,1.18,7.0,15.0,2026-06-24
+24,1489406,Scotland,Brazil,1,9.0,5.25,1.33,2026-06-24
+25,1539010,Czechia,Mexico,1,3.6,3.9,1.95,2026-06-25
+26,1489407,South Africa,South Korea,1,5.25,4.0,1.65,2026-06-25
+27,1489410,Ecuador,Germany,1,3.75,4.2,1.85,2026-06-25
+28,1489409,Curaçao,Ivory Coast,1,19.0,8.0,1.14,2026-06-25
+29,1539011,Japan,Sweden,1,1.9,3.4,4.33,2026-06-25
+30,1489412,Tunisia,Netherlands,1,23.0,8.0,1.12,2026-06-25
+31,1539012,Türkiye,USA,1,3.5,4.1,1.91,2026-06-26
+32,1489411,Paraguay,Australia,1,2.9,2.25,3.8,2026-06-26
+33,1539074,Senegal,Iraq,1,1.22,6.5,12.0,2026-06-26
+34,1489416,Norway,France,1,4.5,4.5,1.65,2026-06-26
+35,1489417,Uruguay,Spain,1,7.0,4.1,1.5,2026-06-27
+36,1489413,Cape Verde Islands,Saudi Arabia,1,2.45,3.5,2.75,2026-06-27
+37,1489414,Egypt,Iran,1,2.4,2.7,3.75,2026-06-27
+38,1489415,New Zealand,Belgium,1,12.0,8.0,1.18,2026-06-27
+39,1489420,Croatia,Ghana,1,1.73,3.4,5.5,2026-06-27
+40,1489422,Panama,England,1,13.0,8.0,1.17,2026-06-27
+41,1489419,Colombia,Portugal,1,4.2,3.6,1.9,2026-06-27
+42,1539013,Congo DR,Uzbekistan,1,1.8,4.1,4.1,2026-06-27
+43,1489418,Algeria,Austria,1,3.75,2.38,2.7,2026-06-28
+44,1489421,Jordan,Argentina,1,11.0,7.0,1.2,2026-06-28
