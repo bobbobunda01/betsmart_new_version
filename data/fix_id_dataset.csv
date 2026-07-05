@@ -1,48 +1,77 @@
 ,fixture_id,HomeTeam,AwayTeam,comp,odds_home,odds_draw,odds_away,match_Date
-0,1506986,FC Anyang,Pohang Steelers,292,2.75,3.0,2.5,2026-07-04
-1,1506987,Daejeon Citizen,Bucheon FC 1995,292,1.73,3.4,4.5,2026-07-04
-2,1506988,Jeonbuk Motors,Gangwon FC,292,2.2,3.0,3.3,2026-07-04
-3,1506990,Gwangju FC,Ulsan Hyundai FC,292,6.25,3.9,1.48,2026-07-05
-4,1506991,FC Seoul,Incheon United,292,1.8,3.4,4.1,2026-07-05
-5,1506989,Gimcheon Sangmu FC,Jeju United FC,292,2.35,3.1,2.88,2026-07-05
-6,1506993,Gwangju FC,Pohang Steelers,292,,,,2026-07-11
-7,1506994,Ulsan Hyundai FC,Jeonbuk Motors,292,,,,2026-07-11
-8,1506992,Gimcheon Sangmu FC,Bucheon FC 1995,292,,,,2026-07-11
-9,1506996,Jeju United FC,Daejeon Citizen,292,,,,2026-07-12
-10,1506995,Incheon United,FC Anyang,292,,,,2026-07-12
-11,1506997,FC Seoul,Gangwon FC,292,,,,2026-07-12
-12,1554444,Qarabag,Vestri,3,,,,2026-07-09
-13,1554445,Sheriff Tiraspol,Aluminij,3,,,,2026-07-09
-14,1554442,Dynamo Kyiv,Universitatea Cluj,3,,,,2026-07-09
-15,1554443,HNK Hajduk Split,Žilina,3,,,,2026-07-09
-16,1554446,Vojvodina,Ferencvarosi TC,3,,,,2026-07-09
-17,1554441,CSKA Sofia,Derry City,3,,,,2026-07-09
-18,1554368,Lincoln Red Imps FC,Inter Club d'Escaldes,2,,,,2026-07-07
-19,1554361,Ararat-Armenia,Riga,2,,,,2026-07-07
-20,1554366,Kauno Žalgiris,Drita,2,,,,2026-07-07
-21,1554371,Sabah FA,The New Saints,2,,,,2026-07-07
-22,1554373,Vardar Skopje,KuPS,2,,,,2026-07-07
-23,1554364,Floriana,Shamrock Rovers,2,,,,2026-07-07
-24,1554372,Tre Fiori,Larne,2,,,,2026-07-07
-25,1554362,Borac Banja Luka,Levski Sofia,2,,,,2026-07-07
-26,1554367,KI Klaksvik,Atert Bissen,2,,,,2026-07-07
-27,1554374,Vikingur Reykjavik,Gyori ETO FC,2,,,,2026-07-07
-28,1554365,Kairat Almaty,Sutjeska,2,,,,2026-07-08
-29,1554363,Flora Tallinn,Saburtalo,2,,,,2026-07-08
-30,1554370,Petrocub,Egnatia Rrogozhinë,2,,,,2026-07-08
-31,1554369,ML Vitebsk,Universitatea Craiova,2,,,,2026-07-08
-32,1562344,Brazil,Japan,1,1.7,3.7,5.25,2026-06-29
-33,1565176,Germany,Paraguay,1,1.33,5.25,9.0,2026-06-29
-34,1562345,Netherlands,Morocco,1,2.25,3.0,3.5,2026-06-30
-35,1564789,Ivory Coast,Norway,1,3.75,3.5,2.0,2026-06-30
-36,1565177,France,Sweden,1,1.27,6.0,11.0,2026-06-30
-37,1567306,Mexico,Ecuador,1,2.2,2.9,3.9,2026-07-01
-38,1567307,England,Congo DR,1,1.27,5.5,12.0,2026-07-01
-39,1567308,Belgium,Senegal,1,2.2,3.2,3.5,2026-07-01
-40,1562586,USA,Bosnia & Herzegovina,1,1.36,5.0,8.5,2026-07-02
-41,1567311,Spain,Austria,1,1.3,5.5,9.5,2026-07-02
-42,1567309,Portugal,Croatia,1,1.75,3.5,5.0,2026-07-02
-43,1567312,Switzerland,Algeria,1,2.0,3.3,4.0,2026-07-03
-44,1565178,Australia,Egypt,1,3.25,2.88,2.5,2026-07-03
-45,1565179,Argentina,Cape Verde Islands,1,1.17,8.0,15.0,2026-07-03
-46,1567310,Colombia,Ghana,1,1.5,3.9,7.5,2026-07-04
+0,1492291,Botafogo,Santos,71,1.9,3.25,4.0,2026-07-16
+1,1492299,Vitoria,Vasco DA Gama,71,2.4,3.2,2.9,2026-07-16
+2,1492140,Bahia,Chapecoense-sc,71,,,,2026-07-17
+3,1492295,Fluminense,RB Bragantino,71,1.73,3.5,4.75,2026-07-17
+4,1492297,Mirassol,Gremio,71,2.25,3.2,3.1,2026-07-17
+5,1506990,Gwangju FC,Ulsan Hyundai FC,292,6.5,4.1,1.42,2026-07-05
+6,1506991,FC Seoul,Incheon United,292,1.8,3.4,4.0,2026-07-05
+7,1506989,Gimcheon Sangmu FC,Jeju United FC,292,2.35,3.1,2.88,2026-07-05
+8,1506993,Gwangju FC,Pohang Steelers,292,,,,2026-07-11
+9,1506994,Ulsan Hyundai FC,Jeonbuk Motors,292,,,,2026-07-11
+10,1506992,Gimcheon Sangmu FC,Bucheon FC 1995,292,,,,2026-07-11
+11,1506996,Jeju United FC,Daejeon Citizen,292,,,,2026-07-12
+12,1506995,Incheon United,FC Anyang,292,,,,2026-07-12
+13,1506997,FC Seoul,Gangwon FC,292,,,,2026-07-12
+14,1506999,Gangwon FC,Gimcheon Sangmu FC,292,,,,2026-07-18
+15,1506998,Daejeon Citizen,Ulsan Hyundai FC,292,,,,2026-07-18
+16,1507001,Jeju United FC,Pohang Steelers,292,,,,2026-07-18
+17,1507000,Incheon United,Jeonbuk Motors,292,,,,2026-07-18
+18,1507003,Bucheon FC 1995,FC Seoul,292,,,,2026-07-19
+19,1507002,FC Anyang,Gwangju FC,292,,,,2026-07-19
+20,1554444,Qarabag,Vestri,3,,,,2026-07-09
+21,1554445,Sheriff Tiraspol,Aluminij,3,,,,2026-07-09
+22,1554442,Dynamo Kyiv,Universitatea Cluj,3,1.99,3.35,3.7,2026-07-09
+23,1554443,HNK Hajduk Split,Žilina,3,,,,2026-07-09
+24,1554446,Vojvodina,Ferencvarosi TC,3,3.6,3.35,1.95,2026-07-09
+25,1554441,CSKA Sofia,Derry City,3,1.33,4.8,8.6,2026-07-09
+26,1554448,Derry City,CSKA Sofia,3,,,,2026-07-16
+27,1554450,Universitatea Cluj,Dynamo Kyiv,3,,,,2026-07-16
+28,1554447,Aluminij,Sheriff Tiraspol,3,,,,2026-07-16
+29,1554449,Ferencvarosi TC,Vojvodina,3,,,,2026-07-16
+30,1554452,Žilina,HNK Hajduk Split,3,,,,2026-07-16
+31,1554451,Vestri,Qarabag,3,,,,2026-07-16
+32,1554368,Lincoln Red Imps FC,Inter Club d'Escaldes,2,,,,2026-07-07
+33,1554361,Ararat-Armenia,Riga,2,,,,2026-07-07
+34,1554366,Kauno Žalgiris,Drita,2,,,,2026-07-07
+35,1554371,Sabah FA,The New Saints,2,,,,2026-07-07
+36,1554373,Vardar Skopje,KuPS,2,,,,2026-07-07
+37,1554364,Floriana,Shamrock Rovers,2,,,,2026-07-07
+38,1554372,Tre Fiori,Larne,2,,,,2026-07-07
+39,1554362,Borac Banja Luka,Levski Sofia,2,,,,2026-07-07
+40,1554367,KI Klaksvik,Atert Bissen,2,,,,2026-07-07
+41,1554374,Vikingur Reykjavik,Gyori ETO FC,2,,,,2026-07-07
+42,1554365,Kairat Almaty,Sutjeska,2,,,,2026-07-08
+43,1554363,Flora Tallinn,Saburtalo,2,,,,2026-07-08
+44,1554370,Petrocub,Egnatia Rrogozhinë,2,,,,2026-07-08
+45,1554369,ML Vitebsk,Universitatea Craiova,2,3.05,3.1,2.35,2026-07-08
+46,1554381,KuPS,Vardar Skopje,2,,,,2026-07-14
+47,1554380,Inter Club d'Escaldes,Lincoln Red Imps FC,2,,,,2026-07-14
+48,1554379,Saburtalo,Flora Tallinn,2,,,,2026-07-14
+49,1554378,Gyori ETO FC,Vikingur Reykjavik,2,,,,2026-07-14
+50,1554384,Riga,Ararat-Armenia,2,,,,2026-07-14
+51,1554387,The New Saints,Sabah FA,2,,,,2026-07-14
+52,1554383,Levski Sofia,Borac Banja Luka,2,,,,2026-07-14
+53,1554376,Drita,Kauno Žalgiris,2,,,,2026-07-14
+54,1554385,Shamrock Rovers,Floriana,2,,,,2026-07-14
+55,1554382,Larne,Tre Fiori,2,,,,2026-07-14
+56,1554388,Universitatea Craiova,ML Vitebsk,2,,,,2026-07-15
+57,1554375,Atert Bissen,KI Klaksvik,2,,,,2026-07-15
+58,1554386,Sutjeska,Kairat Almaty,2,,,,2026-07-15
+59,1554377,Egnatia Rrogozhinë,Petrocub,2,,,,2026-07-15
+60,1550894,Necaxa,Atlante FC,262,,,,2026-07-17
+61,1550895,Club Tijuana,Tigres UANL,262,,,,2026-07-17
+62,1550897,Leon,Atlas,262,,,,2026-07-18
+63,1550896,Atletico San Luis,Cruz Azul,262,,,,2026-07-18
+64,1550898,FC Juarez,Puebla,262,,,,2026-07-18
+65,1550899,U.N.A.M. - Pumas,CF Pachuca,262,,,,2026-07-18
+66,1550901,Monterrey,Santos Laguna,262,,,,2026-07-19
+67,1550900,Guadalajara Chivas,Toluca,262,,,,2026-07-19
+68,1550902,Club Queretaro,Club America,262,,,,2026-07-19
+69,1568100,Brazil,Norway,1,1.75,3.7,4.75,2026-07-05
+70,1570714,Mexico,England,1,3.1,3.2,2.4,2026-07-06
+71,1576756,Portugal,Spain,1,4.0,3.6,1.91,2026-07-06
+72,1570715,USA,Belgium,1,2.62,3.4,2.62,2026-07-07
+73,1576804,Argentina,Egypt,1,1.38,4.75,8.5,2026-07-07
+74,1576805,Switzerland,Colombia,1,3.5,3.1,2.25,2026-07-07
+75,1578539,France,Morocco,1,,,,2026-07-09
