@@ -80,12 +80,13 @@ COMP_CONFIG = {
         "key": "pl",
         "thread": 0.63,
         "current_df": "pl/saison_encours.csv",
-        "season_prev": "pl/pl_24_25.csv",
+        "season_prev": "pl/premier_league_season_2025.csv",
         "past": {
             2022: "pl/premier_league_season_2022.csv",
             2023: "pl/premier_league_season_2023.csv",
             2024: "pl/premier_league_season_2024.csv",
             2025: "pl/premier_league_season_2025.csv",
+            ##2026: "pl/premier_league_season_2026.csv",
         },
         "models": {
             "stage1": "pl/rf_pl_stage1.joblib",
@@ -97,12 +98,13 @@ COMP_CONFIG = {
         "key": "sa1",
         "thread": 0.63,
         "current_df": "sa1/saison_encours.csv",
-        "season_prev": "sa1/sa_24_25.csv",
+        "season_prev": "sa1/serie_a_season_2025.csv",
         "past": {
             2022: "sa1/serie_a_season_2022.csv",
             2023: "sa1/serie_a_season_2023.csv",
             2024: "sa1/serie_a_season_2024.csv",
             2025: "sa1/serie_a_season_2025.csv",
+            ##2026: "sa1/serie_a_season_2026.csv",
         },
         "models": {
             "stage1": "sa1/rf_sa1_stage1.joblib",
@@ -114,12 +116,13 @@ COMP_CONFIG = {
         "key": "lg1",
         "thread": 0.50,
         "current_df": "lg1/saison_encours.csv",
-        "season_prev": "lg1/lg_24_25.csv",
+        "season_prev": "lg1/la_liga_season_2025.csv",
         "past": {
             2022: "lg1/la_liga_season_2022.csv",
             2023: "lg1/la_liga_season_2023.csv",
             2024: "lg1/la_liga_season_2024.csv",
             2025: "lg1/la_liga_season_2025.csv",
+            ##2026: "lg1/la_liga_season_2026.csv",
         },
         "models": {
             "stage1": "lg1/lg_bl1_stage1.joblib",
@@ -131,12 +134,13 @@ COMP_CONFIG = {
         "key": "bl1",
         "thread": 0.65,
         "current_df": "bl1/saison_encours.csv",
-        "season_prev": "bl1/bl_24_25.csv",
+        "season_prev": "bl1/bundesliga_season_2025.csv",
         "past": {
             2022: "bl1/bundesliga_season_2022.csv",
             2023: "bl1/bundesliga_season_2023.csv",
             2024: "bl1/bundesliga_season_2024.csv",
             2025: "bl1/bundesliga_season_2025.csv",
+            ##2026: "bl1/bundesliga_season_2026.csv",
         },
         "models": {
             "stage1": "bl1/rf_bl1_stage1.joblib",
@@ -148,12 +152,13 @@ COMP_CONFIG = {
         "key": "fl",
         "thread": 0.62,
         "current_df": "fl/saison_encours.csv",
-        "season_prev": "fl/fl_24_25.csv",
+        "season_prev": "fl/ligue_1_season_2025.csv",
         "past": {
             2022: "fl/ligue_1_season_2022.csv",
             2023: "fl/ligue_1_season_2023.csv",
             2024: "fl/ligue_1_season_2024.csv",
             2025: "fl/ligue_1_season_2025.csv",
+            ##2026: "fl/ligue_1_season_2026.csv",
         },
         "models": {
             "stage1": "fl/rf_stage1.joblib",
@@ -165,12 +170,13 @@ COMP_CONFIG = {
         "key": "N1",
         "thread": 0.63,
         "current_df": "N1/saison_encours.csv",
-        "season_prev": "N1/N_24_25.csv",
+        "season_prev": "N1/neerdeland_season_2025.csv",
         "past": {
             2022: "N1/neerdeland_season_2022.csv",
             2023: "N1/neerdeland_season_2023.csv",
             2024: "N1/neerdeland_season_2024.csv",
             2025: "N1/neerdeland_season_2025.csv",
+            ##2026: "N1/neerdeland_season_2026.csv",
         },
         "models": {
             "stage1": "N1/rf_N1_stage1.joblib",
@@ -182,12 +188,13 @@ COMP_CONFIG = {
         "key": "sui",
         "thread": 0.60,
         "current_df": "sui/saison_encours.csv",
-        "season_prev": "sui/suisse_2024_2025.csv",
+        "season_prev": "sui/suisse_season_2025.csv",
         "past": {
             2022: "sui/suisse_season_2022.csv",
             2023: "sui/suisse_season_2023.csv",
             2024: "sui/suisse_season_2024.csv",
             2025: "sui/suisse_season_2025.csv",
+            ##2026: "sui/suisse_season_2026.csv",
         },
         "models": {
             "stage1": "sui/rf_stage1.joblib",
@@ -199,12 +206,13 @@ COMP_CONFIG = {
         "key": "port",
         "thread": 0.60,
         "current_df": "port/saison_encours.csv",
-        "season_prev": "port/port_24_25.csv",
+        "season_prev": "port/portugais_season_2025.csv",
         "past": {
             2022: "port/portugais_season_2022.csv",
             2023: "port/portugais_season_2023.csv",
             2024: "port/portugais_season_2024.csv",
             2025: "port/portugais_season_2025.csv",
+            ##2026: "port/portugais_season_2026.csv",
         },
         "models": {
             "stage1": "port/rf_stage1.joblib",
@@ -216,12 +224,13 @@ COMP_CONFIG = {
         "key": "turk",
         "thread": 0.60,
         "current_df": "turk/saison_encours.csv",
-        "season_prev": "turk/turk_24_25.csv",
+        "season_prev": "turk/turquie_season_2025.csv",
         "past": {
             2022: "turk/turquie_season_2022.csv",
             2023: "turk/turquie_season_2023.csv",
             2024: "turk/turquie_season_2024.csv",
             2025: "turk/turquie_season_2025.csv",
+            ##2026: "turk/turquie_season_2026.csv",
         },
         "models": {
             "stage1": "turk/rf_stage1.joblib",
@@ -233,12 +242,13 @@ COMP_CONFIG = {
         "key": "japon",
         "thread": 0.60,
         "current_df": "japon/saison_encours.csv",
-        "season_prev": "japon/japon_2024.csv",
+        "season_prev": "japon/japon_season_2025.csv",
         "past": {
             2022: "japon/japon_season_2022.csv",
             2023: "japon/japon_season_2023.csv",
             2024: "japon/japon_season_2024.csv",
             2025: "japon/japon_season_2025.csv",
+            ##2026: "japon/japon_season_2026.csv",
         },
         "models": {
             "stage1": "japon/rf_stage1.joblib",
@@ -250,12 +260,13 @@ COMP_CONFIG = {
         "key": "grece",
         "thread": 0.63,
         "current_df": "grece/saison_encours.csv",
-        "season_prev": "grece/grec_2024_25.csv",
+        "season_prev": "grece/grece_season_2025.csv",
         "past": {
             2022: "grece/grece_season_2022.csv",
             2023: "grece/grece_season_2023.csv",
             2024: "grece/grece_season_2024.csv",
             2025: "grece/grece_season_2025.csv",
+            ##2026: "grece/grece_season_2026.csv",
         },
         "models": {
             "stage1": "grece/rf_stage1.joblib",
@@ -267,12 +278,13 @@ COMP_CONFIG = {
         "key": "belg",
         "thread": 0.63,
         "current_df": "belg/saison_encours.csv",
-        "season_prev": "belg/belg_24_25.csv",
+        "season_prev": "belg/belgique_season_2025.csv",
         "past": {
             2022: "belg/belgique_season_2022.csv",
             2023: "belg/belgique_season_2023.csv",
             2024: "belg/belgique_season_2024.csv",
             2025: "belg/belgique_season_2025.csv",
+            ##2026: "belg/belgique_season_2026.csv",
         },
         "models": {
             "stage1": "belg/rf_stage1.joblib",
@@ -284,12 +296,13 @@ COMP_CONFIG = {
         "key": "bresil",
         "thread": 0.62,
         "current_df": "bresil/saison_encours.csv",
-        "season_prev": "bresil/bresil_2024.csv",
+        "season_prev": "bresil/bresil_season_2025.csv",
         "past": {
             2022: "bresil/bresil_season_2022.csv",
             2023: "bresil/bresil_season_2023.csv",
             2024: "bresil/bresil_season_2024.csv",
             2025: "bresil/bresil_season_2025.csv",
+            ##2026: "bresil/bresil_season_2026.csv",
         },
         "models": {
             "stage1": "bresil/rf_stage1.joblib",
@@ -301,12 +314,13 @@ COMP_CONFIG = {
         "key": "ecosse",
         "thread": 0.63,
         "current_df": "ecosse/saison_encours.csv",
-        "season_prev": "ecosse/ecosse_2024_25.csv",
+        "season_prev": "ecosse/ecosse_season_2025.csv",
         "past": {
             2022: "ecosse/ecosse_season_2022.csv",
             2023: "ecosse/ecosse_season_2023.csv",
             2024: "ecosse/ecosse_season_2024.csv",
             2025: "ecosse/ecosse_season_2025.csv",
+            ##2026: "ecosse/ecosse_season_2026.csv",
         },
         "models": {
             "stage1": "ecosse/rf_stage1_ecosse.joblib",
@@ -318,12 +332,13 @@ COMP_CONFIG = {
         "key": "danemark",
         "thread": 0.63,
         "current_df": "danemark/saison_encours.csv",
-        "season_prev": "danemark/Danemark_2024_25.csv",
+        "season_prev": "danemark/danemark_season_2025.csv",
         "past": {
             2022: "danemark/danemark_season_2022.csv",
             2023: "danemark/danemark_season_2023.csv",
             2024: "danemark/danemark_season_2024.csv",
             2025: "danemark/danemark_season_2025.csv",
+            ##2026: "danemark/danemark_season_2026.csv",
         },
         "models": {
             "stage1": "danemark/rf_stage1.joblib",
@@ -335,12 +350,13 @@ COMP_CONFIG = {
         "key": "ecosse_div_1",
         "thread": 0.64,
         "current_df": "ecosse_div_1/saison_encours.csv",
-        "season_prev": "ecosse_div_1/ecosse_div_1_2024_2025.csv",
+        "season_prev": "ecosse_div_1/ecosse_div_1_season_2025.csv",
         "past": {
             2022: "ecosse_div_1/ecosse_div_1_season_2022.csv",
             2023: "ecosse_div_1/ecosse_div_1_season_2023.csv",
             2024: "ecosse_div_1/ecosse_div_1_season_2024.csv",
             2025: "ecosse_div_1/ecosse_div_1_season_2025.csv",
+            ##2026: "ecosse_div_1/ecosse_div_1_season_2026.csv",
         },
         "models": {
             "stage1": "ecosse_div_1/rf_stage1_ecosse_div_1.joblib",
@@ -352,12 +368,13 @@ COMP_CONFIG = {
         "key": "russie",
         "thread": 0.60,
         "current_df": "russie/saison_encours.csv",
-        "season_prev": "russie/russie_2024_25.csv",
+        "season_prev": "russie/russie_season_2025.csv",
         "past": {
             2022: "russie/russie_season_2022.csv",
             2023: "russie/russie_season_2023.csv",
             2024: "russie/russie_season_2024.csv",
             2025: "russie/russie_season_2025.csv",
+            ##2026: "russie/russie_season_2026.csv",
         },
         "models": {
             "stage1": "russie/rf_stage1_rus.joblib",
@@ -369,12 +386,13 @@ COMP_CONFIG = {
         "key": "coree_sud",
         "thread": 0.60,
         "current_df": "coree_sud/saison_encours.csv",
-        "season_prev": "coree_sud/df_coree_sud_2024.csv",
+        "season_prev": "coree_sud/df_coree_sud_2025.csv",
         "past": {
             2022: "coree_sud/df_coree_sud_2022.csv",
             2023: "coree_sud/df_coree_sud_2023.csv",
             2024: "coree_sud/df_coree_sud_2024.csv",
             2025: "coree_sud/df_coree_sud_2025.csv",
+            ##2026: "coree_sud/df_coree_sud_2026.csv",
         },
         "models": {
             "stage1": "coree_Sud/coree_sud_stage1.joblib",
@@ -386,12 +404,13 @@ COMP_CONFIG = {
         "key": "argentine",
         "thread": 0.63,
         "current_df": "argentine/saison_encours.csv",
-        "season_prev": "argentine/df_argentine_league1_2024.csv",
+        "season_prev": "argentine/df_argentine_league1_2025.csv",
         "past": {
             2022: "argentine/df_argentine_league1_2022.csv",
             2023: "argentine/df_argentine_league1_2023.csv",
             2024: "argentine/df_argentine_league1_2024.csv",
             2025: "argentine/df_argentine_league1_2025.csv",
+            ##2026: "argentine/df_argentine_league1_2026.csv",
         },
         "models": {
             "stage1": "argentine/argentine_stage1.joblib",
@@ -403,12 +422,13 @@ COMP_CONFIG = {
         "key": "leagues_europa",
         "thread": 0.65,
         "current_df": "leagues_europa/saison_encours.csv",
-        "season_prev": "leagues_europa/df_league_europa_2024.csv",
+        "season_prev": "leagues_europa/df_league_europa_2025.csv",
         "past": {
             2022: "leagues_europa/df_league_europa_2022.csv",
             2023: "leagues_europa/df_league_europa_2023.csv",
             2024: "leagues_europa/df_league_europa_2024.csv",
             2025: "leagues_europa/df_league_europa_2025.csv",
+            ##2026: "leagues_europa/df_league_europa_2026.csv",
         },
         "models": {
             "stage1": "leagues_europa/league_europa_stage1.joblib",
@@ -420,12 +440,13 @@ COMP_CONFIG = {
         "key": "leagues_champions",
         "thread": 0.65,
         "current_df": "leagues_champions/saison_encours.csv",
-        "season_prev": "leagues_champions/df_champions_2024.csv",
+        "season_prev": "leagues_champions/df_champions_2025.csv",
         "past": {
             2022: "leagues_champions/df_champions_2022.csv",
             2023: "leagues_champions/df_champions_2023.csv",
             2024: "leagues_champions/df_champions_2024.csv",
             2025: "leagues_champions/df_champions_2025.csv",
+            ##2026: "leagues_champions/df_champions_2026.csv",
         },
         "models": {
             "stage1": "leagues_champions/league_champion_stage1.joblib",
@@ -437,12 +458,13 @@ COMP_CONFIG = {
         "key": "egypte",
         "thread": 0.64,
         "current_df": "egypte/saison_encours.csv",
-        "season_prev": "egypte/df_egypte_2024.csv",
+        "season_prev": "egypte/df_egypte_2025.csv",
         "past": {
             2022: "egypte/df_egypte_2022.csv",
             2023: "egypte/df_egypte_2023.csv",
             2024: "egypte/df_egypte_2024.csv",
             2025: "egypte/df_egypte_2025.csv",
+            ##2026: "egypte/df_egypte_2026.csv",
         },
         "models": {
             "stage1": "egypte/egypte_stage1.joblib",
@@ -454,12 +476,13 @@ COMP_CONFIG = {
         "key": "mexique",
         "thread": 0.63,
         "current_df": "mexique/saison_encours.csv",
-        "season_prev": "mexique/df_mexique_2024.csv",
+        "season_prev": "mexique/df_mexique_2025.csv",
         "past": {
             2022: "mexique/df_mexique_2022.csv",
             2023: "mexique/df_mexique_2023.csv",
             2024: "mexique/df_mexique_2024.csv",
             2025: "mexique/df_mexique_2025.csv",
+            ##2026: "mexique/df_mexique_2026.csv",
         },
         "models": {
             "stage1": "mexique/mexique_stage1.joblib",
@@ -471,12 +494,13 @@ COMP_CONFIG = {
         "key": "bl2",
         "thread": 0.63,
         "current_df": "bl2/saison_encours.csv",
-        "season_prev": "bl2/bl2_2024.csv",
+        "season_prev": "bl2/bl2_2025.csv",
         "past": {
             2022: "bl2/bl2_2022.csv",
             2023: "bl2/bl2_2023.csv",
             2024: "bl2/bl2_2024.csv",
             2025: "bl2/bl2_2025.csv",
+            ##2026: "bl2/bl2_2026.csv",
         },
         "models": {
             "stage1": "bl2/bundesliga2_stage1.joblib",
@@ -488,12 +512,13 @@ COMP_CONFIG = {
         "key": "sa2",
         "thread": 0.67,
         "current_df": "sa2/saison_encours.csv",
-        "season_prev": "sa2/serie_B_2024.csv",
+        "season_prev": "sa2/serie_B_2025.csv",
         "past": {
             2022: "sa2/serie_B_2022.csv",
             2023: "sa2/serie_B_2023.csv",
             2024: "sa2/serie_B_2024.csv",
             2025: "sa2/serie_B_2025.csv",
+            ##2026: "sa2/serie_B_2026.csv",
         },
         "models": {
             "stage1": "sa2/serieB_stage1.joblib",
@@ -505,12 +530,13 @@ COMP_CONFIG = {
         "key": "pl2",
         "thread": 0.60,
         "current_df": "pl2/saison_encours.csv",
-        "season_prev": "pl2/champioship_2024.csv",
+        "season_prev": "pl2/champioship_2025.csv",
         "past": {
             2022: "pl2/champioship_2022.csv",
             2023: "pl2/champioship_2023.csv",
             2024: "pl2/champioship_2024.csv",
             2025: "pl2/champioship_2025.csv",
+            ##2026: "pl2/champioship_2026.csv",
         },
         "models": {
             "stage1": "pl2/pl2_stage1.joblib",
@@ -522,12 +548,13 @@ COMP_CONFIG = {
         "key": "fl2",
         "thread": 0.63,
         "current_df": "fl2/saison_encours.csv",
-        "season_prev": "fl2/fl2_2024.csv",
+        "season_prev": "fl2/fl2_2025.csv",
         "past": {
             2022: "fl2/fl2_2022.csv",
             2023: "fl2/fl2_2023.csv",
             2024: "fl2/fl2_2024.csv",
             2025: "fl2/fl2_2025.csv",
+            ##2026: "fl2/fl2_2026.csv",
         },
         "models": {
             "stage1": "fl2/fl2_stage1.joblib",
@@ -539,12 +566,13 @@ COMP_CONFIG = {
         "key": "lg2",
         "thread": 0.63,
         "current_df": "lg2/saison_encours.csv",
-        "season_prev": "lg2/lg2_2024.csv",
+        "season_prev": "lg2/lg2_2025.csv",
         "past": {
             2022: "lg2/lg2_2022.csv",
             2023: "lg2/lg2_2023.csv",
             2024: "lg2/lg2_2024.csv",
             2025: "lg2/lg2_2025.csv",
+            ##2026: "lg2/lg2_2026.csv",
         },
         "models": {
             "stage1": "lg2/lg2_stage1.joblib",
@@ -556,7 +584,7 @@ COMP_CONFIG = {
         "key": "can",
         "thread": 0.65,
         "current_df": "can/saison_encours.csv",
-        "season_prev": "can/df_can_2023.csv",
+        "season_prev": "can/df_can_2025.csv",
         "past": {
             2022: "can/df_can_2019.csv",
             2023: "can/df_can_2021.csv",
@@ -586,6 +614,7 @@ COMP_CONFIG = {
             "goals": "mondiale/xgboost_nbre_but_marque_can.joblib",
         },
     },
+    
 }
 
 # -------------------------------------------------------------------
@@ -630,6 +659,8 @@ def _load_comp_resources(comp: int) -> Dict[str, Any]:
         "df_2023": past_dfs.get(2023),
         "df_2024": past_dfs.get(2024),
         "df_2025": past_dfs.get(2025),
+        "df_2026": past_dfs.get(2026),
+        
         "modele1": model_stage1,
         "modele2": model_stage2,
         "model_but": model_goals,
@@ -660,6 +691,7 @@ def _build_match_result(match: MatchInput) -> Dict[str, Any]:
     df_2023 = res["df_2023"]
     df_2024 = res["df_2024"]
     df_2025 = res["df_2025"]
+    df_2026 = res["df_2026"]
     modele1 = res["modele1"]
     modele2 = res["modele2"]
     model_but = res["model_but"]
