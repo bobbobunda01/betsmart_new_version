@@ -1,83 +1,256 @@
-,season,league_name,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-8811,2025,UEFA Europa League,2025-07-10,Sabah FA,Celje,2.0,3.0,2.0,1.0,A
-8812,2025,UEFA Europa League,2025-07-10,AEK Larnaca,FK Partizan,1.0,0.0,0.0,0.0,H
-8813,2025,UEFA Europa League,2025-07-10,Sheriff Tiraspol,Prishtina,4.0,0.0,2.0,0.0,H
-8814,2025,UEFA Europa League,2025-07-10,Paks,CFR 1907 Cluj,0.0,0.0,0.0,0.0,D
-8815,2025,UEFA Europa League,2025-07-10,Levski Sofia,Hapoel Beer Sheva,0.0,0.0,0.0,0.0,D
-8816,2025,UEFA Europa League,2025-07-10,Shakhtar Donetsk,Ilves,6.0,0.0,2.0,0.0,H
-8817,2025,UEFA Europa League,2025-07-10,Spartak Trnava,BK Hacken,0.0,1.0,0.0,0.0,A
-8818,2025,UEFA Europa League,2025-07-10,Legia Warszawa,Aktobe,1.0,0.0,1.0,0.0,H
-8819,2025,UEFA Europa League,2025-07-17,Ilves,Shakhtar Donetsk,0.0,0.0,0.0,0.0,D
-8820,2025,UEFA Europa League,2025-07-17,Aktobe,Legia Warszawa,0.0,1.0,0.0,0.0,A
-8821,2025,UEFA Europa League,2025-07-17,BK Hacken,Spartak Trnava,2.0,2.0,1.0,0.0,D
-8822,2025,UEFA Europa League,2025-07-17,CFR 1907 Cluj,Paks,3.0,0.0,1.0,0.0,H
-8823,2025,UEFA Europa League,2025-07-17,Celje,Sabah FA,2.0,3.0,1.0,1.0,A
-8824,2025,UEFA Europa League,2025-07-17,Prishtina,Sheriff Tiraspol,2.0,1.0,0.0,0.0,H
-8825,2025,UEFA Europa League,2025-07-17,Hapoel Beer Sheva,Levski Sofia,0.0,0.0,0.0,0.0,D
-8826,2025,UEFA Europa League,2025-07-17,FK Partizan,AEK Larnaca,1.0,0.0,0.0,0.0,H
-8827,2025,UEFA Europa League,2025-07-24,Sheriff Tiraspol,Utrecht,1.0,3.0,1.0,1.0,A
-8828,2025,UEFA Europa League,2025-07-24,Baník Ostrava,Legia Warszawa,2.0,2.0,1.0,1.0,D
-8829,2025,UEFA Europa League,2025-07-24,FC Midtjylland,Hibernian,1.0,1.0,0.0,1.0,D
-8830,2025,UEFA Europa League,2025-07-24,Levski Sofia,SC Braga,0.0,0.0,0.0,0.0,D
-8831,2025,UEFA Europa League,2025-07-24,Besiktas,Shakhtar Donetsk,2.0,4.0,1.0,2.0,A
-8832,2025,UEFA Europa League,2025-07-24,Anderlecht,BK Hacken,1.0,0.0,1.0,0.0,H
-8833,2025,UEFA Europa League,2025-07-24,Celje,AEK Larnaca,1.0,1.0,1.0,0.0,D
-8834,2025,UEFA Europa League,2025-07-24,FC Lugano,CFR 1907 Cluj,0.0,0.0,0.0,0.0,D
-8835,2025,UEFA Europa League,2025-07-31,AEK Larnaca,Celje,2.0,1.0,1.0,0.0,H
-8836,2025,UEFA Europa League,2025-07-31,BK Hacken,Anderlecht,2.0,1.0,1.0,0.0,H
-8837,2025,UEFA Europa League,2025-07-31,CFR 1907 Cluj,FC Lugano,0.0,0.0,0.0,0.0,D
-8838,2025,UEFA Europa League,2025-07-31,Shakhtar Donetsk,Besiktas,2.0,0.0,2.0,0.0,H
-8839,2025,UEFA Europa League,2025-07-31,Utrecht,Sheriff Tiraspol,4.0,1.0,1.0,0.0,H
-8840,2025,UEFA Europa League,2025-07-31,SC Braga,Levski Sofia,0.0,0.0,0.0,0.0,D
-8841,2025,UEFA Europa League,2025-07-31,Hibernian,FC Midtjylland,0.0,0.0,0.0,0.0,D
-8842,2025,UEFA Europa League,2025-07-31,Legia Warszawa,Baník Ostrava,2.0,1.0,0.0,1.0,H
-8843,2025,UEFA Europa League,2025-08-05,Hamrun Spartans,Maccabi Tel Aviv,1.0,2.0,0.0,0.0,A
-8844,2025,UEFA Europa League,2025-08-06,Rīgas FS,KuPS,1.0,2.0,0.0,2.0,A
-8845,2025,UEFA Europa League,2025-08-06,HNK Rijeka,Shelbourne,1.0,2.0,0.0,0.0,A
-8846,2025,UEFA Europa League,2025-08-07,Lincoln Red Imps FC,FC Noah,1.0,1.0,1.0,1.0,D
-8847,2025,UEFA Europa League,2025-08-07,Fredrikstad,FC Midtjylland,1.0,3.0,0.0,2.0,A
-8848,2025,UEFA Europa League,2025-08-07,AEK Larnaca,Legia Warszawa,4.0,1.0,1.0,1.0,H
-8849,2025,UEFA Europa League,2025-08-07,CFR 1907 Cluj,SC Braga,1.0,2.0,1.0,1.0,A
-8850,2025,UEFA Europa League,2025-08-07,BK Hacken,Brann,0.0,2.0,0.0,1.0,A
-8851,2025,UEFA Europa League,2025-08-07,PAOK,Wolfsberger AC,0.0,0.0,0.0,0.0,D
-8852,2025,UEFA Europa League,2025-08-07,Panathinaikos,Shakhtar Donetsk,0.0,0.0,0.0,0.0,D
-8853,2025,UEFA Europa League,2025-08-07,Zrinjski,Breidablik,1.0,1.0,0.0,1.0,D
-8854,2025,UEFA Europa League,2025-08-07,FCSB,Drita,3.0,2.0,0.0,1.0,H
-8855,2025,UEFA Europa League,2025-08-07,Servette FC,Utrecht,1.0,3.0,1.0,0.0,A
-8856,2025,UEFA Europa League,2025-08-12,Shelbourne,HNK Rijeka,1.0,3.0,0.0,1.0,A
-8857,2025,UEFA Europa League,2025-08-14,KuPS,Rīgas FS,1.0,0.0,0.0,0.0,H
-8858,2025,UEFA Europa League,2025-08-14,FC Midtjylland,Fredrikstad,2.0,0.0,2.0,0.0,H
-8859,2025,UEFA Europa League,2025-08-14,Brann,BK Hacken,0.0,1.0,0.0,1.0,A
-8860,2025,UEFA Europa League,2025-08-14,Wolfsberger AC,PAOK,0.0,0.0,0.0,0.0,D
-8861,2025,UEFA Europa League,2025-08-14,FC Noah,Lincoln Red Imps FC,0.0,0.0,0.0,0.0,D
-8862,2025,UEFA Europa League,2025-08-14,Breidablik,Zrinjski,1.0,2.0,0.0,1.0,A
-8863,2025,UEFA Europa League,2025-08-14,Maccabi Tel Aviv,Hamrun Spartans,3.0,1.0,2.0,1.0,H
-8864,2025,UEFA Europa League,2025-08-14,Utrecht,Servette FC,2.0,1.0,0.0,0.0,H
-8865,2025,UEFA Europa League,2025-08-14,Shakhtar Donetsk,Panathinaikos,0.0,0.0,0.0,0.0,D
-8866,2025,UEFA Europa League,2025-08-14,Drita,FCSB,1.0,3.0,0.0,2.0,A
-8867,2025,UEFA Europa League,2025-08-14,SC Braga,CFR 1907 Cluj,2.0,0.0,2.0,0.0,H
-8868,2025,UEFA Europa League,2025-08-14,Legia Warszawa,AEK Larnaca,2.0,1.0,2.0,0.0,H
-8869,2025,UEFA Europa League,2025-08-21,FC Midtjylland,KuPS,4.0,0.0,2.0,0.0,H
-8870,2025,UEFA Europa League,2025-08-21,Brann,AEK Larnaca,2.0,1.0,1.0,1.0,H
-8871,2025,UEFA Europa League,2025-08-21,Malmo FF,Sigma Olomouc,3.0,0.0,2.0,0.0,H
-8872,2025,UEFA Europa League,2025-08-21,Zrinjski,Utrecht,0.0,2.0,0.0,1.0,A
-8873,2025,UEFA Europa League,2025-08-21,Shkendija,Ludogorets,2.0,1.0,1.0,1.0,H
-8874,2025,UEFA Europa League,2025-08-21,Panathinaikos,Samsunspor,2.0,1.0,0.0,0.0,H
-8875,2025,UEFA Europa League,2025-08-21,Maccabi Tel Aviv,Dynamo Kyiv,3.0,1.0,1.0,1.0,H
-8876,2025,UEFA Europa League,2025-08-21,Slovan Bratislava,BSC Young Boys,0.0,1.0,0.0,1.0,A
-8877,2025,UEFA Europa League,2025-08-21,Lech Poznan,Genk,1.0,5.0,1.0,4.0,A
-8878,2025,UEFA Europa League,2025-08-21,Aberdeen,FCSB,2.0,2.0,0.0,1.0,D
-8879,2025,UEFA Europa League,2025-08-21,HNK Rijeka,PAOK,1.0,0.0,1.0,0.0,H
-8880,2025,UEFA Europa League,2025-08-21,Lincoln Red Imps FC,SC Braga,0.0,4.0,0.0,2.0,A
-8881,2025,UEFA Europa League,2025-08-27,AEK Larnaca,Brann,0.0,4.0,0.0,1.0,A
-8882,2025,UEFA Europa League,2025-08-28,KuPS,FC Midtjylland,0.0,2.0,0.0,0.0,A
-8883,2025,UEFA Europa League,2025-08-28,Sigma Olomouc,Malmo FF,0.0,2.0,0.0,0.0,A
-8884,2025,UEFA Europa League,2025-08-28,Samsunspor,Panathinaikos,0.0,0.0,0.0,0.0,D
-8885,2025,UEFA Europa League,2025-08-28,Ludogorets,Shkendija,2.0,1.0,2.0,0.0,H
-8886,2025,UEFA Europa League,2025-08-28,PAOK,HNK Rijeka,5.0,0.0,2.0,0.0,H
-8887,2025,UEFA Europa League,2025-08-28,Utrecht,Zrinjski,0.0,0.0,0.0,0.0,D
-8888,2025,UEFA Europa League,2025-08-28,BSC Young Boys,Slovan Bratislava,3.0,2.0,2.0,1.0,H
-8889,2025,UEFA Europa League,2025-08-28,Dynamo Kyiv,Maccabi Tel Aviv,1.0,0.0,1.0,0.0,H
-8890,2025,UEFA Europa League,2025-08-28,Genk,Lech Poznan,1.0,2.0,1.0,1.0,A
-8891,2025,UEFA Europa League,2025-08-28,FCSB,Aberdeen,3.0,0.0,1.0,0.0,H
-8892,2025,UEFA Europa League,2025-08-28,SC Braga,Lincoln Red Imps FC,5.0,1.0,3.0,0.0,H
+league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
+League_europa,2025,2025-07-10,Sabah FA,Celje,2,3,2,1,A
+League_europa,2025,2025-07-10,AEK Larnaca,FK Partizan,1,0,0,0,H
+League_europa,2025,2025-07-10,Sheriff Tiraspol,Prishtina,4,0,2,0,H
+League_europa,2025,2025-07-10,Paks,CFR 1907 Cluj,0,0,0,0,D
+League_europa,2025,2025-07-10,Levski Sofia,Hapoel Beer Sheva,0,0,0,0,D
+League_europa,2025,2025-07-10,Shakhtar Donetsk,Ilves,6,0,2,0,H
+League_europa,2025,2025-07-10,Spartak Trnava,BK Hacken,0,1,0,0,A
+League_europa,2025,2025-07-10,Legia Warszawa,Aktobe,1,0,1,0,H
+League_europa,2025,2025-07-17,Ilves,Shakhtar Donetsk,0,0,0,0,D
+League_europa,2025,2025-07-17,Aktobe,Legia Warszawa,0,1,0,0,A
+League_europa,2025,2025-07-17,BK Hacken,Spartak Trnava,2,2,1,0,D
+League_europa,2025,2025-07-17,CFR 1907 Cluj,Paks,3,0,1,0,H
+League_europa,2025,2025-07-17,Prishtina,Sheriff Tiraspol,2,1,0,0,H
+League_europa,2025,2025-07-24,Sheriff Tiraspol,Utrecht,1,3,1,1,A
+League_europa,2025,2025-07-24,Baník Ostrava,Legia Warszawa,2,2,1,1,D
+League_europa,2025,2025-07-24,FC Midtjylland,Hibernian,1,1,0,1,D
+League_europa,2025,2025-07-24,Levski Sofia,SC Braga,0,0,0,0,D
+League_europa,2025,2025-07-24,Beşiktaş,Shakhtar Donetsk,2,4,1,2,A
+League_europa,2025,2025-07-24,Anderlecht,BK Hacken,1,0,1,0,H
+League_europa,2025,2025-07-24,Celje,AEK Larnaca,1,1,1,0,D
+League_europa,2025,2025-07-24,FC Lugano,CFR 1907 Cluj,0,0,0,0,D
+League_europa,2025,2025-07-31,AEK Larnaca,Celje,2,1,1,0,H
+League_europa,2025,2025-07-31,Utrecht,Sheriff Tiraspol,4,1,1,0,H
+League_europa,2025,2025-07-31,Shakhtar Donetsk,Beşiktaş,2,0,2,0,H
+League_europa,2025,2025-07-31,Legia Warszawa,Baník Ostrava,2,1,0,1,H
+League_europa,2025,2025-08-05,Hamrun Spartans,Maccabi Tel Aviv,1,2,0,0,A
+League_europa,2025,2025-08-06,Rīgas FS,KuPS,1,2,0,2,A
+League_europa,2025,2025-08-06,HNK Rijeka,Shelbourne,1,2,0,0,A
+League_europa,2025,2025-08-07,Lincoln Red Imps FC,FC Noah,1,1,1,1,D
+League_europa,2025,2025-08-07,Fredrikstad,FC Midtjylland,1,3,0,2,A
+League_europa,2025,2025-08-07,AEK Larnaca,Legia Warszawa,4,1,1,1,H
+League_europa,2025,2025-08-07,CFR 1907 Cluj,SC Braga,1,2,1,1,A
+League_europa,2025,2025-08-07,BK Hacken,Brann,0,2,0,1,A
+League_europa,2025,2025-08-07,PAOK,Wolfsberger AC,0,0,0,0,D
+League_europa,2025,2025-08-07,Zrinjski,Breidablik,1,1,0,1,D
+League_europa,2025,2025-08-07,Panathinaikos,Shakhtar Donetsk,0,0,0,0,D
+League_europa,2025,2025-08-07,FCSB,Drita,3,2,0,1,H
+League_europa,2025,2025-08-07,Servette FC,Utrecht,1,3,1,0,A
+League_europa,2025,2025-08-12,Shelbourne,HNK Rijeka,1,3,0,1,A
+League_europa,2025,2025-08-14,KuPS,Rīgas FS,1,0,0,0,H
+League_europa,2025,2025-08-14,FC Midtjylland,Fredrikstad,2,0,2,0,H
+League_europa,2025,2025-08-14,Brann,BK Hacken,0,1,0,1,A
+League_europa,2025,2025-08-14,Breidablik,Zrinjski,1,2,0,1,A
+League_europa,2025,2025-08-14,Utrecht,Servette FC,2,1,0,0,H
+League_europa,2025,2025-08-14,Maccabi Tel Aviv,Hamrun Spartans,3,1,2,1,H
+League_europa,2025,2025-08-14,Drita,FCSB,1,3,0,2,A
+League_europa,2025,2025-08-14,SC Braga,CFR 1907 Cluj,2,0,2,0,H
+League_europa,2025,2025-08-14,Legia Warszawa,AEK Larnaca,2,1,2,0,H
+League_europa,2025,2025-08-21,FC Midtjylland,KuPS,4,0,2,0,H
+League_europa,2025,2025-08-21,Brann,AEK Larnaca,2,1,1,1,H
+League_europa,2025,2025-08-21,Malmo FF,Sigma Olomouc,3,0,2,0,H
+League_europa,2025,2025-08-21,Zrinjski,Utrecht,0,2,0,1,A
+League_europa,2025,2025-08-21,Maccabi Tel Aviv,Dynamo Kyiv,3,1,1,1,H
+League_europa,2025,2025-08-21,Shkendija,Ludogorets,2,1,1,1,H
+League_europa,2025,2025-08-21,Panathinaikos,Samsunspor,2,1,0,0,H
+League_europa,2025,2025-08-21,Slovan Bratislava,BSC Young Boys,0,1,0,1,A
+League_europa,2025,2025-08-21,Lech Poznan,Genk,1,5,1,4,A
+League_europa,2025,2025-08-21,Aberdeen,FCSB,2,2,0,1,D
+League_europa,2025,2025-08-21,HNK Rijeka,PAOK,1,0,1,0,H
+League_europa,2025,2025-08-21,Lincoln Red Imps FC,SC Braga,0,4,0,2,A
+League_europa,2025,2025-08-27,AEK Larnaca,Brann,0,4,0,1,A
+League_europa,2025,2025-08-28,KuPS,FC Midtjylland,0,2,0,0,A
+League_europa,2025,2025-08-28,Sigma Olomouc,Malmo FF,0,2,0,0,A
+League_europa,2025,2025-08-28,Samsunspor,Panathinaikos,0,0,0,0,D
+League_europa,2025,2025-08-28,PAOK,HNK Rijeka,5,0,2,0,H
+League_europa,2025,2025-08-28,Utrecht,Zrinjski,0,0,0,0,D
+League_europa,2025,2025-08-28,BSC Young Boys,Slovan Bratislava,3,2,2,1,H
+League_europa,2025,2025-08-28,Dynamo Kyiv,Maccabi Tel Aviv,1,0,1,0,H
+League_europa,2025,2025-08-28,Genk,Lech Poznan,1,2,1,1,A
+League_europa,2025,2025-08-28,FCSB,Aberdeen,3,0,1,0,H
+League_europa,2025,2025-08-28,SC Braga,Lincoln Red Imps FC,5,1,3,0,H
+League_europa,2025,2025-09-24,FC Midtjylland,Sturm Graz,2,0,1,0,H
+League_europa,2025,2025-09-24,PAOK,Maccabi Tel Aviv,0,0,0,0,D
+League_europa,2025,2025-09-24,Nice,AS Roma,1,2,0,0,A
+League_europa,2025,2025-09-24,SC Freiburg,FC Basel 1893,2,1,1,0,H
+League_europa,2025,2025-09-24,SC Braga,Feyenoord,1,0,0,0,H
+League_europa,2025,2025-09-24,Malmo FF,Ludogorets,1,2,0,2,A
+League_europa,2025,2025-09-24,Real Betis,Nottingham Forest,2,2,1,2,D
+League_europa,2025,2025-09-24,FK Crvena Zvezda,Celtic,1,1,0,0,D
+League_europa,2025,2025-09-24,Dinamo Zagreb,Fenerbahçe,3,1,1,1,H
+League_europa,2025,2025-09-25,Lille,Brann,2,1,0,0,H
+League_europa,2025,2025-09-25,GO Ahead Eagles,FCSB,0,1,0,1,A
+League_europa,2025,2025-09-25,Aston Villa,Bologna,1,0,1,0,H
+League_europa,2025,2025-09-25,VfB Stuttgart,Celta Vigo,2,1,0,0,H
+League_europa,2025,2025-09-25,Utrecht,Lyon,0,1,0,0,A
+League_europa,2025,2025-09-25,Rangers,Genk,0,1,0,0,A
+League_europa,2025,2025-09-25,BSC Young Boys,Panathinaikos,1,4,1,3,A
+League_europa,2025,2025-09-25,Red Bull Salzburg,FC Porto,0,1,0,0,A
+League_europa,2025,2025-09-25,Ferencvarosi TC,Plzen,1,1,0,1,D
+League_europa,2025,2025-10-02,Celtic,SC Braga,0,2,0,1,A
+League_europa,2025,2025-10-02,Brann,Utrecht,1,0,1,0,H
+League_europa,2025,2025-10-02,AS Roma,Lille,0,1,0,1,A
+League_europa,2025,2025-10-02,Bologna,SC Freiburg,1,1,1,0,D
+League_europa,2025,2025-10-02,FCSB,BSC Young Boys,0,2,0,2,A
+League_europa,2025,2025-10-02,Ludogorets,Real Betis,0,2,0,1,A
+League_europa,2025,2025-10-02,Plzen,Malmo FF,3,0,2,0,H
+League_europa,2025,2025-10-02,Fenerbahçe,Nice,2,1,2,1,H
+League_europa,2025,2025-10-02,Panathinaikos,GO Ahead Eagles,1,2,0,0,A
+League_europa,2025,2025-10-02,Nottingham Forest,FC Midtjylland,2,3,1,2,A
+League_europa,2025,2025-10-02,Lyon,Red Bull Salzburg,2,0,1,0,H
+League_europa,2025,2025-10-02,Feyenoord,Aston Villa,0,2,0,0,A
+League_europa,2025,2025-10-02,FC Porto,FK Crvena Zvezda,2,1,1,1,H
+League_europa,2025,2025-10-02,Celta Vigo,PAOK,3,1,1,1,H
+League_europa,2025,2025-10-02,FC Basel 1893,VfB Stuttgart,2,0,1,0,H
+League_europa,2025,2025-10-02,Maccabi Tel Aviv,Dinamo Zagreb,1,3,1,2,A
+League_europa,2025,2025-10-02,Sturm Graz,Rangers,2,1,2,0,H
+League_europa,2025,2025-10-02,Genk,Ferencvarosi TC,0,1,0,1,A
+League_europa,2025,2025-10-23,Lyon,FC Basel 1893,2,0,1,0,H
+League_europa,2025,2025-10-23,SC Braga,FK Crvena Zvezda,2,0,1,0,H
+League_europa,2025,2025-10-23,Brann,Rangers,3,0,1,0,H
+League_europa,2025,2025-10-23,GO Ahead Eagles,Aston Villa,2,1,1,1,H
+League_europa,2025,2025-10-23,FCSB,Bologna,1,2,0,2,A
+League_europa,2025,2025-10-23,Red Bull Salzburg,Ferencvarosi TC,2,3,1,0,A
+League_europa,2025,2025-10-23,Fenerbahçe,VfB Stuttgart,1,0,1,0,H
+League_europa,2025,2025-10-23,Genk,Real Betis,0,0,0,0,D
+League_europa,2025,2025-10-23,Nottingham Forest,FC Porto,2,0,1,0,H
+League_europa,2025,2025-10-23,Lille,PAOK,3,4,0,3,A
+League_europa,2025,2025-10-23,SC Freiburg,Utrecht,2,0,2,0,H
+League_europa,2025,2025-10-23,Feyenoord,Panathinaikos,3,1,1,1,H
+League_europa,2025,2025-10-23,Celtic,Sturm Graz,2,1,0,1,H
+League_europa,2025,2025-10-23,Malmo FF,Dinamo Zagreb,1,1,1,0,D
+League_europa,2025,2025-10-23,AS Roma,Plzen,1,2,0,2,A
+League_europa,2025,2025-10-23,Celta Vigo,Nice,2,1,1,1,H
+League_europa,2025,2025-10-23,BSC Young Boys,Ludogorets,3,2,1,1,H
+League_europa,2025,2025-10-23,Maccabi Tel Aviv,FC Midtjylland,0,3,0,1,A
+League_europa,2025,2025-11-06,Nice,SC Freiburg,1,3,1,3,A
+League_europa,2025,2025-11-06,Utrecht,FC Porto,1,1,0,0,D
+League_europa,2025,2025-11-06,Malmo FF,Panathinaikos,0,1,0,0,A
+League_europa,2025,2025-11-06,FC Midtjylland,Celtic,3,1,3,0,H
+League_europa,2025,2025-11-06,FC Basel 1893,FCSB,3,1,1,0,H
+League_europa,2025,2025-11-06,Red Bull Salzburg,GO Ahead Eagles,2,0,0,0,H
+League_europa,2025,2025-11-06,FK Crvena Zvezda,Lille,1,0,0,0,H
+League_europa,2025,2025-11-06,Dinamo Zagreb,Celta Vigo,0,3,0,3,A
+League_europa,2025,2025-11-06,Sturm Graz,Nottingham Forest,0,0,0,0,D
+League_europa,2025,2025-11-06,Aston Villa,Maccabi Tel Aviv,2,0,1,0,H
+League_europa,2025,2025-11-06,VfB Stuttgart,Feyenoord,2,0,0,0,H
+League_europa,2025,2025-11-06,SC Braga,Genk,3,4,1,1,A
+League_europa,2025,2025-11-06,Rangers,AS Roma,0,2,0,2,A
+League_europa,2025,2025-11-06,Bologna,Brann,0,0,0,0,D
+League_europa,2025,2025-11-06,Real Betis,Lyon,2,0,2,0,H
+League_europa,2025,2025-11-06,Plzen,Fenerbahçe,0,0,0,0,D
+League_europa,2025,2025-11-06,PAOK,BSC Young Boys,4,0,0,0,H
+League_europa,2025,2025-11-06,Ferencvarosi TC,Ludogorets,3,1,1,0,H
+League_europa,2025,2025-11-27,Aston Villa,BSC Young Boys,2,1,2,0,H
+League_europa,2025,2025-11-27,Lille,Dinamo Zagreb,4,0,2,0,H
+League_europa,2025,2025-11-27,Feyenoord,Celtic,1,3,1,2,A
+League_europa,2025,2025-11-27,FC Porto,Nice,3,0,2,0,H
+League_europa,2025,2025-11-27,AS Roma,FC Midtjylland,2,1,1,0,H
+League_europa,2025,2025-11-27,Ludogorets,Celta Vigo,3,2,1,0,H
+League_europa,2025,2025-11-27,Plzen,SC Freiburg,0,0,0,0,D
+League_europa,2025,2025-11-27,Fenerbahçe,Ferencvarosi TC,1,1,0,0,D
+League_europa,2025,2025-11-27,PAOK,Brann,1,1,0,0,D
+League_europa,2025,2025-11-27,Nottingham Forest,Malmo FF,3,0,2,0,H
+League_europa,2025,2025-11-27,Rangers,SC Braga,1,1,1,0,D
+League_europa,2025,2025-11-27,GO Ahead Eagles,VfB Stuttgart,0,4,0,2,A
+League_europa,2025,2025-11-27,Bologna,Red Bull Salzburg,4,1,1,1,H
+League_europa,2025,2025-11-27,Real Betis,Utrecht,2,1,1,0,H
+League_europa,2025,2025-11-27,FK Crvena Zvezda,FCSB,1,0,0,0,H
+League_europa,2025,2025-11-27,Maccabi Tel Aviv,Lyon,0,6,0,3,A
+League_europa,2025,2025-11-27,Panathinaikos,Sturm Graz,2,1,1,1,H
+League_europa,2025,2025-11-27,Genk,FC Basel 1893,2,1,2,0,H
+League_europa,2025,2025-12-11,Nice,SC Braga,0,1,0,1,A
+League_europa,2025,2025-12-11,VfB Stuttgart,Maccabi Tel Aviv,4,1,2,0,H
+League_europa,2025,2025-12-11,Utrecht,Nottingham Forest,1,2,0,0,A
+League_europa,2025,2025-12-11,FC Midtjylland,Genk,1,0,1,0,H
+League_europa,2025,2025-12-11,BSC Young Boys,Lille,1,0,0,0,H
+League_europa,2025,2025-12-11,Ludogorets,PAOK,3,3,1,1,D
+League_europa,2025,2025-12-11,Dinamo Zagreb,Real Betis,1,3,0,3,A
+League_europa,2025,2025-12-11,Sturm Graz,FK Crvena Zvezda,0,1,0,0,A
+League_europa,2025,2025-12-11,Ferencvarosi TC,Rangers,2,1,1,1,H
+League_europa,2025,2025-12-11,Lyon,GO Ahead Eagles,2,1,2,1,H
+League_europa,2025,2025-12-11,SC Freiburg,Red Bull Salzburg,1,0,0,0,H
+League_europa,2025,2025-12-11,FC Porto,Malmo FF,2,1,2,0,H
+League_europa,2025,2025-12-11,Celtic,AS Roma,0,3,0,3,A
+League_europa,2025,2025-12-11,Brann,Fenerbahçe,0,4,0,3,A
+League_europa,2025,2025-12-11,Celta Vigo,Bologna,1,2,1,0,A
+League_europa,2025,2025-12-11,FC Basel 1893,Aston Villa,1,2,1,1,A
+League_europa,2025,2025-12-11,FCSB,Feyenoord,4,3,1,2,H
+League_europa,2025,2025-12-11,Panathinaikos,Plzen,0,0,0,0,D
+League_europa,2025,2026-01-22,SC Freiburg,Maccabi Tel Aviv,1,0,0,0,H
+League_europa,2025,2026-01-22,Feyenoord,Sturm Graz,3,0,1,0,H
+League_europa,2025,2026-01-22,Brann,FC Midtjylland,3,3,1,2,D
+League_europa,2025,2026-01-22,Malmo FF,FK Crvena Zvezda,0,1,0,1,A
+League_europa,2025,2026-01-22,Bologna,Celtic,2,2,0,2,D
+League_europa,2025,2026-01-22,BSC Young Boys,Lyon,0,1,0,1,A
+League_europa,2025,2026-01-22,Plzen,FC Porto,1,1,1,0,D
+League_europa,2025,2026-01-22,Fenerbahçe,Aston Villa,0,1,0,1,A
+League_europa,2025,2026-01-22,PAOK,Real Betis,2,0,0,0,H
+League_europa,2025,2026-01-22,Nice,GO Ahead Eagles,3,1,2,0,H
+League_europa,2025,2026-01-22,Utrecht,Genk,0,2,0,0,A
+League_europa,2025,2026-01-22,SC Braga,Nottingham Forest,1,0,0,0,H
+League_europa,2025,2026-01-22,Rangers,Ludogorets,1,0,1,0,H
+League_europa,2025,2026-01-22,AS Roma,VfB Stuttgart,2,0,1,0,H
+League_europa,2025,2026-01-22,Celta Vigo,Lille,2,1,1,0,H
+League_europa,2025,2026-01-22,Red Bull Salzburg,FC Basel 1893,3,1,3,0,H
+League_europa,2025,2026-01-22,Dinamo Zagreb,FCSB,4,1,2,1,H
+League_europa,2025,2026-01-22,Ferencvarosi TC,Panathinaikos,1,1,0,0,D
+League_europa,2025,2026-01-29,Nottingham Forest,Ferencvarosi TC,4,0,2,0,H
+League_europa,2025,2026-01-29,Aston Villa,Red Bull Salzburg,3,2,0,1,H
+League_europa,2025,2026-01-29,Lille,SC Freiburg,1,0,0,0,H
+League_europa,2025,2026-01-29,Lyon,PAOK,4,2,1,1,H
+League_europa,2025,2026-01-29,VfB Stuttgart,BSC Young Boys,3,2,2,1,H
+League_europa,2025,2026-01-29,FC Porto,Rangers,3,1,3,1,H
+League_europa,2025,2026-01-29,Celtic,Utrecht,4,2,3,1,H
+League_europa,2025,2026-01-29,FC Midtjylland,Dinamo Zagreb,2,0,0,0,H
+League_europa,2025,2026-01-29,GO Ahead Eagles,SC Braga,0,0,0,0,D
+League_europa,2025,2026-01-29,Real Betis,Feyenoord,2,1,2,0,H
+League_europa,2025,2026-01-29,FC Basel 1893,Plzen,0,1,0,1,A
+League_europa,2025,2026-01-29,FCSB,Fenerbahçe,1,1,0,1,D
+League_europa,2025,2026-01-29,Ludogorets,Nice,1,0,1,0,H
+League_europa,2025,2026-01-29,FK Crvena Zvezda,Celta Vigo,1,1,0,0,D
+League_europa,2025,2026-01-29,Maccabi Tel Aviv,Bologna,0,3,0,1,A
+League_europa,2025,2026-01-29,Panathinaikos,AS Roma,1,1,0,0,D
+League_europa,2025,2026-01-29,Sturm Graz,Brann,1,0,0,0,H
+League_europa,2025,2026-01-29,Genk,Malmo FF,2,1,1,1,H
+League_europa,2025,2026-02-19,Brann,Bologna,0,1,0,1,A
+League_europa,2025,2026-02-19,Fenerbahçe,Nottingham Forest,0,3,0,2,A
+League_europa,2025,2026-02-19,PAOK,Celta Vigo,1,2,0,2,A
+League_europa,2025,2026-02-19,Dinamo Zagreb,Genk,1,3,1,2,A
+League_europa,2025,2026-02-19,Lille,FK Crvena Zvezda,0,1,0,1,A
+League_europa,2025,2026-02-19,Celtic,VfB Stuttgart,1,4,1,2,A
+League_europa,2025,2026-02-19,Ludogorets,Ferencvarosi TC,2,1,1,1,H
+League_europa,2025,2026-02-19,Panathinaikos,Plzen,2,2,1,1,D
+League_europa,2025,2026-02-26,VfB Stuttgart,Celtic,0,1,0,1,A
+League_europa,2025,2026-02-26,Ferencvarosi TC,Ludogorets,2,0,2,0,H
+League_europa,2025,2026-02-26,Nottingham Forest,Fenerbahçe,1,2,0,1,A
+League_europa,2025,2026-02-26,Bologna,Brann,1,0,0,0,H
+League_europa,2025,2026-02-26,Celta Vigo,PAOK,1,0,0,0,H
+League_europa,2025,2026-03-12,Lille,Aston Villa,0,1,0,0,A
+League_europa,2025,2026-03-12,VfB Stuttgart,FC Porto,1,2,1,2,A
+League_europa,2025,2026-03-12,Bologna,AS Roma,1,1,0,0,D
+League_europa,2025,2026-03-12,Panathinaikos,Real Betis,1,0,0,0,H
+League_europa,2025,2026-03-12,Nottingham Forest,FC Midtjylland,0,1,0,0,A
+League_europa,2025,2026-03-12,Celta Vigo,Lyon,1,1,1,0,D
+League_europa,2025,2026-03-12,Ferencvarosi TC,SC Braga,2,0,1,0,H
+League_europa,2025,2026-03-12,Genk,SC Freiburg,1,0,1,0,H
+League_europa,2025,2026-03-18,SC Braga,Ferencvarosi TC,4,0,3,0,H
+League_europa,2025,2026-03-19,Lyon,Celta Vigo,0,2,0,0,A
+League_europa,2025,2026-03-19,SC Freiburg,Genk,5,1,2,1,H
+League_europa,2025,2026-03-19,Aston Villa,Lille,2,0,0,0,H
+League_europa,2025,2026-03-19,FC Porto,VfB Stuttgart,2,0,1,0,H
+League_europa,2025,2026-03-19,Real Betis,Panathinaikos,4,0,2,0,H
+League_europa,2025,2026-04-08,SC Braga,Real Betis,1,1,1,0,D
+League_europa,2025,2026-04-09,SC Freiburg,Celta Vigo,3,0,2,0,H
+League_europa,2025,2026-04-09,FC Porto,Nottingham Forest,1,1,1,1,D
+League_europa,2025,2026-04-09,Bologna,Aston Villa,1,3,0,1,A
+League_europa,2025,2026-04-16,Celta Vigo,SC Freiburg,1,3,0,2,A
+League_europa,2025,2026-04-16,Nottingham Forest,FC Porto,1,0,1,0,H
+League_europa,2025,2026-04-16,Aston Villa,Bologna,4,0,3,0,H
+League_europa,2025,2026-04-16,Real Betis,SC Braga,2,4,2,1,A
+League_europa,2025,2026-04-30,Nottingham Forest,Aston Villa,1,0,0,0,H
+League_europa,2025,2026-04-30,SC Braga,SC Freiburg,2,1,1,1,H
+League_europa,2025,2026-05-07,Aston Villa,Nottingham Forest,4,0,1,0,H
+League_europa,2025,2026-05-07,SC Freiburg,SC Braga,3,1,2,0,H
+League_europa,2025,2026-05-20,SC Freiburg,Aston Villa,0,3,0,2,A
