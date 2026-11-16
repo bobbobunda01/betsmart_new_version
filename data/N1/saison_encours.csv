@@ -1,100 +1,111 @@
 fixture_id,league,season,Date,HomeTeam,AwayTeam,FTHG,FTAG,HTHG,HTAG,FTR
-1552117,Neerdeland,2026,2026-08-07,Cambuur,Excelsior,0,4,0,3,A
-1552118,Neerdeland,2026,2026-08-08,NEC Nijmegen,Telstar,1,2,0,2,A
-1552119,Neerdeland,2026,2026-08-08,GO Ahead Eagles,Willem II,4,1,1,1,H
-1552120,Neerdeland,2026,2026-08-08,PSV Eindhoven,Fortuna Sittard,2,2,0,1,D
-1552121,Neerdeland,2026,2026-08-08,AZ Alkmaar,ADO Den Haag,2,0,0,0,H
-1552122,Neerdeland,2026,2026-08-09,Sparta Rotterdam,Feyenoord,0,1,0,1,A
-1552124,Neerdeland,2026,2026-08-09,PEC Zwolle,Ajax,0,2,0,0,A
-1552123,Neerdeland,2026,2026-08-09,Groningen,Utrecht,2,1,1,0,H
-1552125,Neerdeland,2026,2026-08-09,Heerenveen,Twente,1,0,0,0,H
-1552126,Neerdeland,2026,2026-08-14,Telstar,Sparta Rotterdam,1,3,0,1,A
-1552127,Neerdeland,2026,2026-08-15,Willem II,NEC Nijmegen,1,4,0,1,A
-1552128,Neerdeland,2026,2026-08-15,Utrecht,AZ Alkmaar,1,4,0,1,A
-1552129,Neerdeland,2026,2026-08-15,Excelsior,PSV Eindhoven,1,2,0,1,A
-1552130,Neerdeland,2026,2026-08-15,Fortuna Sittard,Cambuur,3,1,2,1,H
-1552131,Neerdeland,2026,2026-08-16,ADO Den Haag,Groningen,1,4,0,3,A
-1552132,Neerdeland,2026,2026-08-16,Feyenoord,GO Ahead Eagles,2,2,2,0,D
-1552133,Neerdeland,2026,2026-08-16,Twente,PEC Zwolle,3,1,1,1,H
-1552134,Neerdeland,2026,2026-08-16,Ajax,Heerenveen,2,2,2,1,D
-1552135,Neerdeland,2026,2026-08-22,Fortuna Sittard,AZ Alkmaar,0,2,0,0,A
-1552137,Neerdeland,2026,2026-08-22,Sparta Rotterdam,Utrecht,3,3,1,1,D
-1552138,Neerdeland,2026,2026-08-22,Heerenveen,PEC Zwolle,0,2,0,0,A
-1552139,Neerdeland,2026,2026-08-23,GO Ahead Eagles,ADO Den Haag,3,1,1,0,H
-1552140,Neerdeland,2026,2026-08-23,PSV Eindhoven,Groningen,5,1,3,1,H
-1552141,Neerdeland,2026,2026-08-23,Cambuur,Feyenoord,2,5,0,4,A
-1552144,Neerdeland,2026,2026-08-28,Groningen,Fortuna Sittard,2,3,1,2,A
-1552145,Neerdeland,2026,2026-08-29,Excelsior,Sparta Rotterdam,2,1,1,0,H
-1552146,Neerdeland,2026,2026-08-29,AZ Alkmaar,GO Ahead Eagles,5,2,2,1,H
-1552147,Neerdeland,2026,2026-08-29,PEC Zwolle,NEC Nijmegen,1,3,1,2,A
-1552148,Neerdeland,2026,2026-08-30,Utrecht,PSV Eindhoven,1,6,1,2,A
-1552150,Neerdeland,2026,2026-08-30,Willem II,Heerenveen,2,2,0,0,D
-1552149,Neerdeland,2026,2026-08-30,Feyenoord,ADO Den Haag,2,2,0,1,D
-1552151,Neerdeland,2026,2026-08-30,Telstar,Ajax,0,4,0,1,A
-1552152,Neerdeland,2026,2026-08-30,Cambuur,Twente,1,4,0,2,A
-1552153,Neerdeland,2026,2026-09-04,Sparta Rotterdam,PEC Zwolle,2,2,1,1,D
-1552154,Neerdeland,2026,2026-09-05,NEC Nijmegen,Feyenoord,1,3,0,0,A
-1552156,Neerdeland,2026,2026-09-05,Ajax,PSV Eindhoven,1,3,1,2,A
-1552157,Neerdeland,2026,2026-09-05,Willem II,Excelsior,0,3,0,2,A
-1552158,Neerdeland,2026,2026-09-06,Groningen,Twente,2,2,2,2,D
-1552159,Neerdeland,2026,2026-09-06,Heerenveen,AZ Alkmaar,2,3,2,1,A
-1552160,Neerdeland,2026,2026-09-06,Telstar,Cambuur,2,2,0,0,D
-1552161,Neerdeland,2026,2026-09-06,ADO Den Haag,Fortuna Sittard,2,3,0,2,A
-1552155,Neerdeland,2026,2026-09-08,Utrecht,GO Ahead Eagles,3,3,0,1,D
-1552136,Neerdeland,2026,2026-09-08,NEC Nijmegen,Excelsior,2,2,1,1,D
-1552142,Neerdeland,2026,2026-09-09,Twente,Telstar,1,0,0,0,H
-1552162,Neerdeland,2026,2026-09-11,AZ Alkmaar,Willem II,1,1,1,0,D
-1552163,Neerdeland,2026,2026-09-12,Twente,ADO Den Haag,2,0,0,0,H
-1552164,Neerdeland,2026,2026-09-12,GO Ahead Eagles,Groningen,1,1,0,1,D
-1552165,Neerdeland,2026,2026-09-12,Fortuna Sittard,Ajax,1,5,0,1,A
-1552168,Neerdeland,2026,2026-09-12,Cambuur,NEC Nijmegen,3,0,1,0,H
-1552167,Neerdeland,2026,2026-09-13,Excelsior,Utrecht,1,2,0,1,A
-1552166,Neerdeland,2026,2026-09-13,Heerenveen,Telstar,0,0,0,0,D
-1552170,Neerdeland,2026,2026-09-13,PEC Zwolle,Feyenoord,0,7,0,3,A
-1552169,Neerdeland,2026,2026-09-13,PSV Eindhoven,Sparta Rotterdam,4,1,2,1,H
-1552143,Neerdeland,2026,2026-09-15,Ajax,Willem II,5,1,2,0,H
-1552173,Neerdeland,2026,2026-09-18,Groningen,PEC Zwolle,3,0,2,0,H
-1552172,Neerdeland,2026,2026-09-19,ADO Den Haag,Cambuur,1,1,0,1,D
-1552171,Neerdeland,2026,2026-09-19,Sparta Rotterdam,Heerenveen,0,4,0,2,A
-1552174,Neerdeland,2026,2026-09-19,Ajax,Excelsior,2,2,1,1,D
-1552175,Neerdeland,2026,2026-09-19,Willem II,Fortuna Sittard,0,1,0,0,A
-1552176,Neerdeland,2026,2026-09-20,Feyenoord,Utrecht,5,0,3,0,H
-1552177,Neerdeland,2026,2026-09-20,AZ Alkmaar,Telstar,1,0,1,0,H
-1552179,Neerdeland,2026,2026-09-20,Twente,PSV Eindhoven,3,2,1,2,H
-1552178,Neerdeland,2026,2026-09-20,NEC Nijmegen,GO Ahead Eagles,1,1,1,1,D
-1552180,Neerdeland,2026,2026-10-09,PSV Eindhoven,Heerenveen,2,0,1,0,H
-1552182,Neerdeland,2026,2026-10-10,GO Ahead Eagles,Sparta Rotterdam,3,3,0,1,D
-1552181,Neerdeland,2026,2026-10-10,Feyenoord,AZ Alkmaar,2,0,1,0,H
-1552184,Neerdeland,2026,2026-10-10,Fortuna Sittard,Twente,1,1,1,1,D
-1552183,Neerdeland,2026,2026-10-10,Ajax,NEC Nijmegen,1,1,1,1,D
-1552185,Neerdeland,2026,2026-10-11,Utrecht,Willem II,3,1,0,0,H
-1552187,Neerdeland,2026,2026-10-11,PEC Zwolle,Cambuur,0,1,0,0,A
-1552186,Neerdeland,2026,2026-10-11,Telstar,ADO Den Haag,2,2,2,2,D
-1552188,Neerdeland,2026,2026-10-11,Excelsior,Groningen,1,5,1,2,A
-1552189,Neerdeland,2026,2026-10-16,Heerenveen,Excelsior,4,0,1,0,H
-1552190,Neerdeland,2026,2026-10-17,ADO Den Haag,PSV Eindhoven,2,1,0,1,H
-1552192,Neerdeland,2026,2026-10-17,Telstar,Feyenoord,3,4,2,3,A
-1552193,Neerdeland,2026,2026-10-17,Sparta Rotterdam,Willem II,3,2,1,1,H
-1552194,Neerdeland,2026,2026-10-18,PEC Zwolle,GO Ahead Eagles,4,1,0,1,H
-1552195,Neerdeland,2026,2026-10-18,Cambuur,AZ Alkmaar,2,2,2,1,D
-1552197,Neerdeland,2026,2026-10-18,Groningen,Ajax,2,5,0,2,A
-1552191,Neerdeland,2026,2026-10-18,NEC Nijmegen,Fortuna Sittard,2,2,1,1,D
-1552196,Neerdeland,2026,2026-10-18,Twente,Utrecht,1,2,1,0,A
-1552198,Neerdeland,2026,2026-10-23,GO Ahead Eagles,Telstar,3,2,2,0,H
-1552199,Neerdeland,2026,2026-10-24,Utrecht,PEC Zwolle,1,1,0,0,D
-1552200,Neerdeland,2026,2026-10-24,Willem II,Cambuur,1,6,0,3,A
-1552201,Neerdeland,2026,2026-10-24,ADO Den Haag,Heerenveen,2,3,0,1,A
-1552202,Neerdeland,2026,2026-10-25,Fortuna Sittard,Excelsior,1,0,0,0,H
-1552204,Neerdeland,2026,2026-10-25,PSV Eindhoven,Feyenoord,1,1,1,0,D
-1552203,Neerdeland,2026,2026-10-25,NEC Nijmegen,Groningen,2,2,0,2,D
-1552205,Neerdeland,2026,2026-10-25,Sparta Rotterdam,Ajax,1,2,1,2,A
-1552206,Neerdeland,2026,2026-10-25,AZ Alkmaar,Twente,0,2,0,0,A
-1552207,Neerdeland,2026,2026-10-31,Feyenoord,Fortuna Sittard,1,1,0,0,D
-1552209,Neerdeland,2026,2026-10-31,PSV Eindhoven,Willem II,7,0,2,0,H
-1552208,Neerdeland,2026,2026-10-31,Heerenveen,NEC Nijmegen,1,0,0,0,H
-1552210,Neerdeland,2026,2026-10-31,Ajax,AZ Alkmaar,1,0,1,0,H
-1552211,Neerdeland,2026,2026-10-31,Cambuur,GO Ahead Eagles,4,0,3,0,H
-1552212,Neerdeland,2026,2026-11-01,PEC Zwolle,ADO Den Haag,1,0,1,0,H
-1552213,Neerdeland,2026,2026-11-01,Excelsior,Twente,0,9,0,5,A
-1552214,Neerdeland,2026,2026-11-01,Telstar,Utrecht,4,2,3,1,H
-1552215,Neerdeland,2026,2026-11-01,Groningen,Sparta Rotterdam,2,3,2,2,A
+1550095,Serie A,2026,2026-08-22,Udinese,Como,1,1,1,0,D
+1550092,Serie A,2026,2026-08-22,Inter,Monza,4,1,1,1,H
+1550091,Serie A,2026,2026-08-22,Genoa,Napoli,0,2,0,0,A
+1550093,Serie A,2026,2026-08-22,Parma,Cagliari,0,1,0,0,A
+1550090,Serie A,2026,2026-08-23,Frosinone,Juventus,0,1,0,1,A
+1550096,Serie A,2026,2026-08-23,Venezia,Lecce,0,2,0,0,A
+1550088,Serie A,2026,2026-08-23,Atalanta,Sassuolo,2,1,1,0,H
+1550094,Serie A,2026,2026-08-23,Torino,AC Milan,1,2,0,0,A
+1550089,Serie A,2026,2026-08-24,Bologna,Lazio,0,1,0,0,A
+1550087,Serie A,2026,2026-08-24,AS Roma,Fiorentina,4,0,1,0,H
+1550097,Serie A,2026,2026-08-28,AC Milan,Venezia,2,0,0,0,H
+1550106,Serie A,2026,2026-08-29,Sassuolo,Torino,2,1,1,1,H
+1550100,Serie A,2026,2026-08-29,Fiorentina,Frosinone,0,3,0,2,A
+1550104,Serie A,2026,2026-08-29,Monza,Udinese,2,3,1,3,A
+1550101,Serie A,2026,2026-08-29,Juventus,Parma,2,0,0,0,H
+1550105,Serie A,2026,2026-08-30,Napoli,Como,1,2,1,2,A
+1550102,Serie A,2026,2026-08-30,Lazio,Genoa,1,0,1,0,H
+1550099,Serie A,2026,2026-08-30,Cagliari,Inter,0,1,0,1,A
+1550103,Serie A,2026,2026-08-31,Lecce,AS Roma,0,4,0,3,A
+1550098,Serie A,2026,2026-08-31,Atalanta,Bologna,1,0,0,0,H
+1550112,Serie A,2026,2026-09-04,Genoa,Como,1,4,1,3,A
+1550110,Serie A,2026,2026-09-05,Fiorentina,Torino,1,2,0,0,A
+1550113,Serie A,2026,2026-09-05,Inter,Napoli,3,2,0,0,H
+1550107,Serie A,2026,2026-09-05,AS Roma,Atalanta,2,1,0,0,H
+1550111,Serie A,2026,2026-09-06,Frosinone,Venezia,3,2,2,0,H
+1550115,Serie A,2026,2026-09-06,Parma,Monza,1,1,0,1,D
+1550108,Serie A,2026,2026-09-06,Bologna,Sassuolo,2,2,0,1,D
+1550114,Serie A,2026,2026-09-06,Juventus,AC Milan,1,1,0,0,D
+1550109,Serie A,2026,2026-09-07,Cagliari,Lecce,1,0,1,0,H
+1550116,Serie A,2026,2026-09-07,Udinese,Lazio,1,2,0,0,A
+1550126,Serie A,2026,2026-09-11,Venezia,Fiorentina,2,4,1,2,A
+1550119,Serie A,2026,2026-09-12,Genoa,Frosinone,1,1,0,1,D
+1550121,Serie A,2026,2026-09-12,Lazio,AC Milan,2,2,2,0,D
+1550117,Serie A,2026,2026-09-12,Atalanta,Cagliari,1,2,1,1,A
+1550122,Serie A,2026,2026-09-13,Lecce,Monza,3,2,3,1,H
+1550123,Serie A,2026,2026-09-13,Napoli,Bologna,1,0,0,0,H
+1550124,Serie A,2026,2026-09-13,Sassuolo,Juventus,3,2,0,0,H
+1550125,Serie A,2026,2026-09-14,Torino,AS Roma,0,2,0,1,A
+1550118,Serie A,2026,2026-09-14,Como,Parma,2,1,1,0,H
+1550120,Serie A,2026,2026-09-14,Inter,Udinese,5,3,2,2,H
+1550133,Serie A,2026,2026-09-18,Monza,Sassuolo,2,1,0,0,H
+1550135,Serie A,2026,2026-09-19,Udinese,Cagliari,0,1,0,0,A
+1550129,Serie A,2026,2026-09-19,Bologna,Torino,1,1,1,0,D
+1550128,Serie A,2026,2026-09-19,AS Roma,Inter,2,2,2,0,D
+1550136,Serie A,2026,2026-09-19,Venezia,Lazio,0,2,0,0,A
+1550130,Serie A,2026,2026-09-20,Fiorentina,Napoli,1,1,0,1,D
+1550131,Serie A,2026,2026-09-20,Frosinone,Como,2,0,2,0,H
+1550134,Serie A,2026,2026-09-20,Parma,Genoa,2,1,1,0,H
+1550132,Serie A,2026,2026-09-20,Juventus,Atalanta,2,0,1,0,H
+1550127,Serie A,2026,2026-09-20,AC Milan,Lecce,3,0,1,0,H
+1550140,Serie A,2026,2026-10-10,Genoa,Fiorentina,2,1,2,0,H
+1550141,Serie A,2026,2026-10-10,Inter,Parma,3,0,3,0,H
+1550144,Serie A,2026,2026-10-10,Napoli,Frosinone,3,0,2,0,H
+1550139,Serie A,2026,2026-10-11,Como,AS Roma,0,0,0,0,D
+1550142,Serie A,2026,2026-10-11,Lazio,Monza,3,1,2,0,H
+1550143,Serie A,2026,2026-10-11,Lecce,Bologna,1,2,0,1,A
+1550145,Serie A,2026,2026-10-11,Sassuolo,AC Milan,1,1,0,0,D
+1550138,Serie A,2026,2026-10-11,Cagliari,Juventus,1,1,1,0,D
+1550137,Serie A,2026,2026-10-12,Atalanta,Venezia,3,1,3,1,H
+1550146,Serie A,2026,2026-10-12,Torino,Udinese,2,1,1,1,H
+1550151,Serie A,2026,2026-10-16,Frosinone,Sassuolo,4,2,3,2,H
+1550156,Serie A,2026,2026-10-17,Venezia,Napoli,1,0,0,0,H
+1550149,Serie A,2026,2026-10-17,Bologna,Inter,1,3,1,1,A
+1550148,Serie A,2026,2026-10-17,AS Roma,Genoa,2,0,0,0,H
+1550155,Serie A,2026,2026-10-18,Udinese,Lecce,0,3,0,2,A
+1550150,Serie A,2026,2026-10-18,Fiorentina,Como,1,3,1,2,A
+1550147,Serie A,2026,2026-10-18,AC Milan,Atalanta,3,2,2,0,H
+1550152,Serie A,2026,2026-10-18,Juventus,Lazio,0,3,0,1,A
+1550153,Serie A,2026,2026-10-19,Monza,Cagliari,4,0,1,0,H
+1550154,Serie A,2026,2026-10-19,Parma,Torino,0,3,0,2,A
+1550165,Serie A,2026,2026-10-23,Torino,Monza,3,2,1,0,H
+1550158,Serie A,2026,2026-10-24,Cagliari,Bologna,0,2,0,0,A
+1550159,Serie A,2026,2026-10-24,Como,Sassuolo,2,0,0,0,H
+1550164,Serie A,2026,2026-10-24,Napoli,AS Roma,3,3,1,0,D
+1550162,Serie A,2026,2026-10-24,Lazio,Parma,2,1,0,0,H
+1550161,Serie A,2026,2026-10-25,Inter,Fiorentina,2,1,0,0,H
+1550160,Serie A,2026,2026-10-25,Genoa,Venezia,1,0,1,0,H
+1550157,Serie A,2026,2026-10-25,Atalanta,Frosinone,4,4,3,2,D
+1550163,Serie A,2026,2026-10-25,Lecce,Juventus,0,2,0,2,A
+1550166,Serie A,2026,2026-10-25,Udinese,AC Milan,0,2,0,1,A
+1550174,Serie A,2026,2026-10-27,Sassuolo,Lazio,2,6,2,4,A
+1550168,Serie A,2026,2026-10-27,AS Roma,Cagliari,4,2,2,1,H
+1550175,Serie A,2026,2026-10-27,Torino,Como,1,3,1,0,A
+1550167,Serie A,2026,2026-10-28,AC Milan,Bologna,2,4,2,1,A
+1550176,Serie A,2026,2026-10-28,Venezia,Inter,0,2,0,0,A
+1550173,Serie A,2026,2026-10-28,Parma,Udinese,0,0,0,0,D
+1550171,Serie A,2026,2026-10-28,Genoa,Juventus,2,0,2,0,H
+1550172,Serie A,2026,2026-10-28,Monza,Napoli,1,4,1,1,A
+1550170,Serie A,2026,2026-10-29,Frosinone,Lecce,5,1,2,0,H
+1550169,Serie A,2026,2026-10-29,Fiorentina,Atalanta,2,2,0,1,D
+1550179,Serie A,2026,2026-10-31,Bologna,Monza,2,1,1,1,H
+1550186,Serie A,2026,2026-10-31,Udinese,AS Roma,2,5,0,4,A
+1550177,Serie A,2026,2026-10-31,AC Milan,Inter,3,1,3,1,H
+1550180,Serie A,2026,2026-11-01,Como,Venezia,1,0,1,0,H
+1550183,Serie A,2026,2026-11-01,Lazio,Cagliari,2,1,1,1,H
+1550181,Serie A,2026,2026-11-01,Frosinone,Torino,2,0,0,0,H
+1550184,Serie A,2026,2026-11-01,Lecce,Genoa,1,2,1,2,A
+1550182,Serie A,2026,2026-11-01,Juventus,Napoli,2,0,0,0,H
+1550185,Serie A,2026,2026-11-02,Sassuolo,Fiorentina,2,4,1,1,A
+1550178,Serie A,2026,2026-11-02,Atalanta,Parma,0,3,0,1,A
+1550196,Serie A,2026,2026-11-06,Venezia,Udinese,2,1,0,0,H
+1550188,Serie A,2026,2026-11-07,Cagliari,Frosinone,1,0,1,0,H
+1550195,Serie A,2026,2026-11-07,Torino,Lecce,1,1,0,0,D
+1550194,Serie A,2026,2026-11-07,Parma,Bologna,1,2,0,0,A
+1550187,Serie A,2026,2026-11-07,AS Roma,Sassuolo,3,0,2,0,H
+1550193,Serie A,2026,2026-11-08,Napoli,Lazio,1,1,0,1,D
+1550190,Serie A,2026,2026-11-08,Genoa,AC Milan,1,2,0,2,A
+1550192,Serie A,2026,2026-11-08,Monza,Atalanta,0,1,0,0,A
+1550191,Serie A,2026,2026-11-08,Inter,Como,2,0,2,0,H
+1550189,Serie A,2026,2026-11-08,Fiorentina,Juventus,2,2,1,1,D
